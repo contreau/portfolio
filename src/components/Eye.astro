@@ -1,0 +1,129 @@
+---
+import '../scss/main.scss'
+---
+
+<div class="logo-container">
+    <!-- Eye -->
+    <div class="eye__primary--container">
+      <div class="eye">
+        <div class="lid">
+          <span></span>
+        </div>
+        <div class="ball"></div>
+      </div>
+    </div>
+    <!-- Animation Container -->
+    <!-- <div class="anim-container">
+      <div class="dot blDot"></div>
+      <div class="dot whDot"></div>
+    </div> -->
+  </div>
+
+  <style lang="scss">
+
+    // Header Animation
+
+    .logo-container {
+    display: grid;
+    place-items: center;
+    // border: solid 1px #fff;
+    max-width: 280px;
+    width: 100%;
+    min-height: 95.5px;
+    position: relative;
+    }
+
+    .anim-container {
+    // border: solid 1px cornflowerblue;
+    position: relative;
+    padding: 1.5em;
+    width: 100%;
+    max-width: 65px;
+    min-height: 65px;
+    height: auto;
+    border-radius: 50%;
+    // animation: twirl 0.7s 1.1s ease-in-out forwards;
+    }
+
+    .blDot {
+    border-radius: 50%;
+    height: 29px;
+    width: 29px;
+    background-color: var(--blue);
+    display: inline;
+    // border: solid 1px #fff;
+    // animation: shimmyBl 1.8s 0.4s ease-in-out forwards;
+    z-index: 3;
+    }
+
+    .whDot {
+    border-radius: 50%;
+    height: 29px;
+    width: 29px;
+    background-color: #fff;
+    display: inline;
+    // border: solid 1px var(--blue);
+    // animation: shimmyWh 1.8s 0.4s ease-in-out forwards;
+    z-index: 2;
+    }
+
+    .dot {
+    position: absolute;
+    right: 28.2%;
+    bottom: 26.1%;
+    transition: 0.2s all;
+    }
+
+    // Header Eyeball Styling
+    .eye__primary--container {
+    opacity: 1; // 0 for animation
+    //   border: solid 1px #fff;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 33.6%;
+    top: 2.5%;
+    // animation: fadeIn 0.25s 2.1s ease-in forwards; // 2.1s
+    z-index: -1;
+    }
+
+    .eye {
+    display: grid;
+    place-items: center;
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: 70% 0;
+    background-color: var(--blue);
+    transform: rotate(45deg);
+    overflow: hidden;
+    border: solid #e9e0e0;
+    }
+
+    .ball {
+    height: 3.05rem;
+    width: 3.05rem;
+    border-radius: 50%;
+    border: 10px solid #242424;
+    background-color: #fff;
+    // animation: movePupil 5s ease infinite 1s;
+    }
+
+    .lid {
+    height: 5.8rem;
+    width: 11rem;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    }
+
+    .lid span {
+    display: block;
+    width: 100%;
+    height: 25%;
+    background-color: #7fb5fb;
+    border-radius: 0 0 60% 60%;
+    // animation: blink 2.8s 2.8s linear;
+    }
+  </style>
