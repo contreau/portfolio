@@ -1,87 +1,91 @@
 ---
-import '../scss/main.scss';
+import "../scss/main.scss";
 ---
 
-<div class="mobileMenu--btn" aria-label="Mobile Menu Button">
-    <span class="menuSymbol symbol-top"></span>
-    <span class="menuSymbol symbol-mid"></span>
-    <span class="menuSymbol symbol-bottom"></span>
-  </div>
-</header>
-<nav class="collapsed container">
+<!-- <div class="mobileMenu--btn" aria-label="Mobile Menu Button">
+  <span class="menuSymbol symbol-top"></span>
+  <span class="menuSymbol symbol-mid"></span>
+  <span class="menuSymbol symbol-bottom"></span>
+</div> -->
+<nav class="collapsed mobileMenu container">
   <div class="page-links nav-item">
     <ul class="page-links__list">
-      <a href="#" class="listItem--a"><li class="listItem projects-li"><i class="fa-solid fa-code"></i>
-        Projects 
-        
-      </li>
-    </a>
-        <a href="#" class="listItem--a">
-          <li class="listItem media-li"><i class="fa-solid fa-image"></i>Media </li>
-        </a>
-        <a href="#" class="listItem--a">
-          <li class="listItem about-li"><i class="fa-solid fa-face-smile-wink"></i>About </li>
-        </a>
-  </ul>
-  <div class="icons nav-item">
-    <a href="https://github.com/zenDev-2" target="#"
-      ><i class="fa-brands fa-github"></i
-    ></a>
-    <a href="https://www.linkedin.com/in/conor-kelley2/" target="#"
-      ><i class="fa-brands fa-linkedin"></i
-    ></a>
+      <a href="#" class="listItem--a"
+        ><li class="listItem projects-li">
+          <i class="fa-solid fa-code"></i>
+          Projects
+        </li>
+      </a>
+      <a href="#" class="listItem--a">
+        <li class="listItem media-li">
+          <i class="fa-solid fa-image"></i>Media
+        </li>
+      </a>
+      <a href="#" class="listItem--a">
+        <li class="listItem about-li">
+          <i class="fa-solid fa-face-smile-wink"></i>About
+        </li>
+      </a>
+    </ul>
+    <div class="icons nav-item">
+      <a href="https://github.com/zenDev-2" target="#"
+        ><i class="fa-brands fa-github"></i></a
+      >
+      <a href="https://www.linkedin.com/in/conor-kelley2/" target="#"
+        ><i class="fa-brands fa-linkedin"></i></a
+      >
+    </div>
   </div>
 </nav>
-</div>
 
-<script>
-    // DOM
-		const mobileMenu_btn = document.querySelector(".mobileMenu--btn");
-		const mobileMenu = document.querySelector(".collapsed");
-		const symbol_top = document.querySelector(".symbol-top");
-		const symbol_mid = document.querySelector(".symbol-mid");
-		const symbol_bottom = document.querySelector(".symbol-bottom");
-		
-		mobileMenu_btn.addEventListener("click", () => {
-		  mobileMenu.classList.toggle("mobileMenu");
-		  if (mobileMenu.classList.contains("mobileMenu")) {
-			// @ts-ignore
-			mobileMenu_btn.style.backgroundColor = "#334153";
-		  } else {
-			// @ts-ignorex
-			mobileMenu_btn.style.backgroundColor = "#046ef9";
-		  }
-		  if (
-			!symbol_top.classList.contains("collapse-symbols") &&
-			!symbol_bottom.classList.contains("collapse-symbols")
-		  ) {
-			symbol_top.classList.remove("add-symbols");
-			symbol_mid.classList.remove("add-symbols");
-			symbol_bottom.classList.remove("add-symbols");
-			symbol_top.classList.add("collapse-symbols");
-			symbol_bottom.classList.add("collapse-symbols");
-			symbol_mid.classList.add("animate-open");
-		  } else {
-			symbol_top.classList.remove("collapse-symbols");
-			symbol_bottom.classList.remove("collapse-symbols");
-			symbol_top.classList.add("add-symbols");
-			symbol_bottom.classList.add("add-symbols");
-			symbol_mid.classList.remove("animate-open");
-			symbol_mid.classList.add("add-symbols");
-		  }
-		});
-		
-		// Handles pupil color when eyelid closes (tbd)
-		
-		const blDot = document.querySelector(".blDot");
-		const whDot = document.querySelector(".whDot");
-		const ball = document.querySelector(".ball");
-</script>
+<!-- <script>
+  // DOM
+  const mobileMenu_btn = document.querySelector(".mobileMenu--btn");
+  const mobileMenu = document.querySelector(".collapsed");
+  const symbol_top = document.querySelector(".symbol-top");
+  const symbol_mid = document.querySelector(".symbol-mid");
+  const symbol_bottom = document.querySelector(".symbol-bottom");
+
+  mobileMenu_btn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("mobileMenu");
+    if (mobileMenu.classList.contains("mobileMenu")) {
+      // @ts-ignore
+      mobileMenu_btn.style.backgroundColor = "#334153";
+    } else {
+      // @ts-ignorex
+      mobileMenu_btn.style.backgroundColor = "#046ef9";
+    }
+    if (
+      !symbol_top.classList.contains("collapse-symbols") &&
+      !symbol_bottom.classList.contains("collapse-symbols")
+    ) {
+      symbol_top.classList.remove("add-symbols");
+      symbol_mid.classList.remove("add-symbols");
+      symbol_bottom.classList.remove("add-symbols");
+      symbol_top.classList.add("collapse-symbols");
+      symbol_bottom.classList.add("collapse-symbols");
+      symbol_mid.classList.add("animate-open");
+    } else {
+      symbol_top.classList.remove("collapse-symbols");
+      symbol_bottom.classList.remove("collapse-symbols");
+      symbol_top.classList.add("add-symbols");
+      symbol_bottom.classList.add("add-symbols");
+      symbol_mid.classList.remove("animate-open");
+      symbol_mid.classList.add("add-symbols");
+    }
+  });
+
+  // Handles pupil color when eyelid closes (tbd)
+
+  const blDot = document.querySelector(".blDot");
+  const whDot = document.querySelector(".whDot");
+  const ball = document.querySelector(".ball");
+</script> -->
 
 <style lang="scss">
-    .mobileMenu--btn {
-    opacity: 0;
-    animation: fadeIn 0.5s 3.4s ease-in forwards;
+  .mobileMenu--btn {
+    opacity: 1;
+    // animation: fadeIn 0.5s 3.4s ease-in forwards;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -96,134 +100,142 @@ import '../scss/main.scss';
     &:active {
       cursor: pointer;
     }
-}
-
-    .menuSymbol {
-      min-height: 0.1rem;
-      width: 50%;
-      background: #fff;
-      border-radius: 2px;
-    }
-
-    .menuSymbol + .menuSymbol {
-      margin-top: 0.5em;
-    }
-
-    .collapse-symbols {
-      animation: fadeOut 0.2s ease-in forwards;
-    }
-
-    .add-symbols {
-      animation: fadeIn 0.2s ease-in forwards;
-    }
-
-    .animate-open {
-      animation: symbolOpen 0.2s ease-in forwards;
-    }
-
-// toggled with javascript onclick
-.collapsed {
-  display: none;
-}
-
-nav.mobileMenu {
-  margin: 0 auto;
-  max-width: 510px; // first breakpoint
-  opacity: 1;
-  // animation: fadeIn 0.4s ease-in forwards;
-  // border: solid 1px red;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
-  .page-links__list {
-    // border: solid 1px yellow;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    color: #0099ff;
-    text-align: left;
+  .menuSymbol {
+    min-height: 0.1rem;
+    width: 50%;
+    background: #fff;
+    border-radius: 2px;
+  }
 
-    li {
-      margin-top: 1.2rem;
-      background-color: #0047b0;
-      padding: 0.2em 0.6em;
-      border-radius: 40px;
-      transition: 0.4s all;
-      &:hover {
-        background: #fff;
-        color: #000;
+  .menuSymbol + .menuSymbol {
+    margin-top: 0.5em;
+  }
+
+  .collapse-symbols {
+    animation: fadeOut 0.2s ease-in forwards;
+  }
+
+  .add-symbols {
+    animation: fadeIn 0.2s ease-in forwards;
+  }
+
+  .animate-open {
+    animation: symbolOpen 0.2s ease-in forwards;
+  }
+
+  // toggled with javascript onclick
+  // remove from final code if not using
+  // .collapsed {
+  //   display: none;
+  // }
+
+  nav.mobileMenu {
+    margin: 0 auto;
+    margin-top: 3rem;
+    max-width: 510px; // first breakpoint
+    opacity: 1;
+    // animation: fadeIn 0.4s ease-in forwards;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-links__list {
+      // border: solid 1px yellow;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      width: 100%;
+      color: #0099ff;
+      text-align: left;
+
+      li {
+        margin-top: 1.2rem;
+        background-color: #0047b0;
+        padding: 0.2em 0.6em;
+        border: solid 1px #63a6ed9d;
+        border-radius: 18px;
+        box-shadow: 5.5px 5.5px #2c73be;
+        transition: 0.27s all;
+        &:active {
+          transform: scale(0.7);
+          transition: transform 0.17s;
+        }
+        // &:hover {
+        //   background: #fff;
+        //   color: #000;
+        // }
+      }
+
+      .fa-solid {
+        margin-right: 2rem;
+      }
+
+      .fa-code {
+        margin-right: 1.3rem;
+      }
+
+      // .page-links {
+      //   font-size: 3rem;
+      // }
+
+      .projects-li {
+        animation: mobileMenuPop 0.52s ease-in-out forwards;
+      }
+      .media-li {
+        animation: mobileMenuPop 0.52s 0.35s ease-in-out forwards;
+      }
+      .about-li {
+        animation: mobileMenuPop 0.52s 0.65s ease-in-out forwards;
+      }
+
+      .listItem {
+        opacity: 0;
+        font-size: 1.4rem;
+      }
+
+      .listItem + .listItem {
+        margin-top: 1rem;
       }
     }
 
-    .fa-solid {
-      margin-right: 2rem;
+    .icons {
+      font-size: 3.3rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 0.8em;
+
+      .fa-brands {
+        opacity: 0;
+      }
+
+      .fa-github {
+        animation: fadeIn 0.4s 0.8s ease-in forwards;
+      }
+      .fa-linkedin {
+        animation: fadeIn 0.4s 1s ease-in forwards;
+      }
     }
 
-    .fa-code {
-      margin-right: 1.3rem;
-    }
-
-    // .page-links {
-    //   font-size: 3rem;
-    // }
-
-    .projects-li {
-      animation: fadeIn 0.5s ease-in-out forwards;
-    }
-    .media-li {
-      animation: fadeIn 0.5s 0.2s ease-in-out forwards;
-    }
-    .about-li {
-      animation: fadeIn 0.5s 0.5s ease-in-out forwards;
-    }
-
-    .listItem {
-      opacity: 0;
-      font-size: 1.4rem;
-    }
-
-    .listItem + .listItem {
-      margin-top: 1rem;
+    a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.4s all;
+      // &:hover,
+      // &:active {
+      //   color: #0047b0;
+      // }
     }
   }
-
-  .icons {
-    font-size: 3.3rem;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    gap: 0.8em;
-
-    .fa-brands {
-      opacity: 0;
-    }
-
-    .fa-github {
-      animation: fadeIn 0.4s 0.8s ease-in forwards;
-    }
-    .fa-linkedin {
-      animation: fadeIn 0.4s 1s ease-in forwards;
-    }
-  }
-
-  a {
-    text-decoration: none;
-    color: #fff;
-    transition: 0.4s all;
-    &:hover,
-    &:active {
-      color: #0047b0;
-    }
-  }
-}
 </style>

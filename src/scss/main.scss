@@ -40,6 +40,7 @@ button {
 @include animations.kf-shimmyWh(shimmyWh, 1, 0);
 @include animations.kf-symbolOpen(symbolOpen);
 @include animations.kf-growFont(growFont);
+@include animations.kf-mobileMenuPop(mobileMenuPop);
 @media (min-width: 899px) {
   @include animations.kf-shimmyBl(shimmyBl, 1, 1);
   @include animations.kf-shimmyWh(shimmyWh, 1, 1);

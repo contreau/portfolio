@@ -3,6 +3,21 @@
 // *
 // *
 
+// Mobile Menu button pop-out
+@mixin kf-mobileMenuPop($mobileMenuPop) {
+  @keyframes #{$mobileMenuPop} {
+    0% {
+      scale: 1;
+    }
+    70% {
+      scale: 1.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
 // Fade-in
 @mixin kf-fadeIn($fadeIn) {
   @keyframes #{$fadeIn} {
