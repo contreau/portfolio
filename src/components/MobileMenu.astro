@@ -43,50 +43,6 @@ import "../scss/main.scss";
   </div>
 </nav>
 
-<!-- <script>
-  // DOM
-  const mobileMenu_btn = document.querySelector(".mobileMenu--btn");
-  const mobileMenu = document.querySelector(".collapsed");
-  const symbol_top = document.querySelector(".symbol-top");
-  const symbol_mid = document.querySelector(".symbol-mid");
-  const symbol_bottom = document.querySelector(".symbol-bottom");
-
-  mobileMenu_btn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("mobileMenu");
-    if (mobileMenu.classList.contains("mobileMenu")) {
-      // @ts-ignore
-      mobileMenu_btn.style.backgroundColor = "#334153";
-    } else {
-      // @ts-ignorex
-      mobileMenu_btn.style.backgroundColor = "#046ef9";
-    }
-    if (
-      !symbol_top.classList.contains("collapse-symbols") &&
-      !symbol_bottom.classList.contains("collapse-symbols")
-    ) {
-      symbol_top.classList.remove("add-symbols");
-      symbol_mid.classList.remove("add-symbols");
-      symbol_bottom.classList.remove("add-symbols");
-      symbol_top.classList.add("collapse-symbols");
-      symbol_bottom.classList.add("collapse-symbols");
-      symbol_mid.classList.add("animate-open");
-    } else {
-      symbol_top.classList.remove("collapse-symbols");
-      symbol_bottom.classList.remove("collapse-symbols");
-      symbol_top.classList.add("add-symbols");
-      symbol_bottom.classList.add("add-symbols");
-      symbol_mid.classList.remove("animate-open");
-      symbol_mid.classList.add("add-symbols");
-    }
-  });
-
-  // Handles pupil color when eyelid closes (tbd)
-
-  const blDot = document.querySelector(".blDot");
-  const whDot = document.querySelector(".whDot");
-  const ball = document.querySelector(".ball");
-</script> -->
-
 <style lang="scss">
   .mobileMenu--btn {
     opacity: 1;
@@ -147,7 +103,6 @@ import "../scss/main.scss";
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1em;
     .nav-item {
       display: flex;
       flex-direction: column;
@@ -165,7 +120,6 @@ import "../scss/main.scss";
       text-align: left;
 
       li {
-        margin-top: 1.2rem;
         background-color: var(--mobile-btn);
         padding: 0.2em 0.6em;
         border: solid 1px var(--mobile-btn-border);
@@ -198,9 +152,11 @@ import "../scss/main.scss";
         animation: mobileMenuPop 0.35s 1s ease-in forwards;
       }
       .media-li {
+        margin-top: 1.2rem;
         animation: mobileMenuPop 0.35s 1.2s ease-in forwards;
       }
       .about-li {
+        margin-top: 1.2rem;
         animation: mobileMenuPop 0.35s 1.4s ease-in forwards;
       }
 
@@ -208,15 +164,11 @@ import "../scss/main.scss";
         opacity: 0;
         font-size: 1.4rem;
       }
-
-      .listItem + .listItem {
-        margin-top: 1rem;
-      }
     }
 
     .icons {
       font-size: 3.3rem;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
 
       .icon-row2 {
         display: flex;
@@ -266,3 +218,47 @@ import "../scss/main.scss";
     }
   }
 </style>
+
+<!-- <script>
+  // DOM
+  const mobileMenu_btn = document.querySelector(".mobileMenu--btn");
+  const mobileMenu = document.querySelector(".collapsed");
+  const symbol_top = document.querySelector(".symbol-top");
+  const symbol_mid = document.querySelector(".symbol-mid");
+  const symbol_bottom = document.querySelector(".symbol-bottom");
+
+  mobileMenu_btn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("mobileMenu");
+    if (mobileMenu.classList.contains("mobileMenu")) {
+      // @ts-ignore
+      mobileMenu_btn.style.backgroundColor = "#334153";
+    } else {
+      // @ts-ignorex
+      mobileMenu_btn.style.backgroundColor = "#046ef9";
+    }
+    if (
+      !symbol_top.classList.contains("collapse-symbols") &&
+      !symbol_bottom.classList.contains("collapse-symbols")
+    ) {
+      symbol_top.classList.remove("add-symbols");
+      symbol_mid.classList.remove("add-symbols");
+      symbol_bottom.classList.remove("add-symbols");
+      symbol_top.classList.add("collapse-symbols");
+      symbol_bottom.classList.add("collapse-symbols");
+      symbol_mid.classList.add("animate-open");
+    } else {
+      symbol_top.classList.remove("collapse-symbols");
+      symbol_bottom.classList.remove("collapse-symbols");
+      symbol_top.classList.add("add-symbols");
+      symbol_bottom.classList.add("add-symbols");
+      symbol_mid.classList.remove("animate-open");
+      symbol_mid.classList.add("add-symbols");
+    }
+  });
+
+  // Handles pupil color when eyelid closes (tbd)
+
+  const blDot = document.querySelector(".blDot");
+  const whDot = document.querySelector(".whDot");
+  const ball = document.querySelector(".ball");
+</script> -->
