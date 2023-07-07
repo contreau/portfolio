@@ -5,6 +5,9 @@
 :root {
   --blue: #046ef9;
   --bg-color: #161616;
+  --mobile-btn: #0047b0;
+  --mobile-btn-shadow: #2c73be;
+  --mobile-btn-border: #63a6ed9d;
   color: #fff;
   font-family: "Nunito Sans", sans-serif;
 }
@@ -64,7 +67,10 @@ button {
 body {
   background-color: var(--bg-color);
   min-height: 100vh;
-  background-image: url("/layered-waves-top--blue.svg");
+  // background-image: url("/polygon-scatter.svg");
+  background-position: bottom left;
+  background-size: 150%;
+  // background-image: url("/layered-waves-top--blue.svg");
 }
 
 .greeting-section {
@@ -79,14 +85,16 @@ body {
 // Header
 .title,
 .tagline {
-  opacity: 1;
+  opacity: 0;
 }
 
 .header {
+  position: relative;
+  z-index: 0;
   // border: solid 1px #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  justify-content: center;
+  padding-bottom: 4.5em;
   .title {
     // border: solid 1px lightblue;
     text-align: center;
@@ -94,25 +102,32 @@ body {
     font-weight: 500;
     font-size: clamp(2.5rem, 8vw, 4rem);
     margin: 0;
-    // animation: fadeIn 0.5s 2.8s ease-in forwards;
+    animation: mobileMenuPop 0.5s 0.6s ease-in forwards;
   }
   .tagline {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 200;
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     margin: 0.5rem 0 1.5rem 0;
-    // animation: fadeIn 0.5s 3.1s ease-in forwards;
+    text-align: center;
+    animation: mobileMenuPop 0.5s 0.8s ease-in forwards;
   }
 }
 
 @mixin for-phone-only {
-  @media (max-width: 599px) {
+  @media (max-width: 450px) {
     @content;
   }
 }
 
-.phone-only {
+.phone-only--header-svg {
   @include for-phone-only {
-    background-image: url("/mobile-bg-waves.svg");
+    background-image: url("/portfolio/mobile-bg-waves.svg");
+  }
+}
+
+.phone-only--bg-svg {
+  @include for-phone-only {
+    background-image: url("/portfolio/mobile-bg-polygon.svg");
   }
 }

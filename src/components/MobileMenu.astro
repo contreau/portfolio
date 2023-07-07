@@ -28,12 +28,17 @@ import "../scss/main.scss";
       </a>
     </ul>
     <div class="icons nav-item">
-      <a href="https://github.com/zenDev-2" target="#"
-        ><i class="fa-brands fa-github"></i></a
-      >
-      <a href="https://www.linkedin.com/in/conor-kelley2/" target="#"
-        ><i class="fa-brands fa-linkedin"></i></a
-      >
+      <div class="icon-row1">
+        <!-- href="mailto:cfk102@gmail.com" -->
+        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+
+      <div class="icon-row2">
+        <!-- href="https://github.com/zenDev-2" target="#" -->
+        <a href="#"><i class="fa-brands fa-github-alt"></i></a>
+        <!-- href="https://www.linkedin.com/in/conor-kelley2/" target="#" -->
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
     </div>
   </div>
 </nav>
@@ -133,7 +138,7 @@ import "../scss/main.scss";
 
   nav.mobileMenu {
     margin: 0 auto;
-    margin-top: 3rem;
+    // margin-top: 3rem;
     max-width: 510px; // first breakpoint
     opacity: 1;
     // animation: fadeIn 0.4s ease-in forwards;
@@ -161,11 +166,11 @@ import "../scss/main.scss";
 
       li {
         margin-top: 1.2rem;
-        background-color: #0047b0;
+        background-color: var(--mobile-btn);
         padding: 0.2em 0.6em;
-        border: solid 1px #63a6ed9d;
+        border: solid 1px var(--mobile-btn-border);
         border-radius: 18px;
-        box-shadow: 5.5px 5.5px #2c73be;
+        box-shadow: 5.5px 5.5px var(--mobile-btn-shadow);
         transition: 0.27s all;
         &:active {
           transform: scale(0.7);
@@ -190,13 +195,13 @@ import "../scss/main.scss";
       // }
 
       .projects-li {
-        animation: mobileMenuPop 0.52s ease-in-out forwards;
+        animation: mobileMenuPop 0.35s 1s ease-in forwards;
       }
       .media-li {
-        animation: mobileMenuPop 0.52s 0.35s ease-in-out forwards;
+        animation: mobileMenuPop 0.35s 1.2s ease-in forwards;
       }
       .about-li {
-        animation: mobileMenuPop 0.52s 0.65s ease-in-out forwards;
+        animation: mobileMenuPop 0.35s 1.4s ease-in forwards;
       }
 
       .listItem {
@@ -212,19 +217,41 @@ import "../scss/main.scss";
     .icons {
       font-size: 3.3rem;
       margin-top: 2rem;
-      display: flex;
-      flex-direction: row;
-      gap: 0.8em;
 
-      .fa-brands {
+      .icon-row2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.5em;
+      }
+
+      .fa-brands,
+      .fa-envelope {
         opacity: 0;
+        color: #fff;
+        background: var(--mobile-btn);
+        box-shadow: 3px 3px var(--mobile-btn-shadow);
+        border: solid 1px var(--mobile-btn-border);
+        border-radius: 50%;
+        font-size: 2.5rem;
+        padding: 0.22em 0.3em;
+        transition: 0.27s all;
+        &:active {
+          transform: scale(0.45);
+          transition: transform 0.17s;
+        }
       }
 
-      .fa-github {
-        animation: fadeIn 0.4s 0.8s ease-in forwards;
+      .fa-envelope {
+        animation: mobileMenuPop 0.35s 1.6s ease-in forwards;
       }
-      .fa-linkedin {
-        animation: fadeIn 0.4s 1s ease-in forwards;
+
+      .fa-github-alt {
+        animation: mobileMenuPop 0.35s 1.8s ease-in forwards;
+      }
+
+      .fa-linkedin-in {
+        animation: mobileMenuPop 0.35s 2s ease-in forwards;
       }
     }
 
