@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.6.6",
-    "sass": "^1.63.5"
+    "@fontsource-variable/maven-pro": "^5.0.15",
+    "astro": "^3.4.3",
+    "sass": "^1.69.5"
   }
 }
