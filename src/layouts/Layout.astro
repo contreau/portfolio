@@ -1,7 +1,21 @@
 ---
 // Supports weights 400-900
 import '@fontsource-variable/maven-pro';
+import '@fontsource/open-sans';
+// Supports weights 200-900
+import '@fontsource-variable/source-code-pro';
+const currentPath = Astro.url.pathname;
 ---
+
+<script>
+  const socialsToggle: HTMLButtonElement = document.querySelector('.socialsToggle');
+  socialsToggle.addEventListener('click', revealSocials);
+
+  function revealSocials() {
+    socialsToggle.classList.toggle('rotate');
+  }
+</script>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,45 +23,196 @@ import '@fontsource-variable/maven-pro';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conor Kelley | Home</title>
     <!-- <link rel="shortcut icon" type="image/png" href="./public/favicon.png" /> -->
-    <script
-      src="https://kit.fontawesome.com/efd48c9e56.js"
-      crossorigin="anonymous"></script>
   </head>
-  <body class="phone-only--bg-svg">
-    <section class="greeting-section">
-      <header class="header container header-background phone-only--header-svg">
-        <h1 class="title">conor kelley</h1>
-        <h2 class="tagline"><span>Web Developer</span></h2>
-      </header>
+  <body>
+    <header>
+      <h1 class="tagline">conor kelley&nbsp;<span>&#123;web developer&#125;</span></h1>
+      <div class="links">
+        <button class="socialsToggle"><img class="plusSign" src="/plus-36.svg" alt="Plus Sign"></button>
+        <a href="https://github.com/zenDev-2" target="#" aria-label="GitHub"><img src="/github-48.svg" alt="GitHub"></a>
+      </div>
+    </header>
+    <section class="content-grid">
+    <nav class="sidebar-menu">
+      <ul class="menu-items">
+        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>./</a></li>
+        <li><a href="/portfolio/" class={currentPath === '/portfolio/' ? 'active' : ''}>/portfolio</a></li>
+        <li><a href="/about/" class={currentPath === '/about/' ? 'active' : ''}>/about</a></li>
+      </ul>
+    </nav>
+      <main><slot/></main>
     </section>
-    <slot/>
   </body>
+  <!-- <footer>
+    <p>&copy; Conor Kelley 2023 • Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+  </footer> -->
 </html>
 
 <style lang="scss" is:global>
   :root {
-    --text: #ddf9fd;
-    --background: #000405;
-    --primary: #f98c7b;
-    --secondary: #033c44;
-    --accent: #f43b1f;
+    --text: #f8f9fc;
+    --background: #06070e;
+    --primary: #a0b0f8;
+    --secondary: #0f1324;
+    --accent: #3a61d4;
+    // --accent: #3e5be3; (former accent color)
+
   }
 
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
+  html {font-size: 112.5%;} /*18px*/
+
   html, body {
     margin: 0;
     padding: 0;
   }
 
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
   body {
+    // font-family: 'Open Sans Variable', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
     font-family: 'Maven Pro Variable', sans-serif;
     background-color: var(--background);
     color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px #191919;
+    padding: 0.5em 1.5em;
     h1 {
-      color: var(--primary);
+      margin: 0 0 0.5rem 0;
+      font-weight: 500;
+      span {
+        background: linear-gradient(120deg, var(--accent), var(--primary));
+        background-clip: text;
+        color: transparent;
+      }
+    }
+    div.links {
+      display: flex;
+      align-items: center; 
+      align-self: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+      a {
+        text-decoration: none;
+        color: var(--text);
+        padding: 0 0.5em;
+      }
+      button {
+        font-size: 2rem;
+        border: solid 1px var(--background);
+        border-radius: 30px;
+        height: 41px;
+        width: 41px;
+        background: linear-gradient(120deg, var(--accent), var(--background));
+        color: #ffffff;
+        cursor: pointer;
+        transition: 0.3s all;
+        &:hover, &:focus-visible {
+          outline: transparent;
+          filter: brightness(0.7);
+        }
+      }
     }
   }
+
+  .rotate {
+    transform: rotate(-135deg);
+  }
+
+  section.content-grid {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 0em 1em;
+  }
+
+  nav {
+    border-right: solid 1px #191919;
+  }
+
+  .menu-items {
+    font-family: 'Source Code Pro Variable', sans-serif;
+    list-style-type: none;
+    font-size: 1.85rem;
+    margin-top: 0;
+    padding-top: 1rem;
+    padding-left: 12%;
+
+    li {
+      a {
+        color: var(--text);
+        text-decoration: none;
+      }
+    }
+
+    li + li {
+      margin-top: 1.5rem;
+    }
+  }
+
+  li a.active {
+    color: var(--accent);
+  }
+
+  main {
+    padding: 1rem 2em;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  footer {
+    p {
+      margin-top: 0;
+    }
+  }
+  
+  a {
+    color: var(--accent);
+  }
+
+  // Font Configurations ** //
+
+  p {margin-bottom: 1rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 2rem 0 1.38rem;
+  font-family: 'Maven Pro Variable', sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.288rem;
+}
+
+h2 {
+  font-size: 2.074rem;
+  color: var(--primary);
+}
+
+h3 {font-size: 1.728rem;}
+
+h4 {font-size: 1.44rem;}
+
+h5 {font-size: 1.2rem;}
+
+small, .text_small {font-size: 0.833rem;}
+
+// ** //
 </style>
