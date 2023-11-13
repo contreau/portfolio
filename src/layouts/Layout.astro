@@ -4,6 +4,7 @@ import '@fontsource-variable/maven-pro';
 import '@fontsource/open-sans';
 // Supports weights 200-900
 import '@fontsource-variable/source-code-pro';
+import { Image } from 'astro:assets';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -28,14 +29,14 @@ const currentPath = Astro.url.pathname;
     <header>
       <h1 class="tagline">conor kelley&nbsp;<span>&#123;web developer&#125;</span></h1>
       <div class="links">
-        <button class="socialsToggle"><img class="plusSign" src="/plus-36.svg" alt="Plus Sign"></button>
-        <a href="https://github.com/zenDev-2" target="#" aria-label="GitHub"><img src="/github-48.svg" alt="GitHub"></a>
+        <button class="socialsToggle"><Image class="plusSign" src="/plus-36.svg" alt="Plus Sign" width="36" height="36" /></button>
+        <a href="https://github.com/zenDev-2" target="#" aria-label="GitHub"><Image src="/github-48.svg" alt="GitHub" width="48" height="48" /></a>
       </div>
     </header>
     <section class="content-grid">
     <nav class="sidebar-menu">
       <ul class="menu-items">
-        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>./</a></li>
+        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>~/</a></li>
         <li><a href="/portfolio/" class={currentPath === '/portfolio/' ? 'active' : ''}>/portfolio</a></li>
         <li><a href="/about/" class={currentPath === '/about/' ? 'active' : ''}>/about</a></li>
       </ul>
@@ -63,7 +64,11 @@ const currentPath = Astro.url.pathname;
     box-sizing: border-box;
   }
 
-  html {font-size: 112.5%;} /*18px*/
+  html {
+    font-size: 112.5%; /*18px*/
+    width: 100vw;
+    overflow-x: hidden;
+  } 
 
   html, body {
     margin: 0;
@@ -146,10 +151,10 @@ const currentPath = Astro.url.pathname;
   .menu-items {
     font-family: 'Source Code Pro Variable', sans-serif;
     list-style-type: none;
-    font-size: 1.85rem;
+    font-size: 1.5rem;
     margin-top: 0;
     padding-top: 1rem;
-    padding-left: 12%;
+    padding-left: auto;
 
     li {
       a {
@@ -187,7 +192,10 @@ const currentPath = Astro.url.pathname;
 
   // Font Configurations ** //
 
-  p {margin-bottom: 1rem;}
+  p {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
 
 h1, h2, h3, h4, h5 {
   margin: 2rem 0 1.38rem;
@@ -204,11 +212,16 @@ h1 {
 h2 {
   font-size: 2.074rem;
   color: var(--primary);
+  font-weight: 650;
 }
 
 h3 {font-size: 1.728rem;}
 
-h4 {font-size: 1.44rem;}
+h4 {
+  margin-top: 0.5rem;
+  font-size: 1.44rem;
+  color: var(--primary);
+}
 
 h5 {font-size: 1.2rem;}
 
