@@ -1,11 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import ISS from '../components/ISS.astro';
+import Darqnet from '../components/Darqnet.astro';
+import Particles from '../components/Particles.astro';
+import Koi from '../components/Koi.astro';
+import Firework from "../components/Firework.astro";
 ---
 
-<Layout>
+<Layout title="Portfolio">
     <h2>portfolio</h2>
-    <h3>Web Applications</h3>
+    <h3>Web Applications<br><span style="color: var(--accent)">&#9670;</span></h3>
     <section class="portfolio-grid">
         <div class="grid-item full-span">
             <h4>CiteClinic</h4>
@@ -23,6 +28,7 @@ import { Image } from "astro:assets";
         </div>
         <div class="grid-item">
             <h4>ISS Live Tracker</h4>
+            <ISS/>
             <p> An interactive tracker of the International Space Station.</p>
             <div class="project-links">
                 <a href="https://live-tracker-iss.netlify.app/" target="#">Live Project</a>
@@ -35,6 +41,7 @@ import { Image } from "astro:assets";
         </div>
         <div class="grid-item">
             <h4>Darqnet Ceremony</h4>
+            <Darqnet/>
             <p>A custom UI built to replace the preexisting Darqnet Ceremony CLI app.</p>
             <div class="project-links">
                 <a href="https://github.com/zenDev-2/darqnet-ceremony" target="#">Source Code</a>
@@ -47,10 +54,11 @@ import { Image } from "astro:assets";
         </div>
     </section>
 
-    <h3>Creative Works</h3>
+    <h3>Creative Works<br><span style="color: var(--accent)">&#9670;</span></h3>
     <section class="portfolio-grid">
         <div class="grid-item">
             <h4>Particles</h4>
+            <Particles/>
             <p>A customizable infinite particle display.</p>
             <div class="project-links">
                 <a href="https://zendev-2.github.io/particles/live/" target="#">Live Project</a>
@@ -63,6 +71,7 @@ import { Image } from "astro:assets";
         </div>
         <div class="grid-item">
             <h4>Koi Pond</h4>
+            <Koi/>
             <p>A tranquil koi pond made of pure CSS.</p>
             <div class="project-links">
                 <a href="https://zendev-2.github.io/koi-pond/" target="#">Live Project</a>
@@ -74,6 +83,7 @@ import { Image } from "astro:assets";
         </div>
         <div class="grid-item full-span">
             <h4>Fireworks</h4>
+            <Firework/>
             <p>Customize a simple, personal firework show.</p>
             <div class="project-links">
                 <a href="https://zendev-2.github.io/fireworks/" target="#">Live Project</a>
@@ -101,6 +111,10 @@ import { Image } from "astro:assets";
             border-radius: 15px;
             padding: 1em;
             background-color: var(--secondary);
+            transition: 0.2s background-color;
+            &:hover {
+                background-color: #181d32;
+            }
 
             p {
                 max-width: 90%;
@@ -144,6 +158,7 @@ import { Image } from "astro:assets";
 
             .main-icon {
                 margin: 0 auto;
+                animation: rotate 4s linear infinite;
             }
         }
     }
@@ -159,5 +174,14 @@ import { Image } from "astro:assets";
 
     h4 {
         font-weight: 550;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>
