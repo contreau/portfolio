@@ -1,10 +1,10 @@
 ---
 // Supports weights 400-900
-import '@fontsource-variable/maven-pro';
-import '@fontsource/open-sans';
+import "@fontsource-variable/maven-pro";
+import "@fontsource/open-sans";
 // Supports weights 200-900
-import '@fontsource-variable/source-code-pro';
-import { Image } from 'astro:assets';
+import "@fontsource-variable/source-code-pro";
+import { Image } from "astro:assets";
 const currentPath = Astro.url.pathname;
 const { title } = Astro.props;
 ---
@@ -19,18 +19,38 @@ const { title } = Astro.props;
   </head>
   <body>
     <header>
-      <h1 class="tagline">conor kelley&nbsp;<span>&#123;web developer&#125;</span></h1>
-      <a href="https://github.com/zenDev-2" target="#" aria-label="GitHub" class="github-link"><Image src="/github-55.svg" alt="GitHub" width="55" height="55" /></a>
+      <h1 class="tagline">
+        conor kelley&nbsp;<span>&#123;web developer&#125;</span>
+      </h1>
+      <a
+        href="https://github.com/zenDev-2"
+        target="#"
+        aria-label="GitHub"
+        class="github-link"
+        ><Image src="/github-55.svg" alt="GitHub" width="55" height="55" /></a
+      >
     </header>
     <section class="content-grid">
-    <nav class="sidebar-menu">
-      <ul class="menu-items">
-        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>~/</a></li>
-        <li><a href="/portfolio/" class={currentPath === '/portfolio/' ? 'active' : ''}>/portfolio</a></li>
-        <li><a href="/about/" class={currentPath === '/about/' ? 'active' : ''}>/about</a></li>
-      </ul>
-    </nav>
-      <main><slot/></main>
+      <nav class="sidebar-menu">
+        <ul class="menu-items">
+          <li>
+            <a href="/" class={currentPath === "/" ? "active" : ""}>~/</a>
+          </li>
+          <li>
+            <a
+              href="/portfolio/"
+              class={currentPath === "/portfolio/" ? "active" : ""}
+              >/portfolio</a
+            >
+          </li>
+          <li>
+            <a href="/about/" class={currentPath === "/about/" ? "active" : ""}
+              >/about</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <main><slot /></main>
     </section>
   </body>
   <!-- <footer>
@@ -46,10 +66,11 @@ const { title } = Astro.props;
     --secondary: #0f1324;
     --accent: #3a61d4;
     // --accent: #3e5be3; (former accent color)
-
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -57,9 +78,10 @@ const { title } = Astro.props;
     font-size: 112.5%; /*18px*/
     width: 100vw;
     overflow-x: hidden;
-  } 
+  }
 
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
   }
@@ -73,17 +95,19 @@ const { title } = Astro.props;
     // font-family: 'Open Sans Variable', sans-serif;
     font-weight: 400;
     line-height: 1.75;
-    font-family: 'Maven Pro Variable', sans-serif;
+    font-family: "Maven Pro Variable", sans-serif;
     background-color: var(--background);
     color: var(--text);
     min-height: 100vh;
+    max-width: 1500px;
+    margin: 0 auto;
   }
 
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: solid 1px #191919;
+    border-bottom: solid 1px #1a203b;
     padding: 0.5em 1.5em;
     h1 {
       margin: 0 0 0.5rem 0;
@@ -107,23 +131,23 @@ const { title } = Astro.props;
   section.content-grid {
     display: grid;
     grid-template-columns: 20% 80%;
-    padding: 0em 1em;
+    padding: 0em 1em 0em 0em;
   }
 
   nav {
     position: sticky;
-		top: 1rem;
-		align-self: start;
-    border-right: solid 1px #191919;
+    top: 0rem;
+    align-self: start;
   }
 
   .menu-items {
-    font-family: 'Source Code Pro Variable', sans-serif;
+    font-family: "Source Code Pro Variable", sans-serif;
     list-style-type: none;
     font-size: 1.5rem;
     margin-top: 0;
     padding-top: 1rem;
-    padding-left: auto;
+    padding-left: 20%;
+    padding-right: 20%;
 
     li {
       a {
@@ -154,9 +178,65 @@ const { title } = Astro.props;
       margin-top: 0;
     }
   }
-  
+
   a {
     color: var(--accent);
+  }
+
+  // Tooltip
+  .tooltip {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+  }
+
+  .tooltip .top {
+    min-width: fit-content;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #06070e;
+    font-weight: normal;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 99999999;
+    box-sizing: border-box;
+    border: 1px solid var(--accent);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+
+  .tooltip .wc-tooltip {
+    min-width: 175px;
+  }
+
+  .tooltip:hover .top {
+    display: block;
+  }
+
+  .tooltip .top i {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 24px;
+    height: 12px;
+    overflow: hidden;
+  }
+
+  .tooltip .top i::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #06070e;
+    border: 1px solid var(--accent);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
   }
 
   // Font Configurations ** //
@@ -166,35 +246,46 @@ const { title } = Astro.props;
     margin-bottom: 1rem;
   }
 
-h1, h2, h3, h4, h5 {
-  margin: 2rem 0 1.38rem;
-  font-family: 'Maven Pro Variable', sans-serif;
-  font-weight: 400;
-  line-height: 1.3;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 2rem 0 1.38rem;
+    font-family: "Maven Pro Variable", sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+  }
 
-h1 {
-  margin-top: 0;
-  font-size: 2.288rem;
-}
+  h1 {
+    margin-top: 0;
+    font-size: 2.288rem;
+  }
 
-h2 {
-  font-size: 2.074rem;
-  color: var(--primary);
-  font-weight: 650;
-}
+  h2 {
+    font-size: 2.074rem;
+    color: var(--primary);
+    font-weight: 650;
+  }
 
-h3 {font-size: 1.728rem;}
+  h3 {
+    font-size: 1.728rem;
+  }
 
-h4 {
-  margin-top: 0.5rem;
-  font-size: 1.44rem;
-  color: var(--primary);
-}
+  h4 {
+    margin-top: 0.5rem;
+    font-size: 1.44rem;
+    color: var(--primary);
+  }
 
-h5 {font-size: 1.2rem;}
+  h5 {
+    font-size: 1.2rem;
+  }
 
-small, .text_small {font-size: 0.833rem;}
+  small,
+  .text_small {
+    font-size: 0.833rem;
+  }
 
-// ** //
+  // ** //
 </style>

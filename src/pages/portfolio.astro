@@ -1,177 +1,330 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import ISS from '../components/ISS.astro';
-import Darqnet from '../components/Darqnet.astro';
-import Particles from '../components/Particles.astro';
-import Koi from '../components/Koi.astro';
+import ISS from "../components/ISS.astro";
+import Darqnet from "../components/Darqnet.astro";
+import Particles from "../components/Particles.astro";
+import Koi from "../components/Koi.astro";
 import Firework from "../components/Firework.astro";
 ---
 
 <Layout title="Portfolio">
-    <h2>portfolio</h2>
-    <h3>Web Applications<br><span style="color: var(--accent)">&#123;<span style="color: #fff">&#9670;</span>&#125;</span></h3>
-    <section class="portfolio-grid">
-        <div class="grid-item full-span">
-            <h4>CiteClinic</h4>
-            <Image src="/citeclinic-65.svg" alt="CiteClinic" width="60" height="60" class="main-icon" />
-            <p>Generate modifiable UI components of citations from journal articles.</p>
-            <div class="project-links">
-                <a href="https://citeclinic.app/" target="#">Live Project</a>
-                <a href="https://github.com/zenDev-2/CiteClinic" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50"/>
-                <Image src="/typescript-50.svg" alt="TypeScript" width="50" height="50"/>
-                <Image src="/sass-50.svg" alt="Sass" width="50" height="50"/>
-            </div>
+  <h2>portfolio</h2>
+  <h3>
+    Web Applications<br /><span style="color: var(--accent)"
+      >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+    >
+  </h3>
+  <section class="portfolio-grid">
+    <div class="grid-item full-span">
+      <h4>CiteClinic</h4>
+      <Image
+        src="/citeclinic-65.svg"
+        alt="CiteClinic"
+        width="60"
+        height="60"
+        class="main-icon"
+      />
+      <p>
+        Generate modifiable UI components of citations from journal articles.
+      </p>
+      <div class="project-links">
+        <a href="https://citeclinic.app/" target="#">Live Project</a>
+        <a href="https://github.com/zenDev-2/CiteClinic" target="#"
+          >Source Code</a
+        >
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
+          <div class="top">
+            <span>Svelte/Kit</span>
+            <i></i>
+          </div>
         </div>
-        <div class="grid-item">
-            <h4>ISS Live Tracker</h4>
-            <ISS/>
-            <p> An interactive tracker of the International Space Station.</p>
-            <div class="project-links">
-                <a href="https://live-tracker-iss.netlify.app/" target="#">Live Project</a>
-                <a href="https://github.com/zenDev-2/ISS" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/javascript-50.svg" alt="JavaScript" width="50" height="50"/>
-                <Image src="/css-50.svg" alt="CSS3" width="50" height="50"/>
-            </div>
+        <div class="tooltip">
+          <Image
+            src="/typescript-50.svg"
+            alt="TypeScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>TypeScript</span>
+            <i></i>
+          </div>
         </div>
-        <div class="grid-item">
-            <h4>Darqnet Ceremony</h4>
-            <Darqnet/>
-            <p>A custom UI built to replace the preexisting Darqnet Ceremony CLI app.</p>
-            <div class="project-links">
-                <a href="https://github.com/zenDev-2/darqnet-ceremony" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/webcomponents-65.svg" alt="Web Components" width="65" height="65"/>
-                <Image src="/javascript-50.svg" alt="JavaScript" width="50" height="50"/>
-                <Image src="/css-50.svg" alt="CSS3" width="50" height="50"/>
-            </div>
+        <div class="tooltip">
+          <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
+          <div class="top">
+            <span>Sass/SCSS</span>
+            <i></i>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h4>ISS Live Tracker</h4>
+      <ISS />
+      <p>An interactive tracker of the International Space Station.</p>
+      <div class="project-links">
+        <a href="https://live-tracker-iss.netlify.app/" target="#"
+          >Live Project</a
+        >
+        <a href="https://github.com/zenDev-2/ISS" target="#">Source Code</a>
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image
+            src="/javascript-50.svg"
+            alt="JavaScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>JavaScript</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
+          <div class="top">
+            <span>CSS3</span>
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h4>Darqnet Ceremony</h4>
+      <Darqnet />
+      <p>
+        A custom UI built to replace the preexisting Darqnet Ceremony CLI app.
+      </p>
+      <div class="project-links">
+        <a href="https://github.com/zenDev-2/darqnet-ceremony" target="#"
+          >Source Code</a
+        >
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image
+            src="/webcomponents-65.svg"
+            alt="Web Components"
+            width="65"
+            height="65"
+          />
+          <div class="top wc-tooltip">
+            <span>Web Components</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image
+            src="/javascript-50.svg"
+            alt="JavaScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>JavaScript</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
+          <div class="top">
+            <span>CSS3</span>
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h3>Creative Works<br><span style="color: var(--accent)">&#123;<span style="color: #fff">&#9670;</span>&#125;</span></h3>
-    <section class="portfolio-grid">
-        <div class="grid-item">
-            <h4>Particles</h4>
-            <Particles/>
-            <p>A customizable infinite particle display.</p>
-            <div class="project-links">
-                <a href="https://zendev-2.github.io/particles/live/" target="#">Live Project</a>
-                <a href="https://github.com/zenDev-2/particles" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/javascript-50.svg" alt="JavaScript" width="50" height="50" />
-                <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
-            </div>
+  <h3>
+    Creative Works<br /><span style="color: var(--accent)"
+      >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+    >
+  </h3>
+  <section class="portfolio-grid">
+    <div class="grid-item">
+      <h4>Particles</h4>
+      <Particles />
+      <p>A customizable infinite particle display.</p>
+      <div class="project-links">
+        <a href="https://zendev-2.github.io/particles/live/" target="#"
+          >Live Project</a
+        >
+        <a href="https://github.com/zenDev-2/particles" target="#"
+          >Source Code</a
+        >
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image
+            src="/javascript-50.svg"
+            alt="JavaScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>JavaScript</span>
+            <i></i>
+          </div>
         </div>
-        <div class="grid-item">
-            <h4>Koi Pond</h4>
-            <Koi/>
-            <p>A tranquil koi pond made of pure CSS.</p>
-            <div class="project-links">
-                <a href="https://zendev-2.github.io/koi-pond/" target="#">Live Project</a>
-                <a href="https://github.com/zenDev-2/koi-pond" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
-            </div>
+        <div class="tooltip">
+          <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
+          <div class="top">
+            <span>Sass/SCSS</span>
+            <i></i>
+          </div>
         </div>
-        <div class="grid-item full-span">
-            <h4>Fireworks</h4>
-            <Firework/>
-            <p>Customize a simple, personal firework show.</p>
-            <div class="project-links">
-                <a href="https://zendev-2.github.io/fireworks/" target="#">Live Project</a>
-                <a href="https://github.com/zenDev-2/fireworks" target="#">Source Code</a>
-            </div>
-            <div class="icon-row">
-                <Image src="/javascript-50.svg" alt="JavaScript" width="50" height="50"/>
-                <Image src="/css-50.svg" alt="CSS3" width="50" height="50"/>
-            </div>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h4>Koi Pond</h4>
+      <Koi />
+      <p>A tranquil koi pond made of pure CSS.</p>
+      <div class="project-links">
+        <a href="https://zendev-2.github.io/koi-pond/" target="#"
+          >Live Project</a
+        >
+        <a href="https://github.com/zenDev-2/koi-pond" target="#">Source Code</a
+        >
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
+          <div class="top">
+            <span>CSS3</span>
+            <i></i>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="grid-item full-span">
+      <h4>Fireworks</h4>
+      <Firework />
+      <p>Customize a simple, personal firework show.</p>
+      <div class="project-links">
+        <a href="https://zendev-2.github.io/fireworks/" target="#"
+          >Live Project</a
+        >
+        <a href="https://github.com/zenDev-2/fireworks" target="#"
+          >Source Code</a
+        >
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image
+            src="/javascript-50.svg"
+            alt="JavaScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>JavaScript</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
+          <div class="top">
+            <span>CSS3</span>
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style lang="scss">
-    .portfolio-grid {
-        // border: solid 1px #fff;
-        display: grid;
-        // max-width: 900px;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+  .portfolio-grid {
+    // border: solid 1px #fff;
+    display: grid;
+    // max-width: 900px;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 
-        .grid-item {
-            text-align: center;
-            // border: solid 1px #fff;
-            border-radius: 15px;
-            padding: 1em;
-            background-color: var(--secondary);
-            transition: 0.2s background-color;
-            &:hover {
-                background-color: #14192e;
-            }
+    .grid-item {
+      text-align: center;
+      // border: solid 1px #fff;
+      border-radius: 15px;
+      padding: 1em;
+      background-color: var(--secondary);
+      background-image: linear-gradient(
+        to right bottom,
+        #0f1324,
+        #1a2a55,
+        #27428a,
+        #395bc3,
+        #5174ff
+      );
+      background-size: 500%;
+      background-position: top left;
+      transition: 0.4s all;
+      &:hover {
+        background-position: center;
+      }
 
-            p {
-                max-width: 90%;
-                // min-height: 63px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+      p {
+        max-width: 90%;
+        // min-height: 63px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-            .project-links {
-                max-width: fit-content;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                margin-bottom: 1.5rem;
-                gap: 1rem;
-                a {
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                    text-decoration: none;
-                    padding: 0.1em 0.7em;
-                    border-radius: 30px;
-                    background-color: var(--accent);
-                    color: var(--text);
-                    transition: 0.3s all;
-                    &:hover {
-                        background-color: #1b3789;
-                    }
-                }
-            }
-
-            .icon-row {
-                max-width: fit-content;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                border-radius: 15px;
-                padding: 0.4em 1.2em;
-            }
-
-            .main-icon {
-                margin: 0 auto;
-            }
+      .project-links {
+        max-width: fit-content;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        gap: 1rem;
+        a {
+          font-size: 1.1rem;
+          font-weight: 600;
+          text-decoration: none;
+          padding: 0.1em 0.7em;
+          border-radius: 30px;
+          background-color: var(--accent);
+          color: var(--text);
+          transition: 0.3s all;
+          &:hover {
+            background-color: #1b3789;
+          }
         }
-    }
+      }
 
-    .full-span {
-        grid-column: span 2;
-    }
+      .icon-row {
+        max-width: fit-content;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        border-radius: 15px;
+        padding: 0.4em 1.2em;
+      }
 
-    h3 {
-        text-align: center;
-        font-weight: 500;
+      .main-icon {
+        margin: 0 auto;
+      }
     }
+  }
 
-    h4 {
-        font-weight: 550;
-    }
+  .full-span {
+    grid-column: span 2;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-weight: 550;
+  }
 </style>
