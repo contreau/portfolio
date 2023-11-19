@@ -147,7 +147,7 @@ import Firework from "../components/Firework.astro";
       >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
     >
   </h3>
-  <section class="portfolio-grid">
+  <section class="portfolio-grid creative-works">
     <div class="grid-item">
       <h4>Particles</h4>
       <Particles />
@@ -326,5 +326,25 @@ import Firework from "../components/Firework.astro";
 
   h4 {
     font-weight: 550;
+  }
+
+  @media (max-width: 900px) {
+    .portfolio-grid {
+      display: block;
+    }
+
+    .grid-item + .grid-item {
+      margin-top: 2rem;
+    }
+
+    .creative-works:last-child {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .project-links {
+      flex-direction: column;
+    }
   }
 </style>
