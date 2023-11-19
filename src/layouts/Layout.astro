@@ -22,13 +22,6 @@ const { title } = Astro.props;
       <h1 class="tagline">
         conor kelley&nbsp;<span>&#123;web developer&#125;</span>
       </h1>
-      <a
-        href="https://github.com/zenDev-2"
-        target="#"
-        aria-label="GitHub"
-        class="github-link"
-        ><Image src="/github-55.svg" alt="GitHub" width="55" height="55" /></a
-      >
     </header>
     <section class="content-grid">
       <nav class="sidebar-menu">
@@ -43,19 +36,45 @@ const { title } = Astro.props;
               >/portfolio</a
             >
           </li>
-          <li>
-            <a href="/about/" class={currentPath === "/about/" ? "active" : ""}
-              >/about</a
-            >
-          </li>
         </ul>
+        <div class="emblem" style="padding-top: 0.5em; padding-bottom: 1em;">
+          <span style="color: var(--accent)"
+            >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+          >
+        </div>
+        <div class="social-list">
+          <a class="github-link" href="https://github.com/zenDev-2" target="#">
+            <Image src="/github-65.svg" alt="GitHub" width="50" height="50" />
+          </a>
+          <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
+            <Image
+              src="/linkedin-65.svg"
+              alt="LinkedIn"
+              width="65"
+              height="65"
+            />
+          </a>
+          <a href="mailto:cfk102@gmail.com" target="#">
+            <Image src="/mail-65.svg" alt="Email" width="65" height="65" />
+          </a>
+          <a href="https://www.instagram.com/__ckphoto/" target="#">
+            <Image
+              src="/instagram-65.svg"
+              alt="Instagram"
+              width="65"
+              height="65"
+            />
+          </a>
+        </div>
+        <div class="emblem" style="padding-bottom: 0; padding-top: 1em;">
+          <span style="color: var(--accent)"
+            >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+          >
+        </div>
       </nav>
       <main><slot /></main>
     </section>
   </body>
-  <!-- <footer>
-    <p>&copy; Conor Kelley 2023 • Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
-  </footer> -->
 </html>
 
 <style lang="scss" is:global>
@@ -104,28 +123,32 @@ const { title } = Astro.props;
   }
 
   header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: var(--background);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     border-bottom: solid 1px #1a203b;
     padding: 0.5em 1.5em;
     h1 {
       margin: 0 0 0.5rem 0;
       font-weight: 500;
       span {
+        font-weight: 450;
         background: linear-gradient(120deg, var(--accent), var(--primary));
         background-clip: text;
+        -webkit-background-clip: text;
         color: transparent;
       }
     }
   }
 
-  .github-link {
-    padding: 0 0.5em;
-  }
-
-  .rotate {
-    transform: rotate(-135deg);
+  .emblem {
+    font-size: 1.728rem;
+    font-weight: 500;
+    text-align: center;
   }
 
   section.content-grid {
@@ -136,8 +159,25 @@ const { title } = Astro.props;
 
   nav {
     position: sticky;
-    top: 0rem;
+    top: 5rem;
     align-self: start;
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      img {
+        transition: 0.2s all;
+        &:hover {
+          filter: drop-shadow(0 0 1.5rem var(--accent));
+        }
+      }
+      .github-link {
+        margin-top: 15px;
+      }
+    }
   }
 
   .menu-items {
@@ -145,6 +185,7 @@ const { title } = Astro.props;
     list-style-type: none;
     font-size: 1.5rem;
     margin-top: 0;
+    margin-bottom: 0;
     padding-top: 1rem;
     padding-left: 20%;
     padding-right: 20%;
@@ -166,15 +207,9 @@ const { title } = Astro.props;
   }
 
   main {
-    padding: 1rem 2em;
+    padding: 1rem 5.1rem 1rem 2rem;
 
     h2 {
-      margin-top: 0;
-    }
-  }
-
-  footer {
-    p {
       margin-top: 0;
     }
   }
@@ -188,6 +223,10 @@ const { title } = Astro.props;
     display: inline-block;
     position: relative;
     text-align: center;
+    transition: 0.3s all;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   .tooltip .top {
@@ -266,6 +305,7 @@ const { title } = Astro.props;
     font-size: 2.074rem;
     color: var(--primary);
     font-weight: 650;
+    text-align: center;
   }
 
   h3 {

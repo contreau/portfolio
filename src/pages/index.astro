@@ -1,9 +1,157 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Welcome">
-  <h2>welcome</h2>
+  <section class="biography">
+    <h2>hey there.</h2>
+    <div class="divider">
+      <span style="color: var(--accent)"
+        >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+      >
+    </div>
+    <p>
+      I'm Conor — I love to take on challenging and fulfilling development work.<br
+      />I try my best to use code to aid others and be creative. Always
+      learning.
+    </p>
+  </section>
+
+  <Image
+    class="prof-pic"
+    src="/me-min.png"
+    alt="Conor Kelley"
+    height="300"
+    width="300"
+  />
+
+  <section class="tech-stack">
+    <p class="secondrow-label">I build stuff with:</p>
+    <div class="icon-row">
+      <div class="tooltip">
+        <Image
+          src="/typescript-50.svg"
+          alt="TypeScript"
+          width="50"
+          height="50"
+        />
+        <div class="top">
+          <span>TypeScript</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="tooltip">
+        <Image
+          src="/javascript-50.svg"
+          alt="JavaScript"
+          width="50"
+          height="50"
+        />
+        <div class="top">
+          <span>JavaScript</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="tooltip">
+        <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
+        <div class="top">
+          <span>Sass/SCSS</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="tooltip">
+        <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
+        <div class="top">
+          <span>Svelte/Kit</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="tooltip">
+        <Image src="/astro-50.svg" alt="Astro" width="50" height="50" />
+        <div class="top">
+          <span>Astro</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="tooltip">
+        <Image src="/drupal-50.svg" alt="Drupal" width="50" height="50" />
+        <div class="top">
+          <span>Drupal</span>
+          <i></i>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
-<style lang="scss"></style>
+<style lang="scss">
+  h2 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .biography {
+    text-align: center;
+    p {
+      margin-top: 0.5rem;
+      br {
+        margin: 0.1em 0;
+      }
+    }
+  }
+  h3 {
+    color: var(--primary);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .prof-pic {
+    margin: 0 auto;
+  }
+
+  .icon-row {
+    min-width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1em 1.2em;
+  }
+
+  .divider {
+    font-size: 1.728rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.2em 0 0 0;
+    &:first-of-type {
+      padding-top: 0;
+    }
+  }
+
+  .secondrow-label {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+    color: var(--primary);
+  }
+
+  @keyframes typewriter_1 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 38rem;
+    }
+  }
+  @keyframes typewriter_2 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 40rem;
+    }
+  }
+</style>
