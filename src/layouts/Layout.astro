@@ -12,7 +12,7 @@ let homeLink = "";
 let portfolioLink = "";
 if (currentPath === "/") {
   homeLink = "invisible";
-} else if (currentPath === "/portfolio/") {
+} else if (currentPath === "/portfolio") {
   portfolioLink = "invisible";
 }
 ---
@@ -56,7 +56,8 @@ if (currentPath === "/") {
           style="padding-top: 0.5em; padding-bottom: 1em;"
         >
           <span style="color: var(--accent)"
-            >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+            >&#123;<span class="gem" style="color: #fff">&#9670;</span
+            >&#125;</span
           >
         </div>
         <div class="social-list">
@@ -88,7 +89,8 @@ if (currentPath === "/") {
           style="padding-bottom: 0; padding-top: 1em;"
         >
           <span style="color: var(--accent)"
-            >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
+            >&#123;<span class="gem" style="color: #fff">&#9670;</span
+            >&#125;</span
           >
         </div>
       </nav>
@@ -429,6 +431,9 @@ if (currentPath === "/") {
           .tagline span {
             display: block;
           }
+        }
+        .gem {
+          font-size: 1.3rem;
         }
       }
     </style>
