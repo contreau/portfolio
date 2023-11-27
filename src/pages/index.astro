@@ -2,10 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 // TODO:
-// * Add metadata + og image
+// * fix emblem diamond size on mobile
 ---
 
+<meta
+  slot="metadata"
+  name="description"
+  content="Creative frontend developer making expressive and useful web projects."
+/>
+<meta slot="metadata" name="title" content="Conor Kelley • Welcome" />
+<meta slot="metadata" property="og:title" content="Conor Kelley • Welcome" />
+<meta slot="metadata" property="og:url" content="https://conorkelley.me" />
+<meta
+  slot="metadata"
+  property="og:description"
+  content="Creative frontend developer making expressive and useful web projects."
+/>
+
 <Layout title="Welcome">
+  <!-- <div class="flex-container"> -->
   <section class="biography">
     <h2>hey there.</h2>
     <div class="divider">
@@ -14,80 +29,90 @@ import { Image } from "astro:assets";
       >
     </div>
     <p>
-      I'm Conor — I love to take on challenging and fulfilling development work.<br
-      />I try my best to use code to aid others and be creative. Always
-      learning.
+      I'm Conor — a frontend developer creating expressive and useful web
+      projects.<br />I love taking on challenging and fulfilling development
+      work.
     </p>
   </section>
 
-  <picture>
-    <source srcset="/me-mobile-min.png" media="(max-width: 600px)" />
-    <img class="prof-pic" src="/me-min.png" alt="Conor Kelley" />
-  </picture>
+  <p class="intro">What else?</p>
 
-  <section class="tech-stack">
-    <p class="secondrow-label">I build stuff with:</p>
-    <div class="icon-row">
-      <div class="mobile-row">
-        <div class="tooltip">
-          <Image
-            src="/typescript-50.svg"
-            alt="TypeScript"
-            width="50"
-            height="50"
-          />
-          <div class="top">
-            <span>TypeScript</span>
-            <i></i>
+  <div class="grid-container">
+    <section class="location">
+      <Image src="/pin-50.svg" alt="Pin" width="45" height="45" />
+      <p>I'm a D.C. native based in Brooklyn, NY.</p>
+    </section>
+    <section class="work">
+      <Image src="/work-50.svg" alt="Briefcase" height="45" width="45" />
+      <p>I'm a Web Associate for the GW MFA.</p>
+    </section>
+    <section class="tech-stack">
+      <Image src="/tools-50.svg" alt="Tools" height="40" width="40" />
+      <p class="secondrow-label">I build stuff with:</p>
+      <div class="icon-row">
+        <div class="mobile-row">
+          <div class="tooltip">
+            <Image
+              src="/typescript-50.svg"
+              alt="TypeScript"
+              width="50"
+              height="50"
+            />
+            <div class="top">
+              <span>TypeScript</span>
+              <i></i>
+            </div>
+          </div>
+          <div class="tooltip">
+            <Image
+              src="/javascript-50.svg"
+              alt="JavaScript"
+              width="50"
+              height="50"
+            />
+            <div class="top">
+              <span>JavaScript</span>
+              <i></i>
+            </div>
           </div>
         </div>
-        <div class="tooltip">
-          <Image
-            src="/javascript-50.svg"
-            alt="JavaScript"
-            width="50"
-            height="50"
-          />
-          <div class="top">
-            <span>JavaScript</span>
-            <i></i>
+        <div class="mobile-row">
+          <div class="tooltip">
+            <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
+            <div class="top">
+              <span>Sass/SCSS</span>
+              <i></i>
+            </div>
+          </div>
+          <div class="tooltip">
+            <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
+            <div class="top">
+              <span>Svelte/Kit</span>
+              <i></i>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-row">
+          <div class="tooltip">
+            <Image src="/astro-50.svg" alt="Astro" width="50" height="50" />
+            <div class="top">
+              <span>Astro</span>
+              <i></i>
+            </div>
+          </div>
+          <div class="tooltip">
+            <Image src="/drupal-50.svg" alt="Drupal" width="50" height="50" />
+            <div class="top">
+              <span>Drupal</span>
+              <i></i>
+            </div>
           </div>
         </div>
       </div>
-      <div class="mobile-row">
-        <div class="tooltip">
-          <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
-          <div class="top">
-            <span>Sass/SCSS</span>
-            <i></i>
-          </div>
-        </div>
-        <div class="tooltip">
-          <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
-          <div class="top">
-            <span>Svelte/Kit</span>
-            <i></i>
-          </div>
-        </div>
-      </div>
-      <div class="mobile-row">
-        <div class="tooltip">
-          <Image src="/astro-50.svg" alt="Astro" width="50" height="50" />
-          <div class="top">
-            <span>Astro</span>
-            <i></i>
-          </div>
-        </div>
-        <div class="tooltip">
-          <Image src="/drupal-50.svg" alt="Drupal" width="50" height="50" />
-          <div class="top">
-            <span>Drupal</span>
-            <i></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
+  <!-- </div> -->
+
   <div class="divider divider-mobile">
     <span style="color: var(--accent)"
       >&#123;<span style="color: #fff">&#9670;</span>&#125;</span
@@ -110,6 +135,47 @@ import { Image } from "astro:assets";
 </Layout>
 
 <style lang="scss">
+  .flex-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .grid-container {
+    display: grid;
+    row-gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .intro {
+    color: var(--primary);
+    margin-top: 2.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .location,
+  .work {
+    text-align: center;
+    p {
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .tech-stack {
+    grid-column: span 2;
+    img {
+      margin: 0 auto;
+    }
+  }
+
   h2 {
     text-align: center;
     margin-bottom: 0;
@@ -154,12 +220,12 @@ import { Image } from "astro:assets";
   }
 
   .secondrow-label {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     margin-bottom: 0;
     text-align: center;
-    color: var(--primary);
+    // color: var(--primary);
   }
 
   .social-list-mobile,
@@ -171,26 +237,16 @@ import { Image } from "astro:assets";
     display: flex;
     gap: 1.5rem;
   }
-  @keyframes typewriter_1 {
-    from {
-      width: 0;
-    }
-    to {
-      width: 38rem;
-    }
-  }
-  @keyframes typewriter_2 {
-    from {
-      width: 0;
-    }
-    to {
-      width: 40rem;
-    }
-  }
 
   @media (max-width: 500px) {
     .icon-row {
       flex-direction: column;
+    }
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+    .tech-stack {
+      grid-column: 1;
     }
   }
 
