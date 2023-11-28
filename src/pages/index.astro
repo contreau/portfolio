@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-// TODO:
-// * fix emblem diamond size on mobile
 ---
 
 <meta
@@ -20,14 +18,9 @@ import { Image } from "astro:assets";
 />
 
 <Layout title="Welcome">
-  <!-- <div class="flex-container"> -->
   <section class="biography">
     <h2>hey there.</h2>
-    <div class="divider">
-      <span style="color: var(--accent)"
-        >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
-      >
-    </div>
+
     <p>
       I'm Conor — a frontend developer creating expressive and useful web
       projects.<br />I love taking on challenging and fulfilling development
@@ -35,20 +28,29 @@ import { Image } from "astro:assets";
     </p>
   </section>
 
-  <p class="intro">What else?</p>
-
+  <div class="divider">
+    <span style="color: var(--accent)"
+      >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
+    >
+  </div>
   <div class="grid-container">
-    <section class="location">
-      <Image src="/pin-50.svg" alt="Pin" width="45" height="45" />
-      <p>I'm a D.C. native based in Brooklyn, NY.</p>
-    </section>
-    <section class="work">
-      <Image src="/work-50.svg" alt="Briefcase" height="45" width="45" />
-      <p>I'm a Web Associate for the GW MFA.</p>
-    </section>
+    <div class="grid-item">
+      <section class="location">
+        <Image src="/pin-50.svg" alt="Pin" width="45" height="45" />
+        <p>D.C. native based in Brooklyn, NY.</p>
+      </section>
+      <section class="work">
+        <Image src="/work-50.svg" alt="Briefcase" height="45" width="45" />
+        <p>Web Associate for the GW MFA and a freelance dev.</p>
+      </section>
+      <section class="photography">
+        <Image src="/camera-50.svg" alt="Camera" height="45" width="45" />
+        <p>Professional photographer and visual editor.</p>
+      </section>
+    </div>
     <section class="tech-stack">
       <Image src="/tools-50.svg" alt="Tools" height="40" width="40" />
-      <p class="secondrow-label">I build stuff with:</p>
+      <p class="secondrow-label">I build with:</p>
       <div class="icon-row">
         <div class="mobile-row">
           <div class="tooltip">
@@ -111,7 +113,6 @@ import { Image } from "astro:assets";
       </div>
     </section>
   </div>
-  <!-- </div> -->
 
   <div class="divider divider-mobile">
     <span style="color: var(--accent)"
@@ -135,18 +136,23 @@ import { Image } from "astro:assets";
 </Layout>
 
 <style lang="scss">
-  .flex-container {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
-
   .grid-container {
     display: grid;
-    row-gap: 4rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 75% 25%;
+
+    section {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 2em;
+    }
+  }
+
+  .grid-item:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3.8rem;
   }
 
   .intro {
@@ -158,22 +164,17 @@ import { Image } from "astro:assets";
   }
 
   .location,
-  .work {
+  .work,
+  .photography {
     text-align: center;
     p {
-      margin-top: 0.5rem;
       font-weight: 500;
-    }
-    img {
-      margin: 0 auto;
     }
   }
 
   .tech-stack {
-    grid-column: span 2;
-    img {
-      margin: 0 auto;
-    }
+    flex-direction: column;
+    margin-top: 1rem;
   }
 
   h2 {
@@ -184,6 +185,7 @@ import { Image } from "astro:assets";
     text-align: center;
     p {
       margin-top: 0.5rem;
+      padding: 0 2em;
       br {
         margin: 0.1em 0;
       }
@@ -201,8 +203,8 @@ import { Image } from "astro:assets";
 
   .icon-row {
     min-width: fit-content;
-    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
@@ -210,6 +212,7 @@ import { Image } from "astro:assets";
   }
 
   .divider {
+    margin: 2.5rem 0;
     font-size: 1.728rem;
     font-weight: 500;
     text-align: center;
@@ -220,12 +223,12 @@ import { Image } from "astro:assets";
   }
 
   .secondrow-label {
+    padding-left: 0.2em;
     font-size: 1.2rem;
     font-weight: 500;
     margin-top: 0.5rem;
     margin-bottom: 0;
     text-align: center;
-    // color: var(--primary);
   }
 
   .social-list-mobile,
@@ -235,7 +238,7 @@ import { Image } from "astro:assets";
 
   .mobile-row {
     display: flex;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
   @media (max-width: 500px) {
@@ -244,9 +247,14 @@ import { Image } from "astro:assets";
     }
     .grid-container {
       grid-template-columns: 1fr;
+
+      section {
+        flex-direction: column;
+      }
     }
     .tech-stack {
       grid-column: 1;
+      margin-top: 4.5rem;
     }
   }
 
