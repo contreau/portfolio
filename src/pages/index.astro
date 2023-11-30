@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 <meta
   slot="metadata"
   name="description"
-  content="Creative frontend developer making expressive and useful web projects."
+  content="Creative frontend developer making expressive and useful web resources."
 />
 <meta slot="metadata" name="title" content="Conor Kelley • Welcome" />
 <meta slot="metadata" property="og:title" content="Conor Kelley • Welcome" />
@@ -14,17 +14,25 @@ import { Image } from "astro:assets";
 <meta
   slot="metadata"
   property="og:description"
-  content="Creative frontend developer making expressive and useful web projects."
+  content="Creative frontend developer making expressive and useful web resources."
 />
 
 <Layout title="Welcome">
   <section class="biography">
-    <h2>hey there.</h2>
+    <div class="heading-image-container">
+      <h2>hey there.</h2>
+      <Image
+        class="peace-sign"
+        src="/peace-sign-opt-min.gif"
+        alt="Peace Sign"
+        width="100"
+        height="100"
+      />
+    </div>
 
     <p>
-      I'm Conor — a frontend developer creating expressive and useful web
-      projects.<br />I love taking on challenging and fulfilling development
-      work.
+      I'm a frontend developer creating expressive and useful web resources.<br
+      />I love taking on challenging and fulfilling projects.
     </p>
   </section>
 
@@ -139,6 +147,7 @@ import { Image } from "astro:assets";
   .grid-container {
     display: grid;
     grid-template-columns: 75% 25%;
+    align-items: center;
 
     section {
       display: flex;
@@ -151,6 +160,7 @@ import { Image } from "astro:assets";
     section.location,
     section.work,
     section.photography {
+      opacity: 0;
       text-align: center;
       max-width: 700px;
       padding-top: 0.3em;
@@ -167,14 +177,39 @@ import { Image } from "astro:assets";
       );
       background-size: 500%;
       background-position: top left;
+      transition: 0.3s;
+      animation: slideIn 0.4s 0.9s ease-in forwards;
+      &:hover {
+        background-position: top right;
+      }
       p {
         font-weight: 500;
       }
     }
 
+    section.work {
+      animation-delay: 1s;
+    }
+    section.photography {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        transform: translateX(0px);
+        opacity: 1;
+      }
+    }
+
     .tech-stack {
+      opacity: 0;
       gap: 0rem;
       padding-top: 1em;
+      padding-bottom: 1em;
       flex-direction: column;
       border-radius: 15px;
       background-color: var(--secondary);
@@ -188,13 +223,29 @@ import { Image } from "astro:assets";
       );
       background-size: 500%;
       background-position: top left;
+      transition: 0.3s;
+      animation: growIn 0.3s 1.2s ease-in forwards;
+      &:hover {
+        background-position: top right;
+      }
+    }
+  }
+
+  @keyframes growIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
   .grid-item:first-child {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1rem;
   }
 
   .intro {
@@ -206,14 +257,32 @@ import { Image } from "astro:assets";
   }
 
   h2 {
+    opacity: 0;
     text-align: center;
     margin-bottom: 0;
+    animation: fadeIn 0.3s ease-in forwards;
   }
+
+  .peace-sign {
+    animation: fadeIn 0.3s ease-in forwards;
+  }
+
   .biography {
+    border-radius: 15px;
     text-align: center;
+    .heading-image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     p {
+      opacity: 0;
       margin-top: 0.5rem;
-      padding: 0 2em;
+      // font-size: 1.4rem;
+      font-size: clamp(1.125rem, 3vw, 1.4rem);
+      border-radius: 15px;
+      animation: fadeIn 0.3s 0.4s ease-in forwards;
       br {
         margin: 0.1em 0;
       }
@@ -239,11 +308,13 @@ import { Image } from "astro:assets";
   }
 
   .divider {
-    margin: 3.5rem 0;
+    opacity: 0;
+    margin: 1.5rem 0;
     font-size: 1.728rem;
     font-weight: 500;
     text-align: center;
     padding: 1.2em 0 0 0;
+    animation: fadeIn 0.3s 0.4s ease-in forwards;
     &:first-of-type {
       padding-top: 0;
     }
@@ -280,6 +351,10 @@ import { Image } from "astro:assets";
   }
 
   @media (max-width: 500px) {
+    .heading-image-container {
+      flex-direction: column;
+    }
+
     .icon-row {
       flex-direction: column;
     }

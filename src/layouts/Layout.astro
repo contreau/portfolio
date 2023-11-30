@@ -16,6 +16,23 @@ if (currentPath === "/") {
 }
 ---
 
+<script>
+  if (sessionStorage.getItem("firstSiteVisit") === null) {
+    sessionStorage.setItem("firstSiteVisit", "true");
+    const nav = document.querySelector("nav");
+    const header = document.querySelector("header");
+    const firstSiteVisit = sessionStorage.getItem("firstSiteVisit");
+    nav.classList.add("pageLoadFadeIn");
+    header.classList.add("pageLoadFadeIn");
+    if (firstSiteVisit !== null) {
+      setTimeout(() => {
+        nav.classList.remove("pageLoadFadeIn");
+        header.classList.remove("pageLoadFadeIn");
+      }, 2300);
+    }
+  }
+</script>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -341,7 +358,8 @@ if (currentPath === "/") {
       }
 
       h2 {
-        font-size: 2.074rem;
+        // font-size: 2.074rem;
+        font-size: clamp(2.074rem, 12vw, 4rem);
         color: var(--primary);
         font-weight: 650;
         text-align: center;
@@ -435,6 +453,19 @@ if (currentPath === "/") {
         }
         .gem {
           font-size: 1.3rem;
+        }
+      }
+
+      @media (min-width: 1300px) {
+        .pageLoadFadeIn {
+          opacity: 0;
+          animation: fadeIn 0.3s 1.65s ease-in forwards;
+        }
+      }
+
+      @keyframes fadeIn {
+        100% {
+          opacity: 1;
         }
       }
     </style>

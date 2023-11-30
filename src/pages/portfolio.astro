@@ -255,10 +255,19 @@ import Firework from "../components/Firework.astro";
 </Layout>
 
 <style lang="scss">
+  h2 {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+  }
+  h3:first-of-type {
+    opacity: 0;
+    animation: fadeIn 0.3s 0.4s ease-in forwards;
+  }
+
   .portfolio-grid {
-    // border: solid 1px #fff;
+    opacity: 0;
+    animation: fadeIn 0.3s 0.68s ease-in forwards;
     display: grid;
-    // max-width: 900px;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 
@@ -285,7 +294,6 @@ import Firework from "../components/Firework.astro";
 
       p {
         max-width: 90%;
-        // min-height: 63px;
         margin-left: auto;
         margin-right: auto;
       }
