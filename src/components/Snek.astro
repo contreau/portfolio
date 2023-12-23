@@ -1,0 +1,71 @@
+<div class="backdrop">
+  <div class="snakehead">
+    <div class="tongue"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  .backdrop {
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    background-size: 25px 25px;
+    background-image: linear-gradient(to right, #ff46b541 1px, transparent 1px),
+      linear-gradient(to bottom, #ff46b541 1px, transparent 1px);
+    max-width: 150px;
+    height: 150px;
+    border: solid 2px #ff46b5;
+    border-radius: 50%;
+  }
+  .snakehead {
+    --snake-pink: #ff46b5;
+    position: relative;
+    margin: 0 auto;
+    width: 55px;
+    min-height: 55px;
+    background-color: var(--snake-pink);
+    border-radius: 7.5px;
+    z-index: auto;
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: #ffffff;
+      border-radius: 30px;
+      height: 18px;
+      width: 7px;
+      bottom: 21%;
+      left: 23%;
+      rotate: -30deg;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: #ffffff;
+      border-radius: 30px;
+      height: 18px;
+      width: 7px;
+      bottom: 21%;
+      right: 23%;
+      rotate: 30deg;
+    }
+    .tongue {
+      z-index: -1;
+      position: absolute;
+      background-color: #b76aff;
+      border-bottom: 5px solid #223568;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      min-height: 30px;
+      width: 10px;
+      bottom: 0%;
+      right: 41%;
+      animation: flick 0.7s ease infinite alternate;
+    }
+
+    @keyframes flick {
+      100% {
+        bottom: -25%;
+      }
+    }
+  }
+</style>

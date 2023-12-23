@@ -6,6 +6,7 @@ import Darqnet from "../components/Darqnet.astro";
 import Particles from "../components/Particles.astro";
 import Koi from "../components/Koi.astro";
 import Firework from "../components/Firework.astro";
+import Snek from "../components/Snek.astro";
 ---
 
 <meta name="description" content="View my web development portfolio." />
@@ -30,15 +31,17 @@ import Firework from "../components/Firework.astro";
     >
   </h3>
   <section class="portfolio-grid">
-    <div class="grid-item full-span">
+    <div class="grid-item">
       <h4>CiteClinic</h4>
-      <Image
-        src="/citeclinic-65.svg"
-        alt="CiteClinic"
-        width="60"
-        height="60"
-        class="main-icon"
-      />
+      <div style="min-height: 126px; display: grid; place-items: center;">
+        <Image
+          src="/citeclinic-65.svg"
+          alt="CiteClinic"
+          width="65"
+          height="65"
+          class="main-icon"
+        />
+      </div>
       <p>
         Generate modifiable UI components of citations from journal articles.
       </p>
@@ -104,6 +107,43 @@ import Firework from "../components/Firework.astro";
           <Image src="/css-50.svg" alt="CSS3" width="50" height="50" />
           <div class="top">
             <span>CSS3</span>
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item" style="z-index: 0;">
+      <h4>Snek</h4>
+      <Snek />
+      <p>An aesthetically pleasing snake game with three playable modes.</p>
+      <div class="project-links">
+        <a href="https://zendev-2.github.io/snek/" target="#">Live Project</a>
+        <a href="https://github.com/zenDev-2/snek" target="#">Source Code</a>
+      </div>
+      <div class="icon-row">
+        <div class="tooltip">
+          <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
+          <div class="top">
+            <span>Svelte</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image
+            src="/typescript-50.svg"
+            alt="TypeScript"
+            width="50"
+            height="50"
+          />
+          <div class="top">
+            <span>TypeScript</span>
+            <i></i>
+          </div>
+        </div>
+        <div class="tooltip">
+          <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
+          <div class="top">
+            <span>Sass/SCSS</span>
             <i></i>
           </div>
         </div>
@@ -196,6 +236,7 @@ import Firework from "../components/Firework.astro";
         </div>
       </div>
     </div>
+
     <div class="grid-item">
       <h4>Koi Pond</h4>
       <Koi />

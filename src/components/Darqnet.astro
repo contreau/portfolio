@@ -1,94 +1,93 @@
 <div class="row selection-options">
-    <div class="flame-circle">
-      <div class="flame-container flame-1">
-        <div class="flame" style="background: #1841fa"></div>
-      </div>
-      <div class="flame-container flame-2">
-        <div class="flame" style="background: #1841fa"></div>
-      </div>
-      <div class="flame-container flame-3">
-        <div class="flame" style="background: #1841fa"></div>
-      </div>
+  <div class="flame-circle">
+    <div class="flame-container flame-1">
+      <div class="flame" style="background: #1841fa"></div>
     </div>
+    <div class="flame-container flame-2">
+      <div class="flame" style="background: #1841fa"></div>
+    </div>
+    <div class="flame-container flame-3">
+      <div class="flame" style="background: #1841fa"></div>
+    </div>
+  </div>
 </div>
 
 <style>
-    .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-      }
-      
-      .selection-options {
-        gap: 0rem;
-        min-height: 126px;
-        align-items: flex-end;
-        justify-content: space-evenly;
-      }
-      
-      .flame-container,
-      .flame {
-        min-height: 1.3rem;
-        max-width: 1.3rem;
-        width: 100%;
-      }
-      
-      .flame-container {
-        position: absolute;
-        filter: blur(0.07rem);
-        display: inline;
-      }
-      
-      .flame-circle {
-        position: relative;
-        min-height: 6.5rem;
-        width: 6.5rem;
-        border-radius: 50%;
-        animation: rotate 3.3s linear infinite;
-      }
-      
-      .flame {
-        border-radius: 56% 44% 88% 12% / 100% 0% 100% 0%;
-        transform: rotate(-40deg);
-        animation: dissolve 1.5s 0.1s ease-in-out infinite alternate;
-        transition: 0.5s all;
-        background: var(--flame-color);
-        /* filter: drop-shadow(0 0 0.8em #6c85f9); */
-      }
-      
-      .flame-1 {
-        top: -0.6rem;
-        right: 2.4rem;
-        rotate: 90deg;
-      }
-      
-      .flame-2 {
-        bottom: 0.8rem;
-        left: -0.3rem;
-        rotate: -30deg;
-      }
-      
-      .flame-3 {
-        bottom: 0.6rem;
-        right: -0.2rem;
-        rotate: 210deg;
-      }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        20% {
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      
-      @keyframes dissolve {
-        100% {
-          rotate: 240deg;
-          min-height: 0.1rem;
-        }
-      }
+  .selection-options {
+    gap: 0rem;
+    min-height: 150px;
+    align-items: flex-end;
+    justify-content: space-evenly;
+  }
+
+  .flame-container,
+  .flame {
+    min-height: 1.3rem;
+    max-width: 1.3rem;
+    width: 100%;
+  }
+
+  .flame-container {
+    position: absolute;
+    filter: blur(0.07rem);
+    display: inline;
+  }
+
+  .flame-circle {
+    position: relative;
+    min-height: 6.5rem;
+    width: 6.5rem;
+    border-radius: 50%;
+    animation: rotate 3.3s linear infinite;
+  }
+
+  .flame {
+    border-radius: 56% 44% 88% 12% / 100% 0% 100% 0%;
+    transform: rotate(-40deg);
+    animation: dissolve 1.5s 0.1s ease-in-out infinite alternate;
+    transition: 0.5s all;
+    background: var(--flame-color);
+  }
+
+  .flame-1 {
+    top: -0.6rem;
+    right: 2.4rem;
+    rotate: 90deg;
+  }
+
+  .flame-2 {
+    bottom: 0.8rem;
+    left: -0.3rem;
+    rotate: -30deg;
+  }
+
+  .flame-3 {
+    bottom: 0.6rem;
+    right: -0.2rem;
+    rotate: 210deg;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dissolve {
+    100% {
+      rotate: 240deg;
+      min-height: 0.1rem;
+    }
+  }
 </style>
