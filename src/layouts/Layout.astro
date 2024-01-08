@@ -7,13 +7,6 @@ import { Image } from "astro:assets";
 const currentPath = Astro.url.pathname;
 const { title } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
-// let homeLink = "";
-// let portfolioLink = "";
-// if (currentPath === "/") {
-//   homeLink = "invisible";
-// } else if (currentPath === "/portfolio") {
-//   portfolioLink = "invisible";
-// }
 const year = new Date().getFullYear();
 ---
 
@@ -79,7 +72,6 @@ const year = new Date().getFullYear();
         --primary: #a0b0f8;
         --secondary: #0f1324;
         --accent: #3a61d4;
-        // --accent: #3e5be3; (former accent color)
       }
 
       *,
@@ -295,7 +287,6 @@ const year = new Date().getFullYear();
       }
 
       h2 {
-        // font-size: 2.074rem;
         font-size: clamp(2.074rem, 12vw, 4rem);
         color: var(--primary);
         font-weight: 650;
