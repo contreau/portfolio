@@ -18,194 +18,65 @@ import { Image } from "astro:assets";
 />
 
 <Layout title="Welcome">
-  <section class="biography">
-    <div class="heading-image-container">
+  <section class="about-block">
+    <section class="biography">
       <h2>hey there.</h2>
       <Image
-        class="peace-sign"
-        src="/peace-sign-opt-min.gif"
-        alt="Peace Sign"
-        width="100"
-        height="100"
+        class="ashitaka-avatar"
+        src="/ashitaka--200x200.png"
+        alt="Ashitaka"
+        width="125"
+        height="125"
       />
-    </div>
-
-    <Image
-      class="ashitaka-avatar"
-      src="/ashitaka--200x200.png"
-      alt="Ashitaka"
-      width="125"
-      height="125"
-    />
-
-    <p>
-      I'm a frontend developer creating expressive and useful web projects.<br
-      />Building lately with <span style="color: #377cc8;">TypeScript</span>, <span
-        style="color: #f3dd56">JavaScript</span
-      >, <span style="color: #d2699e;">SCSS</span>, <span
-        style="color: #ff3e00;">Svelte</span
-      >, and <span style="color: #009cde;">Drupal</span>.
-    </p>
-    <p class="cv">
-      <a href="/resume-1.2024.pdf" target="_blank">
-        CV <Image
-          src="/download-arrow.svg"
-          alt="Downward pointing arrow"
+      <p>i'm a frontend dev creating expressive and useful web projects.</p>
+      <p>
+        mostly prefer building with <span style="color: #377cc8;"
+          >TypeScript</span
+        >, <span style="color: #d2699e;">SCSS</span>, and <span
+          style="color: #ff3e00;">Svelte</span
+        >. check out my work! <Image
+          src="/arrow-bend-right.svg"
+          alt="Arrow bending up and right"
           height="35"
           width="35"
         />
+      </p>
+      <p class="cv">
+        <a href="/ck-resume-jan-2024.pdf" target="_blank">
+          CV <Image
+            src="/diag-arrow-right.svg"
+            alt="Diagonal-right pointing arrow"
+            height="35"
+            width="35"
+          />
+        </a>
+      </p>
+    </section>
+    <div class="social-list">
+      <a
+        class="github-link"
+        href="https://github.com/zenDev-2"
+        target="__blank"
+      >
+        <Image src="/github-65.svg" alt="GitHub" width="46" height="46" />
       </a>
-    </p>
+      <a href="https://www.linkedin.com/in/conor-kelley2/" target="__blank">
+        <Image src="/linkedin-65.svg" alt="LinkedIn" width="60" height="60" />
+      </a>
+      <a href="mailto:cfk102@gmail.com" target="__blank">
+        <Image src="/mail-65.svg" alt="Email" width="60" height="60" />
+      </a>
+      <a href="https://www.instagram.com/__ckphoto/" target="__blank">
+        <Image src="/instagram-65.svg" alt="Instagram" width="60" height="60" />
+      </a>
+    </div>
   </section>
-  <div class="social-list">
-    <a class="github-link" href="https://github.com/zenDev-2" target="#">
-      <Image src="/github-65.svg" alt="GitHub" width="38" height="38" />
-    </a>
-    <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
-      <Image src="/linkedin-65.svg" alt="LinkedIn" width="50" height="50" />
-    </a>
-    <a href="mailto:cfk102@gmail.com" target="#">
-      <Image src="/mail-65.svg" alt="Email" width="50" height="50" />
-    </a>
-    <a href="https://www.instagram.com/__ckphoto/" target="#">
-      <Image src="/instagram-65.svg" alt="Instagram" width="50" height="50" />
-    </a>
-  </div>
 </Layout>
 
-<div class="divider divider-mobile">
-  <span style="color: var(--accent)"
-    >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
-  >
-</div>
-
-<!-- MOBILE START -->
-<div class="social-list-mobile">
-  <a class="github-link" href="https://github.com/zenDev-2" target="#">
-    <Image src="/github-65.svg" alt="GitHub" width="50" height="50" />
-  </a>
-  <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
-    <Image src="/linkedin-65.svg" alt="LinkedIn" width="65" height="65" />
-  </a>
-  <a href="mailto:cfk102@gmail.com" target="#">
-    <Image src="/mail-65.svg" alt="Email" width="65" height="65" />
-  </a>
-  <a href="https://www.instagram.com/__ckphoto/" target="#">
-    <Image src="/instagram-65.svg" alt="Instagram" width="65" height="65" />
-  </a>
-</div>
-
 <style lang="scss">
-  .grid-container {
-    display: grid;
-    grid-template-columns: 75% 25%;
-    align-items: center;
-
-    section {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0 2em;
-    }
-
-    section.location,
-    section.work,
-    section.photography {
-      opacity: 0;
-      text-align: center;
-      max-width: 700px;
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-      border-radius: 15px;
-      background-color: var(--secondary);
-      background-image: linear-gradient(
-        to right bottom,
-        #0f1324,
-        #142041,
-        #192953,
-        #121f48,
-        #111a3d
-      );
-      background-size: 500%;
-      background-position: top left;
-      transition: 0.3s;
-      animation: slideIn 0.4s 0.9s ease-in forwards;
-      &:hover {
-        background-position: top right;
-      }
-      p {
-        font-weight: 500;
-      }
-    }
-
-    section.work {
-      animation-delay: 1s;
-    }
-    section.photography {
-      animation-delay: 1.2s;
-    }
-
-    @keyframes slideIn {
-      0% {
-        opacity: 0;
-        transform: translateX(-100px);
-      }
-      100% {
-        transform: translateX(0px);
-        opacity: 1;
-      }
-    }
-
-    .tech-stack {
-      opacity: 0;
-      gap: 0rem;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      flex-direction: column;
-      border-radius: 15px;
-      background-color: var(--secondary);
-      background-image: linear-gradient(
-        to right bottom,
-        #0f1324,
-        #142041,
-        #192953,
-        #121f48,
-        #111a3d
-      );
-      background-size: 500%;
-      background-position: top left;
-      transition: 0.3s;
-      animation: growIn 0.3s 1.2s ease-in forwards;
-      &:hover {
-        background-position: top right;
-      }
-    }
-  }
-
-  @keyframes growIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.85);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .grid-item:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .intro {
-    color: var(--primary);
-    margin-top: 2.4rem;
-    font-size: 1.4rem;
-    font-weight: 500;
-    text-align: center;
+  .about-block {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
   }
 
   h2 {
@@ -215,19 +86,10 @@ import { Image } from "astro:assets";
     animation: fadeIn 0.3s ease-in forwards;
   }
 
-  .peace-sign {
-    animation: fadeIn 0.3s ease-in forwards;
-  }
-
   .biography {
     margin-top: 0.2rem;
     border-radius: 15px;
     text-align: center;
-    .heading-image-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
     p {
       opacity: 0;
@@ -239,16 +101,23 @@ import { Image } from "astro:assets";
       br {
         margin: 0.1em 0;
       }
+      img {
+        display: inline;
+      }
       &.cv {
         color: var(--text);
         font-weight: 500;
-        padding: 0.1em 0.5em;
+        padding: 0em 0.5em;
         padding-right: 0.2em;
-        margin: 2.6rem auto 2.2rem auto;
+        margin: 2.5rem auto 2.2rem auto;
         max-width: fit-content;
         border-radius: 10px;
         background-color: var(--accent);
         cursor: pointer;
+        transform: translateZ(
+          0
+        ); // corrects drop-shadow rendering bug in safari
+        transition: 0.2s all;
         &:hover {
           filter: drop-shadow(0 0 1.5rem var(--accent));
         }
@@ -280,11 +149,14 @@ import { Image } from "astro:assets";
   }
 
   .social-list {
+    opacity: 0;
+    animation: fadeIn 0.3s 0.4s ease-in forwards;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    // margin-top: 4rem;
+    margin-top: 2rem;
+    transform: translateZ(0); // corrects drop-shadow rendering bug in safari
     img {
       transition: 0.2s all;
       &:hover {
@@ -293,113 +165,13 @@ import { Image } from "astro:assets";
     }
   }
 
-  .prof-pic {
-    margin: 0 auto;
-  }
-
-  .icon-row {
-    min-width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .divider {
-    opacity: 0;
-    margin: 1.5rem 0;
-    font-size: 1.728rem;
-    font-weight: 500;
-    text-align: center;
-    padding: 1.2em 0 0 0;
-    animation: fadeIn 0.3s 0.4s ease-in forwards;
-    &:first-of-type {
-      padding-top: 0;
-    }
-  }
-
-  .secondrow-label {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-top: 0.1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .social-list-mobile,
-  .divider-mobile {
-    display: none;
-  }
-
-  .mobile-row {
-    display: flex;
-    gap: 2.5rem;
-  }
-
-  @media (max-width: 1380px) {
-    .grid-container {
-      grid-template-columns: 1fr;
-      place-items: center;
-
-      section.tech-stack {
-        margin-top: 2.8rem;
-        padding-bottom: 1em;
-      }
-    }
-  }
-
   @media (max-width: 500px) {
-    .heading-image-container {
-      flex-direction: column;
-    }
-
-    .icon-row {
-      flex-direction: column;
-    }
-
     .biography p {
       padding: 0;
     }
-    .grid-container {
-      section {
-        flex-direction: column;
-        padding-top: 2em;
-        padding-bottom: 2em;
-      }
-
-      section.location,
-      section.work,
-      section.photography {
-        padding-top: 1em;
-        padding-bottom: 0em;
-      }
-    }
-    .tech-stack {
-      grid-column: 1;
-      margin-top: 2.8rem;
-    }
-  }
-
-  @media (max-width: 900px) {
-    li.homepage {
-      display: none;
-    }
-
-    .divider-mobile {
-      display: block;
-    }
-
-    .social-list-mobile {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 0.5rem;
-      .github-link {
-        margin-top: 0;
-      }
+    .social-list {
+      flex-direction: column;
+      margin-bottom: 2rem;
     }
   }
 </style>
