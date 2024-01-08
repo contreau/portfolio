@@ -63,6 +63,14 @@ if (currentPath === "/") {
           <li class={homeLink}>
             <a href="/" class={currentPath === "/" ? "active" : ""}>about</a>
           </li>
+        </ul>
+        <div class="emblem emblem-1">
+          <span style="color: var(--accent)"
+            >&#123;<span class="gem" style="color: #fff">&#9670;</span
+            >&#125;</span
+          >
+        </div>
+        <ul class="menu-items">
           <li class={portfolioLink}>
             <a
               href="/portfolio"
@@ -70,51 +78,16 @@ if (currentPath === "/") {
             >
           </li>
         </ul>
-        <div
-          class="emblem emblem-1"
-          style="padding-top: 0.5em; padding-bottom: 1em;"
-        >
-          <span style="color: var(--accent)"
-            >&#123;<span class="gem" style="color: #fff">&#9670;</span
-            >&#125;</span
-          >
-        </div>
-        <div class="social-list">
-          <a class="github-link" href="https://github.com/zenDev-2" target="#">
-            <Image src="/github-65.svg" alt="GitHub" width="50" height="50" />
-          </a>
-          <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
-            <Image
-              src="/linkedin-65.svg"
-              alt="LinkedIn"
-              width="65"
-              height="65"
-            />
-          </a>
-          <a href="mailto:cfk102@gmail.com" target="#">
-            <Image src="/mail-65.svg" alt="Email" width="65" height="65" />
-          </a>
-          <a href="https://www.instagram.com/__ckphoto/" target="#">
-            <Image
-              src="/instagram-65.svg"
-              alt="Instagram"
-              width="65"
-              height="65"
-            />
-          </a>
-        </div>
-        <div
-          class="emblem emblem-2"
-          style="padding-bottom: 0; padding-top: 1em;"
-        >
-          <span style="color: var(--accent)"
-            >&#123;<span class="gem" style="color: #fff">&#9670;</span
-            >&#125;</span
-          >
-        </div>
       </nav>
       <main><slot /></main>
     </section>
+    <footer>
+      <div class="location">
+        <Image src="/pin-50.svg" alt="Pin" width="30" height="30" />
+        <p>Brooklyn, NY</p>
+        <p><span style="color: var(--primary);">•</span> &copy; 2024</p>
+      </div>
+    </footer>
     <style lang="scss" is:global>
       :root {
         --text: #f8f9fc;
@@ -190,33 +163,13 @@ if (currentPath === "/") {
         text-align: center;
       }
 
-      section.content-grid {
-        display: grid;
-        grid-template-columns: 20% 80%;
-        padding: 0em 1em 0em 0em;
-      }
-
       nav {
-        position: sticky;
-        top: 5rem;
-        align-self: start;
-
-        .social-list {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 1.5rem;
-          img {
-            transition: 0.2s all;
-            &:hover {
-              filter: drop-shadow(0 0 1.5rem var(--accent));
-            }
-          }
-          .github-link {
-            margin-top: 15px;
-          }
-        }
+        margin-top: 0.75rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
       }
 
       .social-list-mobile {
@@ -224,14 +177,14 @@ if (currentPath === "/") {
       }
 
       .menu-items {
+        display: flex;
+        gap: 0.5rem;
+        padding-left: 0;
         font-family: "Source Code Pro Variable", sans-serif;
         list-style-type: none;
         font-size: 1.5rem;
         margin-top: 0;
         margin-bottom: 0;
-        padding-top: 1rem;
-        padding-left: 16%;
-        padding-right: 20%;
 
         li {
           a {
@@ -239,6 +192,7 @@ if (currentPath === "/") {
             text-decoration: none;
             padding: 0.1em 0.7em;
             transition: 0.3s all;
+            border-radius: 10px;
             &:hover {
               font-weight: 500;
               text-decoration: none;
@@ -248,9 +202,11 @@ if (currentPath === "/") {
             }
           }
         }
-
-        li + li {
-          margin-top: 1.5rem;
+        &:nth-of-type(1) {
+          place-self: end;
+        }
+        &:nth-of-type(2) {
+          place-self: start;
         }
       }
 
@@ -263,7 +219,7 @@ if (currentPath === "/") {
       }
 
       main {
-        padding: 1rem 5.1rem 1rem 2rem;
+        padding: 1rem 2rem 1rem 2rem;
 
         h2 {
           margin-top: 0;
@@ -442,6 +398,21 @@ if (currentPath === "/") {
         header,
         nav {
           position: static;
+        }
+      }
+
+      footer {
+        div.location {
+          margin-bottom: 0.8rem;
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          justify-content: center;
+          p {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 500;
+          }
         }
       }
 

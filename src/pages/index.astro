@@ -30,118 +30,70 @@ import { Image } from "astro:assets";
       />
     </div>
 
+    <Image
+      class="ashitaka-avatar"
+      src="/ashitaka--200x200.png"
+      alt="Ashitaka"
+      width="125"
+      height="125"
+    />
+
     <p>
-      I'm a frontend developer creating expressive and useful web resources.<br
-      />I love taking on challenging and fulfilling projects.
+      I'm a frontend developer creating expressive and useful web projects.<br
+      />Building lately with <span style="color: #377cc8;">TypeScript</span>, <span
+        style="color: #f3dd56">JavaScript</span
+      >, <span style="color: #d2699e;">SCSS</span>, <span
+        style="color: #ff3e00;">Svelte</span
+      >, and <span style="color: #009cde;">Drupal</span>.
+    </p>
+    <p class="cv">
+      <a href="/resume-1.2024.pdf" target="_blank">
+        CV <Image
+          src="/download-arrow.svg"
+          alt="Downward pointing arrow"
+          height="35"
+          width="35"
+        />
+      </a>
     </p>
   </section>
-
-  <div class="divider">
-    <span style="color: var(--accent)"
-      >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
-    >
-  </div>
-  <div class="grid-container">
-    <div class="grid-item">
-      <section class="location">
-        <Image src="/pin-50.svg" alt="Pin" width="45" height="45" />
-        <p>D.C. native based in Brooklyn, NY.</p>
-      </section>
-      <section class="work">
-        <Image src="/work-50.svg" alt="Briefcase" height="45" width="45" />
-        <p>Web Associate for the GW MFA and freelance dev.</p>
-      </section>
-      <section class="photography">
-        <Image src="/camera-50.svg" alt="Camera" height="45" width="45" />
-        <p>Professional photographer and visual editor.</p>
-      </section>
-    </div>
-    <section class="tech-stack">
-      <Image src="/tools-50.svg" alt="Tools" height="40" width="40" />
-      <p class="secondrow-label">Toolbox</p>
-      <div class="icon-row">
-        <div class="mobile-row">
-          <div class="tooltip">
-            <Image
-              src="/typescript-50.svg"
-              alt="TypeScript"
-              width="50"
-              height="50"
-            />
-            <div class="top">
-              <span>TypeScript</span>
-              <i></i>
-            </div>
-          </div>
-          <div class="tooltip">
-            <Image
-              src="/javascript-50.svg"
-              alt="JavaScript"
-              width="50"
-              height="50"
-            />
-            <div class="top">
-              <span>JavaScript</span>
-              <i></i>
-            </div>
-          </div>
-        </div>
-        <div class="mobile-row">
-          <div class="tooltip">
-            <Image src="/sass-50.svg" alt="Sass" width="50" height="50" />
-            <div class="top">
-              <span>Sass/SCSS</span>
-              <i></i>
-            </div>
-          </div>
-          <div class="tooltip">
-            <Image src="/svelte-50.svg" alt="Svelte" width="50" height="50" />
-            <div class="top">
-              <span>Svelte/Kit</span>
-              <i></i>
-            </div>
-          </div>
-        </div>
-        <div class="mobile-row">
-          <div class="tooltip">
-            <Image src="/astro-50.svg" alt="Astro" width="50" height="50" />
-            <div class="top">
-              <span>Astro</span>
-              <i></i>
-            </div>
-          </div>
-          <div class="tooltip">
-            <Image src="/drupal-50.svg" alt="Drupal" width="50" height="50" />
-            <div class="top">
-              <span>Drupal</span>
-              <i></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="divider divider-mobile">
-    <span style="color: var(--accent)"
-      >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
-    >
-  </div>
-  <div class="social-list-mobile">
+  <div class="social-list">
     <a class="github-link" href="https://github.com/zenDev-2" target="#">
-      <Image src="/github-65.svg" alt="GitHub" width="50" height="50" />
+      <Image src="/github-65.svg" alt="GitHub" width="38" height="38" />
     </a>
     <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
-      <Image src="/linkedin-65.svg" alt="LinkedIn" width="65" height="65" />
+      <Image src="/linkedin-65.svg" alt="LinkedIn" width="50" height="50" />
     </a>
     <a href="mailto:cfk102@gmail.com" target="#">
-      <Image src="/mail-65.svg" alt="Email" width="65" height="65" />
+      <Image src="/mail-65.svg" alt="Email" width="50" height="50" />
     </a>
     <a href="https://www.instagram.com/__ckphoto/" target="#">
-      <Image src="/instagram-65.svg" alt="Instagram" width="65" height="65" />
+      <Image src="/instagram-65.svg" alt="Instagram" width="50" height="50" />
     </a>
   </div>
 </Layout>
+
+<div class="divider divider-mobile">
+  <span style="color: var(--accent)"
+    >&#123;<span class="gem" style="color: #fff">&#9670;</span>&#125;</span
+  >
+</div>
+
+<!-- MOBILE START -->
+<div class="social-list-mobile">
+  <a class="github-link" href="https://github.com/zenDev-2" target="#">
+    <Image src="/github-65.svg" alt="GitHub" width="50" height="50" />
+  </a>
+  <a href="https://www.linkedin.com/in/conor-kelley2/" target="#">
+    <Image src="/linkedin-65.svg" alt="LinkedIn" width="65" height="65" />
+  </a>
+  <a href="mailto:cfk102@gmail.com" target="#">
+    <Image src="/mail-65.svg" alt="Email" width="65" height="65" />
+  </a>
+  <a href="https://www.instagram.com/__ckphoto/" target="#">
+    <Image src="/instagram-65.svg" alt="Instagram" width="65" height="65" />
+  </a>
+</div>
 
 <style lang="scss">
   .grid-container {
@@ -268,6 +220,7 @@ import { Image } from "astro:assets";
   }
 
   .biography {
+    margin-top: 0.2rem;
     border-radius: 15px;
     text-align: center;
     .heading-image-container {
@@ -278,7 +231,7 @@ import { Image } from "astro:assets";
 
     p {
       opacity: 0;
-      margin-top: 0.5rem;
+      margin-top: 0;
       // font-size: 1.4rem;
       font-size: clamp(1.125rem, 3vw, 1.4rem);
       border-radius: 15px;
@@ -286,12 +239,58 @@ import { Image } from "astro:assets";
       br {
         margin: 0.1em 0;
       }
+      &.cv {
+        color: var(--text);
+        font-weight: 500;
+        padding: 0.1em 0.5em;
+        padding-right: 0.2em;
+        margin: 2.6rem auto 2.2rem auto;
+        max-width: fit-content;
+        border-radius: 10px;
+        background-color: var(--accent);
+        cursor: pointer;
+        &:hover {
+          filter: drop-shadow(0 0 1.5rem var(--accent));
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          color: var(--text);
+          text-decoration: none;
+        }
+
+        img {
+          display: inline;
+        }
+      }
+    }
+
+    .ashitaka-avatar {
+      margin: 0.8rem auto;
+      border: solid 3px var(--accent);
+      border-radius: 50%;
     }
   }
+
   h3 {
     color: var(--primary);
     text-align: center;
     font-weight: 500;
+  }
+
+  .social-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    // margin-top: 4rem;
+    img {
+      transition: 0.2s all;
+      &:hover {
+        filter: drop-shadow(0 0 1.5rem var(--accent));
+      }
+    }
   }
 
   .prof-pic {
