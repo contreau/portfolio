@@ -5,7 +5,7 @@ import "@fontsource-variable/maven-pro";
 import "@fontsource-variable/source-code-pro";
 import { Image } from "astro:assets";
 const currentPath = Astro.url.pathname;
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 const year = new Date().getFullYear();
 ---
@@ -21,6 +21,10 @@ const year = new Date().getFullYear();
     />
     <meta property="og:type" content="website" />
     <title>Conor Kelley • {title}</title>
+    <meta name="title" content=`Conor Kelley • ${title}` />
+    <meta property="og:title" content=`Conor Kelley • ${title}` />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

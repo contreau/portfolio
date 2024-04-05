@@ -3,21 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
 
-<meta
-  slot="metadata"
-  name="description"
-  content="Creative frontend developer making expressive and useful web resources."
-/>
-<meta slot="metadata" name="title" content="Conor Kelley • Welcome" />
-<meta slot="metadata" property="og:title" content="Conor Kelley • Welcome" />
-<meta slot="metadata" property="og:url" content="https://conorkelley.me" />
-<meta
-  slot="metadata"
-  property="og:description"
-  content="Creative frontend developer making expressive and useful web resources."
-/>
+<meta property="og:url" content="https://conorkelley.me" />
 
-<Layout title="Welcome">
+<Layout
+  title="Welcome"
+  description="Creative frontend developer making expressive and useful web resources."
+>
   <section class="about-block">
     <section class="biography">
       <h2>hey there.</h2>
