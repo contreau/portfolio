@@ -1,69 +1,70 @@
 <div class="infoContainer planetAnimation">
-    <div class="iss-anim-container">
-      <div class="iss-anim-orbit">
-        <div class="iss-anim">
-          <img src="/iss_white.png" alt="ISS">
-        </div>
-        <div class="planet"></div>
+  <div class="iss-anim-container">
+    <div class="iss-anim-orbit">
+      <div class="iss-anim">
+        <img src="/iss.png" alt="ISS" />
       </div>
+      <div class="planet"></div>
     </div>
+  </div>
 </div>
 
 <style>
-    .planetAnimation {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
+  .planetAnimation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 150px;
+  }
 
-    .planet {
-        border-radius: 50%;
-        height: 4em;
-        width: 4em;
-        background-image: linear-gradient(
-            to top,
-            #0653c8,
-            #0080ea,
-            #00a0d3,
-            #00b88f,
-            #0ac833
-        );
-        position: absolute;
-        bottom: 21%;
-        left: 22%;
-        animation: planet 10s linear infinite;
-    }
+  .planet {
+    border-radius: 50%;
+    height: 4em;
+    width: 4em;
+    background-image: linear-gradient(
+      to top,
+      #0653c8,
+      #0080ea,
+      #00a0d3,
+      #00b88f,
+      #0ac833
+    );
+    position: absolute;
+    bottom: 21%;
+    left: 22%;
+    animation: planet 10s linear infinite;
+  }
 
-    .iss-anim {
-        border-radius: 50%;
-        height: 1.2em;
-        width: 1.2em;
-        position: absolute;
-        left: 19px;
-    }
+  .iss-anim {
+    border-radius: 50%;
+    height: 1.2em;
+    width: 1.2em;
+    position: absolute;
+    left: 19px;
+  }
 
-    .iss-anim-orbit {
-        border-radius: 50%;
-        height: 7em;
-        width: 7em;
-        position: relative;
-        animation: orbit 7s linear infinite;
-    }
+  .iss-anim-orbit {
+    border-radius: 50%;
+    height: 7em;
+    width: 7em;
+    position: relative;
+    animation: orbit 7s linear infinite;
+  }
 
-    .iss-anim-container {
-        position: relative;
-    }
+  .iss-anim-container {
+    position: relative;
+  }
 
-    @keyframes planet {
-        100% {
-            transform: rotate(-360deg);
-        }
+  @keyframes planet {
+    100% {
+      transform: rotate(-360deg);
     }
+  }
 
-    @keyframes orbit {
-            100% {
-            transform: rotate(360deg);
-        }
+  @keyframes orbit {
+    100% {
+      transform: rotate(360deg);
     }
+  }
 </style>
