@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 const { title, description } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import Portfolio from "../components/Portfolio.astro";
@@ -28,25 +27,34 @@ import Portfolio from "../components/Portfolio.astro";
     <slot name="metadata" />
   </head>
   <body>
-    <section class="title">
-      <h1 class="title-name">
-        <span style="color: #017b69;">Conor</span>Kelley
-      </h1>
-    </section>
-    <header></header>
-    <section class="content-grid">
-      <main>
-        <slot />
-      </main>
-    </section>
+    <header>
+      <div>
+        <h1 class="title-name">
+          <span style="color: var(--primary)">Conor</span>Kelley
+        </h1>
+        <span>Web Developer</span>
+      </div>
+      <nav>
+        <ul>
+          <li>Development</li>
+          <li>Photography</li>
+          <li>
+            <a href="https://github.com/contreau" target="_blank">GitHub</a>
+          </li>
+          <li><a href="resume.pdf" target="_blank">CV</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
 
     <style lang="scss" is:global>
       :root {
-        --text: #f8f9fc;
-        --background: #06070e;
-        --primary: #a0b0f8;
-        --secondary: #0f1324;
-        --accent: #3a61d4;
+        --text: #3a3a3a;
+        --background: #c6c6c6;
+        --primary: #017b69;
       }
 
       *,
@@ -74,24 +82,63 @@ import Portfolio from "../components/Portfolio.astro";
       body {
         font-weight: 400;
         line-height: 1.75;
-        background-color: #c6c6c6;
-        color: #3a3a3a;
+        background-color: var(--background);
+        color: var(--text);
         font-family: system-ui;
         max-width: 1500px;
-        margin: 0 auto;
+        margin-top: 1.3rem;
         padding: 0 3em;
       }
 
+      a {
+        color: var(--primary);
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        span:not(h1 > span) {
+          color: #535353;
+          font-weight: 550;
+          font-size: 1.05rem;
+          padding-left: 0.15em;
+          font-style: italic;
+        }
+
+        nav {
+          ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+
+            li {
+              display: inline;
+              font-weight: 550;
+              font-size: 1.125rem;
+            }
+
+            li + li {
+              margin-left: 3rem;
+            }
+          }
+        }
+      }
+
       // Font Configurations ** //
+
       p {
         font-size: 1.125rem;
       }
 
       h1,
-      h2,
-      h3,
-      h4,
-      h5 {
+      h2 {
         font-family: system-ui;
         font-weight: 600;
         line-height: 1.3;
