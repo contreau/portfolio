@@ -2,6 +2,7 @@
 const { title, description } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import Portfolio from "../components/Portfolio.astro";
+const currentPath = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -36,8 +37,18 @@ import Portfolio from "../components/Portfolio.astro";
       </div>
       <nav>
         <ul>
-          <li>Development</li>
-          <li>Photography</li>
+          <li>
+            <a
+              class={currentPath === "/" ? "page-active" : "site-page"}
+              href="/">Development</a
+            >
+          </li>
+          <li>
+            <a
+              class={currentPath === "/visuals" ? "page-active" : "site-page"}
+              href="visuals">Visuals</a
+            >
+          </li>
           <li>
             <a href="https://github.com/contreau" target="_blank">GitHub</a>
           </li>
@@ -92,6 +103,27 @@ import Portfolio from "../components/Portfolio.astro";
 
       a {
         color: var(--primary);
+        position: relative;
+        text-decoration: none;
+
+        &.site-page {
+          color: var(--text);
+          text-decoration: none;
+        }
+      }
+
+      a.page-active {
+        color: var(--text);
+        text-decoration: none;
+
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: var(--primary);
+          bottom: -4px;
+          min-height: 3px;
+          width: 100%;
+        }
       }
 
       header {
