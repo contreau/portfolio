@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import ListItem from "../components/ListItem.astro";
 ---
 
 <meta property="og:url" content="https://conorkelley.me" />
@@ -10,30 +11,79 @@ import { Image } from "astro:assets";
   description="Creative frontend developer making expressive and useful web resources."
 >
   <section class="featured-work">
-    <h2>Featured Work</h2>
-    <ul>
-      <li>CiteClinic</li>
-      <li>SMHS Faculty Listing Generator</li>
-      <li>CTSI Virtual Organizer</li>
+    <h2>Featured Projects</h2>
+    <ul class="item-group">
+      <ListItem
+        name="SMHS Faculty Listing Generator"
+        url="https://github.com/contreau/smhs-faculty-generator"
+        description={`A command line interface (CLI) tool developed to expedite my workflow
+            in updating the HTML structure of faculty listings across all GW
+            School of Medicine & Health Sciences (SMHS) websites.`}
+        jobtype="GW MFA & SMHS"
+        tools="JavaScript, Node.js"
+      />
+
+      <ListItem
+        name="CTSI Virtual Organizer"
+        url="https://ctsicn.org/virtual-organizer"
+        description={`An interactive navigational graphic developed for the Clinical and
+          Translational Science Institute (CTSI) at Children's National
+          Hospital.`}
+        jobtype="GW MFA & SMHS"
+        tools="JavaScript, SCSS, Drupal"
+      />
+
+      <ListItem
+        name="CiteClinic"
+        url="https://citeclinic.app/"
+        description={`Easily retrieve citation information from any journal article with a
+          valid Digital Object Identifier (DOI) and generate customizable
+          citation components for use on any site or CMS.`}
+        jobtype="Personal"
+        tools="SvelteKit, TypeScript, SCSS, APIs"
+      />
+      <ListItem
+        name="ISS Live Tracker"
+        url="https://live-tracker-iss.netlify.app/"
+        description={`An interactive tracker of the International Space Station.`}
+        jobtype="Personal"
+        tools="JavaScript, Leaflet, APIs"
+      />
     </ul>
   </section>
 
   <section class="musings">
     <h2>Musings</h2>
-    <ul>
-      <li>Snek</li>
-      <li>Koi Pond</li>
-      <li>Particles</li>
-    </ul>
-  </section>
+    <ul class="item-group">
+      <ListItem
+        name="Snek"
+        url="https://snekgame.app/"
+        description={`An aesthetically pleasing snake game with three modes.`}
+        jobtype="Personal"
+        tools="Svelte, TypeScript, SCSS"
+      />
 
-  <section class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Languages: TypeScript, JavaScript, CSS, Python</li>
-      <li>Frontend Frameworks: Astro, Drupal, Svelte, Vue</li>
+      <ListItem
+        name="Koi Pond"
+        url="https://contreau.github.io/koi-pond/"
+        description={`A tranquil koi pond made of pure CSS.`}
+        jobtype="Personal"
+        tools="CSS"
+      />
     </ul>
   </section>
 </Layout>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .item-group {
+    padding: 0 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 3rem;
+    // border: solid 1px #000;
+  }
+
+  section + section {
+    margin-top: 3.5rem;
+  }
+</style>

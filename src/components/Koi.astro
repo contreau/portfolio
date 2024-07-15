@@ -1,198 +1,198 @@
 <div class="koi-container">
-    <div class="koiBody" id="yin2">
-        <div class="leftEye eye"></div>
-        <div class="rightEye eye"></div>
-        <div class="scale1 scales"></div>
-        <div class="bodFin"></div>
-        <div class="scale2 scales"></div>
-        <div class="scale4 scales"></div>
-        <div class="scale5 scales"></div>
-        <div class="leftFin fin"></div>
-        <div class="rightFin fin"></div>
-        <div class="backLeftFin backFin"></div>
-        <div class="backRightFin backFin"></div>
-    </div>
+  <div class="koiBody" id="yin2">
+    <div class="leftEye eye"></div>
+    <div class="rightEye eye"></div>
+    <div class="scale1 scales"></div>
+    <div class="bodFin"></div>
+    <div class="scale2 scales"></div>
+    <div class="scale4 scales"></div>
+    <div class="scale5 scales"></div>
+    <div class="leftFin fin"></div>
+    <div class="rightFin fin"></div>
+    <div class="backLeftFin backFin"></div>
+    <div class="backRightFin backFin"></div>
+  </div>
 </div>
 
 <style>
-    .koi-container {
-        min-height: 150px;
-        max-width: 150px;
-        display: grid;
-        place-items: center;
-        margin: 0 auto;
-        background-color: #43a9d1;
-        border-radius: 50%;
-    }
-    
-    .koiBody {
-        width: 90px;
-        height: 22px;
-        border-radius: 50%;
-        background-color: #ff4933;
-        position: relative;
-        rotate: 45deg;
-        animation: swim 1s linear infinite;
-    }
-    .eye {
-        position: absolute;
-        height: 5px;
-        width: 3px;
-        background-color: #000;
-        border-radius: 50%;
-    }
-    .leftEye {
-        right: 10%;
-        top: 3.3px;
-        transform: rotate(102deg);
-    }
-    .rightEye {
-        bottom: 3.8px;
-        right: 10%;
-        transform: rotate(-102deg);
-    }
-    .bodFin {
-        position: absolute;
-        height: 4px;
-        width: 30px;
-        border-radius: 100% 0% 100% 0%/100% 0% 100% 0%;
-        background-color: #d62e1a;
-        top: 7px;
-        z-index: 1;
-        right: 35%;
-        transform: rotate(3deg);
-    }
-    .scales {
-        background-color: #fff;
-        position: absolute;
-    }
-    .scale1 {
-        position: absolute;
-        width: 7px;
-        height: 7px;
-        background-color: #fff;
-        border-radius: 69% 31% 34% 66%/20% 44% 56% 80%;
-        top: 7px;
-        right: 20%;
-        z-index: 1;
-    }
-    .scale2 {
-        width: 10px;
-        height: 10px;
-        border-radius: 61% 39% 7% 93%/6% 93% 7% 94%;
-        transform: rotate(108deg);
-        top: 1px;
-        left: 16%;
-        z-index: 1;
-    }
-    .scale4 {
-        height: 9px;
-        width: 9px;
-        border-radius: 61% 39% 7% 93%/6% 93% 7% 94%;
-        right: 48%;
-        bottom: -1px;
-        transform: rotate(-68deg);
-        z-index: 1;
-    }
-    .scale5 {
-        height: 9px;
-        width: 9px;
-        border-radius: 74% 10% 65% 24%/89% 31% 50% 16%;
-        left: 35%;
-        bottom: 0px;
-        transform: rotate(40deg);
-    }
-    .fin {
-        height: 23px;
-        width: 7px;
-        border-radius: 50%;
-        background-color: #ff4933;
-        position: absolute;
-    }
-    .leftFin {
-        right: 32%;
-        top: -16px;
-        z-index: 0;
-        transform: rotate(-30deg);
-        transform-origin: bottom;
-        animation: leftTailFin 1s linear alternate infinite;
-    }
-    .rightFin {
-        right: 32%;
-        bottom: -16px;
-        z-index: 0;
-        transform: rotate(30deg);
-        transform-origin: top;
-        animation: rightTailFin 0.8s linear alternate infinite;
-    }
-    .backFin {
-        border-radius: 50%;
-        background-color: #ff4933;
-        position: absolute;
-    }
-    .backLeftFin {
-        height: 25px;
-        width: 7px;
-        bottom: 8px;
-        left: 1px;
-        transform: rotate(-60deg);
-        transform-origin: bottom;
-        animation: leftTailFin 0.4s linear alternate infinite;
-    }
-    .backRightFin {
-        height: 25px;
-        width: 7px;
-        top: 8px;
-        left: 1px;
-        transform: rotate(60deg);
-        transform-origin: top;
-        animation: rightTailFin 0.4s linear alternate infinite;
-    }
+  .koi-container {
+    min-height: 150px;
+    max-width: 150px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    background-color: #43a9d1;
+    border-radius: 50%;
+  }
 
-    @keyframes rightTailFin {
-        0% {
-            transform: rotate(60deg);
-        }
-        100% {
-            transform: rotate(40deg);
-        }
+  .koiBody {
+    width: 90px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ff4933;
+    position: relative;
+    rotate: 45deg;
+    animation: swim 1s linear infinite;
+  }
+  .eye {
+    position: absolute;
+    height: 5px;
+    width: 3px;
+    background-color: #000;
+    border-radius: 50%;
+  }
+  .leftEye {
+    right: 10%;
+    top: 3.3px;
+    transform: rotate(102deg);
+  }
+  .rightEye {
+    bottom: 3.8px;
+    right: 10%;
+    transform: rotate(-102deg);
+  }
+  .bodFin {
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    border-radius: 100% 0% 100% 0%/100% 0% 100% 0%;
+    background-color: #d62e1a;
+    top: 7px;
+    z-index: 1;
+    right: 35%;
+    transform: rotate(3deg);
+  }
+  .scales {
+    background-color: #fff;
+    position: absolute;
+  }
+  .scale1 {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border-radius: 69% 31% 34% 66%/20% 44% 56% 80%;
+    top: 7px;
+    right: 20%;
+    z-index: 1;
+  }
+  .scale2 {
+    width: 10px;
+    height: 10px;
+    border-radius: 61% 39% 7% 93%/6% 93% 7% 94%;
+    transform: rotate(108deg);
+    top: 1px;
+    left: 16%;
+    z-index: 1;
+  }
+  .scale4 {
+    height: 9px;
+    width: 9px;
+    border-radius: 61% 39% 7% 93%/6% 93% 7% 94%;
+    right: 48%;
+    bottom: -1px;
+    transform: rotate(-68deg);
+    z-index: 1;
+  }
+  .scale5 {
+    height: 9px;
+    width: 9px;
+    border-radius: 74% 10% 65% 24%/89% 31% 50% 16%;
+    left: 35%;
+    bottom: 0px;
+    transform: rotate(40deg);
+  }
+  .fin {
+    height: 23px;
+    width: 7px;
+    border-radius: 50%;
+    background-color: #ff4933;
+    position: absolute;
+  }
+  .leftFin {
+    right: 32%;
+    top: -16px;
+    z-index: 0;
+    transform: rotate(-30deg);
+    transform-origin: bottom;
+    animation: leftTailFin 1s linear alternate infinite;
+  }
+  .rightFin {
+    right: 32%;
+    bottom: -16px;
+    z-index: 0;
+    transform: rotate(30deg);
+    transform-origin: top;
+    animation: rightTailFin 0.8s linear alternate infinite;
+  }
+  .backFin {
+    border-radius: 50%;
+    background-color: #ff4933;
+    position: absolute;
+  }
+  .backLeftFin {
+    height: 25px;
+    width: 7px;
+    bottom: 8px;
+    left: 1px;
+    transform: rotate(-60deg);
+    transform-origin: bottom;
+    animation: leftTailFin 0.4s linear alternate infinite;
+  }
+  .backRightFin {
+    height: 25px;
+    width: 7px;
+    top: 8px;
+    left: 1px;
+    transform: rotate(60deg);
+    transform-origin: top;
+    animation: rightTailFin 0.4s linear alternate infinite;
+  }
+
+  @keyframes rightTailFin {
+    0% {
+      transform: rotate(60deg);
     }
-    @keyframes leftTailFin {
-        0% {
-            transform: rotate(-40deg);
-        }
-        100% {
-            transform: rotate(-60deg);
-        }
+    100% {
+      transform: rotate(40deg);
     }
-    @keyframes moveRightFin {
-        0% {
-            transform: rotate(5deg);
-        }
-        100% {
-            transform: rotate(40deg);
-        }
+  }
+  @keyframes leftTailFin {
+    0% {
+      transform: rotate(-40deg);
     }
-    @keyframes moveLeftFin {
-        0% {
-            transform: rotate(-5deg);
-        }
-        100% {
-            transform: rotate(-40deg);
-        }
+    100% {
+      transform: rotate(-60deg);
     }
-    @keyframes swim {
-        25% {
-            rotate: 40deg;
-        }
-        50% {
-            rotate: 45deg;
-        }
-        75% {
-            rotate: 50deg;
-        }
-        100% {
-            rotate: 45deg;
-        }
+  }
+  @keyframes moveRightFin {
+    0% {
+      transform: rotate(5deg);
     }
+    100% {
+      transform: rotate(40deg);
+    }
+  }
+  @keyframes moveLeftFin {
+    0% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(-40deg);
+    }
+  }
+  @keyframes swim {
+    25% {
+      rotate: 40deg;
+    }
+    50% {
+      rotate: 45deg;
+    }
+    75% {
+      rotate: 50deg;
+    }
+    100% {
+      rotate: 45deg;
+    }
+  }
 </style>
