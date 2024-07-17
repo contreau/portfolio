@@ -2,6 +2,7 @@
 const { title, description } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 const currentPath = Astro.url.pathname;
+const date = new Date().getFullYear();
 ---
 
 <html lang="en">
@@ -59,7 +60,9 @@ const currentPath = Astro.url.pathname;
     <main>
       <slot />
     </main>
-
+    <footer>
+      <p>&copy; {date} • CK</p>
+    </footer>
     <style lang="scss" is:global>
       :root {
         --text: #3a3a3a;
@@ -96,13 +99,10 @@ const currentPath = Astro.url.pathname;
         background-color: var(--background);
         color: var(--text);
         font-family: system-ui;
-        padding: 0 3em;
       }
 
-      @media (min-width: 1500px) {
-        body {
-          padding: 0 6em;
-        }
+      main {
+        padding: 0 3em;
       }
 
       a {
@@ -135,7 +135,7 @@ const currentPath = Astro.url.pathname;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 1.5rem;
-        padding: 1.5em 0;
+        padding: 1.5em 3em;
         background-color: var(--background);
         position: sticky;
         top: 0;
@@ -188,6 +188,25 @@ const currentPath = Astro.url.pathname;
 
       h1 {
         font-weight: 650;
+      }
+
+      footer {
+        text-align: center;
+        p {
+          padding: 1.5em 0 0 0;
+          color: var(--primary);
+          font-weight: 500;
+        }
+      }
+
+      @media (min-width: 1500px) {
+        main {
+          padding: 0 6em;
+        }
+        header {
+          padding-left: 6em;
+          padding-right: 6em;
+        }
       }
     </style>
   </body>

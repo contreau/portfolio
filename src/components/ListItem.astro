@@ -31,14 +31,18 @@ const { name, url, description, jobtype, tools } = Astro.props;
 
 <style lang="scss" scoped>
   li {
+    background-color: #d7d4d4;
+    padding: 1em;
     list-style-type: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    max-width: fit-content;
   }
 
   p.description {
     font-style: italic;
     font-size: 1.05rem;
-    color: #535353;
-    max-width: 65%;
+    color: #5a5959;
   }
 
   div.tags {
@@ -49,7 +53,6 @@ const { name, url, description, jobtype, tools } = Astro.props;
 
   div.job-type,
   div.tools {
-    // border: solid 1px var(--text);
     max-width: fit-content;
     padding: 0.1em 0.4em;
     border-radius: 5px;
@@ -67,6 +70,7 @@ const { name, url, description, jobtype, tools } = Astro.props;
 
   h3 {
     color: #3a3a3a;
+    margin-top: 0;
     a {
       text-decoration: underline;
     }
