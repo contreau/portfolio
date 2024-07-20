@@ -10,6 +10,36 @@ import ListItem from "../components/ListItem.astro";
   title="Web Developer"
   description="Creative frontend developer making expressive and useful web resources."
 >
+  <section class="about">
+    <h2>Get a Load of This Guy</h2>
+
+    <p>
+      I'm a Web Associate for GW's <a
+        href="https://gwdocs.com/"
+        target="_blank"
+      >
+        Medical Faculty Associates</a
+      > and <a href="https://smhs.gwu.edu/" target="_blank">
+        School of Medicine & Health Sciences</a
+      >. I work on nearly every website within the GW academic medical
+      enterprise, which has entailed:
+    </p>
+    <div>
+      <ul class="responsibilities">
+        <li>
+          Website and intranet development for stakeholders across dozens of
+          specialties and departments
+        </li>
+        <li>Quality assurance - auditing broken links and optimizing files</li>
+        <li>Creating reusable styled components or site-specific features</li>
+        <li>
+          Coding custom scripts / tooling to automate or simplify workflows
+        </li>
+
+        <li>Testing new system-wide features prior to code deployments</li>
+      </ul>
+    </div>
+  </section>
   <section class="featured-work">
     <h2>Featured Projects</h2>
     <ul class="item-group">
@@ -84,5 +114,16 @@ import ListItem from "../components/ListItem.astro";
 
   section + section {
     margin-top: 3.5rem;
+  }
+
+  .about div {
+    max-width: fit-content;
+    background-color: #d7d4d4;
+    padding: 0.05em 1em;
+    border-radius: 10px;
+  }
+
+  .responsibilities li::marker {
+    color: var(--primary);
   }
 </style>

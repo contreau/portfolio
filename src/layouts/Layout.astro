@@ -3,6 +3,7 @@ const { title, description } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 const currentPath = Astro.url.pathname;
 const date = new Date().getFullYear();
+import Image from "astro/components/Image.astro";
 ---
 
 <html lang="en">
@@ -35,6 +36,13 @@ const date = new Date().getFullYear();
         </h1>
         <span>Web Developer</span>
       </div>
+      <Image
+        src="/logo--100x100-min.png"
+        alt="White curly brackets on a green circle"
+        height="57"
+        width="57"
+        class="logo"
+      />
       <nav>
         <ul>
           <li>
@@ -136,7 +144,8 @@ const date = new Date().getFullYear();
         justify-content: space-between;
         margin-bottom: 1.5rem;
         padding: 1.5em 3em;
-        backdrop-filter: blur(12.5px);
+        background-color: var(--background);
+        // backdrop-filter: blur(12.5px);
         position: sticky;
         top: 0;
         z-index: 5;
@@ -144,6 +153,11 @@ const date = new Date().getFullYear();
         h1 {
           margin-top: 0;
           margin-bottom: 0;
+        }
+
+        img {
+          margin-right: auto;
+          margin-left: 2rem;
         }
 
         span:not(h1 > span) {
