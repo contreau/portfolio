@@ -144,8 +144,7 @@ import Image from "astro/components/Image.astro";
         justify-content: space-between;
         margin-bottom: 1.5rem;
         padding: 1.5em 3em;
-        background-color: var(--background);
-        // backdrop-filter: blur(12.5px);
+        backdrop-filter: blur(12.5px);
         position: sticky;
         top: 0;
         z-index: 5;
@@ -169,6 +168,10 @@ import Image from "astro/components/Image.astro";
         }
 
         nav {
+          main {
+            padding: 0 1em;
+          }
+
           ul {
             list-style-type: none;
             padding-left: 0;
@@ -187,7 +190,32 @@ import Image from "astro/components/Image.astro";
         }
       }
 
-      // Font Configurations ** //
+      @media (max-width: 875px) {
+        header {
+          flex-direction: column;
+          gap: 1.5rem;
+          position: relative;
+
+          nav {
+            ul {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+
+              li + li {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+
+        img.logo {
+          margin: 0 auto;
+        }
+      }
+
+      /* Font Configurations */
 
       p {
         font-size: 1.125rem;
