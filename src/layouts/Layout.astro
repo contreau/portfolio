@@ -47,16 +47,18 @@ import Image from "astro/components/Image.astro";
         <ul>
           <li>
             <a
-              class={currentPath === "/" ? "page-active" : "site-page"}
-              href="/">Development</a
+              class={currentPath === "/"
+                ? "page-active portfolio-link"
+                : "site-page portfolio link"}
+              href="/">Dev Portfolio</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a
               class={currentPath === "/visuals" ? "page-active" : "site-page"}
               href="visuals">Visuals</a
             >
-          </li>
+          </li> -->
           <li>
             <a href="https://github.com/contreau" target="_blank">GitHub</a>
           </li>
