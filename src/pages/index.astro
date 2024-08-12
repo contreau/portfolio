@@ -10,8 +10,17 @@ import ListItem from "../components/ListItem.astro";
   title="Web Developer"
   description="Creative frontend developer making expressive and useful web resources."
 >
+  <div class="page-break mobile-page-break"></div>
   <section class="about">
     <h2>Get a Load of This Guy</h2>
+
+    <Image
+      src="/me--200x200-min.png"
+      alt="Conor's pixellated head"
+      height="180"
+      width="180"
+      class="mobile-me"
+    />
 
     <p>
       I'm a Web Associate for <a href="https://gwdocs.com/" target="_blank">
@@ -38,6 +47,7 @@ import ListItem from "../components/ListItem.astro";
         alt="Conor's pixellated head"
         height="180"
         width="180"
+        class="desktop-me"
       />
     </div>
   </section>
@@ -51,7 +61,7 @@ import ListItem from "../components/ListItem.astro";
         name="SMHS Faculty Listing Generator"
         url="https://github.com/contreau/smhs-faculty-generator"
         description={`A command line interface (CLI) tool that is both a web scraper and HTML generator. Developed to expedite my workflow
-            in updating thousands of lines of HTML in faculty pages across all GW School of Medicine & Health Sciences (SMHS) websites.`}
+            in auditing several hundred faculty members' status in our database and updating thousands of lines of HTML in faculty pages across all GW SMHS websites.`}
         jobtype="GW MFA & SMHS"
         tools="JavaScript, Node.js"
       />
@@ -142,6 +152,11 @@ import ListItem from "../components/ListItem.astro";
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
 
+  .mobile-me {
+    // image of me only for mobile display
+    display: none;
+  }
+
   .responsibilities {
     padding: 1em 0.5em;
     padding-left: 2em;
@@ -154,6 +169,10 @@ import ListItem from "../components/ListItem.astro";
     li {
       font-style: italic;
       color: #5a5959;
+    }
+
+    li + li {
+      margin-top: 0.5rem;
     }
   }
 
@@ -170,5 +189,50 @@ import ListItem from "../components/ListItem.astro";
     margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .mobile-page-break {
+    display: none;
+  }
+
+  @media (max-width: 875px) {
+    .mobile-page-break {
+      display: block;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .about img {
+      padding: 1em;
+    }
+    img.mobile-me {
+      display: block;
+      margin: 0 auto;
+      max-width: 150px;
+      height: 100%;
+    }
+
+    img.desktop-me {
+      display: none;
+    }
+
+    .about div {
+      grid-template-columns: 1fr;
+      place-items: center;
+      gap: 2.5rem;
+    }
+
+    .about p {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .responsibilities {
+      li + li {
+        margin-top: 1rem;
+      }
+    }
   }
 </style>

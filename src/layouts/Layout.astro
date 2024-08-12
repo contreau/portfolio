@@ -195,25 +195,42 @@ import Image from "astro/components/Image.astro";
       @media (max-width: 875px) {
         header {
           flex-direction: column;
-          gap: 1.5rem;
+          gap: 0.5rem;
           position: relative;
+          margin-bottom: 0;
 
           nav {
+            margin-top: 0.5rem;
             ul {
               display: flex;
+              align-items: center;
               flex-direction: column;
               justify-content: center;
               text-align: center;
+              margin: 0 auto;
 
               li + li {
                 margin-left: 0;
               }
             }
           }
+
+          .portfolio-link {
+            display: none;
+          }
+
+          span:not(h1 > span) {
+            text-align: center;
+            display: block;
+          }
         }
 
         img.logo {
           margin: 0 auto;
+        }
+
+        main {
+          padding: 0 1.25em;
         }
       }
 
