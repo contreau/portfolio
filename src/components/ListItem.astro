@@ -81,7 +81,11 @@ const { name, url, description, jobtype, tools } = Astro.props;
       text-align: center;
     }
     div.tags {
-      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    div.tools p,
+    div.job-type p {
+      font-size: clamp(0.75rem, 5vw, 0.95rem);
     }
   }
 </style>
