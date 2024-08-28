@@ -11,12 +11,8 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^5.2.0",
-    "@fontsource-variable/maven-pro": "^5.0.15",
-    "@fontsource/roboto": "^5.0.13",
     "@vercel/analytics": "^1.1.1",
-    "astro": "^3.4.3"
-  },
-  "devDependencies": {
-    "sass": "^1.74.1"
+    "astro": "^3.4.3",
+    "sass": "^1.77.8"
   }
 }

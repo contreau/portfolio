@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import ListItem from "../components/ListItem.astro";
 ---
 
 <meta property="og:url" content="https://conorkelley.me" />
@@ -9,13 +10,246 @@ import { Image } from "astro:assets";
   title="Web Developer"
   description="Creative frontend developer making expressive and useful web resources."
 >
-  <!-- <Image
-        class="me"
-        src="/me-pixels.png"
-        alt="me"
-        width="200"
-        height="286"
-      /> -->
+  <div class="page-break mobile-page-break"></div>
+  <section class="about">
+    <div class="grid">
+      <div>
+        <h2>Get a Load of This Guy</h2>
+        <Image
+          src="/me--200x200-min.png"
+          alt="Conor's pixellated head"
+          height="180"
+          width="180"
+          class="mobile-me"
+        />
+        <p>
+          Hey! I'm Conor. I'm based in Brooklyn, NY and work as a Web Associate
+          for <a href="https://gwdocs.com/" target="_blank"> GW Medicine</a>,
+          where I touch nearly every website within the GW academic medical
+          enterprise.
+        </p>
+        <p>
+          Before that I was a web designer for <a
+            href="https://www.bumc.bu.edu/camed/"
+            target="_blank"
+          >
+            Boston University School of Medicine</a
+          >. I love to problem-solve with code and develop useful tools for
+          colleagues and strangers alike.
+        </p>
+      </div>
+      <Image
+        src="/me--200x200-min.png"
+        alt="Conor's pixellated head"
+        height="210"
+        width="210"
+        class="desktop-me"
+      />
+    </div>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section class="featured-work">
+    <h2>Featured Projects</h2>
+    <ul class="item-group">
+      <ListItem
+        name="SMHS Faculty Listing Generator"
+        url="https://github.com/contreau/smhs-faculty-generator"
+        description={`A command line interface (CLI) tool that is both a web scraper and HTML generator. Developed to expedite my workflow
+            in auditing several hundred faculty members' status in our database and updating thousands of lines of HTML in faculty pages across all GW SMHS websites.`}
+        jobtype="GW Medicine"
+        tools="JavaScript, Node.js"
+      />
+
+      <ListItem
+        name="CTSI Virtual Organizer"
+        url="https://ctsicn.org/virtual-organizer"
+        description={`An interactive navigational graphic developed for the Clinical and
+          Translational Science Institute (CTSI) at Children's National
+          Hospital.`}
+        jobtype="GW Medicine"
+        tools="JavaScript, SCSS, Drupal"
+      />
+
+      <ListItem
+        name="CiteClinic"
+        url="https://citeclinic.app/"
+        description={`Easily retrieve citation information from any journal article with a
+          valid Digital Object Identifier (DOI) and generate customizable
+          citation components for use on any site or CMS.`}
+        jobtype="Personal"
+        tools="SvelteKit, TypeScript, SCSS, APIs"
+      />
+
+      <ListItem
+        name="Darqnet Ceremony"
+        url="https://github.com/darqnet/darqnet-ceremony"
+        description={`Created a UI for a cryptographic Web3 application that was formerly a command line interface.`}
+        jobtype="Freelance"
+        tools="Vue, JavaScript, CSS"
+      />
+
+      <ListItem
+        name="ISS Live Tracker"
+        url="https://live-tracker-iss.netlify.app/"
+        description={`A simple live tracker of the International Space Station. Provides detailed location information and map control.`}
+        jobtype="Personal"
+        tools="JavaScript, Leaflet, APIs"
+      />
+    </ul>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section class="musings">
+    <h2>Musings</h2>
+    <ul class="item-group">
+      <ListItem
+        name="Snek"
+        url="https://snekgame.app/"
+        description={`An aesthetically pleasing snake game with three modes. Try for a high score in each ;)`}
+        jobtype="Personal"
+        tools="Svelte, TypeScript, SCSS"
+      />
+
+      <ListItem
+        name="Koi Pond"
+        url="https://contreau.github.io/koi-pond/"
+        description={`A tranquil koi pond made of pure CSS. Ahhh... zen...`}
+        jobtype="Personal"
+        tools="CSS"
+      />
+    </ul>
+  </section>
 </Layout>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .item-group {
+    padding: 0em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 3rem;
+  }
+
+  section.featured-work,
+  section.musings {
+    padding: 0 1em;
+  }
+
+  .featured-work h2:first-of-type {
+    margin-top: 0;
+  }
+
+  section + section {
+    margin-top: 3.5rem;
+  }
+
+  section.about {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    padding: 1.5em 1em;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .about div.grid {
+    display: grid;
+    grid-template-columns: 65% 25%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .about img {
+    padding: 0.5em;
+    background-color: #cac9c9;
+    background-image: url(/plus.svg);
+    background-repeat: space;
+    background-size: 10px;
+    border-radius: 15px;
+    box-shadow:
+      rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    rotate: 10deg;
+    transition:
+      transform 0.4s,
+      rotate 0.6s;
+  }
+
+  .about img.mobile-me {
+    rotate: 0deg;
+  }
+
+  .about:hover img.desktop-me {
+    rotate: 5deg;
+    transform: scale(1.08);
+  }
+
+  .mobile-me {
+    // image of me only for mobile display
+    display: none;
+  }
+
+  .page-break {
+    min-height: 3.5px;
+    width: 100px;
+    background-color: #028975;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-page-break {
+    display: none;
+  }
+
+  @media (max-width: 875px) {
+    .mobile-page-break {
+      display: block;
+      margin-top: 0.5rem;
+      // margin-bottom: 2rem;
+    }
+
+    section.about div.grid {
+      display: block;
+    }
+
+    img.mobile-me {
+      display: block;
+      margin: 0 auto;
+      max-width: 150px;
+      height: 100%;
+    }
+
+    img.desktop-me {
+      display: none;
+    }
+
+    .about div {
+      grid-template-columns: 1fr;
+      place-items: center;
+      gap: 2.5rem;
+    }
+
+    .about p {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    section.featured-work,
+    section.musings {
+      padding: 0em;
+    }
+  }
+</style>
