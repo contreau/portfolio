@@ -12,41 +12,37 @@ import ListItem from "../components/ListItem.astro";
 >
   <div class="page-break mobile-page-break"></div>
   <section class="about">
-    <h2>Get a Load of This Guy</h2>
-
-    <Image
-      src="/me--200x200-min.png"
-      alt="Conor's pixellated head"
-      height="180"
-      width="180"
-      class="mobile-me"
-    />
-
-    <p>
-      I'm a Web Associate for <a href="https://gwdocs.com/" target="_blank">
-        GW Medicine</a
-      >. I work on nearly every website within the GW academic medical
-      enterprise, which entails...
-    </p>
-    <div>
-      <ul class="responsibilities">
-        <li>
-          Website and intranet development for stakeholders across dozens of
-          specialties and departments
-        </li>
-        <li>Quality assurance - auditing broken links and optimizing files</li>
-        <li>Creating reusable styled components or site-specific features</li>
-        <li>
-          Coding custom scripts / tooling to automate or simplify workflows
-        </li>
-
-        <li>Testing new system-wide features prior to code deployments</li>
-      </ul>
+    <div class="grid">
+      <div>
+        <h2>Get a Load of This Guy</h2>
+        <Image
+          src="/me--200x200-min.png"
+          alt="Conor's pixellated head"
+          height="180"
+          width="180"
+          class="mobile-me"
+        />
+        <p>
+          Hey! I'm Conor. I'm based in Brooklyn, NY and work as a Web Associate
+          for <a href="https://gwdocs.com/" target="_blank"> GW Medicine</a>,
+          where I touch nearly every website within the GW academic medical
+          enterprise.
+        </p>
+        <p>
+          Before that I was a web designer for <a
+            href="https://www.bumc.bu.edu/camed/"
+            target="_blank"
+          >
+            Boston University School of Medicine</a
+          >. I love to problem-solve with code and develop useful tools for
+          colleagues and strangers alike.
+        </p>
+      </div>
       <Image
         src="/me--200x200-min.png"
         alt="Conor's pixellated head"
-        height="180"
-        width="180"
+        height="210"
+        width="210"
         class="desktop-me"
       />
     </div>
@@ -62,7 +58,7 @@ import ListItem from "../components/ListItem.astro";
         url="https://github.com/contreau/smhs-faculty-generator"
         description={`A command line interface (CLI) tool that is both a web scraper and HTML generator. Developed to expedite my workflow
             in auditing several hundred faculty members' status in our database and updating thousands of lines of HTML in faculty pages across all GW SMHS websites.`}
-        jobtype="GW MFA & SMHS"
+        jobtype="GW Medicine"
         tools="JavaScript, Node.js"
       />
 
@@ -72,7 +68,7 @@ import ListItem from "../components/ListItem.astro";
         description={`An interactive navigational graphic developed for the Clinical and
           Translational Science Institute (CTSI) at Children's National
           Hospital.`}
-        jobtype="GW MFA & SMHS"
+        jobtype="GW Medicine"
         tools="JavaScript, SCSS, Drupal"
       />
 
@@ -84,6 +80,14 @@ import ListItem from "../components/ListItem.astro";
           citation components for use on any site or CMS.`}
         jobtype="Personal"
         tools="SvelteKit, TypeScript, SCSS, APIs"
+      />
+
+      <ListItem
+        name="Darqnet Ceremony"
+        url="https://github.com/darqnet/darqnet-ceremony"
+        description={`Created a UI for a cryptographic Web3 application that was formerly a command line interface.`}
+        jobtype="Freelance"
+        tools="Vue, JavaScript, CSS"
       />
 
       <ListItem
@@ -128,6 +132,10 @@ import ListItem from "../components/ListItem.astro";
     grid-row-gap: 3rem;
   }
 
+  section.featured-work {
+    padding: 1.5em 1em;
+  }
+
   .featured-work h2:first-of-type {
     margin-top: 0;
   }
@@ -136,7 +144,21 @@ import ListItem from "../components/ListItem.astro";
     margin-top: 3.5rem;
   }
 
-  .about div {
+  section.about {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    padding: 1.5em 1em;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .about div.grid {
     display: grid;
     grid-template-columns: 65% 25%;
     align-items: center;
@@ -144,40 +166,34 @@ import ListItem from "../components/ListItem.astro";
   }
 
   .about img {
-    padding: 1.25em;
-    background-color: #017b6963;
-    border-radius: 50%;
+    padding: 0.5em;
+    background-color: #cac9c9;
+    background-image: url(/plus.svg);
+    background-repeat: space;
+    background-size: 10px;
+    border-radius: 15px;
     box-shadow:
-      rgba(0, 0, 0, 0.25) 0px 14px 28px,
-      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    rotate: 10deg;
+    transition:
+      transform 0.4s,
+      rotate 0.6s;
+  }
+
+  .about img.mobile-me {
+    rotate: 0deg;
+  }
+
+  .about:hover img.desktop-me {
+    rotate: 5deg;
+    transform: scale(1.08);
   }
 
   .mobile-me {
     // image of me only for mobile display
     display: none;
-  }
-
-  .responsibilities {
-    padding: 1em 0.5em;
-    padding-left: 2em;
-    margin-bottom: 0;
-    border-radius: 10px;
-    max-width: fit-content;
-    background-color: #d7d4d4;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-
-    li {
-      font-style: italic;
-      color: #5a5959;
-    }
-
-    li + li {
-      margin-top: 0.5rem;
-    }
-  }
-
-  .responsibilities li::marker {
-    color: var(--primary);
   }
 
   .page-break {
@@ -201,11 +217,11 @@ import ListItem from "../components/ListItem.astro";
       margin-top: 0.5rem;
       // margin-bottom: 2rem;
     }
-    .about img {
-      padding: 1em;
-      background-color: transparent;
-      box-shadow: none;
+
+    section.about div.grid {
+      display: block;
     }
+
     img.mobile-me {
       display: block;
       margin: 0 auto;
@@ -231,10 +247,8 @@ import ListItem from "../components/ListItem.astro";
       text-align: center;
     }
 
-    .responsibilities {
-      li + li {
-        margin-top: 1rem;
-      }
+    section.featured-work {
+      padding: 0em;
     }
   }
 </style>
