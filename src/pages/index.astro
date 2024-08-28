@@ -132,8 +132,9 @@ import ListItem from "../components/ListItem.astro";
     grid-row-gap: 3rem;
   }
 
-  section.featured-work {
-    padding: 1.5em 1em;
+  section.featured-work,
+  section.musings {
+    padding: 0 1em;
   }
 
   .featured-work h2:first-of-type {
@@ -147,7 +148,6 @@ import ListItem from "../components/ListItem.astro";
   section.about {
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
@@ -247,7 +247,8 @@ import ListItem from "../components/ListItem.astro";
       text-align: center;
     }
 
-    section.featured-work {
+    section.featured-work,
+    section.musings {
       padding: 0em;
     }
   }
