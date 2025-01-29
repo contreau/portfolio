@@ -1,6 +1,5 @@
 ---
-const { title, description } = Astro.props;
-import { ViewTransitions } from "astro:transitions";
+const { description } = Astro.props;
 const currentPath = Astro.url.pathname;
 const date = new Date().getFullYear();
 import Image from "astro/components/Image.astro";
@@ -16,259 +15,124 @@ import Image from "astro/components/Image.astro";
       content="https://conorkelley.me/ck-og-img-min.jpg"
     />
     <meta property="og:type" content="website" />
-    <title>Conor Kelley • {title}</title>
-    <meta name="title" content=`Conor Kelley • ${title}` />
-    <meta property="og:title" content=`Conor Kelley • ${title}` />
+    <title>Conor Kelley</title>
+    <meta name="title" content=`Conor Kelley` />
+    <meta property="og:title" content=`Conor Kelley` />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <ViewTransitions fallback="animate" />
     <slot name="metadata" />
   </head>
   <body>
-    <header>
-      <div>
-        <h1 class="title-name">
-          <span style="color: var(--primary)">Conor</span>Kelley
-        </h1>
-        <span>Web Developer</span>
-      </div>
-      <Image
-        src="/logo--100x100-min.png"
-        alt="White curly brackets on a green circle"
-        height="57"
-        width="57"
-        class="logo"
-      />
-      <nav>
-        <ul>
-          <li>
-            <a
-              class={currentPath === "/"
-                ? "page-active portfolio-link"
-                : "site-page portfolio link"}
-              href="/">Dev Portfolio</a
-            >
-          </li>
-          <!-- <li>
-            <a
-              class={currentPath === "/visuals" ? "page-active" : "site-page"}
-              href="visuals">Visuals</a
-            >
-          </li> -->
-          <li>
-            <a href="https://github.com/contreau" target="_blank">GitHub</a>
-          </li>
-          <li><a href="cv.pdf" target="_blank">CV</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <main>
+      <header>
+        <Image
+          src={"/me-min.png"}
+          height="75"
+          width="75"
+          alt="Headshot of Conor Kelley"
+        />
+        <div>
+          <h1 class="title-name">
+            <span style="color: var(--primary);">Conor</span>Kelley
+          </h1>
+          <span style="color: var(--text);">Web Developer</span>
+        </div>
+      </header>
       <slot />
     </main>
+
     <footer>
       <p>&copy; {date} • CK</p>
     </footer>
-    <style lang="scss" is:global>
-      :root {
-        --text: #3a3a3a;
-        --background: #e8e8e8;
-        --primary: #017b69;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        font-size: 112.5%; /*18px*/
-        width: 100vw;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      body {
-        position: relative;
-        font-weight: 400;
-        line-height: 1.75;
-        background-color: var(--background);
-        color: var(--text);
-        font-family: system-ui;
-      }
-
-      main {
-        padding: 0 3em;
-      }
-
-      a {
-        color: var(--primary);
-        position: relative;
-        text-decoration: none;
-
-        &.site-page {
-          color: var(--text);
-          text-decoration: none;
-        }
-      }
-
-      a.page-active {
-        color: var(--text);
-        text-decoration: none;
-
-        &::before {
-          content: "";
-          position: absolute;
-          background-color: var(--primary);
-          bottom: -4px;
-          min-height: 3px;
-          width: 100%;
-        }
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        padding: 1.5em 3em;
-        backdrop-filter: blur(12.5px);
-        position: sticky;
-        top: 0;
-        z-index: 5;
-
-        h1 {
-          margin-top: 0;
-          margin-bottom: 0;
-        }
-
-        img {
-          margin-right: auto;
-          margin-left: 2rem;
-        }
-
-        span:not(h1 > span) {
-          color: #535353;
-          font-weight: 550;
-          font-size: 1.05rem;
-          padding-left: 0.15em;
-          font-style: italic;
-        }
-
-        nav {
-          main {
-            padding: 0 1em;
-          }
-
-          ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-
-            li {
-              display: inline;
-              font-weight: 550;
-              font-size: 1.125rem;
-            }
-
-            li + li {
-              margin-left: 3rem;
-            }
-          }
-        }
-      }
-
-      @media (max-width: 875px) {
-        header {
-          flex-direction: column;
-          gap: 0.5rem;
-          position: relative;
-          margin-bottom: 0;
-
-          nav {
-            margin-top: 0.5rem;
-            ul {
-              display: flex;
-              align-items: center;
-              flex-direction: column;
-              justify-content: center;
-              text-align: center;
-              margin: 0 auto;
-
-              li + li {
-                margin-left: 0;
-              }
-            }
-          }
-
-          .portfolio-link {
-            display: none;
-          }
-
-          span:not(h1 > span) {
-            text-align: center;
-            display: block;
-          }
-        }
-
-        img.logo {
-          margin: 0 auto;
-        }
-
-        main {
-          padding: 0 1.25em;
-        }
-      }
-
-      /* Font Configurations */
-
-      p {
-        font-size: 1.125rem;
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: system-ui;
-        line-height: 1.3;
-      }
-
-      h1 {
-        font-weight: 650;
-      }
-
-      footer {
-        text-align: center;
-        p {
-          padding: 1.5em 0 0 0;
-          color: var(--primary);
-          font-weight: 500;
-        }
-      }
-
-      @media (min-width: 1500px) {
-        main {
-          padding: 0 6em;
-        }
-        header {
-          padding-left: 6em;
-          padding-right: 6em;
-        }
-      }
-    </style>
   </body>
 </html>
+
+<style lang="scss" is:global>
+  :root {
+    --text: #b4b4b4;
+    --background: #161616;
+    --primary: #ffffff;
+    --page-padding: 0 15em;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 112.5%; /*18px*/
+    width: 100vw;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  body {
+    position: relative;
+    font-weight: 400;
+    line-height: 1.75;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: system-ui;
+  }
+
+  main {
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 640px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+  }
+
+  /* Font Configurations */
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: system-ui;
+    line-height: 1.3;
+  }
+
+  h1 {
+    font-weight: 550;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h2,
+  h3 {
+    font-weight: 350;
+    color: var(--primary);
+  }
+
+  footer {
+    text-align: center;
+    p {
+      padding: 1.5em 0 0 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+  }
+</style>
