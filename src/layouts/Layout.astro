@@ -25,17 +25,26 @@ import Image from "astro/components/Image.astro";
   <body>
     <main>
       <header>
-        <Image
-          src={"/me-min.png"}
-          height="75"
-          width="75"
-          alt="Headshot of Conor Kelley"
-        />
+        <a href="/">
+          <Image
+            src={"/me-min.png"}
+            height="75"
+            width="75"
+            alt="Headshot of Conor Kelley"
+            loading="eager"
+          />
+        </a>
         <div>
           <h1 class="title-name">
-            <span style="color: var(--primary);">Conor</span>Kelley
+            <a href="/"
+              ><span style="color: var(--primary);">Conor</span><span
+                style="color: #efefef;">Kelley</span
+              ></a
+            >
           </h1>
-          <span style="color: var(--text);">Web Developer</span>
+          <p class="title-profession" style="color: var(--text);">
+            Web Developer
+          </p>
         </div>
       </header>
       <slot />
@@ -47,11 +56,11 @@ import Image from "astro/components/Image.astro";
   </body>
 </html>
 
-<style lang="scss" is:global>
+<style is:global>
   :root {
     --text: #b4b4b4;
     --background: #161616;
-    --primary: #ffffff;
+    --primary: #70a4f0;
     --page-padding: 0 15em;
   }
 
@@ -75,10 +84,10 @@ import Image from "astro/components/Image.astro";
   img {
     max-width: 100%;
     display: block;
+    height: auto;
   }
 
   body {
-    position: relative;
     font-weight: 400;
     line-height: 1.75;
     background-color: var(--background);
@@ -86,12 +95,20 @@ import Image from "astro/components/Image.astro";
     font-family: system-ui;
   }
 
+  a {
+    color: var(--text);
+    transition: color 0.2s;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
   main {
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 640px;
+    max-width: 750px;
   }
 
   header {
@@ -102,10 +119,23 @@ import Image from "astro/components/Image.astro";
     gap: 1.5rem;
   }
 
+  .title-profession {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  h1 a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      color: var(--text);
+    }
+  }
+
   /* Font Configurations */
 
   p {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
   }
 
   h1,
@@ -121,9 +151,13 @@ import Image from "astro/components/Image.astro";
     margin-top: 0;
   }
 
+  h2 {
+    font-size: 1.2rem;
+  }
+
   h2,
   h3 {
-    font-weight: 350;
+    font-weight: 425;
     color: var(--primary);
   }
 
@@ -133,6 +167,15 @@ import Image from "astro/components/Image.astro";
       padding: 1.5em 0 0 0;
       color: var(--text);
       font-weight: 500;
+    }
+  }
+
+  @media (max-width: 750px) {
+    main {
+      padding-inline: 1em;
+    }
+    p {
+      font-size: 0.9rem;
     }
   }
 </style>

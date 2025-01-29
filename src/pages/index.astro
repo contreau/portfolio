@@ -11,79 +11,99 @@ import ListItem from "../components/ListItem.astro";
 >
   <section class="about">
     <h2>about me</h2>
-    <p>Working in healthcare. Based in NYC.</p>
+    <p>Frontend developer and on-off photographer based in NYC.</p>
   </section>
 
-  <!-- <section class="featured-work">
-    <h2>Featured Projects</h2>
-    <ul class="item-group">
-      <ListItem
-        name="SMHS Faculty Listing Generator"
-        url="https://github.com/contreau/smhs-faculty-generator"
-        description={`A command line interface (CLI) tool that is both a web scraper and HTML generator. Developed to expedite my workflow
-            in auditing several hundred faculty members' status in our database and updating thousands of lines of HTML in faculty pages across all GW SMHS websites.`}
-        jobtype="GW Medicine"
-        tools="JavaScript, Node.js"
-      />
+  <section class="current">
+    <h2>currently</h2>
+    <p>
+      I support the web development needs of patients, providers, and faculty at
+      the <a href="https://gwdocs.com/" target="_blank">GW MFA</a>.
+    </p>
+    <p>
+      I also write code for personal use, freelance work, and technical
+      exploration.
+    </p>
+  </section>
 
-      <ListItem
-        name="CTSI Virtual Organizer"
-        url="https://ctsicn.org/virtual-organizer"
-        description={`An interactive navigational graphic developed for the Clinical and
-          Translational Science Institute (CTSI) at Children's National
-          Hospital.`}
-        jobtype="GW Medicine"
-        tools="JavaScript, SCSS, Drupal"
-      />
+  <section class="highlighted">
+    <h2>highlighted projects</h2>
+    <div class="project-item">
+      <p class="project-name">
+        <a href="https://komp3nd1um.app" target="_blank">Kompendium</a>
+      </p>
+      <p class="project-description">
+        A digital archive of my late friend Konrad Rauscher's 800+ playlists.
+      </p>
+    </div>
 
-      <ListItem
-        name="CiteClinic"
-        url="https://cite-clinic.vercel.app/"
-        description={`Easily retrieve citation information from any journal article with a
-          valid Digital Object Identifier (DOI) and generate customizable
-          citation components for use on any site or CMS.`}
-        jobtype="Personal"
-        tools="SvelteKit, TypeScript, SCSS, APIs"
-      />
+    <div class="project-item">
+      <p class="project-name">
+        <a href="https://snekgame.app" target="_blank">Snek</a>
+      </p>
+      <p class="project-description">
+        My take on the classic snake game with three game modes.
+      </p>
+    </div>
 
-      <ListItem
-        name="Darqnet Ceremony"
-        url="https://github.com/darqnet/darqnet-ceremony"
-        description={`Created a UI for a cryptographic Web3 application that was formerly a command line interface.`}
-        jobtype="Freelance"
-        tools="Vue, JavaScript, CSS"
-      />
-
-      <ListItem
-        name="ISS Live Tracker"
-        url="https://live-tracker-iss.netlify.app/"
-        description={`A simple live tracker of the International Space Station. Provides detailed location information and map control.`}
-        jobtype="Personal"
-        tools="JavaScript, Leaflet, APIs"
-      />
-    </ul>
+    <div class="project-item">
+      <p class="project-name">
+        <a href="https://cite-clinic.vercel.app" target="_blank">CiteClinic</a>
+      </p>
+      <p class="project-description">
+        A customizable citation generator for any journal article with a valid
+        DOI.
+      </p>
+    </div>
   </section>
 
   <section class="musings">
-    <h2>Musings</h2>
-    <ul class="item-group">
-      <ListItem
-        name="Snek"
-        url="https://snekgame.app/"
-        description={`An aesthetically pleasing snake game with three modes. Try for a high score in each ;)`}
-        jobtype="Personal"
-        tools="Svelte, TypeScript, SCSS"
-      />
+    <h2>musings</h2>
+    <p>More playful than practical.</p>
+    <div class="project-item">
+      <p class="project-name">
+        <a href="https://contreau.github.io/koi-pond/" target="_blank"
+          >Koi Pond</a
+        >
+      </p>
+      <p class="project-description">A charming koi pond powered by CSS.</p>
+    </div>
+  </section>
 
-      <ListItem
-        name="Koi Pond"
-        url="https://contreau.github.io/koi-pond/"
-        description={`A tranquil koi pond made of pure CSS. Ahhh... zen...`}
-        jobtype="Personal"
-        tools="CSS"
-      />
-    </ul>
-  </section> -->
+  <section class="connect">
+    <h2>connect</h2>
+    <p>
+      Read my <a href="/cv.pdf" target="_blank">CV</a>, view my code on <a
+        href="https://github.com/contreau"
+        target="_blank">GitHub</a
+      >, or <a href="mailto:cfk102@gmail.com">write to me</a>.
+    </p>
+  </section>
 </Layout>
 
-<style lang="scss" scoped></style>
+<style scoped>
+  section {
+    margin-bottom: 1rem;
+  }
+  .project-item {
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .project-item + .project-item {
+    margin-top: 1.5rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 750px) {
+    .project-description {
+      font-size: 0.85rem;
+    }
+  }
+</style>
