@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import ListItem from "../components/ListItem.astro";
 ---
 
 <meta property="og:url" content="https://conorkelley.me" />
@@ -62,6 +60,16 @@ import ListItem from "../components/ListItem.astro";
     <p>More playful than practical.</p>
     <div class="project-item">
       <p class="project-name">
+        <a href="https://live-tracker-iss.netlify.app/" target="_blank"
+          >ISS Live Tracker</a
+        >
+      </p>
+      <p class="project-description">
+        An interactive tracker of the International Space Station.
+      </p>
+    </div>
+    <div class="project-item">
+      <p class="project-name">
         <a href="https://contreau.github.io/koi-pond/" target="_blank"
           >Koi Pond</a
         >
@@ -84,6 +92,8 @@ import ListItem from "../components/ListItem.astro";
 <style scoped>
   section {
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.55s var(--delay) ease-in forwards;
   }
   .project-item {
     p {
@@ -99,6 +109,27 @@ import ListItem from "../components/ListItem.astro";
   .project-description {
     font-size: 1rem;
     font-style: italic;
+  }
+
+  /* Fade-in Delays */
+  .about {
+    --delay: 0.1s;
+  }
+
+  .current {
+    --delay: 0.25s;
+  }
+
+  .highlighted {
+    --delay: 0.4s;
+  }
+
+  .musings {
+    --delay: 0.55s;
+  }
+
+  .connect {
+    --delay: 0.7s;
   }
 
   @media (max-width: 750px) {

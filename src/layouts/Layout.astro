@@ -1,6 +1,5 @@
 ---
 const { description } = Astro.props;
-const currentPath = Astro.url.pathname;
 const date = new Date().getFullYear();
 import Image from "astro/components/Image.astro";
 ---
@@ -10,6 +9,10 @@ import Image from "astro/components/Image.astro";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta
       property="og:image"
       content="https://conorkelley.me/ck-og-img-min.jpg"
@@ -21,10 +24,19 @@ import Image from "astro/components/Image.astro";
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <slot name="metadata" />
+    <script>
+      const header = document.querySelector("header");
+      const stored_classes = sessionStorage.getItem("animatedHeader");
+      if (stored_classes === null) {
+        sessionStorage.setItem("animatedHeader", "true");
+      } else if (stored_classes === "true") {
+        header.classList.remove("animated-header");
+      }
+    </script>
   </head>
   <body>
     <main>
-      <header>
+      <header class="animated-header">
         <a href="/">
           <Image
             src={"/me-min.png"}
@@ -95,6 +107,19 @@ import Image from "astro/components/Image.astro";
     font-family: system-ui;
   }
 
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+      filter: blur(0px);
+    }
+  }
+
   a {
     color: var(--text);
     transition: color 0.2s;
@@ -117,6 +142,11 @@ import Image from "astro/components/Image.astro";
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     gap: 1.5rem;
+  }
+
+  .animated-header {
+    opacity: 0;
+    animation: fadeIn 0.55s ease-in forwards;
   }
 
   .title-profession {
