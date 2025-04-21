@@ -1,0 +1,56 @@
+---
+const { abbr } = Astro.props;
+const abbreviationMap = {
+  ts: "TypeScript",
+  js: "JavaScript",
+  css: "CSS",
+  scss: "SCSS",
+  svelte: "Svelte",
+  cli: "Command-line Tool",
+};
+---
+
+<span class={abbr}>{abbreviationMap[abbr]}</span>
+
+<style scoped>
+  span {
+    --lang-ts: #0492f3;
+    --lang-js: #e9d44d;
+    --lang-scss: #e077ab;
+    --lang-css: #bd7dfe;
+    --lang-svelte: #ff5824;
+    --cli: #d2d2d2;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.85rem;
+    min-width: 70px;
+    text-align: center;
+    border-radius: 30px;
+    background-color: #262626;
+    display: inline-block;
+    padding: 0.1em 1em;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    &.ts {
+      color: var(--lang-ts);
+    }
+    &.js {
+      color: var(--lang-js);
+    }
+    &.scss {
+      color: var(--lang-scss);
+    }
+    &.css {
+      color: var(--lang-css);
+    }
+    &.svelte {
+      color: var(--lang-svelte);
+    }
+    &.cli {
+      color: var(--cli);
+    }
+  }
+  span + span {
+    margin-left: 0.35rem;
+  }
+</style>

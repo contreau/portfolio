@@ -13,10 +13,6 @@ import Image from "astro/components/Image.astro";
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta
-      property="og:image"
-      content="https://conorkelley.me/ck-og-img-min.jpg"
-    />
     <meta property="og:type" content="website" />
     <title>Conor Kelley</title>
     <meta name="title" content=`Conor Kelley` />
@@ -49,21 +45,19 @@ import Image from "astro/components/Image.astro";
         <div>
           <h1 class="title-name">
             <a href="/"
-              ><span style="color: var(--primary);">Conor</span><span
-                style="color: #efefef;">Kelley</span
+              ><span style="color: var(--primary);">Conor</span><span style="color: #efefef;"
+                >Kelley</span
               ></a
             >
           </h1>
-          <p class="title-profession" style="color: var(--text);">
-            Web Developer
-          </p>
+          <p class="title-profession" style="color: var(--text);">Web Developer</p>
         </div>
       </header>
       <slot />
     </main>
 
     <footer>
-      <p>&copy; {date} • CK</p>
+      <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
     </footer>
   </body>
 </html>
@@ -71,7 +65,8 @@ import Image from "astro/components/Image.astro";
 <style is:global>
   :root {
     --text: #b4b4b4;
-    --background: #161616;
+    --white: #ffffff;
+    --background: #090909;
     --primary: #70a4f0;
     --page-padding: 0 15em;
   }
@@ -121,10 +116,10 @@ import Image from "astro/components/Image.astro";
   }
 
   a {
-    color: var(--text);
+    color: var(--white);
     transition: color 0.2s;
     &:hover {
-      color: #ffffff;
+      color: var(--primary);
     }
   }
 
@@ -182,13 +177,15 @@ import Image from "astro/components/Image.astro";
   }
 
   h2 {
-    font-size: 1.2rem;
-  }
-
-  h2,
-  h3 {
+    font-size: 1.5rem;
     font-weight: 425;
     color: var(--primary);
+  }
+
+  h3 {
+    color: var(--white);
+    font-weight: 425;
+    font-size: 1.3rem;
   }
 
   footer {
