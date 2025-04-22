@@ -6,6 +6,7 @@ const abbreviationMap = {
   css: "CSS",
   scss: "SCSS",
   svelte: "Svelte",
+  sveltekit: "SvelteKit",
   cli: "Command-line Tool",
 };
 ---
@@ -43,7 +44,8 @@ const abbreviationMap = {
     &.css {
       color: var(--lang-css);
     }
-    &.svelte {
+    &.svelte,
+    &.sveltekit {
       color: var(--lang-svelte);
     }
     &.cli {
