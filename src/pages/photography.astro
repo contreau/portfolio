@@ -1,19 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import metroImage from "../assets/metro_700w.jpg";
+import nightFlight from "../assets/nightflight_700w.jpg";
+import hijab from "../assets/hijab_700w.jpg";
 ---
 
 <Layout>
   <section class="photography">
     <h2>photography</h2>
-    <p>check back soon.</p>
+  </section>
+  <section class="photo-grid">
+    <Image
+      src={metroImage}
+      alt="A DC Metro escalator"
+      width="700"
+      height="449"
+      data-action="zoom"
+    />
+    <Image
+      src={nightFlight}
+      alt="Birds flying silhouetted against the moon"
+      width="700"
+      height="449"
+      data-action="zoom"
+    />
+    <Image
+      src={hijab}
+      alt="Silhouetted woman wearing a hijab"
+      width="700"
+      height="449"
+      data-action="zoom"
+    />
   </section>
 </Layout>
 
 <style>
   section {
     margin-bottom: 1rem;
-    opacity: 0;
+    /* opacity: 0; */
     animation: fadeIn 0.55s var(--delay) ease-in forwards;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+
+    img {
+      border-radius: 5px;
+    }
   }
 
   .photography {

@@ -18,6 +18,7 @@ const date = new Date().getFullYear();
     <meta property="og:title" content=`Conor Kelley` />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
+    <link href="/zoom/zoom.css" rel="stylesheet" />
     <slot name="metadata" />
     <script>
       const header = document.querySelector("header");
@@ -29,6 +30,7 @@ const date = new Date().getFullYear();
       }
     </script>
   </head>
+  <script src="../../public/zoom/zoom-vanilla.min.js"></script>
   <body>
     <main>
       <header class="animated-header">
