@@ -1,0 +1,44 @@
+---
+const { projectName, projectDescription } = Astro.props;
+interface Props {
+  projectName: string;
+  projectDescription: string;
+}
+---
+
+<div class="project-item">
+  <p class="project-name">
+    <a href="https://github.com/contreau/smhs-profile-patch" target="_blank">{projectName}</a>
+  </p>
+
+  <p class="project-description">
+    {projectDescription}
+  </p>
+  <slot />
+</div>
+
+<style scoped>
+  .project-item {
+    margin-top: 2rem;
+    p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .project-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 750px) {
+    .project-description {
+      font-size: 0.85rem;
+    }
+  }
+</style>
