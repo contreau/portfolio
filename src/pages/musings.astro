@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Chip from "../components/Chip.astro";
+import Project from "../components/Project.astro";
+import Koi from "../components/Koi.astro";
+import Snek from "../components/Snek.astro";
+import ISS from "../components/ISS.astro";
+---
+
+<Layout musingsIsActive="true">
+  <section class="musings">
+    <Project
+      projectName="CSS Koi Pond"
+      projectDescription="A charming koi pond powered by CSS."
+      projectURL="https://contreau.github.io/koi-pond/"
+    >
+      <Koi slot="project-visual" />
+      <Chip slot="chip" abbr="css" />
+    </Project>
+
+    <Project
+      projectName="Snek"
+      projectDescription="My take on the classic snake game with three game modes."
+      projectURL="https://snekgame.app"
+    >
+      <Snek slot="project-visual" />
+      <Chip slot="chip" abbr="svelte" />
+      <Chip slot="chip" abbr="ts" />
+    </Project>
+    <Project
+      projectName="ISS Live Tracker"
+      projectDescription="Minimalist tracker of the International Space Station."
+      projectURL="https://live-tracker-iss.netlify.app/"
+    >
+      <ISS slot="project-visual" />
+      <Chip slot="chip" abbr="js" />
+      <Chip slot="chip" abbr="css" />
+    </Project>
+  </section>
+</Layout>
+
+<style>
+  section.musings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 4rem;
+  }
+</style>

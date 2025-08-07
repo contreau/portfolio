@@ -15,41 +15,42 @@ const abbreviationMap = {
 
 <style scoped>
   span {
-    --lang-ts: #0492f3;
+    --lang-ts: #0283d8;
     --lang-js: #e9d44d;
     --lang-scss: #e077ab;
-    --lang-css: #bd7dfe;
-    --lang-svelte: #ff5824;
+    --lang-css: #6906cb;
+    --lang-svelte: #f0430e;
     --cli: #d2d2d2;
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 0.85rem;
     min-width: 70px;
     text-align: center;
     border-radius: 30px;
-    background-color: #262626;
     display: inline-block;
     padding: 0.1em 1em;
     margin-top: 0.6rem;
     margin-bottom: 0.6rem;
     &.ts {
-      color: var(--lang-ts);
+      background-color: var(--lang-ts);
     }
     &.js {
-      color: var(--lang-js);
+      background-color: var(--lang-js);
+      color: #000000;
     }
     &.scss {
-      color: var(--lang-scss);
+      background-color: var(--lang-scss);
     }
     &.css {
-      color: var(--lang-css);
+      background-color: var(--lang-css);
+      color: #ffffff;
     }
     &.svelte,
     &.sveltekit {
-      color: var(--lang-svelte);
+      background-color: var(--lang-svelte);
     }
     &.cli {
-      color: var(--cli);
+      background-color: var(--cli);
     }
   }
   span + span {

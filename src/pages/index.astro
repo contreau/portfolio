@@ -1,171 +1,64 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Chip from "../components/Chip.astro";
-import Project from "../components/Project.astro";
 ---
 
 <meta property="og:url" content="https://conorkelley.me" />
 
-<Layout description="Frontend developer striving to make useful web resources.">
-  <section class="about">
-    <h2>about me</h2>
-    <p>
-      Frontend developer and on-off photographer based in Brooklyn. I've been working in academic
-      medicine for over 3 years.
-    </p>
-    <p>I also write code for personal use, freelance work, and technical exploration.</p>
-  </section>
+<Layout indexIsActive="true">
+  <section class="bio">
+    <div>
+      <p>
+        I'm a web developer living in Brooklyn, NY. I've worked in the intersection of healthcare
+        and higher education for over 3 years and currently work for GW Medicine in Washington, D.C.
+      </p>
 
-  <section class="current">
-    <h2>current employment highlights</h2>
-    <p>
-      I support the web development needs of patients, providers, students, and faculty at the <a
-        href="https://gwdocs.com/"
-        target="_blank">GW MFA</a
-      > and <a href="https://smhs.gwu.edu/" target="_blank"
-        >GW School of Medicine & Health Sciences</a
-      > as a Web Associate.
-    </p>
-    <p>Below are a few technical projects that I'm proud of.</p>
+      <p>
+        On the job I specialize in developing UI components, command-line tools, and custom
+        applications to automate content updates.
+      </p>
+      <p>
+        I also write code for personal use, freelance work, and technical exploration. Drop me a
+        line to talk web dev, volleyball, or ambient music.
+      </p>
+    </div>
 
-    <Project
-      projectName=`Faculty Profile URL Patcher`
-      projectDescription=`Developed for the migration of the GW School of Medicine faculty directory, this tool
-        updated profile URLs in the markup of 1,400+ faculty members to the new directory domain in
-        just a few seconds. Enabled near-immediate updating of 30+ department websites as soon as
-        the directory launched.`
-      projectURL="https://github.com/contreau/smhs-profile-patch"
-    >
-      <Chip abbr="ts" />
-      <Chip abbr="cli" />
-    </Project>
-
-    <Project
-      projectName="Faculty Profile Generator"
-      projectDescription=`Developed for the redesign effort of the GW School of Medicine department faculty pages,
-        this tool scraped 1,400+ GW School of Medicine faculty profiles and regenerated them with
-        redesigned HTML, significantly speeding up the redesign implementation.`
-      projectURL="https://github.com/contreau/smhs-faculty-generator"
-    >
-      <Chip abbr="js" />
-      <Chip abbr="cli" />
-    </Project>
-
-    <Project
-      projectName="Interactive Graphic, CTSI-CN Virtual Organizer"
-      projectDescription=`An interactive navigational graphic developed for the Clinical and Translational Science
-        Institute (CTSI) at Children's National.`
-      projectURL="https://ctsicn.org/virtual-organizer"
-    >
-      <Chip abbr="scss" />
-      <Chip abbr="js" />
-    </Project>
-  </section>
-
-  <section class="applications">
-    <h2>web applications</h2>
-    <p>Full-stack personal projects.</p>
-
-    <Project
-      projectName="Kompendium"
-      projectDescription="A digital archive of my late friend Konrad Rauscher's 800+ playlists."
-      projectURL="https://komp3nd1um.app"
-    >
-      <Chip abbr="sveltekit" />
-      <Chip abbr="ts" />
-    </Project>
-
-    <Project
-      projectName="CiteClinic"
-      projectDescription="A customizable citation generator for any journal article with a valid DOI."
-      projectURL="https://cite-clinic.vercel.app"
-    >
-      <Chip abbr="sveltekit" />
-      <Chip abbr="ts" />
-    </Project>
-  </section>
-
-  <section class="musings">
-    <h2>musings</h2>
-    <p>More playful than practical.</p>
-
-    <Project
-      projectName="Snek"
-      projectDescription="My take on the classic snake game with three game modes."
-      projectURL="https://snekgame.app"
-    >
-      <Chip abbr="svelte" />
-      <Chip abbr="ts" />
-    </Project>
-
-    <Project
-      projectName="Koi Pond"
-      projectDescription="A charming koi pond powered by CSS."
-      projectURL="https://contreau.github.io/koi-pond"
-    >
-      <Chip abbr="css" />
-    </Project>
-  </section>
-
-  <section class="connect">
-    <h2>connect</h2>
-    <p>
-      Read my <a href="/cv.pdf" target="_blank">CV</a>, view my code on <a
-        href="https://github.com/contreau"
-        target="_blank">GitHub</a
-      >, or <a href="mailto:cfk102@gmail.com">write to me</a>.
-    </p>
+    <picture>
+      <source srcset="/ck-headshot-400x400.jpg" height="75" width="75" media="(max-width: 600px)" />
+      <source
+        srcset="/ck-headshot-400x400.jpg"
+        height="250"
+        width="250"
+        media="(min-width: 601px)"
+      />
+      <img
+        src="/ck-headshot-400x400.jpg"
+        height="75"
+        width="75"
+        alt="Headshot of Conor Kelley"
+        loading="eager"
+      />
+    </picture>
   </section>
 </Layout>
 
-<style scoped>
-  section {
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeIn 0.55s var(--delay) ease-in forwards;
+<style>
+  section.bio {
+    display: grid;
+    grid-template-columns: 75% 20%;
+    gap: 5%;
   }
 
-  section h2 {
-    padding-top: 0.55em;
-    position: relative;
-    max-width: max-content;
-
-    &::before {
-      --width: 30px;
-      content: "";
-      background-color: #dcdcdc;
-      border-radius: 5px;
-      position: absolute;
-      width: var(--width);
-      height: 2.25px;
-      top: 0;
-      left: calc(var(--width) / 2);
-      transform: translate(-50%, -50%);
+  @keyframes popOutShadow {
+    0% {
+      box-shadow: 0px 0px 0px 0px #c8cad9a6;
+    }
+    100% {
+      box-shadow: -12px 12px 0px 0px #8e909ba6;
     }
   }
 
-  section:not(section.about) h2 {
-    margin-top: 2.5rem;
-  }
-
-  /* Fade-in Delays */
-  .about {
-    --delay: 0.1s;
-  }
-
-  .current {
-    --delay: 0.25s;
-  }
-
-  .applications {
-    --delay: 0.35s;
-  }
-
-  .musings {
-    --delay: 0.45s;
-  }
-
-  .connect {
-    --delay: 0.55s;
+  img {
+    border-radius: 10px;
+    animation: popOutShadow 400ms forwards;
   }
 </style>
