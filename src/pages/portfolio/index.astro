@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout portfolioIsActive="true">
+  <section class="portfolio">
+    <ul>
+      <li><a href="portfolio/gwmedicine">GW Medicine</a></li>
+      <li><a href="portfolio/busom">Boston University School of Medicine</a></li>
+      <li><a href="portfolio/web-apps">Web Apps (Personal)</a></li>
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  section.portfolio {
+    display: flex;
+  }
+
+  ul {
+    padding-left: 0;
+    margin-block: 1rem;
+  }
+
+  li {
+    list-style-position: inside;
+
+    a {
+      color: var(--primary);
+    }
+  }
+
+  /* li::marker {
+    color: #74757b;
+  } */
+
+  li + li {
+    margin-top: 1.5rem;
+  }
+</style>

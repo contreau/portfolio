@@ -8,6 +8,9 @@ const abbreviationMap = {
   svelte: "Svelte",
   sveltekit: "SvelteKit",
   cli: "Command-line Tool",
+  wp: "WordPress",
+  vue: "Vue",
+  php: "PHP",
 };
 ---
 
@@ -15,12 +18,15 @@ const abbreviationMap = {
 
 <style scoped>
   span {
-    --lang-ts: #0283d8;
+    --lang-ts: #0068ad;
     --lang-js: #e9d44d;
     --lang-scss: #e077ab;
     --lang-css: #6906cb;
-    --lang-svelte: #f0430e;
+    --lang-svelte: #d43200;
+    --lang-vue: #008560;
+    --lang-php: #4d507d;
     --cli: #d2d2d2;
+    --wp: #5b5b5b;
     color: #ffffff;
     font-weight: 550;
     font-size: 0.85rem;
@@ -43,7 +49,6 @@ const abbreviationMap = {
     }
     &.css {
       background-color: var(--lang-css);
-      color: #ffffff;
     }
     &.svelte,
     &.sveltekit {
@@ -51,6 +56,15 @@ const abbreviationMap = {
     }
     &.cli {
       background-color: var(--cli);
+    }
+    &.wp {
+      background-color: var(--wp);
+    }
+    &.vue {
+      background-color: var(--lang-vue);
+    }
+    &.php {
+      background-color: var(--lang-php);
     }
   }
   span + span {

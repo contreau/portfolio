@@ -1,0 +1,28 @@
+<div class="container">
+  <img src="/green-link.png" alt="Green link" height="95" width="95" />
+</div>
+
+<style>
+  .container {
+    min-width: 150px;
+    min-height: 150px;
+    background-color: #000000;
+    border-radius: 10px;
+    align-content: center;
+  }
+
+  img {
+    margin-inline: auto;
+
+    animation: shrink 1000ms alternate infinite;
+  }
+
+  @keyframes shrink {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.25);
+    }
+  }
+</style>

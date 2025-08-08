@@ -1,0 +1,66 @@
+---
+const { heading, description, timeline, companyAbbr } = Astro.props;
+interface Props {
+  heading: string;
+  description: string;
+  companyAbbr?: string;
+  timeline?: string;
+}
+
+let timelineClasses = ["timeline"];
+if (companyAbbr) {
+  timelineClasses.push(companyAbbr);
+}
+---
+
+<section>
+  <div class="heading-timeline">
+    <h2>{heading}</h2>
+    <span class:list={timelineClasses}>{timeline}</span>
+  </div>
+
+  <p class="description">{description}</p>
+  <div class="grid">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .heading-timeline {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .timeline {
+    margin-top: 0.3rem;
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 550;
+    padding: 0.1em 1em;
+    color: #ffffff;
+    border-radius: 30px;
+  }
+
+  .timeline.bu {
+    background-color: #ce0808;
+  }
+  .timeline.gw {
+    background-color: #033c5a;
+  }
+
+  div.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 4rem;
+    margin-block: 2.5rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  p.description {
+    max-width: 80%;
+  }
+</style>

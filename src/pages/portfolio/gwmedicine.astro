@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PortfolioSection from "../../components/PortfolioSection.astro";
+
+const heading = "GW Medicine";
+const description =
+  "UI elements, command-line tools, and other highlighted development projects from my work with the GW MFA and School of Medicine & Health Sciences.";
+---
+
+<Layout portfolioIsActive="true">
+  <PortfolioSection
+    heading={heading}
+    description={description}
+    timeline="October 2022 - Present"
+    companyAbbr="gw"
+  />
+</Layout>
