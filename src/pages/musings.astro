@@ -40,9 +40,22 @@ import ISS from "../components/ISS.astro";
 </Layout>
 
 <style>
+  @keyframes shiftUp {
+    0% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
   section.musings {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 4rem;
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftUp 500ms ease-in forwards;
   }
 </style>

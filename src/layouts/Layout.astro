@@ -57,7 +57,6 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     </header>
     <slot />
     <footer>
-      <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
       <div class="social-links">
         <ul>
           <li>
@@ -82,6 +81,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
           </li>
         </ul>
       </div>
+      <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
     </footer>
   </body>
 </html>
@@ -137,7 +137,8 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   /* Font Configurations */
 
   p {
-    font-size: 1.05rem;
+    font-size: clamp(0.85rem, 5vw, 1.05rem);
+    /* font-size: 1.05rem; */
   }
 
   h1,
@@ -148,7 +149,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   h1 {
-    font-size: clamp(1.8rem, 6vw, 6.5rem);
+    font-size: clamp(2.5rem, 9vw, 6.5rem);
     font-weight: 500;
     margin-bottom: 0;
     margin-top: 0;
@@ -186,7 +187,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     li {
       list-style-type: none;
       position: relative;
-      font-size: clamp(1rem, 6vw, 1.25rem);
+      font-size: clamp(1rem, 6vw, 1.4rem);
     }
 
     li.active {
@@ -226,14 +227,15 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   footer {
-    margin-top: auto;
     display: flex;
     justify-content: space-between;
+    border-top: solid 2px #74757b;
+    padding-top: 0.5em;
+
     p {
-      padding-bottom: 1em;
-      margin-bottom: 0;
-      color: var(--text);
-      font-weight: 400;
+      margin-block: 0;
+      color: #74757b;
+      font-weight: 350;
     }
   }
 
@@ -242,7 +244,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     align-items: center;
     gap: 1rem;
     padding-left: 0;
-    margin-block: 1.2rem;
+    margin-block: 0;
 
     li {
       list-style-type: none;
@@ -258,6 +260,44 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
       a:hover {
         color: var(--primary);
       }
+    }
+  }
+
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 800px) {
+    nav ul {
+      gap: 1.5rem;
+    }
+
+    header {
+      margin-inline: auto;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    footer {
+      align-items: center;
+
+      p {
+        min-height: 44px;
+      }
+    }
+  }
+
+  @media (width <= 380px) {
+    footer {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    body {
+      padding-inline: 1em;
     }
   }
 </style>

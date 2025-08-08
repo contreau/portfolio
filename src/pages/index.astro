@@ -23,12 +23,17 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <picture>
-      <source srcset="/ck-headshot-400x400.jpg" height="75" width="75" media="(max-width: 600px)" />
+      <source
+        srcset="/ck-headshot-400x400.jpg"
+        height="200"
+        width="200"
+        media="(max-width: 499px)"
+      />
       <source
         srcset="/ck-headshot-400x400.jpg"
         height="250"
         width="250"
-        media="(min-width: 601px)"
+        media="(min-width: 500px)"
       />
       <img
         src="/ck-headshot-400x400.jpg"
@@ -43,22 +48,72 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
   section.bio {
+    opacity: 0;
+    transform: translateY(-10px);
     display: grid;
-    grid-template-columns: 75% 20%;
+    grid-template-columns: 70% 25%;
+    place-items: end;
+    align-items: center;
     gap: 5%;
-  }
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
 
-  @keyframes popOutShadow {
-    0% {
-      box-shadow: 0px 0px 0px 0px #c8cad9a6;
-    }
-    100% {
-      box-shadow: -12px 12px 0px 0px #8e909ba6;
+    p {
+      font-weight: 350;
     }
   }
 
   img {
     border-radius: 10px;
-    animation: popOutShadow 400ms forwards;
+    animation: popOutShadow 300ms 500ms forwards;
+  }
+
+  @media (max-width: 600px) {
+    img {
+      animation: none;
+      box-shadow: -6px 6px 0px 0px #74757b40;
+    }
+
+    section.bio p {
+      text-wrap: balance;
+    }
+  }
+
+  @media (max-width: 800px) {
+    section.bio {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    picture {
+      order: -1;
+      margin-inline: auto;
+    }
+  }
+
+  @media (800px < width < 1200px) {
+    section.bio {
+      grid-template-columns: 60% 35%;
+      gap: 5%;
+    }
+  }
+
+  @keyframes shiftDown {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes popOutShadow {
+    0% {
+      box-shadow: 0px 0px 0px 0px #74757b40;
+    }
+    100% {
+      box-shadow: -10px 10px 0px 0px #74757b40;
+    }
   }
 </style>
