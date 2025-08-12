@@ -160,9 +160,10 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 6vw, 1.5rem);
     font-weight: 550;
     color: var(--light-text);
+    margin-block: 0;
   }
 
   h3 {
@@ -172,7 +173,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   header {
-    margin-top: 3.5rem;
+    margin-top: 1.25rem;
   }
 
   nav {
@@ -270,7 +271,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     nav ul {
       gap: 1.5rem;
     }

@@ -8,6 +8,7 @@ import ISS from "../components/ISS.astro";
 ---
 
 <Layout musingsIsActive="true">
+  <p class="semititle">More playful than practical.</p>
   <section class="musings">
     <Project
       projectName="CSS Koi Pond"
@@ -57,5 +58,23 @@ import ISS from "../components/ISS.astro";
     animation:
       fadeIn 500ms ease-in forwards,
       shiftUp 500ms ease-in forwards;
+  }
+
+  p.semititle {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    font-weight: 550;
+    font-style: italic;
+  }
+
+  @media (max-width: 1100px) {
+    p.semititle {
+      text-align: center;
+    }
+
+    section.musings {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
   }
 </style>
