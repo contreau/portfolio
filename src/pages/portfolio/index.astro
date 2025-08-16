@@ -2,8 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout portfolioIsActive="true">
+<Layout portfolioIsActive="true" pathName="portfolio">
   <section class="portfolio">
+    <h2>Portfolio</h2>
+    <p class="description">Check out my professional and personal development work.</p>
     <ul>
       <li><a href="portfolio/gwmedicine">GW Medicine</a></li>
       <li><a href="portfolio/busom">Boston University School of Medicine</a></li>
@@ -13,10 +15,6 @@ import Layout from "../../layouts/Layout.astro";
 </Layout>
 
 <style>
-  section.portfolio {
-    display: flex;
-  }
-
   ul {
     padding-left: 0;
     margin-block: 1rem;

@@ -1,0 +1,103 @@
+<div class="vo_container">
+  <div class="centerpiece"></div>
+  <div id="grey" class="tear"></div>
+  <div id="orange" class="tear"></div>
+  <div id="red" class="tear"></div>
+  <div id="purple" class="tear"></div>
+  <div id="navy" class="tear"></div>
+  <div id="lightblue" class="tear"></div>
+  <div id="teal" class="tear"></div>
+  <div id="green" class="tear"></div>
+</div>
+
+<style>
+  div.centerpiece {
+    background-color: #2a3f54;
+    min-width: 35px;
+    min-height: 35px;
+    border-radius: 50%;
+  }
+
+  .vo_container {
+    min-width: 150px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    position: relative;
+  }
+
+  /* TODO: create staggered animation for all tears to slightly pop out and back in */
+
+  div.tear {
+    height: 35px;
+    width: 35px;
+    border-radius: 100% 0% 80% 20% / 80% 0% 100% 20%;
+    position: absolute;
+  }
+
+  /* Individual Tears */
+  /* Opposites:
+  - grey and green
+  - orange and teal
+  - red and lightblue
+  - purple and navy
+  */
+
+  #grey {
+    background-color: #736157;
+    top: 11px;
+    right: 38px;
+    transform: rotate(165deg);
+  }
+
+  #green {
+    background-color: #58813c;
+    top: 11px;
+    left: 38px;
+    transform: rotate(-255deg);
+  }
+
+  #orange {
+    background-color: #cd4c21;
+    top: 40px;
+    right: 12px;
+    transform: rotate(-158deg);
+  }
+
+  #teal {
+    background-color: #338275;
+    top: 40px;
+    left: 12px;
+    transform: rotate(68deg);
+  }
+
+  #red {
+    background-color: #dc192a;
+    bottom: 40px;
+    right: 15px;
+    transform: rotate(-112deg);
+  }
+
+  #lightblue {
+    background-color: #007db1;
+    bottom: 40px;
+    left: 15px;
+    transform: rotate(22deg);
+  }
+
+  #purple {
+    background-color: #683872;
+    bottom: 11px;
+    right: 38px;
+    transform: rotate(293deg);
+  }
+
+  #navy {
+    background-color: #243c54;
+    bottom: 11px;
+    left: 38px;
+    transform: rotate(333deg);
+  }
+</style>

@@ -1,17 +1,30 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PortfolioSection from "../../components/PortfolioSection.astro";
+import Project from "../../components/Project.astro";
+import CTSI from "../../components/CTSI.astro";
+import Chip from "../../components/Chip.astro";
 
 const heading = "GW Medicine";
 const description =
   "UI elements, command-line tools, and other highlighted development projects from my work with the GW MFA and School of Medicine & Health Sciences.";
 ---
 
-<Layout portfolioIsActive="true">
+<Layout portfolioIsActive="true" pathName="portfolio/gwmedicine">
   <PortfolioSection
     heading={heading}
     description={description}
     timeline="October 2022 - Present"
     companyAbbr="gw"
-  />
+  >
+    <Project
+      projectName="CTSI-CN Virtual Organizer"
+      projectDescription="An interactive navigational graphic developed for the Clinical and Translational Science Institute (CTSI) at Children's National Hospital."
+      projectURL="https://ctsicn.org/virtual-organizer"
+    >
+      <CTSI slot="project-visual" />
+      <Chip slot="chip" abbr="scss" />
+      <Chip slot="chip" abbr="js" />
+    </Project>
+  </PortfolioSection>
 </Layout>

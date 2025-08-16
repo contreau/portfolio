@@ -1,11 +1,12 @@
 ---
-const { description } = Astro.props;
+const { description, pathName } = Astro.props;
 const date = new Date().getFullYear();
 const { indexIsActive, portfolioIsActive, musingsIsActive } = Astro.props;
 import GithubSVG from "../svg/GithubSVG.astro";
 import LinkedinSVG from "../svg/LinkedinSVG.astro";
 import EmailSVG from "../svg/EmailSVG.astro";
 import ResumeSVG from "../svg/ResumeSVG.astro";
+import Path from "../components/Path.astro";
 ---
 
 <html lang="en">
@@ -55,6 +56,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
         </ul>
       </nav>
     </header>
+    <Path pathName={pathName} />
     <slot />
     <footer>
       <div class="social-links">
@@ -134,7 +136,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     min-height: 100dvh;
   }
 
-  /* Font Configurations */
+  /* Font Configurations for headings / paragraphs */
 
   p {
     font-size: clamp(0.85rem, 5vw, 1.05rem);
@@ -149,7 +151,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   h1 {
-    font-size: clamp(2.5rem, 9vw, 6.5rem);
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
     font-weight: 500;
     margin-bottom: 0;
     margin-top: 0;
@@ -172,8 +174,14 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     font-size: 1.3rem;
   }
 
+  /* Header / Nav / Footer */
+
   header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 1.25rem;
+    border-bottom: solid 1.5px #1c1c1d7a;
   }
 
   nav {
@@ -188,7 +196,7 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
     li {
       list-style-type: none;
       position: relative;
-      font-size: clamp(1rem, 6vw, 1.4rem);
+      font-size: clamp(1rem, 6vw, 1.25rem);
     }
 
     li.active {
@@ -224,15 +232,15 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
   }
 
   section {
-    margin-block: 2rem;
-    min-height: 308px;
+    margin-block: 1rem;
+    min-height: 340px;
   }
 
   footer {
     display: flex;
     justify-content: space-between;
-    border-top: solid 2px #74757b;
     padding-top: 0.5em;
+    margin-top: 1rem;
 
     p {
       margin-block: 0;
@@ -264,6 +272,14 @@ import ResumeSVG from "../svg/ResumeSVG.astro";
       }
     }
   }
+
+  /* Other global rules */
+  p.description {
+    margin-block: 1.5rem;
+    font-weight: 350;
+  }
+
+  /* @ rules */
 
   @keyframes fadeIn {
     100% {

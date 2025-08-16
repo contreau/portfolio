@@ -7,36 +7,38 @@ import Snek from "../components/Snek.astro";
 import ISS from "../components/ISS.astro";
 ---
 
-<Layout musingsIsActive="true">
-  <p class="semititle">More playful than practical.</p>
+<Layout musingsIsActive="true" pathName="musings">
   <section class="musings">
-    <Project
-      projectName="CSS Koi Pond"
-      projectDescription="A charming koi pond powered by CSS."
-      projectURL="https://contreau.github.io/koi-pond/"
-    >
-      <Koi slot="project-visual" />
-      <Chip slot="chip" abbr="css" />
-    </Project>
-
-    <Project
-      projectName="Snek"
-      projectDescription="My take on the classic snake game with three game modes."
-      projectURL="https://snekgame.app"
-    >
-      <Snek slot="project-visual" />
-      <Chip slot="chip" abbr="svelte" />
-      <Chip slot="chip" abbr="ts" />
-    </Project>
-    <Project
-      projectName="ISS Live Tracker"
-      projectDescription="Minimalist tracker of the International Space Station."
-      projectURL="https://live-tracker-iss.netlify.app/"
-    >
-      <ISS slot="project-visual" />
-      <Chip slot="chip" abbr="js" />
-      <Chip slot="chip" abbr="css" />
-    </Project>
+    <h2>Musings</h2>
+    <p class="description">More playful than practical.</p>
+    <div class="project-grid">
+      <Project
+        projectName="CSS Koi Pond"
+        projectDescription="A charming koi pond powered by CSS."
+        projectURL="https://contreau.github.io/koi-pond/"
+      >
+        <Koi slot="project-visual" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+      <Project
+        projectName="Snek"
+        projectDescription="My take on the classic snake game with three game modes."
+        projectURL="https://snekgame.app"
+      >
+        <Snek slot="project-visual" />
+        <Chip slot="chip" abbr="svelte" />
+        <Chip slot="chip" abbr="ts" />
+      </Project>
+      <Project
+        projectName="ISS Live Tracker"
+        projectDescription="Minimalist tracker of the International Space Station."
+        projectURL="https://live-tracker-iss.netlify.app/"
+      >
+        <ISS slot="project-visual" />
+        <Chip slot="chip" abbr="js" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+    </div>
   </section>
 </Layout>
 
@@ -50,7 +52,7 @@ import ISS from "../components/ISS.astro";
     }
   }
 
-  section.musings {
+  div.project-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 6rem;
@@ -58,13 +60,6 @@ import ISS from "../components/ISS.astro";
     animation:
       fadeIn 500ms ease-in forwards,
       shiftUp 500ms ease-in forwards;
-  }
-
-  p.semititle {
-    margin-top: 2rem;
-    margin-bottom: 0;
-    font-weight: 550;
-    font-style: italic;
   }
 
   @media (max-width: 1100px) {

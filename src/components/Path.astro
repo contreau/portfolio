@@ -1,0 +1,62 @@
+---
+// Supports weights 200-900
+import "@fontsource-variable/source-code-pro";
+import HomeSVG from "../svg/HomeSVG.astro";
+const { pathName } = Astro.props;
+interface Props {
+  pathName: string;
+}
+const pathComponents: string[] = pathName.split("/");
+---
+
+<p>
+  <a class="home" href="/"> ~ </a>
+  {
+    pathComponents.map((path, i) => {
+      if (path !== pathComponents[0]) {
+        const pathSlice = pathComponents.slice(0, i);
+        const hrefString = `/${pathSlice}/${path}`;
+        const pathString = `/${path}`;
+        return <a href={hrefString}>{pathString}</a>;
+      } else {
+        const hrefString = pathComponents[0] === "about" ? "/" : `/${pathComponents[0]}`;
+        const pathString = `/${path}`;
+        return <a href={hrefString}>{pathString}</a>;
+      }
+    })
+  }
+</p>
+
+<style>
+  p {
+    font-family: "Source Code Pro Variable", monospace;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    background-color: #e2e2e2;
+    max-width: fit-content;
+    padding: 0em 0.65em;
+    border-radius: 8px;
+    margin-block: 1.3rem;
+  }
+
+  a {
+    border-bottom: solid 1px transparent;
+    text-decoration: none;
+    color: var(--text);
+    transition: color 200ms;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--primary);
+  }
+
+  a.home {
+    font-size: 1.15rem;
+    text-align: center;
+    padding-right: 0em;
+  }
+</style>
