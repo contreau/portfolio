@@ -28,13 +28,13 @@
     position: relative;
   }
 
-  /* TODO: create staggered animation for all tears to slightly pop out and back in */
-
   div.tear {
+    opacity: 0;
     height: 35px;
     width: 35px;
     border-radius: 100% 0% 80% 20% / 80% 0% 100% 20%;
     position: absolute;
+    animation: scaleTear 4s infinite reverse;
   }
 
   /* Individual Tears */
@@ -45,6 +45,37 @@
   - purple and navy
   */
 
+  @keyframes scaleTear {
+    0% {
+      width: 0px;
+      height: 0px;
+    }
+
+    25% {
+      opacity: 1;
+      width: 35px;
+      height: 35px;
+    }
+
+    50% {
+      opacity: 1;
+      width: 35px;
+      height: 35px;
+    }
+
+    75% {
+      opacity: 1;
+      width: 35px;
+      height: 35px;
+    }
+
+    100% {
+      opacity: 0;
+      width: 0px;
+      height: 0px;
+    }
+  }
+
   #grey {
     background-color: #736157;
     top: 11px;
@@ -52,25 +83,12 @@
     transform: rotate(165deg);
   }
 
-  #green {
-    background-color: #58813c;
-    top: 11px;
-    left: 38px;
-    transform: rotate(-255deg);
-  }
-
   #orange {
     background-color: #cd4c21;
     top: 40px;
     right: 12px;
     transform: rotate(-158deg);
-  }
-
-  #teal {
-    background-color: #338275;
-    top: 40px;
-    left: 12px;
-    transform: rotate(68deg);
+    animation-delay: 0.2s;
   }
 
   #red {
@@ -78,13 +96,7 @@
     bottom: 40px;
     right: 15px;
     transform: rotate(-112deg);
-  }
-
-  #lightblue {
-    background-color: #007db1;
-    bottom: 40px;
-    left: 15px;
-    transform: rotate(22deg);
+    animation-delay: 0.4s;
   }
 
   #purple {
@@ -92,6 +104,7 @@
     bottom: 11px;
     right: 38px;
     transform: rotate(293deg);
+    animation-delay: 0.6s;
   }
 
   #navy {
@@ -99,5 +112,30 @@
     bottom: 11px;
     left: 38px;
     transform: rotate(333deg);
+    animation-delay: 0.8s;
+  }
+
+  #lightblue {
+    background-color: #007db1;
+    bottom: 40px;
+    left: 15px;
+    transform: rotate(22deg);
+    animation-delay: 1s;
+  }
+
+  #teal {
+    background-color: #338275;
+    top: 40px;
+    left: 12px;
+    transform: rotate(68deg);
+    animation-delay: 1.2s;
+  }
+
+  #green {
+    background-color: #58813c;
+    top: 11px;
+    left: 38px;
+    transform: rotate(-255deg);
+    animation-delay: 1.4s;
   }
 </style>
