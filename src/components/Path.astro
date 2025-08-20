@@ -1,7 +1,6 @@
 ---
 // Supports weights 200-900
 import "@fontsource-variable/source-code-pro";
-import HomeSVG from "../svg/HomeSVG.astro";
 const { pathName } = Astro.props;
 interface Props {
   pathName: string;
@@ -58,5 +57,12 @@ const pathComponents: string[] = pathName.split("/");
     font-size: 1.15rem;
     text-align: center;
     padding-right: 0em;
+  }
+
+  @media (max-width: 1100px) {
+    /* Hide from mobile + tablet */
+    p {
+      display: none;
+    }
   }
 </style>

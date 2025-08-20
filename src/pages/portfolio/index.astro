@@ -7,9 +7,9 @@ import Layout from "../../layouts/Layout.astro";
     <h2>Portfolio</h2>
     <p class="description">Check out my professional and personal development work.</p>
     <ul>
-      <li><a href="portfolio/gwmedicine">GW Medicine</a></li>
+      <li><a href="portfolio/gwmedicine">GW Medicine</a> (current employment)</li>
       <li><a href="portfolio/busom">Boston University School of Medicine</a></li>
-      <li><a href="portfolio/web-apps">Web Apps (Personal)</a></li>
+      <li><a href="portfolio/web-apps">Web Apps</a> (personal projects)</li>
     </ul>
   </section>
 </Layout>
@@ -22,6 +22,7 @@ import Layout from "../../layouts/Layout.astro";
 
   li {
     list-style-position: inside;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
 
     a {
       color: var(--primary);
@@ -30,5 +31,12 @@ import Layout from "../../layouts/Layout.astro";
 
   li + li {
     margin-top: 1.5rem;
+  }
+
+  @media (max-width: 1100px) {
+    li {
+      list-style-type: none;
+      text-align: center;
+    }
   }
 </style>

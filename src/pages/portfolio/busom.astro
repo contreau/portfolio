@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import ProjectNoVisual from "../../components/ProjectNoVisual.astro";
 import PortfolioSection from "../../components/PortfolioSection.astro";
+import ProjectRow from "../../components/ProjectRow.astro";
 import Chip from "../../components/Chip.astro";
 
 const heading = "Boston University School of Medicine";
@@ -15,21 +16,26 @@ const description = `I redesigned two websites for the BU School of Medicine, bo
     timeline="January - August 2022"
     companyAbbr="bu"
   >
-    <ProjectNoVisual
-      projectName="Department of Pharmacology Website"
-      projectDescription="Collaborated with faculty for feature and design needs, wrote extensive new CSS styles, procured and optimized site assets."
-      projectURL="https://www.bumc.bu.edu/ppb/"
-    >
-      <Chip slot="chip" abbr="css" />
-      <Chip slot="chip" abbr="wp" />
-    </ProjectNoVisual>
-    <ProjectNoVisual
-      projectName="Office of Financial and Grants Administration Website"
-      projectDescription="Wrote new CSS styles, procured assets, photographed staff headshots and other site imagery."
-      projectURL="https://www.bumc.bu.edu/ofga/"
-    >
-      <Chip slot="chip" abbr="css" />
-      <Chip slot="chip" abbr="wp" />
-    </ProjectNoVisual>
+    <ProjectRow>
+      <ProjectNoVisual
+        slot="column-1"
+        projectName="Department of Pharmacology Website"
+        projectDescription="Collaborated with faculty for feature and design needs, wrote extensive new CSS styles, procured and optimized site assets."
+        projectURL="https://www.bumc.bu.edu/ppb/"
+      >
+        <Chip slot="chip" abbr="css" />
+        <Chip slot="chip" abbr="wp" />
+      </ProjectNoVisual>
+
+      <ProjectNoVisual
+        slot="column-2"
+        projectName="Office of Financial and Grants Administration Website"
+        projectDescription="Wrote new CSS styles, procured assets, photographed staff headshots and other site imagery."
+        projectURL="https://www.bumc.bu.edu/ofga/"
+      >
+        <Chip slot="chip" abbr="css" />
+        <Chip slot="chip" abbr="wp" />
+      </ProjectNoVisual>
+    </ProjectRow>
   </PortfolioSection>
 </Layout>

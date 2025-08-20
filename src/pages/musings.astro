@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PortfolioSection from "../components/PortfolioSection.astro";
+import ProjectRow from "../components/ProjectRow.astro";
 import Chip from "../components/Chip.astro";
 import Project from "../components/Project.astro";
 import Koi from "../components/Koi.astro";
@@ -8,11 +10,10 @@ import ISS from "../components/ISS.astro";
 ---
 
 <Layout musingsIsActive="true" pathName="musings">
-  <section class="musings">
-    <h2>Musings</h2>
-    <p class="description">More playful than practical.</p>
-    <div class="project-grid">
+  <PortfolioSection heading="Musings" description="More playful than practical.">
+    <ProjectRow>
       <Project
+        slot="column-1"
         projectName="CSS Koi Pond"
         projectDescription="A charming koi pond powered by CSS."
         projectURL="https://contreau.github.io/koi-pond/"
@@ -20,7 +21,9 @@ import ISS from "../components/ISS.astro";
         <Koi slot="project-visual" />
         <Chip slot="chip" abbr="css" />
       </Project>
+
       <Project
+        slot="column-2"
         projectName="Snek"
         projectDescription="My take on the classic snake game with three game modes."
         projectURL="https://snekgame.app"
@@ -29,7 +32,11 @@ import ISS from "../components/ISS.astro";
         <Chip slot="chip" abbr="svelte" />
         <Chip slot="chip" abbr="ts" />
       </Project>
+    </ProjectRow>
+
+    <ProjectRow>
       <Project
+        slot="column-1"
         projectName="ISS Live Tracker"
         projectDescription="Minimalist tracker of the International Space Station."
         projectURL="https://live-tracker-iss.netlify.app/"
@@ -38,8 +45,8 @@ import ISS from "../components/ISS.astro";
         <Chip slot="chip" abbr="js" />
         <Chip slot="chip" abbr="css" />
       </Project>
-    </div>
-  </section>
+    </ProjectRow>
+  </PortfolioSection>
 </Layout>
 
 <style>
@@ -60,16 +67,5 @@ import ISS from "../components/ISS.astro";
     animation:
       fadeIn 500ms ease-in forwards,
       shiftUp 500ms ease-in forwards;
-  }
-
-  @media (max-width: 1100px) {
-    p.semititle {
-      text-align: center;
-    }
-
-    section.musings {
-      grid-template-columns: 1fr;
-      row-gap: 3rem;
-    }
   }
 </style>

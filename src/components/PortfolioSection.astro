@@ -20,9 +20,8 @@ if (companyAbbr) {
   </div>
 
   <p class="description">{description}</p>
-  <div class="grid">
-    <slot />
-  </div>
+
+  <slot />
 </section>
 
 <style>
@@ -42,18 +41,15 @@ if (companyAbbr) {
     border-radius: 30px;
   }
 
+  .timeline:empty {
+    display: none;
+  }
+
   .timeline.bu {
     background-color: #ce0808;
   }
   .timeline.gw {
     background-color: #033c5a;
-  }
-
-  div.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 4rem;
-    margin-block: 1.5rem;
   }
 
   p.description {
@@ -66,7 +62,7 @@ if (companyAbbr) {
       flex-direction: column;
       text-align: center;
       align-items: center;
-      gap: 0;
+      gap: 1rem;
     }
 
     .timeline {
@@ -80,11 +76,6 @@ if (companyAbbr) {
     p.description {
       max-width: 100%;
       text-align: center;
-    }
-
-    div.grid {
-      grid-template-columns: 1fr;
-      row-gap: 2rem;
     }
   }
 </style>

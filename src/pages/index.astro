@@ -14,13 +14,14 @@ import Layout from "../layouts/Layout.astro";
       </p>
 
       <p>
-        On the job I specialize in developing UI components, command-line tools, and custom
-        applications to automate content updates. My work directly benefits students, faculty, and
-        patients seeking care in the GW medical system.
+        On the job, I specialize in developing UI components and automation tools to support our
+        internal team while collaborating with doctors and administrators to build pages, forms, and
+        applications that serve thousands of patients, faculty, and students in the GW medical
+        system.
       </p>
       <p>
-        I also write code for personal use, freelance work, and technical exploration. Drop me a
-        line to talk web dev, volleyball, or ambient music recommendations.
+        I also write code for freelance work and technical exploration. Drop me a line to talk web
+        dev, volleyball, or ambient music recommendations.
       </p>
     </div>
 
@@ -83,7 +84,7 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     section.bio {
       grid-template-columns: 1fr;
       gap: 2rem;
@@ -95,10 +96,9 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  @media (800px < width < 1200px) {
-    section.bio {
-      grid-template-columns: 60% 35%;
-      gap: 5%;
+  @media (max-width: 800px) {
+    section.bio p {
+      text-align: center;
     }
   }
 
