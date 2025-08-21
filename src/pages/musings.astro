@@ -1,16 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PortfolioSection from "../components/PortfolioSection.astro";
-import ProjectRow from "../components/ProjectRow.astro";
-import Chip from "../components/Chip.astro";
-import Project from "../components/Project.astro";
-import Koi from "../components/Koi.astro";
-import Snek from "../components/Snek.astro";
-import ISS from "../components/ISS.astro";
+import PortfolioSection from "../components/projects/PortfolioSection.astro";
+import ProjectRow from "../components/projects/ProjectRow.astro";
+import Chip from "../components/chips/Chip.astro";
+import Project from "../components/projects/Project.astro";
+import Koi from "../components/visuals/Koi.astro";
+import Snek from "../components/visuals/Snek.astro";
+import ISS from "../components/visuals/ISS.astro";
+
+const heading = "Musings";
+const description = "More playful than practical.";
 ---
 
-<Layout musingsIsActive="true" pathName="musings">
-  <PortfolioSection heading="Musings" description="More playful than practical.">
+<Layout
+  musingsIsActive="true"
+  pathName="musings"
+  title={heading}
+  description={description}
+  ogURL="https://conorkelley.me/musings"
+>
+  <PortfolioSection heading={heading} description={description}>
     <ProjectRow>
       <Project
         slot="column-1"

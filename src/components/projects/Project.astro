@@ -9,7 +9,9 @@ interface Props {
 
 <div class="project-item">
   <div class="item-visual">
-    <slot name="project-visual" />
+    <slot name="project-visual">
+      <span class="fallback"></span>
+    </slot>
   </div>
   <div class="item-info">
     <p class="project-name">
@@ -33,8 +35,18 @@ interface Props {
     }
   }
 
+  .project-item:has(span.fallback) .project-description {
+    /* sets max-width on description text for items without visuals */
+    max-width: 95%;
+  }
+
+  .item-visual:has(span.fallback) {
+    /* removes the div wrapper from any project with no visual; keeps layout uniform */
+    display: none;
+  }
+
   .project-name {
-    font-size: clamp(0.8rem, 6vw, 1rem);
+    font-size: clamp(0.8rem, 6vw, 1.05rem);
     font-weight: 500;
 
     a {
@@ -43,7 +55,7 @@ interface Props {
   }
 
   .project-description {
-    font-size: clamp(0.85rem, 4vw, 1rem);
+    font-size: clamp(0.85rem, 4vw, 0.9rem);
     font-style: italic;
   }
 
@@ -54,6 +66,12 @@ interface Props {
       align-items: center;
       gap: 1rem;
     }
+
+    .project-item:has(span.fallback) .project-description {
+      /* sets max-width on description text for items without visuals */
+      max-width: 100%;
+    }
+
     .project-description {
       max-width: 100%;
       text-wrap: balance;

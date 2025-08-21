@@ -1,11 +1,20 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+const heading = "Portfolio";
+const description = "My professional and personal development work.";
 ---
 
-<Layout portfolioIsActive="true" pathName="portfolio">
+<Layout
+  portfolioIsActive="true"
+  pathName="portfolio"
+  title={heading}
+  description={description}
+  ogURL="https://conorkelley.me/portfolio"
+>
   <section class="portfolio">
-    <h2>Portfolio</h2>
-    <p class="description">Check out my professional and personal development work.</p>
+    <h2>{heading}</h2>
+    <p class="description">{description}</p>
     <ul>
       <li><a href="portfolio/gwmedicine">GW Medicine</a> (current employment)</li>
       <li><a href="portfolio/busom">Boston University School of Medicine</a></li>

@@ -1,12 +1,21 @@
 ---
-const { description, pathName } = Astro.props;
+const { description, title, ogURL, pathName, indexIsActive, portfolioIsActive, musingsIsActive } =
+  Astro.props;
+interface Props {
+  description: string;
+  title: string;
+  ogURL: string;
+  pathName: string;
+  indexIsActive?: string;
+  portfolioIsActive?: string;
+  musingsIsActive?: string;
+}
 const date = new Date().getFullYear();
-const { indexIsActive, portfolioIsActive, musingsIsActive } = Astro.props;
 import GithubSVG from "../svg/GithubSVG.astro";
 import LinkedinSVG from "../svg/LinkedinSVG.astro";
 import EmailSVG from "../svg/EmailSVG.astro";
 import ResumeSVG from "../svg/ResumeSVG.astro";
-import Path from "../components/Path.astro";
+import Path from "../components/chips/Path.astro";
 ---
 
 <html lang="en">
@@ -19,12 +28,12 @@ import Path from "../components/Path.astro";
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
-    <title>Conor Kelley</title>
-    <meta name="title" content=`Conor Kelley` />
-    <meta property="og:title" content=`Conor Kelley` />
+    <title>Conor Kelley | {title}</title>
+    <meta name="title" content={`Conor Kelley | ${title}`} />
+    <meta property="og:title" content={`Conor Kelley | ${title}`} />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
-    <slot name="metadata" />
+    <meta property="og:url" content={ogURL} />
     <script>
       const header = document.querySelector("header");
       const stored_classes = sessionStorage.getItem("animatedHeader");
