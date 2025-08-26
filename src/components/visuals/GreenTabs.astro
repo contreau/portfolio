@@ -1,0 +1,95 @@
+<script>
+  const tabs = document.querySelectorAll(".green-tabs-container .tab");
+  tabs[1].addEventListener("animationend", () => {
+    tabs.forEach((tab) => tab.classList.remove("activeTabGreen"));
+    setTimeout(() => {
+      tabs.forEach((tab) => tab.classList.add("activeTabGreen"));
+    }, 500);
+  });
+</script>
+
+<div class="green-tabs-container">
+  <div class="tab tab-1 activeTabGreen"><span>A</span></div>
+  <div class="tab tab-2 activeTabGreen"><span>B</span></div>
+</div>
+
+<style>
+  .green-tabs-container {
+    min-height: 150px;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .tab {
+    --blue: #0b3b5d;
+    --grey: #e1e1e1;
+    --white: #ffffff;
+    --green: #049c78;
+    --tab-background: var(--blue);
+    min-height: 15px;
+    min-width: 55px;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+  }
+
+  .tab::after {
+    position: absolute;
+    content: "";
+    background-color: var(--green);
+    min-height: 3px;
+    bottom: -5px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translate(-50%, 50%);
+  }
+
+  .activeTabGreen {
+    animation: activeTabGreen 1800ms;
+  }
+
+  .activeTabGreen::after {
+    animation: tabUnderline 1800ms;
+  }
+
+  .tab-2,
+  .tab-2::after {
+    animation-delay: 1800ms;
+  }
+
+  /* Animations */
+
+  @keyframes activeTabGreen {
+    0% {
+      background-color: var(--blue);
+    }
+
+    50% {
+      transform: scale(1.1);
+      background-color: var(--green);
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: var(--blue);
+    }
+  }
+
+  @keyframes tabUnderline {
+    0% {
+      width: 0%;
+    }
+
+    50% {
+      width: 75%;
+    }
+
+    100% {
+      width: 0%;
+    }
+  }
+</style>

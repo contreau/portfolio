@@ -3,7 +3,7 @@ const { projectName, projectDescription, projectURL } = Astro.props;
 interface Props {
   projectName: string;
   projectDescription: string;
-  projectURL: string;
+  projectURL?: string;
 }
 ---
 
@@ -57,6 +57,7 @@ interface Props {
   .project-description {
     font-size: clamp(0.85rem, 4vw, 0.9rem);
     font-style: italic;
+    max-width: 95%;
   }
 
   @media (max-width: 1100px) {

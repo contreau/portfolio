@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import PortfolioSection from "../../components/projects/PortfolioSection.astro";
 import Project from "../../components/projects/Project.astro";
 import CTSI from "../../components/visuals/CTSI.astro";
+import GreyTabs from "../../components/visuals/GreyTabs.astro";
+import GreenTabs from "../../components/visuals/GreenTabs.astro";
 import Chip from "../../components/chips/Chip.astro";
 import ProjectRow from "../../components/projects/ProjectRow.astro";
 
@@ -36,27 +38,65 @@ const description =
         <Chip slot="chip" abbr="scss" />
         <Chip slot="chip" abbr="js" />
       </Project>
+      <Project
+        slot="column-2"
+        projectName="Accordion: Blue-Grey"
+        projectDescription="A style for collapsible accordions, used frequently across the GW MFA and SMHS websites."
+      >
+        <Chip slot="chip" abbr="css" />
+      </Project>
+    </ProjectRow>
+
+    <ProjectRow>
+      <Project
+        slot="column-1"
+        projectName="Nav Tabs: Blue-Grey"
+        projectDescription="A style option for nav tabs with a blue-grey color scheme."
+        projectURL="https://gwdocs.com/locations/gw-primary-care-alexandria/gw-newcomer-primary-care-clinic"
+      >
+        <GreyTabs slot="project-visual" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+
+      <Project
+        slot="column-2"
+        projectName="Nav Tabs: Blue-Green"
+        projectDescription="A style option for nav tabs with a blue-green color scheme."
+      >
+        <GreenTabs slot="project-visual" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
     </ProjectRow>
 
     <h3>Automation Tools</h3>
     <ProjectRow>
       <Project
         slot="column-1"
-        projectName="Faculty Profile Markup Generator"
-        projectDescription="Developed for the redesign effort of the GW School of Medicine department faculty pages, this tool scraped 1,400+ GW School of Medicine faculty profiles and regenerated them with redesigned HTML, significantly speeding up the redesign implementation."
-        projectURL="https://github.com/contreau/smhs-faculty-generator"
+        projectName="Faculty Listing Builder"
+        projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
       >
-        <Chip slot="chip" abbr="js" />
-        <Chip slot="chip" abbr="cli" />
+        <Chip slot="chip" abbr="vue" />
+        <Chip slot="chip" abbr="ts" />
       </Project>
-
+    </ProjectRow>
+    <ProjectRow>
       <Project
-        slot="column-2"
+        slot="column-1"
         projectName="Faculty Profile URL Patcher"
         projectDescription=" Developed for the migration of the GW School of Medicine faculty directory, this tool updated profile URLs in the markup of 1,400+ faculty members to the new directory domain in just a few seconds. Enabled near-immediate updating of 30+ department websites as soon as the directory launched."
         projectURL="https://github.com/contreau/smhs-profile-patch"
       >
         <Chip slot="chip" abbr="ts" />
+        <Chip slot="chip" abbr="cli" />
+      </Project>
+
+      <Project
+        slot="column-2"
+        projectName="Faculty Profile Markup Generator"
+        projectDescription="Developed for the redesign effort of the GW School of Medicine department faculty pages, this tool scraped 1,400+ GW School of Medicine faculty profiles and regenerated them with redesigned HTML, significantly speeding up the redesign implementation."
+        projectURL="https://github.com/contreau/smhs-faculty-generator"
+      >
+        <Chip slot="chip" abbr="js" />
         <Chip slot="chip" abbr="cli" />
       </Project>
     </ProjectRow>
