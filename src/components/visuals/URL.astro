@@ -1,5 +1,35 @@
+<script>
+  const rings = document.querySelectorAll(".ring");
+  const outerRing = document.querySelector(".outer-ring");
+  const img = document.querySelector("img#link");
+
+  outerRing.addEventListener("animationend", (event) => {
+    const el = event.target as HTMLElement;
+    if (el.classList.contains("outer-ring")) {
+      img.classList.remove("animate-img");
+      rings.forEach((ring) => ring.classList.remove("animate-ring"));
+      setTimeout(() => {
+        img.classList.add("animate-img");
+        rings.forEach((ring) => ring.classList.add("animate-ring"));
+        console.log("re-added animations");
+      }, 250);
+    }
+  });
+</script>
+
 <div class="container">
-  <img src="/green-link.png" alt="Green link" height="95" width="95" />
+  <div class="outer-ring ring animate-ring">
+    <div class="inner-ring ring animate-ring">
+      <img
+        src="/green-link.png"
+        id="link"
+        alt="Green link"
+        height="55"
+        width="55"
+        class="animate-img"
+      />
+    </div>
+  </div>
 </div>
 
 <style>
@@ -11,18 +41,66 @@
     align-content: center;
   }
 
-  img {
+  .outer-ring,
+  .inner-ring {
+    --green: #19fe88;
+    border-radius: 50%;
+    border: solid 2px;
+    border-color: transparent;
+    align-content: center;
     margin-inline: auto;
-
-    animation: shrink 1000ms alternate infinite;
   }
 
-  @keyframes shrink {
+  /* Animation classes */
+  .animate-ring {
+    animation: rings 800ms alternate;
+  }
+
+  .animate-img {
+    animation: pulse 800ms alternate;
+  }
+
+  .outer-ring {
+    height: 125px;
+    width: 125px;
+    animation-delay: 400ms;
+  }
+
+  .inner-ring {
+    height: 90px;
+    width: 90px;
+    animation-delay: 200ms;
+  }
+
+  img {
+    margin-inline: auto;
+  }
+
+  /* Animations */
+  @keyframes rings {
     0% {
-      transform: scale(1);
+      border-color: transparent;
+    }
+    50% {
+      border-color: var(--green);
     }
     100% {
-      transform: scale(0.25);
+      border-color: var(--transparent);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      filter: none;
+    }
+    50% {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 2.5px var(--green));
+    }
+    100% {
+      transform: scale(1);
+      filter: none;
     }
   }
 </style>
