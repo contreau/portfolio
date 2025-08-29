@@ -1,0 +1,73 @@
+<div class="accordion-container">
+  <div class="accordion-row"><span>A</span></div>
+  <div class="accordion-row"><span>B</span></div>
+  <div class="accordion-row"><span>C</span></div>
+</div>
+
+<style>
+  .accordion-container {
+    min-height: 150px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .accordion-row {
+    min-height: 25px;
+    background-color: #f3f3f3;
+    border-left: solid 3.5px #033c5a;
+    border-radius: 2.5px;
+    border-bottom-left-radius: 0;
+    position: relative;
+  }
+
+  .accordion-row span {
+    padding-left: 2em;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #033c5a;
+  }
+
+  .accordion-row::before,
+  .accordion-row::after {
+    content: "";
+    background-color: #033c5a;
+    min-height: 1.5px;
+    min-width: 8px;
+    position: absolute;
+    top: 16.5px;
+  }
+
+  .accordion-row::before {
+    transform: rotate(45deg);
+    left: 5.5px;
+    /* animation: rotateBeforeSymbol 800ms alternate infinite; */
+  }
+
+  .accordion-row::after {
+    transform: rotate(135deg);
+    left: 10.5px;
+    /* animation: rotateAfterSymbol 800ms alternate infinite; */
+  }
+
+  @keyframes rotateBeforeSymbol {
+    0% {
+      transform: rotate(45deg);
+    }
+
+    100% {
+      transform: rotate(135deg);
+    }
+  }
+
+  @keyframes rotateAfterSymbol {
+    0% {
+      transform: rotate(135deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+</style>

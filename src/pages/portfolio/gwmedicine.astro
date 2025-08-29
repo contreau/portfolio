@@ -5,6 +5,7 @@ import Project from "../../components/projects/Project.astro";
 import CTSI from "../../components/visuals/CTSI.astro";
 import GreyTabs from "../../components/visuals/GreyTabs.astro";
 import GreenTabs from "../../components/visuals/GreenTabs.astro";
+import Accordion from "../../components/visuals/Accordion.astro";
 import Chip from "../../components/chips/Chip.astro";
 import ProjectRow from "../../components/projects/ProjectRow.astro";
 
@@ -43,6 +44,7 @@ const description =
         projectName="Accordion: Blue-Grey"
         projectDescription="A style for collapsible accordions, used frequently across the GW MFA and SMHS websites."
       >
+        <Accordion slot="project-visual" />
         <Chip slot="chip" abbr="css" />
       </Project>
     </ProjectRow>
@@ -83,7 +85,7 @@ const description =
       <Project
         slot="column-1"
         projectName="Faculty Profile URL Patcher"
-        projectDescription=" Developed for the migration of the GW School of Medicine faculty directory, this tool updated profile URLs in the markup of 1,400+ faculty members to the new directory domain in just a few seconds. Enabled near-immediate updating of 30+ department websites as soon as the directory launched."
+        projectDescription="CLI that updated profile URLs of 1,400+ faculty members to a new domain in just a few seconds. Enabled near-immediate updating of 30+ department websites once the new SMHS faculty directory launched."
         projectURL="https://github.com/contreau/smhs-profile-patch"
       >
         <Chip slot="chip" abbr="ts" />
@@ -93,7 +95,7 @@ const description =
       <Project
         slot="column-2"
         projectName="Faculty Profile Markup Generator"
-        projectDescription="Developed for the redesign effort of the GW School of Medicine department faculty pages, this tool scraped 1,400+ GW School of Medicine faculty profiles and regenerated them with redesigned HTML, significantly speeding up the redesign implementation."
+        projectDescription="CLI that scraped 1,400+ faculty profiles and regenerated them with new HTML, significantly speeding up the aesthetic overhaul of faculty pages across 30+ department sites."
         projectURL="https://github.com/contreau/smhs-faculty-generator"
       >
         <Chip slot="chip" abbr="js" />
