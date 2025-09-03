@@ -1,5 +1,10 @@
 <div class="accordion-container">
-  <div class="accordion-row"><span>A</span></div>
+  <div class="accordion-row">
+    <span>A</span>
+    <div class="row-content">
+      <p>Bonjour.</p>
+    </div>
+  </div>
   <div class="accordion-row"><span>B</span></div>
   <div class="accordion-row"><span>C</span></div>
 </div>
@@ -7,33 +12,50 @@
 <style>
   .accordion-container {
     min-height: 150px;
+    max-height: 150px;
     min-width: 150px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    justify-content: center;
+    overflow-y: hidden;
+    max-height: 150px;
+    align-content: center;
   }
 
   .accordion-row {
-    min-height: 25px;
+    --blue: #033c5a;
+    min-height: 35px;
     background-color: #f3f3f3;
-    border-left: solid 3.5px #033c5a;
+    border-left: solid 3.5px var(--blue);
     border-radius: 2.5px;
     border-bottom-left-radius: 0;
     position: relative;
   }
 
+  .row-content {
+    display: grid;
+    grid-template-rows: 0fr;
+  }
+
+  .row-content > p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    padding-left: 2rem;
+    overflow: hidden;
+  }
+
+  .accordion-row + .accordion-row {
+    margin-top: 0.5rem;
+  }
+
   .accordion-row span {
-    padding-left: 2em;
+    padding-left: 2rem;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #033c5a;
+    color: var(--blue);
   }
 
   .accordion-row::before,
   .accordion-row::after {
     content: "";
-    background-color: #033c5a;
+    background-color: var(--blue);
     min-height: 1.5px;
     min-width: 8px;
     position: absolute;
@@ -43,13 +65,36 @@
   .accordion-row::before {
     transform: rotate(45deg);
     left: 5.5px;
-    /* animation: rotateBeforeSymbol 800ms alternate infinite; */
   }
 
   .accordion-row::after {
     transform: rotate(135deg);
     left: 10.5px;
-    /* animation: rotateAfterSymbol 800ms alternate infinite; */
+  }
+
+  .row-content:nth-of-type(1) {
+    animation: expandAccordion 3000ms infinite;
+  }
+
+  .accordion-row:nth-of-type(1)::before {
+    animation: rotateBeforeSymbol 3000ms infinite;
+  }
+
+  .accordion-row:nth-of-type(1)::after {
+    animation: rotateAfterSymbol 3000ms infinite;
+  }
+
+  @keyframes expandAccordion {
+    0% {
+      grid-template-rows: 1fr;
+    }
+
+    50% {
+      grid-template-rows: 0fr;
+    }
+    100% {
+      grid-template-rows: 1fr;
+    }
   }
 
   @keyframes rotateBeforeSymbol {
@@ -57,8 +102,12 @@
       transform: rotate(45deg);
     }
 
-    100% {
+    50% {
       transform: rotate(135deg);
+    }
+
+    100% {
+      transform: rotate(45deg);
     }
   }
 
@@ -66,8 +115,11 @@
     0% {
       transform: rotate(135deg);
     }
-    100% {
+    50% {
       transform: rotate(45deg);
+    }
+    100% {
+      transform: rotate(135deg);
     }
   }
 </style>
