@@ -1,12 +1,26 @@
+<script>
+  const accordionRows = document.querySelectorAll(".accordion-row");
+  accordionRows[1].addEventListener("animationend", () => {
+    accordionRows.forEach((row) => row.classList.remove("animate-row"));
+    setTimeout(() => {
+      accordionRows.forEach((row) => row.classList.add("animate-row"));
+    }, 1000);
+  });
+</script>
+
 <div class="accordion-container">
-  <div class="accordion-row">
-    <span>A</span>
+  <div class="accordion-row row-1 animate-row">
+    <span>Lorem</span>
     <div class="row-content">
-      <p>Bonjour.</p>
+      <p>Marco.</p>
     </div>
   </div>
-  <div class="accordion-row"><span>B</span></div>
-  <div class="accordion-row"><span>C</span></div>
+  <div class="accordion-row row-2 animate-row">
+    <span>Ipsum</span>
+    <div class="row-content">
+      <p>Polo.</p>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -27,6 +41,7 @@
     border-radius: 2.5px;
     border-bottom-left-radius: 0;
     position: relative;
+    text-align: left;
   }
 
   .row-content {
@@ -36,7 +51,7 @@
 
   .row-content > p {
     font-size: 0.8rem;
-    font-weight: 300;
+    font-weight: 400;
     padding-left: 2rem;
     overflow: hidden;
   }
@@ -72,28 +87,38 @@
     left: 10.5px;
   }
 
-  .row-content:nth-of-type(1) {
-    animation: expandAccordion 3000ms infinite;
+  /* Animation Config */
+
+  .animate-row .row-content {
+    animation: expandAccordion 3000ms;
   }
 
-  .accordion-row:nth-of-type(1)::before {
-    animation: rotateBeforeSymbol 3000ms infinite;
+  .animate-row.row-2 .row-content {
+    animation-delay: 3000ms;
   }
 
-  .accordion-row:nth-of-type(1)::after {
-    animation: rotateAfterSymbol 3000ms infinite;
+  .animate-row::before {
+    animation: rotateBeforeSymbol 3000ms;
+  }
+
+  .animate-row::after {
+    animation: rotateAfterSymbol 3000ms;
+  }
+
+  .animate-row.row-2::before,
+  .animate-row.row-2::after {
+    animation-delay: 3000ms;
   }
 
   @keyframes expandAccordion {
     0% {
-      grid-template-rows: 1fr;
-    }
-
-    50% {
       grid-template-rows: 0fr;
     }
-    100% {
+    50% {
       grid-template-rows: 1fr;
+    }
+    100% {
+      grid-template-rows: 0fr;
     }
   }
 
@@ -101,11 +126,9 @@
     0% {
       transform: rotate(45deg);
     }
-
     50% {
       transform: rotate(135deg);
     }
-
     100% {
       transform: rotate(45deg);
     }

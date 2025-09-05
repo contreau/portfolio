@@ -19,62 +19,50 @@ const description = "More playful than practical.";
   description={description}
   ogURL="https://conorkelley.me/musings"
 >
-  <PortfolioSection heading={heading} description={description}>
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="CSS Koi Pond"
-        projectDescription="A charming koi pond powered by CSS."
-        projectURL="https://contreau.github.io/koi-pond/"
-      >
-        <Koi slot="project-visual" />
-        <Chip slot="chip" abbr="css" />
-      </Project>
-
-      <Project
-        slot="column-2"
-        projectName="Snek"
-        projectDescription="My take on the classic snake game with three game modes."
-        projectURL="https://snekgame.app"
-      >
-        <Snek slot="project-visual" />
-        <Chip slot="chip" abbr="svelte" />
-        <Chip slot="chip" abbr="ts" />
-      </Project>
-    </ProjectRow>
-
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="ISS Live Tracker"
-        projectDescription="Minimalist tracker of the International Space Station."
-        projectURL="https://live-tracker-iss.netlify.app/"
-      >
-        <ISS slot="project-visual" />
-        <Chip slot="chip" abbr="js" />
-        <Chip slot="chip" abbr="css" />
-      </Project>
-    </ProjectRow>
-  </PortfolioSection>
+  <div class="musings">
+    <PortfolioSection heading={heading} description={description}>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="CSS Koi Pond"
+          projectDescription="A charming koi pond powered by CSS."
+          projectURL="https://contreau.github.io/koi-pond/"
+        >
+          <Koi slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+        </Project>
+        <Project
+          slot="column-2"
+          projectName="Snek"
+          projectDescription="My take on the classic snake game with three game modes."
+          projectURL="https://snekgame.app"
+        >
+          <Snek slot="project-visual" />
+          <Chip slot="chip" abbr="svelte" />
+          <Chip slot="chip" abbr="ts" />
+        </Project>
+      </ProjectRow>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="ISS Live Tracker"
+          projectDescription="Minimalist tracker of the International Space Station."
+          projectURL="https://live-tracker-iss.netlify.app/"
+        >
+          <ISS slot="project-visual" />
+          <Chip slot="chip" abbr="js" />
+          <Chip slot="chip" abbr="css" />
+        </Project>
+      </ProjectRow>
+    </PortfolioSection>
+  </div>
 </Layout>
 
 <style>
-  @keyframes shiftUp {
-    0% {
-      transform: translateY(10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-
-  div.project-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 6rem;
+  .musings {
     opacity: 0;
     animation:
       fadeIn 500ms ease-in forwards,
-      shiftUp 500ms ease-in forwards;
+      shiftDown 500ms ease-in forwards;
   }
 </style>

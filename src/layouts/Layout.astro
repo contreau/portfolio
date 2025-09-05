@@ -308,6 +308,24 @@ import Path from "../components/chips/Path.astro";
     }
   }
 
+  @keyframes shiftUp {
+    0% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes shiftDown {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
   @media (max-width: 1100px) {
     nav {
       display: none;

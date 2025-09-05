@@ -8,6 +8,7 @@ import GreenTabs from "../../components/visuals/GreenTabs.astro";
 import Accordion from "../../components/visuals/Accordion.astro";
 import Chip from "../../components/chips/Chip.astro";
 import ProjectRow from "../../components/projects/ProjectRow.astro";
+import FacultyBuilder from "../../components/visuals/FacultyBuilder.astro";
 
 const heading = "GW Medicine";
 const description =
@@ -43,6 +44,7 @@ const description =
         slot="column-2"
         projectName="Accordion: Blue-Grey"
         projectDescription="A style for collapsible accordions, used frequently across the GW MFA and SMHS websites."
+        projectURL=""
       >
         <Accordion slot="project-visual" />
         <Chip slot="chip" abbr="css" />
@@ -77,6 +79,7 @@ const description =
         projectName="Faculty Listing Builder"
         projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
       >
+        <FacultyBuilder slot="project-visual" />
         <Chip slot="chip" abbr="vue" />
         <Chip slot="chip" abbr="ts" />
       </Project>
