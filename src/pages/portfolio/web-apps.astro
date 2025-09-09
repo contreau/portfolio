@@ -6,6 +6,7 @@ import ProjectRow from "../../components/projects/ProjectRow.astro";
 import Chip from "../../components/chips/Chip.astro";
 import Wave from "../../components/visuals/Wave.astro";
 import URL from "../../components/visuals/URL.astro";
+import CiteClinic from "../../components/visuals/CiteClinic.astro";
 
 const heading = "Web Apps";
 const description = "Personal web application projects.";
@@ -18,30 +19,53 @@ const description = "Personal web application projects.";
   description={description}
   ogURL="https://conorkelley.me/portfolio/web-apps"
 >
-  <PortfolioSection heading={heading} description={description}>
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="Kompendium"
-        projectDescription="An extensive digital archive of my late friend Konrad Rauscher's 800+ playlists."
-        projectURL="https://komp3nd1um.app"
-      >
-        <Wave slot="project-visual" />
-        <Chip slot="chip" abbr="sveltekit" />
-        <Chip slot="chip" abbr="ts" />
-      </Project>
-
-      <Project
-        slot="column-2"
-        projectName="URL Shortener Client & API"
-        projectDescription="REST API and minimal SPA client for a URL shortener. (Code only)"
-        projectURL="https://github.com/contreau/shortcode-api"
-      >
-        <URL slot="project-visual" />
-        <Chip slot="chip" abbr="vue" />
-        <Chip slot="chip" abbr="ts" />
-        <Chip slot="chip" abbr="php" />
-      </Project>
-    </ProjectRow>
-  </PortfolioSection>
+  <div class="portfolio">
+    <PortfolioSection heading={heading}>
+      <p class="description" slot="description">{description}</p>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="Kompendium"
+          projectDescription="An extensive digital archive of my late friend Konrad Rauscher's 800+ playlists."
+          projectURL="https://komp3nd1um.app"
+        >
+          <Wave slot="project-visual" />
+          <Chip slot="chip" abbr="sveltekit" />
+          <Chip slot="chip" abbr="ts" />
+        </Project>
+        <Project
+          slot="column-2"
+          projectName="URL Shortener Client & API"
+          projectDescription="REST API and minimal SPA client for a URL shortener. (Code only)"
+          projectURL="https://github.com/contreau/shortcode-api"
+        >
+          <URL slot="project-visual" />
+          <Chip slot="chip" abbr="vue" />
+          <Chip slot="chip" abbr="ts" />
+          <Chip slot="chip" abbr="php" />
+        </Project>
+      </ProjectRow>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="CiteClinic"
+          projectDescription="Generate styled medical journal citations from any valid DOI."
+          projectURL="https://cite-clinic.vercel.app/"
+        >
+          <CiteClinic slot="project-visual" />
+          <Chip slot="chip" abbr="sveltekit" />
+          <Chip slot="chip" abbr="ts" />
+        </Project>
+      </ProjectRow>
+    </PortfolioSection>
+  </div>
 </Layout>
+
+<style>
+  .portfolio {
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
+  }
+</style>

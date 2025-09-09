@@ -1,8 +1,7 @@
 ---
-const { heading, description, timeline, companyAbbr } = Astro.props;
+const { heading, timeline, companyAbbr } = Astro.props;
 interface Props {
   heading: string;
-  description: string;
   companyAbbr?: string;
   timeline?: string;
 }
@@ -18,9 +17,7 @@ if (companyAbbr) {
     <h2>{heading}</h2>
     <span class:list={timelineClasses}>{timeline}</span>
   </div>
-
-  <p class="description">{description}</p>
-
+  <slot name="description" />
   <slot />
 </section>
 

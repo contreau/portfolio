@@ -12,7 +12,7 @@ import FacultyBuilder from "../../components/visuals/FacultyBuilder.astro";
 
 const heading = "GW Medicine";
 const description =
-  "UI components, command-line tools, and other highlighted development projects from my work with the GW MFA and GW School of Medicine & Health Sciences.";
+  "Selected projects that highlight my skill as a developer at GW Medicine, namely UI components and automation tools.";
 ---
 
 <Layout
@@ -22,95 +22,108 @@ const description =
   description={description}
   ogURL="https://conorkelley.me/portfolio/gwmedicine"
 >
-  <PortfolioSection
-    heading={heading}
-    description={description}
-    timeline="October 2022 - Present"
-    companyAbbr="gw"
-  >
-    <h3>User Interface Components</h3>
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="CTSI-CN Virtual Organizer"
-        projectDescription="An interactive navigational graphic developed for the Clinical and Translational Science Institute (CTSI) at Children's National Hospital."
-        projectURL="https://ctsicn.org/virtual-organizer"
-      >
-        <CTSI slot="project-visual" />
-        <Chip slot="chip" abbr="scss" />
-        <Chip slot="chip" abbr="js" />
-      </Project>
-      <Project
-        slot="column-2"
-        projectName="Accordion: Blue-Grey"
-        projectDescription="A style for collapsible accordions, used frequently across the GW MFA and SMHS websites."
-        projectURL=""
-      >
-        <Accordion slot="project-visual" />
-        <Chip slot="chip" abbr="css" />
-      </Project>
-    </ProjectRow>
-
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="Nav Tabs: Blue-Grey"
-        projectDescription="A style option for nav tabs with a blue-grey color scheme."
-        projectURL="https://gwdocs.com/locations/gw-primary-care-alexandria/gw-newcomer-primary-care-clinic"
-      >
-        <GreyTabs slot="project-visual" />
-        <Chip slot="chip" abbr="css" />
-      </Project>
-
-      <Project
-        slot="column-2"
-        projectName="Nav Tabs: Blue-Green"
-        projectDescription="A style option for nav tabs with a blue-green color scheme."
-      >
-        <GreenTabs slot="project-visual" />
-        <Chip slot="chip" abbr="css" />
-      </Project>
-    </ProjectRow>
-
-    <h3>Automation Tools</h3>
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="Faculty Listing Builder"
-        projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
-      >
-        <FacultyBuilder slot="project-visual" />
-        <Chip slot="chip" abbr="vue" />
-        <Chip slot="chip" abbr="ts" />
-      </Project>
-    </ProjectRow>
-    <ProjectRow>
-      <Project
-        slot="column-1"
-        projectName="Faculty Profile URL Patcher"
-        projectDescription="CLI that updated profile URLs of 1,400+ faculty members to a new domain in just a few seconds. Enabled near-immediate updating of 30+ department websites once the new SMHS faculty directory launched."
-        projectURL="https://github.com/contreau/smhs-profile-patch"
-      >
-        <Chip slot="chip" abbr="ts" />
-        <Chip slot="chip" abbr="cli" />
-      </Project>
-
-      <Project
-        slot="column-2"
-        projectName="Faculty Profile Markup Generator"
-        projectDescription="CLI that scraped 1,400+ faculty profiles and regenerated them with new HTML, significantly speeding up the aesthetic overhaul of faculty pages across 30+ department websites."
-        projectURL="https://github.com/contreau/smhs-faculty-generator"
-      >
-        <Chip slot="chip" abbr="js" />
-        <Chip slot="chip" abbr="cli" />
-      </Project>
-    </ProjectRow>
-  </PortfolioSection>
+  <div class="portfolio">
+    <PortfolioSection heading={heading} timeline="October 2022 - Present" companyAbbr="gw">
+      <div slot="description">
+        <p class="description">
+          Much of my day-to-day work is broad and difficult to show off. I build and update pages,
+          webforms, and applications in service of thousands of patients, faculty, administrators,
+          and students in the GW medical system. There's lots of behind-the-scenes QA and testing as
+          well.
+        </p>
+        <p class="description">
+          Here, I've selected projects that highlight my skill as a developer - namely UI components
+          and automation tools.
+        </p>
+      </div>
+      <h3>User Interface Components</h3>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="CTSI-CN Virtual Organizer"
+          projectDescription="An interactive navigational graphic developed for the Clinical and Translational Science Institute (CTSI) at Children's National Hospital."
+          projectURL="https://ctsicn.org/virtual-organizer"
+        >
+          <CTSI slot="project-visual" />
+          <Chip slot="chip" abbr="scss" />
+          <Chip slot="chip" abbr="js" />
+        </Project>
+        <Project
+          slot="column-2"
+          projectName="Accordion: Blue-Grey"
+          projectDescription="A style for collapsible accordions, used frequently across the GW MFA and SMHS websites."
+          projectURL="https://gwdocs.com/specialties/pharmacy#faq"
+        >
+          <Accordion slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+        </Project>
+      </ProjectRow>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="Nav Tabs: Blue-Grey"
+          projectDescription="A style option for nav tabs with a blue-grey color scheme."
+          projectURL="https://gwdocs.com/locations/gw-primary-care-alexandria/gw-newcomer-primary-care-clinic"
+        >
+          <GreyTabs slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+        </Project>
+        <Project
+          slot="column-2"
+          projectName="Nav Tabs: Blue-Green"
+          projectDescription="A style option for nav tabs with a blue-green color scheme."
+          projectURL="https://gwdocs.com/specialties/primary-care/gw-primary-care-medical-weight-loss-program"
+        >
+          <GreenTabs slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+        </Project>
+      </ProjectRow>
+      <h3>Automation Tools</h3>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="Faculty Listing Builder"
+          projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
+        >
+          <FacultyBuilder slot="project-visual" />
+          <Chip slot="chip" abbr="vue" />
+          <Chip slot="chip" abbr="ts" />
+        </Project>
+      </ProjectRow>
+      <ProjectRow>
+        <Project
+          slot="column-1"
+          projectName="Faculty Profile URL Patcher"
+          projectDescription="CLI that updated profile URLs of 1,400+ faculty members to a new domain in just a few seconds. Enabled near-immediate updating of 30+ department websites once the new SMHS faculty directory launched."
+          projectURL="https://github.com/contreau/smhs-profile-patch"
+        >
+          <Chip slot="chip" abbr="ts" />
+          <Chip slot="chip" abbr="cli" />
+        </Project>
+        <Project
+          slot="column-2"
+          projectName="Faculty Profile Markup Generator"
+          projectDescription="CLI that scraped 1,400+ faculty profiles and regenerated them with new HTML, significantly speeding up the aesthetic overhaul of faculty pages across 30+ department websites."
+          projectURL="https://github.com/contreau/smhs-faculty-generator"
+        >
+          <Chip slot="chip" abbr="js" />
+          <Chip slot="chip" abbr="cli" />
+        </Project>
+      </ProjectRow>
+    </PortfolioSection>
+  </div>
 </Layout>
 
 <style>
   h3 {
     margin-block: 3rem;
+  }
+
+  .portfolio {
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
   }
 
   @media (max-width: 1100px) {

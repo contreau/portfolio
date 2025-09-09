@@ -20,7 +20,8 @@ const description = "More playful than practical.";
   ogURL="https://conorkelley.me/musings"
 >
   <div class="musings">
-    <PortfolioSection heading={heading} description={description}>
+    <PortfolioSection heading={heading}>
+      <p class="description" slot="description">{description}</p>
       <ProjectRow>
         <Project
           slot="column-1"
