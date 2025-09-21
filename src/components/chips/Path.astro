@@ -13,7 +13,7 @@ const pathComponents: string[] = pathName.split("/");
   {
     pathComponents.map((path, i) => {
       if (path !== pathComponents[0]) {
-        const pathSlice = pathComponents.slice(0, i);
+        const pathSlice = pathComponents.slice(0, i).join("/");
         const hrefString = `/${pathSlice}/${path}`;
         const pathString = `/${path}`;
         return <a href={hrefString}>{pathString}</a>;
