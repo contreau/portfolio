@@ -1,10 +1,13 @@
 ---
-const { projectName, projectDescription, projectURL } = Astro.props;
+const { projectName, projectDescription, projectURL, urlTarget } = Astro.props;
 interface Props {
   projectName: string;
   projectDescription: string;
   projectURL?: string;
+  urlTarget?: string;
 }
+let target = "_blank";
+if (urlTarget) target = urlTarget;
 ---
 
 <div class="project-item">
@@ -15,7 +18,7 @@ interface Props {
   </div>
   <div class="item-info">
     <p class="project-name">
-      <a href={projectURL} target="_blank">{projectName}</a>
+      <a href={projectURL} target={target}>{projectName}</a>
     </p>
     <p class="project-description">
       {projectDescription}
