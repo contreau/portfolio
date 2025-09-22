@@ -1,0 +1,33 @@
+---
+const { title } = Astro.props;
+---
+
+<section>
+  <h2>{title}</h2>
+  <div class="languages">
+    <slot name="languages" />
+  </div>
+  <slot name="subpage-description" />
+  <slot name="content" />
+</section>
+
+<style>
+  section {
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
+  }
+
+  .languages {
+    margin-block: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 1100px) {
+    .languages {
+      justify-content: center;
+    }
+  }
+</style>

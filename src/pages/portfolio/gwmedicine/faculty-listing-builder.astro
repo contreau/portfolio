@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Chip from "../../../components/chips/Chip.astro";
+import SubpageContent from "../../../components/projects/SubpageContent.astro";
 const description =
   "A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages.";
 ---
@@ -12,20 +13,18 @@ const description =
   ogURL="https://conorkelley.me/portfolio/gwmedicine/faculty-listing-builder"
   portfolioIsActive="true"
 >
-  <section>
-    <h2>Faculty Listing Builder</h2>
-    <div class="languages">
-      <Chip abbr="vue" />
-      <Chip abbr="ts" />
-    </div>
-    <p class="description">
+  <SubpageContent title="Faculty Listing Builder">
+    <Chip slot="languages" abbr="vue" />
+    <Chip slot="languages" abbr="ts" />
+
+    <p slot="subpage-description" class="subpage-description">
       A GUI tool I built for our web team allowing for quick generation of a faculty member's
       profile HTML. Used to assist in updating any of the 39 <a
         href="https://biochemistry.smhs.gwu.edu/faculty"
         target="_blank">faculty pages</a
       > across the School of Medicine & Health Sciences websites.
     </p>
-    <div class="content-grid">
+    <div slot="content" class="content-grid">
       <div class="grid-item">
         <h3>Key features:</h3>
         <ul class="features-list">
@@ -48,25 +47,10 @@ const description =
         />
       </div>
     </div>
-  </section>
+  </SubpageContent>
 </Layout>
 
 <style>
-  section {
-    opacity: 0;
-    animation:
-      fadeIn 500ms ease-in forwards,
-      shiftDown 500ms ease-in forwards;
-  }
-
-  .description {
-    text-wrap: balance;
-
-    a {
-      color: var(--primary);
-    }
-  }
-
   h3 {
     margin-block: 0.5rem;
   }
@@ -110,9 +94,6 @@ const description =
     }
     .demo {
       order: -1;
-    }
-    .languages {
-      justify-content: center;
     }
     h3 {
       text-align: center;

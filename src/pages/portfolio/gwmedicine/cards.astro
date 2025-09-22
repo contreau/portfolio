@@ -1,0 +1,142 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Chip from "../../../components/chips/Chip.astro";
+---
+
+<script>
+  const revealButtons = document.querySelectorAll(".reveal-buttons button");
+  const revealedContent = document.querySelectorAll(".revealed-content");
+  revealButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const clickedButton = event.target as HTMLButtonElement;
+      const revealPlacement = clickedButton.attributes["data-content"].value;
+
+      // console.log(clickedButton.attributes["data-content"].value);
+      // reset .active class and aria-hidden attribute
+      revealButtons.forEach((button, i) => {
+        button.classList.remove("active");
+        // need to change this to the targeted content, this is purely for test
+        button.setAttribute("aria-hidden", "true");
+      });
+      // set .active class and remove aria-hidden from content
+      clickedButton.classList.add("active");
+      // need to change this to the targeted content, this is purely for test
+      clickedButton.setAttribute("aria-hidden", "false");
+    });
+  });
+</script>
+
+<Layout
+  title="Location Card Redesign"
+  description="A card style I developed for all location listings on the GW MFA website."
+  portfolioIsActive="true"
+  pathName="portfolio/gwmedicine/cards"
+  ogURL="https://conorkelley.me/portfolio/gwmedicine/cards"
+>
+  <section>
+    <h2>Cards: Providers and Locations</h2>
+    <div class="languages">
+      <Chip abbr="css" />
+      <Chip abbr="drupal" />
+    </div>
+    <p class="subpage-description">
+      Revamped card styles I developed for the listings of both <a
+        href="https://gwdocs.com/profile"
+        target="_blank">medical providers</a
+      > and <a href="https://gwdocs.com/locations" target="_blank">location listings</a> on the GW Medical
+      Faculty Associates website.
+    </p>
+
+    <div slot="content">
+      <div class="reveal-buttons">
+        <button data-content="before" class="btn-before">Before</button>
+        <button data-content="after" class="btn-after active">After</button>
+      </div>
+      <p data-content="before" class="revealed-content revealed-before" aria-hidden="true">
+        visible before
+      </p>
+      <p data-content="after" class="revealed-content revealed-after active" aria-hidden="false">
+        visible after
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .reveal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    border-radius: 5px;
+  }
+
+  button {
+    --btn-radius: 5px;
+    font-family: system-ui;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: #e2e2e2;
+    border: transparent;
+    padding: 0.5em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  button:hover,
+  button:focus-visible {
+    background-color: #c8c8c8;
+  }
+
+  .btn-before {
+    border-top-left-radius: var(--btn-radius);
+    border-bottom-left-radius: var(--btn-radius);
+
+    border-right: solid 4px #ffffff;
+  }
+
+  .btn-after {
+    border-top-right-radius: var(--btn-radius);
+    border-bottom-right-radius: var(--btn-radius);
+  }
+
+  p[aria-hidden="true"] {
+    display: none;
+  }
+
+  button.active,
+  button.active:hover,
+  button.active.focus-visible {
+    color: #ffffff;
+    background-color: var(--primary);
+  }
+
+  section {
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
+  }
+
+  .languages {
+    margin-block: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .description {
+    text-wrap: balance;
+
+    a {
+      color: var(--primary);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .languages {
+      justify-content: center;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+</style>

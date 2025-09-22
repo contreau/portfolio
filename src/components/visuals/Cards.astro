@@ -1,0 +1,96 @@
+---
+import AvatarSVG from "../../svg/AvatarSVG.astro";
+import LocationSVG from "../../svg/LocationSVG.astro";
+---
+
+<script>
+  const cards = document.querySelectorAll(".card");
+  const locationCard = document.querySelector(".location-card");
+  locationCard.addEventListener("animationend", () => {
+    cards.forEach((card) => card.classList.remove("animate"));
+    setTimeout(() => {
+      cards.forEach((card) => card.classList.add("animate"));
+    }, 500);
+  });
+</script>
+
+<div class="container">
+  <div class="card profile-card animate">
+    <div class="card-body">
+      <AvatarSVG />
+    </div>
+    <span>• • •</span>
+  </div>
+  <div class="card location-card animate">
+    <div class="card-body">
+      <LocationSVG />
+    </div>
+    <span>• • •</span>
+  </div>
+</div>
+
+<style>
+  .container {
+    min-height: 150px;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    min-height: 100px;
+    min-width: 70px;
+    background-color: #d7e3f0;
+    border-radius: 10px;
+    padding-inline: 5px;
+    padding-block: 10px;
+    text-align: center;
+  }
+
+  .card span {
+    color: #003050;
+    font-size: 1.1rem;
+  }
+
+  .card-body {
+    margin-inline: auto;
+    border-radius: 10px;
+    align-content: center;
+    min-height: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+  }
+
+  .animate {
+    animation: popCard 1200ms linear;
+  }
+
+  .location-card {
+    animation-delay: 1600ms;
+  }
+
+  @keyframes popCard {
+    0% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow:
+        rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    80% {
+      transform: scale(1.05);
+      box-shadow:
+        rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+  }
+</style>

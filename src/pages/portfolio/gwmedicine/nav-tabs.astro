@@ -1,0 +1,89 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Chip from "../../../components/chips/Chip.astro";
+import SubpageContent from "../../../components/projects/SubpageContent.astro";
+import GreyTabs from "../../../components/visuals/GreyTabs.astro";
+import GreenTabs from "../../../components/visuals/GreenTabs.astro";
+---
+
+<Layout
+  title="Navigation Tabs"
+  description="Color schemes for navigation tabs: Blue-Grey and Blue-Green. "
+  portfolioIsActive="true"
+  pathName="portfolio/gwmedicine/nav-tabs"
+  ogURL="https://conorkelley.me/portfolio/gwmedicine/nav-tabs"
+>
+  <SubpageContent title="Navigation Tabs">
+    <Chip slot="languages" abbr="css" />
+    <Chip slot="languages" abbr="drupal" />
+    <p slot="subpage-description" class="subpage-description">
+      Two color scheme options I developed for Navigation Tab components, which toggle the
+      visibility of grouped page content.
+    </p>
+
+    <div slot="content">
+      <div class="grid-container">
+        <div class="grid-item">
+          <h3>Blue-Grey Tabs</h3>
+          <GreyTabs />
+          <p>
+            Example:
+            <a
+              href="https://gwdocs.com/locations/gw-primary-care-alexandria/gw-newcomer-primary-care-clinic"
+              target="_blank"
+              >GW Newcomer Primary Care Clinic
+            </a>
+          </p>
+        </div>
+        <div class="grid-item">
+          <h3>Blue-Green Tabs</h3>
+          <GreenTabs />
+          <p>
+            Example:
+            <a
+              href="https://gwdocs.com/specialties/primary-care/gw-primary-care-medical-weight-loss-program"
+              target="_blank">GW Primary Care Medical Weight Loss Program</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </SubpageContent>
+</Layout>
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    margin-block: 2rem;
+  }
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .grid-item > * {
+    margin-block: 0;
+  }
+
+  .grid-item a {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 1100px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+    }
+
+    .grid-item p {
+      text-align: center;
+      text-wrap: balance;
+    }
+  }
+</style>

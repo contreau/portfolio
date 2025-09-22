@@ -1,0 +1,20 @@
+---
+import GreyTabs from "./GreyTabs.astro";
+import GreenTabs from "./GreenTabs.astro";
+---
+
+<div class="tabs-container">
+  <GreyTabs />
+  <GreenTabs />
+</div>
+
+<style>
+  .tabs-container {
+    min-height: 150px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+</style>
