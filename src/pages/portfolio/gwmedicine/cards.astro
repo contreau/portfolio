@@ -1,27 +1,45 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Chip from "../../../components/chips/Chip.astro";
+import { Image } from "astro:assets";
+import oldProfileCard from "../../../img/old-provider-card-572x600.jpg";
+import newProfileCard from "../../../img/new-provider-card-572x600.jpg";
+import oldLocationCard from "../../../img/old-location-card-572x600.jpg";
+import newLocationCard from "../../../img/new-location-card-572x600.jpg";
 ---
 
 <script>
-  const revealButtons = document.querySelectorAll(".reveal-buttons button");
-  const revealedContent = document.querySelectorAll(".revealed-content");
-  revealButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const clickedButton = event.target as HTMLButtonElement;
-      const revealPlacement = clickedButton.attributes["data-content"].value;
+  // Control Buttons
+  const beforeButton = document.querySelector("button.btn-before");
+  const afterButton = document.querySelector("button.btn-after");
+  // Toggled Content
+  const beforeSection = document.querySelectorAll(".revealed-before");
+  const afterSection = document.querySelectorAll(".revealed-after");
 
-      // console.log(clickedButton.attributes["data-content"].value);
-      // reset .active class and aria-hidden attribute
-      revealButtons.forEach((button, i) => {
-        button.classList.remove("active");
-        // need to change this to the targeted content, this is purely for test
-        button.setAttribute("aria-hidden", "true");
-      });
-      // set .active class and remove aria-hidden from content
-      clickedButton.classList.add("active");
-      // need to change this to the targeted content, this is purely for test
-      clickedButton.setAttribute("aria-hidden", "false");
+  // Click Listeners
+  beforeButton.addEventListener("click", () => {
+    // remove .active class from afterButton, hide afterSection
+    afterButton.classList.remove("active");
+    afterSection.forEach((element) => {
+      element.setAttribute("aria-hidden", "true");
+    });
+    // set .active class on this button, reveal content
+    beforeButton.classList.add("active");
+    beforeSection.forEach((element) => {
+      element.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  afterButton.addEventListener("click", () => {
+    // remove .active class from beforeButton, hide beforeSection
+    beforeButton.classList.remove("active");
+    beforeSection.forEach((element) => {
+      element.setAttribute("aria-hidden", "true");
+    });
+    // set .active class on this button, reveal content
+    afterButton.classList.add("active");
+    afterSection.forEach((element) => {
+      element.setAttribute("aria-hidden", "false");
     });
   });
 </script>
@@ -49,32 +67,81 @@ import Chip from "../../../components/chips/Chip.astro";
 
     <div slot="content">
       <div class="reveal-buttons">
-        <button data-content="before" class="btn-before">Before</button>
-        <button data-content="after" class="btn-after active">After</button>
+        <button data-content="before" class="btn-before">Old Style</button>
+        <button data-content="after" class="btn-after active">Current Style</button>
       </div>
-      <p data-content="before" class="revealed-content revealed-before" aria-hidden="true">
-        visible before
-      </p>
-      <p data-content="after" class="revealed-content revealed-after active" aria-hidden="false">
-        visible after
-      </p>
+
+      <div class="grid-container">
+        <!-- Before Content -->
+        <h3>Provider Card</h3>
+        <h3>Location Card</h3>
+        <!-- Provider Before (hidden by default) -->
+        <div class="revealed-content revealed-before" aria-hidden="true">
+          <Image
+            src={oldProfileCard}
+            alt="Former card style showing a provider's headshot, name, specialty and phone number."
+            layout="constrained"
+            loading="eager"
+            height="400"
+          />
+        </div>
+        <!-- Location Before (hidden by default) -->
+        <div class="revealed-content revealed-before" aria-hidden="true">
+          <Image
+            src={oldLocationCard}
+            alt="Former card style of the 2300 M Street location, showing an image with bare styling on its name, address and links."
+            layout="constrained"
+            loading="eager"
+            height="400"
+          />
+        </div>
+
+        <!-- Provider After -->
+        <div class="revealed-content revealed-after" aria-hidden="false">
+          <Image
+            src={newProfileCard}
+            alt="Current card style with a grey-blue background color showing a provider's headshot, name, specialty and phone number with more explicit buttons and coloring."
+            layout="constrained"
+            loading="eager"
+            height="400"
+          />
+        </div>
+        <!-- Location After -->
+        <div class="revealed-content revealed-after" aria-hidden="false">
+          <Image
+            src={newLocationCard}
+            alt="Current card style of a GW MFA specialty location with a grey-blue background, neat image border radius and more explicit buttons and coloring."
+            layout="constrained"
+            loading="eager"
+            height="400"
+          />
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
 
 <style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    margin-bottom: 1.5rem;
+  }
+
   .reveal-buttons {
     display: flex;
     justify-content: center;
     margin-inline: auto;
     border-radius: 5px;
+    margin-block: 1.5rem;
   }
 
   button {
     --btn-radius: 5px;
     font-family: system-ui;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 3vw, 1rem);
     background-color: #e2e2e2;
     border: transparent;
     padding: 0.5em;
@@ -99,7 +166,7 @@ import Chip from "../../../components/chips/Chip.astro";
     border-bottom-right-radius: var(--btn-radius);
   }
 
-  p[aria-hidden="true"] {
+  div[aria-hidden="true"] {
     display: none;
   }
 
