@@ -27,6 +27,7 @@ import Path from "../components/chips/Path.astro";
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <slot name="image-preload" />
     <meta property="og:type" content="website" />
     <title>Conor Kelley | {title}</title>
     <meta name="title" content={`Conor Kelley | ${title}`} />
@@ -57,11 +58,15 @@ import Path from "../components/chips/Path.astro";
       </div>
       <nav>
         <ul>
-          <li class:list={["", { active: indexIsActive }]}><a href="/">About</a></li>
-          <li class:list={["", { active: portfolioIsActive }]}>
-            <a href="/portfolio">Portfolio</a>
+          <li class:list={["", { active: indexIsActive }]}>
+            <a href="/" data-astro-prefetch>About</a>
           </li>
-          <li class:list={["", { active: musingsIsActive }]}><a href="/musings">Musings</a></li>
+          <li class:list={["", { active: portfolioIsActive }]}>
+            <a href="/portfolio" data-astro-prefetch>Portfolio</a>
+          </li>
+          <li class:list={["", { active: musingsIsActive }]}>
+            <a href="/musings" data-astro-prefetch>Musings</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -69,11 +74,15 @@ import Path from "../components/chips/Path.astro";
     <!-- MOBILE NAV -->
     <nav class="mobile-nav">
       <ul>
-        <li class:list={["", { active: indexIsActive }]}><a href="/">About</a></li>
-        <li class:list={["", { active: portfolioIsActive }]}>
-          <a href="/portfolio">Portfolio</a>
+        <li class:list={["", { active: indexIsActive }]}>
+          <a href="/" data-astro-prefetch="viewport">About</a>
         </li>
-        <li class:list={["", { active: musingsIsActive }]}><a href="/musings">Musings</a></li>
+        <li class:list={["", { active: portfolioIsActive }]}>
+          <a href="/portfolio" data-astro-prefetch="viewport">Portfolio</a>
+        </li>
+        <li class:list={["", { active: musingsIsActive }]}>
+          <a href="/musings" data-astro-prefetch="viewport">Musings</a>
+        </li>
       </ul>
     </nav>
     <slot />
