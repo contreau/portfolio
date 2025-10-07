@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import headshot from "../img/ck-headshot-400x400.jpg";
+import headshot from "../img/ck-headshot-400x400-min.jpg";
 ---
 
 <Layout
@@ -11,13 +11,17 @@ import headshot from "../img/ck-headshot-400x400.jpg";
   description="Brooklyn-based web developer working in the intersection of healthcare and higher education."
   ogURL="https://conorkelley.me"
 >
+  <!-- <link slot="headshot-preload" rel="preload" as="image" type="image/webp" href={headshot.src} /> -->
+
   <section class="bio">
     <div>
       <h2>Hey there!</h2>
       <p>
-        I'm a (mostly) frontend web developer living in Brooklyn, NY. I've been in the intersection
-        of healthcare and higher education for over 3 years and currently work for GW Medicine in
-        Washington, D.C.
+        I'm a web developer living in Brooklyn, NY. I've been in the intersection of healthcare and
+        higher education for over 3 years and currently work for <a
+          href="https://gwdocs.com/"
+          target="_blank">GW Medicine</a
+        >.
       </p>
       <p>
         On the job, I specialize in developing user interface components and internal automation
@@ -25,8 +29,7 @@ import headshot from "../img/ck-headshot-400x400.jpg";
         faculty, administrators, and students in the GW medical system.
       </p>
       <p>
-        I also write code for freelance work and technical exploration. Hit my DMs to talk web dev,
-        volleyball, or ambient music recommendations.
+        Hit my DMs to talk freelance work, web dev, volleyball, or ambient music recommendations.
       </p>
     </div>
 
@@ -50,6 +53,10 @@ import headshot from "../img/ck-headshot-400x400.jpg";
     p {
       font-weight: 350;
       margin-block: 1rem;
+    }
+
+    a {
+      color: var(--primary);
     }
   }
 
