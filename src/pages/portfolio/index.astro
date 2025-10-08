@@ -2,6 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 const heading = "Portfolio";
 const description = "Professional and personal development work.";
+import WorkSVG from "../../svg/WorkSVG.astro";
+import ToolsSVG from "../../svg/ToolsSVG.astro";
+import Designation from "../../components/chips/Designation.astro";
 ---
 
 <Layout
@@ -15,18 +18,20 @@ const description = "Professional and personal development work.";
     <div class="grid-item">
       <h2>{heading}</h2>
       <p class="description">{description}</p>
-      <ul>
-        <li>
-          <a href="portfolio/gwmedicine" data-astro-prefetch="viewport">GW Medicine</a> (current employment)
-        </li>
-        <li>
-          <a href="portfolio/busom" data-astro-prefetch="viewport"
-            >Boston University School of Medicine</a
-          >
-        </li>
-        <li>
-          <a href="portfolio/web-apps" data-astro-prefetch="viewport">Web Apps</a> (personal projects)
-        </li>
+      <ul class="portfolio-page-list">
+        <a href="portfolio/gwmedicine" data-astro-prefetch="viewport">
+          <li><Designation><WorkSVG slot="svg" /></Designation>GW Medicine</li>
+        </a>
+        <a href="portfolio/busom" data-astro-prefetch="viewport">
+          <li>
+            <Designation><WorkSVG slot="svg" /></Designation>BU School of Medicine
+          </li>
+        </a>
+        <a href="portfolio/web-apps" data-astro-prefetch="viewport">
+          <li>
+            <Designation><ToolsSVG slot="svg" /></Designation>Web Apps
+          </li>
+        </a>
       </ul>
     </div>
     <div class="grid-item">
@@ -82,6 +87,43 @@ const description = "Professional and personal development work.";
 
   .grid-item + .grid-item {
     margin-block: 3rem;
+  }
+
+  .portfolio-page-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .portfolio-page-list li {
+    list-style-type: none;
+    margin-left: 0;
+  }
+
+  .portfolio-page-list a {
+    --border-color: #6195fb;
+    --border-width: 1.5px;
+    color: var(--text);
+    border-left: solid var(--border-width) #6195fb;
+    max-width: 420px;
+    padding: 0.75em 0.75em;
+    text-decoration: none;
+    transition: 0.3s all;
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  .portfolio-page-list a:first-child:hover {
+    border-top-color: var(--border-color);
+  }
+
+  .portfolio-page-list a:nth-child(2) {
+    border-top: solid var(--border-width) var(--border-color);
+    border-bottom: solid var(--border-width) var(--border-color);
+  }
+
+  .portfolio-page-list a:last-child:hover {
+    border-bottom-color: var(--border-color);
   }
 
   .skills {
