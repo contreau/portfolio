@@ -1,0 +1,104 @@
+<table>
+  <tbody>
+    <tr data-row="languages">
+      <th scope="row" data-cell="language">Languages</th>
+      <td data-cell="language">TypeScript</td>
+      <td data-cell="language">JavaScript</td>
+      <td data-cell="language">PHP</td>
+      <td data-cell="language">CSS / SCSS</td>
+      <td data-cell="language">HTML</td>
+    </tr>
+    <tr data-row="frameworks">
+      <th scope="row" data-cell="framework">Frameworks</th>
+      <td data-cell="framework">Vue.js</td>
+      <td data-cell="framework">SvelteKit</td>
+      <td data-cell="framework">Astro</td>
+      <td data-cell="framework">Drupal</td>
+      <td data-cell="framework">WordPress</td>
+    </tr>
+    <tr data-row="backend">
+      <th scope="row" data-cell="backend">Backend</th>
+      <td data-cell="backend">Node.js</td>
+      <td data-cell="backend">Apache</td>
+      <td data-cell="backend">Firebase</td>
+      <td data-cell="backend">MySQL</td>
+      <td data-cell="backend">GraphQL</td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  table {
+    --border-color: #cbcbcb;
+    --border-width: 1.5px;
+    border-collapse: collapse;
+    max-width: 800px;
+  }
+
+  tbody {
+    max-width: 100%;
+    overflow-x: scroll;
+  }
+
+  th {
+    padding-block: 0.5em;
+    background-color: #ececec;
+    font-weight: 550;
+    border-right: solid var(--border-width) var(--border-color);
+  }
+
+  td {
+    padding-block: 0.5em;
+    font-weight: 350;
+    border-right: solid var(--border-width) var(--border-color);
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    background-color: #fafafa;
+  }
+
+  td:last-of-type {
+    border-right-color: transparent;
+  }
+
+  th,
+  td {
+    padding-inline: 1em;
+  }
+
+  tr[data-row="frameworks"] > * {
+    border-top: solid var(--border-width) var(--border-color);
+    border-bottom: solid var(--border-width) var(--border-color);
+  }
+
+  tr > * {
+    text-align: center;
+  }
+
+  @media (max-width: 850px) {
+    table {
+      margin-inline: auto;
+    }
+
+    th,
+    td {
+      display: block;
+    }
+
+    th {
+      min-width: 280px;
+      border-right-color: transparent;
+    }
+
+    td:not(td:last-of-type) {
+      border-color: transparent;
+    }
+
+    tr + tr {
+      margin-bottom: 2rem;
+    }
+
+    tr[data-row="frameworks"] > * {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+</style>

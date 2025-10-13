@@ -5,6 +5,7 @@ const description = "Professional and personal development work.";
 import WorkSVG from "../../svg/WorkSVG.astro";
 import ToolsSVG from "../../svg/ToolsSVG.astro";
 import Designation from "../../components/chips/Designation.astro";
+import StackTable from "../../components/lists/StackTable.astro";
 ---
 
 <Layout
@@ -34,45 +35,11 @@ import Designation from "../../components/chips/Designation.astro";
         </a>
       </ul>
     </div>
+
     <div class="grid-item">
-      <h2>Skill Summary</h2>
-      <aside class="skills">
-        <div class="skill-group">
-          <h3>Core Functions</h3>
-          <ul>
-            <li>Development of User Interfaces, Webforms, and Custom Tools</li>
-            <li>Performance + Accessibility Optimization</li>
-            <li>Stakeholder Communication</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <ul>
-            <li>HTML, CSS / SCSS</li>
-            <li>JavaScript / TypeScript</li>
-            <li>PHP</li>
-            <li>Python</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Web Frameworks</h3>
-          <ul>
-            <li>Vue.js</li>
-            <li>Svelte / SvelteKit</li>
-            <li>Drupal</li>
-            <li>Astro</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Software</h3>
-          <ul>
-            <li>Photoshop / Lightroom</li>
-            <li>REDCap</li>
-            <li>SiteImprove</li>
-          </ul>
-        </div>
-      </aside>
+      <h2>Stack</h2>
+      <p class="description">Tooling proficiency.</p>
+      <StackTable />
     </div>
   </section>
 </Layout>
@@ -161,5 +128,12 @@ import Designation from "../../components/chips/Designation.astro";
 
   li + li {
     margin-top: 1.5rem;
+  }
+
+  @media (max-width: 850px) {
+    .portfolio-page-list {
+      max-width: fit-content;
+      margin-inline: auto;
+    }
   }
 </style>
