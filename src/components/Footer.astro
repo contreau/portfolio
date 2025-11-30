@@ -1,0 +1,31 @@
+---
+const date = new Date().getFullYear();
+---
+
+<footer>
+  <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin-block: 1rem;
+      color: var(--text);
+      font-weight: 350;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    footer {
+      align-items: center;
+      justify-content: center;
+
+      p {
+        min-height: 44px;
+      }
+    }
+  }
+</style>

@@ -1,59 +1,56 @@
 ---
-import Layout from "../../layouts/Layout.astro";
 const heading = "Portfolio";
 const description = "Professional and personal development work.";
 import WorkSVG from "../../svg/WorkSVG.astro";
 import ToolsSVG from "../../svg/ToolsSVG.astro";
+import JoystickSVG from "../../svg/JoystickSVG.astro";
 import Designation from "../../components/chips/Designation.astro";
-import StackTable from "../../components/lists/StackTable.astro";
 ---
 
-<Layout
-  portfolioIsActive="true"
-  pathName="portfolio"
-  title={heading}
-  description={description}
-  ogURL="https://conorkelley.me/portfolio"
->
-  <section class="portfolio">
-    <div class="grid-item">
-      <h2>{heading}</h2>
-      <p class="description">{description}</p>
-      <ul class="portfolio-page-list">
-        <a href="portfolio/gwmedicine" data-astro-prefetch="viewport">
-          <li><Designation><WorkSVG slot="svg" /></Designation>GW Medicine</li>
-        </a>
-        <a href="portfolio/busom" data-astro-prefetch="viewport">
-          <li>
-            <Designation><WorkSVG slot="svg" /></Designation>BU School of Medicine
-          </li>
-        </a>
-        <a href="portfolio/web-apps" data-astro-prefetch="viewport">
-          <li>
-            <Designation><ToolsSVG slot="svg" /></Designation>Web Apps
-          </li>
-        </a>
-      </ul>
-    </div>
-
-    <div class="grid-item">
-      <h2>Stack</h2>
-      <p class="description">Tooling proficiency.</p>
-      <StackTable />
-    </div>
-  </section>
-</Layout>
+<section class="portfolio">
+  <div class="grid-item">
+    <h2><span class="gt">&gt;_</span>{heading}</h2>
+    <p class="description">{description}</p>
+    <ul class="portfolio-page-list">
+      <a href="/gwmedicine" data-astro-prefetch="viewport">
+        <li>
+          <Designation bgColor="var(--gw-blue)"><WorkSVG slot="svg" /></Designation>GW Medicine
+        </li>
+      </a>
+      <a href="/busom" data-astro-prefetch="viewport">
+        <li>
+          <Designation bgColor="var(--bu-red)"><WorkSVG slot="svg" /></Designation>BU School of
+          Medicine
+        </li>
+      </a>
+      <a href="/web-apps" data-astro-prefetch="viewport">
+        <li>
+          <Designation bgColor="var(--apps-green)"><ToolsSVG slot="svg" /></Designation>Web Apps
+        </li>
+      </a>
+      <a href="/musings" data-astro-prefetch="viewport">
+        <li>
+          <Designation><JoystickSVG slot="svg" /></Designation>Musings
+        </li>
+      </a>
+    </ul>
+  </div>
+</section>
 
 <style>
   .portfolio {
     opacity: 0;
     animation:
       fadeIn 500ms ease-in forwards,
-      shiftUp 500ms ease-in forwards;
+      shiftDown 500ms ease-in forwards;
+
+    display: grid;
+    grid-template-columns: 35% 63%;
+    gap: 2%;
   }
 
   .grid-item + .grid-item {
-    margin-block: 3rem;
+    /* margin-block: 3rem; */
   }
 
   .portfolio-page-list {
@@ -72,6 +69,7 @@ import StackTable from "../../components/lists/StackTable.astro";
     color: var(--text);
     border-left: solid var(--border-width) var(--border-color);
     max-width: 380px;
+    height: 60px;
     padding: 0.75em 0.75em;
     text-decoration: none;
     transition: 0.3s all;
@@ -86,6 +84,10 @@ import StackTable from "../../components/lists/StackTable.astro";
 
   .portfolio-page-list a:nth-child(2) {
     border-top: solid var(--border-width) var(--border-color);
+    border-bottom: solid var(--border-width) var(--border-color);
+  }
+
+  .portfolio-page-list a:nth-child(3) {
     border-bottom: solid var(--border-width) var(--border-color);
   }
 
@@ -130,10 +132,13 @@ import StackTable from "../../components/lists/StackTable.astro";
     margin-top: 1.5rem;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 1100px) {
     .portfolio-page-list {
       max-width: fit-content;
       margin-inline: auto;
+    }
+    .portfolio {
+      grid-template-columns: 1fr;
     }
   }
 </style>

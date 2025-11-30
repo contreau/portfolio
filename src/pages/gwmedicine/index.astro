@@ -1,14 +1,14 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import PortfolioSection from "../../../components/projects/PortfolioSection.astro";
-import Project from "../../../components/projects/Project.astro";
-import CTSI from "../../../components/visuals/CTSI.astro";
-import Tabs from "../../../components/visuals/Tabs.astro";
-import Cards from "../../../components/visuals/Cards.astro";
-import Accordion from "../../../components/visuals/Accordion.astro";
-import Chip from "../../../components/chips/Chip.astro";
-import ProjectRow from "../../../components/projects/ProjectRow.astro";
-import FacultyBuilder from "../../../components/visuals/FacultyBuilder.astro";
+import Layout from "../../layouts/Layout.astro";
+import PortfolioSection from "../../components/projects/PortfolioSection.astro";
+import Project from "../../components/projects/Project.astro";
+import CTSI from "../../components/visuals/CTSI.astro";
+import Tabs from "../../components/visuals/Tabs.astro";
+import Cards from "../../components/visuals/Cards.astro";
+import Accordion from "../../components/visuals/Accordion.astro";
+import Chip from "../../components/chips/Chip.astro";
+import ProjectRow from "../../components/projects/ProjectRow.astro";
+import FacultyBuilder from "../../components/visuals/FacultyBuilder.astro";
 
 const heading = "GW Medicine";
 const description =
@@ -17,10 +17,10 @@ const description =
 
 <Layout
   portfolioIsActive="true"
-  pathName="portfolio/gwmedicine"
+  pathName="gwmedicine"
   title={heading}
   description={description}
-  ogURL="https://conorkelley.me/portfolio/gwmedicine"
+  ogURL="https://conorkelley.me/gwmedicine"
 >
   <div class="portfolio">
     <PortfolioSection heading={heading} timeline="October 2022 - Present" companyAbbr="gw">
@@ -42,7 +42,7 @@ const description =
           slot="column-1"
           projectName="Cards: Medical Providers and Locations"
           projectDescription="Refreshed card styles for listings of MFA providers and locations."
-          projectURL="/portfolio/gwmedicine/cards"
+          projectURL="/gwmedicine/cards"
           urlTarget="_self"
         >
           <Cards slot="project-visual" />
@@ -76,7 +76,7 @@ const description =
           slot="column-2"
           projectName="Navigation Tabs"
           projectDescription="Color schemes for navigation tabs: Blue-Grey and Blue-Green."
-          projectURL="/portfolio/gwmedicine/nav-tabs"
+          projectURL="/gwmedicine/nav-tabs"
           urlTarget="_self"
         >
           <Tabs slot="project-visual" />
@@ -90,7 +90,7 @@ const description =
           slot="column-1"
           projectName="Faculty Listing Builder"
           projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
-          projectURL="/portfolio/gwmedicine/faculty-listing-builder"
+          projectURL="/gwmedicine/faculty-listing-builder"
           urlTarget="_self"
         >
           <FacultyBuilder slot="project-visual" />

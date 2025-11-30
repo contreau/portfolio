@@ -1,4 +1,12 @@
-<span>
+---
+const { bgColor } = Astro.props;
+let backgroundColor = "var(--primary)";
+if (bgColor !== undefined) {
+  backgroundColor = bgColor;
+}
+---
+
+<span style=`background-color: ${backgroundColor}`>
   <slot name="svg" />
 </span>
 

@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import headshot from "../img/ck-headshot-400x400-min.jpg";
+import Portfolio from "../components/projects/Portfolio.astro";
+import Hero from "../components/Hero.astro";
+import Stack from "../components/Stack.astro";
 ---
 
 <Layout
@@ -11,108 +12,17 @@ import headshot from "../img/ck-headshot-400x400-min.jpg";
   description="Brooklyn-based web developer working in the intersection of healthcare and higher education."
   ogURL="https://conorkelley.me"
 >
-  <link
+  <!-- <link
     slot="headshot-preload"
     rel="preload"
     as="image"
     type="image/webp"
     href="/_image?href=%2F_astro%2Fck-headshot-400x400-min.CkCcm2Nq.jpg&w=400&h=400&f=webp&fit=cover&position=center"
-  />
+  /> -->
 
-  <section class="bio">
-    <div>
-      <h2>Hey there!</h2>
-      <p>
-        I'm a web developer living in Brooklyn, NY. I've been in the intersection of healthcare and
-        higher education for over 3 years and currently work for <a
-          href="https://gwdocs.com/"
-          target="_blank">GW Medicine</a
-        >.
-      </p>
-      <p>
-        On the job, I specialize in developing user interface components and internal automation
-        tools. I build and update pages, forms, and applications that serve thousands of patients,
-        faculty, administrators, and students in the GW medical system.
-      </p>
-      <p>
-        Hit my DMs to talk freelance work, web dev, volleyball, or ambient music recommendations.
-      </p>
-    </div>
-
-    <Image src={headshot} layout="constrained" priority alt="Headshot of Conor Kelley" />
-  </section>
+  <Hero />
+  <Portfolio />
+  <Stack />
 </Layout>
 
-<style>
-  section.bio {
-    opacity: 0;
-    transform: translateY(-10px);
-    display: grid;
-    grid-template-columns: 70% 25%;
-    place-items: end;
-    align-items: center;
-    gap: 5%;
-    animation:
-      fadeIn 500ms ease-in forwards,
-      shiftDown 500ms ease-in forwards;
-
-    p {
-      font-weight: 350;
-      margin-block: 1rem;
-    }
-
-    a {
-      color: var(--primary);
-    }
-  }
-
-  img {
-    border-radius: 10px;
-    animation: popOutShadow 300ms 500ms forwards;
-    max-width: 275px;
-  }
-
-  @media (max-width: 600px) {
-    img {
-      animation: none;
-      box-shadow: -6px 6px 0px 0px #74757b40;
-    }
-
-    section.bio p {
-      text-wrap: balance;
-    }
-  }
-
-  @media (max-width: 1100px) {
-    section.bio {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    img {
-      order: -1;
-      margin-inline: auto;
-    }
-  }
-
-  @media (max-width: 800px) {
-    section.bio p {
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 499px) {
-    img {
-      max-width: 200px;
-    }
-  }
-
-  @keyframes popOutShadow {
-    0% {
-      box-shadow: 0px 0px 0px 0px #74757b40;
-    }
-    100% {
-      box-shadow: -10px 10px 0px 0px #74757b40;
-    }
-  }
-</style>
+<style></style>

@@ -42,9 +42,11 @@
 
   th {
     padding-block: 0.5em;
-    background-color: #ececec;
+    /* background-color: #ececec; */
+    background-color: #1d2641;
     font-weight: 550;
     border-right: solid var(--border-width) var(--border-color);
+    height: 60px;
   }
 
   td {
@@ -52,7 +54,8 @@
     font-weight: 350;
     border-right: solid var(--border-width) var(--border-color);
     font-size: clamp(0.9rem, 3.5vw, 1rem);
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
+    background-color: #323e61;
   }
 
   td:last-of-type {
@@ -74,10 +77,6 @@
   }
 
   @media (max-width: 850px) {
-    table {
-      margin-inline: auto;
-    }
-
     th,
     td {
       display: block;
@@ -99,6 +98,12 @@
     tr[data-row="frameworks"] > * {
       border-top-color: transparent;
       border-bottom-color: transparent;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    table {
+      margin-inline: auto;
     }
   }
 </style>

@@ -10,12 +10,10 @@ interface Props {
   portfolioIsActive?: string;
   musingsIsActive?: string;
 }
-const date = new Date().getFullYear();
-import GithubSVG from "../svg/GithubSVG.astro";
-import LinkedinSVG from "../svg/LinkedinSVG.astro";
-import EmailSVG from "../svg/EmailSVG.astro";
-import ResumeSVG from "../svg/ResumeSVG.astro";
+
 import Path from "../components/chips/Path.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -37,6 +35,7 @@ import Path from "../components/chips/Path.astro";
     <meta property="og:description" content={description} />
     <meta property="og:url" content={ogURL} />
     <script>
+      // Animated header
       const header = document.querySelector("header");
       const stored_classes = sessionStorage.getItem("animatedHeader");
       if (stored_classes === null) {
@@ -47,73 +46,9 @@ import Path from "../components/chips/Path.astro";
     </script>
   </head>
   <body>
-    <header>
-      <div>
-        <h1 class="title-name">
-          <a href="/"
-            ><span style="color: var(--primary);">Conor</span><span
-              style="color: var(--light-text);">Kelley</span
-            ></a
-          >
-        </h1>
-      </div>
-      <nav>
-        <ul>
-          <li class:list={["", { active: indexIsActive }]}>
-            <a href="/" data-astro-prefetch>About</a>
-          </li>
-          <li class:list={["", { active: portfolioIsActive }]}>
-            <a href="/portfolio" data-astro-prefetch>Portfolio</a>
-          </li>
-          <li class:list={["", { active: musingsIsActive }]}>
-            <a href="/musings" data-astro-prefetch>Musings</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <Path pathName={pathName} />
-    <!-- MOBILE NAV -->
-    <nav class="mobile-nav">
-      <ul>
-        <li class:list={["", { active: indexIsActive }]}>
-          <a href="/" data-astro-prefetch="viewport">About</a>
-        </li>
-        <li class:list={["", { active: portfolioIsActive }]}>
-          <a href="/portfolio" data-astro-prefetch="viewport">Portfolio</a>
-        </li>
-        <li class:list={["", { active: musingsIsActive }]}>
-          <a href="/musings" data-astro-prefetch="viewport">Musings</a>
-        </li>
-      </ul>
-    </nav>
+    <Header />
     <slot />
-    <footer>
-      <div class="social-links">
-        <ul>
-          <li>
-            <a href="mailto:cfk102@gmail.com" target="_blank" aria-label="Email"><EmailSVG /></a>
-          </li>
-          <li>
-            <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
-              ><GithubSVG /></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/conor-kelley2/"
-              target="_blank"
-              aria-label="Linkedin Profile"><LinkedinSVG /></a
-            >
-          </li>
-          <li class="cv">
-            <a href="/cv.pdf" target="_blank" aria-label="Curriculum Vitae / Resume"
-              ><ResumeSVG /></a
-            >
-          </li>
-        </ul>
-      </div>
-      <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
-    </footer>
+    <Footer />
   </body>
 </html>
 
@@ -123,8 +58,13 @@ import Path from "../components/chips/Path.astro";
     --white: #ffffff;
     --light-background: #ffffff;
     --primary: #2059cb;
+    --primary-link: #2059cb;
     --light-text: #090909;
-    --dark-text: #ffffff;
+    --gw-blue: #033c5a;
+    --bu-red: #cd0001;
+    --apps-green: #01a366;
+    --social-links-color: #74757b;
+    --headshot-shadow: #74757b40;
   }
 
   *,
@@ -152,16 +92,51 @@ import Path from "../components/chips/Path.astro";
   }
 
   body {
+    font-family: system-ui;
     font-weight: 400;
     line-height: 1.75;
-    background-color: var(--light-background);
-    color: var(--light-text);
-    font-family: system-ui;
+    background-color: var(--dark-background);
+    color: #090909;
+
     max-width: 1200px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
+  }
+
+  body[data-theme="light"] {
+    color: #000000;
+    background-color: #ffffff;
+    --bg-color: #ffffff;
+    --primary: #2059cb;
+    --primary-link: #2059cb;
+    --social-links-color: #74757b;
+    --headshot-shadow: #74757b40;
+  }
+
+  body[data-theme="dark"] {
+    color: #ffffff;
+    background-color: #111827;
+    --bg-color: #111827;
+    --social-links-color: #ffffff;
+    --primary: #728bd2;
+    --primary-link: #88a6fa;
+    --text: #ffffff;
+    --headshot-shadow: #475681;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #ffffff;
+      background-color: #111827;
+      --bg-color: #111827;
+      --social-links-color: #ffffff;
+      --primary: #728bd2;
+      --primary-link: #88a6fa;
+      --text: #ffffff;
+      --headshot-shadow: #475681;
+    }
   }
 
   /* Font Configurations for headings / paragraphs */
@@ -177,39 +152,29 @@ import Path from "../components/chips/Path.astro";
     line-height: 1.3;
   }
 
-  h1 {
-    font-size: clamp(2.5rem, 9vw, 5.5rem);
-    font-weight: 500;
-    margin-bottom: 0;
-    margin-top: 0;
-
-    a {
-      text-decoration: none;
-    }
+  h2 {
+    font-size: clamp(1.2rem, 6vw, 1.75rem);
+    font-weight: 550;
+    color: var(--primary);
+    margin-block: 0;
+    margin-bottom: 3rem;
   }
 
-  h2 {
-    font-size: clamp(1.2rem, 6vw, 1.5rem);
-    font-weight: 550;
-    color: var(--light-text);
-    margin-block: 0;
+  h2 span {
+    color: var(--text);
+    font-weight: 500;
+    &.gt {
+      margin-right: 0.5rem;
+    }
   }
 
   h3 {
     font-size: clamp(1rem, 6vw, 1.3rem);
-    color: var(--light-text);
+    color: var(--text);
     font-weight: 450;
   }
 
-  /* Header / Nav / Footer */
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.25rem;
-    border-bottom: solid 1.5px #cbcbcb;
-  }
+  /* Nav / Footer */
 
   nav {
     padding-left: 0.2em;
@@ -247,7 +212,7 @@ import Path from "../components/chips/Path.astro";
     }
 
     li.active a {
-      color: var(--primary);
+      color: var(--primary-link);
     }
 
     a {
@@ -258,50 +223,13 @@ import Path from "../components/chips/Path.astro";
     }
 
     a:hover {
-      color: var(--primary);
+      color: var(--primary-link);
     }
   }
 
   section {
-    margin-block: 1rem;
+    margin-block: 2.5rem;
     min-height: 340px;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0.5em;
-    margin-top: 1rem;
-
-    p {
-      margin-block: 0;
-      color: #74757b;
-      font-weight: 350;
-    }
-  }
-
-  div.social-links ul {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-left: 0;
-    margin-block: 0;
-
-    li {
-      list-style-type: none;
-      padding: 0em 0.6em;
-      border-radius: 5px;
-      padding-inline: 0;
-      a {
-        text-decoration: none;
-        color: #74757b;
-        transition: color 200ms;
-      }
-
-      a:hover {
-        color: var(--primary);
-      }
-    }
   }
 
   /* Other global rules */
@@ -364,18 +292,8 @@ import Path from "../components/chips/Path.astro";
       gap: 1.5rem;
     }
 
-    header {
-      margin-inline: auto;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    footer {
-      align-items: center;
-
-      p {
-        min-height: 44px;
-      }
+    section {
+      margin-block: 1rem;
     }
 
     section h2,
@@ -385,12 +303,6 @@ import Path from "../components/chips/Path.astro";
 
     p.subpage-description {
       text-align: center;
-    }
-  }
-
-  @media (max-width: 500px) {
-    footer {
-      flex-direction: column;
     }
   }
 

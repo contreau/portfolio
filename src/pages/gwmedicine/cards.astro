@@ -1,11 +1,11 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import Chip from "../../../components/chips/Chip.astro";
+import Layout from "../../layouts/Layout.astro";
+import Chip from "../../components/chips/Chip.astro";
 import { Image } from "astro:assets";
-import oldProfileCard from "../../../img/old-provider-card-572x600.jpg";
-import newProfileCard from "../../../img/new-provider-card-572x600.jpg";
-import oldLocationCard from "../../../img/old-location-card-572x600.jpg";
-import newLocationCard from "../../../img/new-location-card-572x600.jpg";
+import oldProfileCard from "../../img/old-provider-card-572x600.jpg";
+import newProfileCard from "../../img/new-provider-card-572x600.jpg";
+import oldLocationCard from "../../img/old-location-card-572x600.jpg";
+import newLocationCard from "../../img/new-location-card-572x600.jpg";
 ---
 
 <script>
@@ -17,27 +17,27 @@ import newLocationCard from "../../../img/new-location-card-572x600.jpg";
   const afterSection = document.querySelectorAll(".revealed-after");
 
   // Click Listeners
-  beforeButton.addEventListener("click", () => {
+  beforeButton!.addEventListener("click", () => {
     // remove .active class from afterButton, hide afterSection
-    afterButton.classList.remove("active");
+    afterButton!.classList.remove("active");
     afterSection.forEach((element) => {
       element.setAttribute("aria-hidden", "true");
     });
     // set .active class on this button, reveal content
-    beforeButton.classList.add("active");
+    beforeButton!.classList.add("active");
     beforeSection.forEach((element) => {
       element.setAttribute("aria-hidden", "false");
     });
   });
 
-  afterButton.addEventListener("click", () => {
+  afterButton!.addEventListener("click", () => {
     // remove .active class from beforeButton, hide beforeSection
-    beforeButton.classList.remove("active");
+    beforeButton!.classList.remove("active");
     beforeSection.forEach((element) => {
       element.setAttribute("aria-hidden", "true");
     });
     // set .active class on this button, reveal content
-    afterButton.classList.add("active");
+    afterButton!.classList.add("active");
     afterSection.forEach((element) => {
       element.setAttribute("aria-hidden", "false");
     });
@@ -48,8 +48,8 @@ import newLocationCard from "../../../img/new-location-card-572x600.jpg";
   title="Location Card Redesign"
   description="A card style I developed for all location listings on the GW MFA website."
   portfolioIsActive="true"
-  pathName="portfolio/gwmedicine/cards"
-  ogURL="https://conorkelley.me/portfolio/gwmedicine/cards"
+  pathName="gwmedicine/cards"
+  ogURL="https://conorkelley.me/gwmedicine/cards"
 >
   <section>
     <h2>Cards: Providers and Locations</h2>

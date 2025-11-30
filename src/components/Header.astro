@@ -1,0 +1,173 @@
+---
+import GithubSVG from "../svg/GithubSVG.astro";
+import LinkedinSVG from "../svg/LinkedinSVG.astro";
+import EmailSVG from "../svg/EmailSVG.astro";
+import ResumeSVG from "../svg/ResumeSVG.astro";
+import DarkThemeSVG from "../svg/DarkThemeSVG.astro";
+import LightThemeSVG from "../svg/LightThemeSVG.astro";
+import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
+---
+
+<script>
+  let theme = "system";
+  const lightmodeToggle = document.querySelector("#light-mode-toggle");
+
+  // Configure light/dark mode
+  // TODO: swap out SVGs on click (can't use the Astro component aliases)
+  document.addEventListener("DOMContentLoaded", () => {
+    function applySystemTheme() {
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (prefersDarkScheme) {
+        document.body.setAttribute("data-theme", "dark");
+      } else {
+        document.body.setAttribute("data-theme", "light");
+      }
+    }
+
+    if (theme === "system") {
+      applySystemTheme();
+    }
+
+    lightmodeToggle.addEventListener("click", () => {
+      console.log(theme);
+      if (theme === "system") {
+        theme = "dark";
+        document.body.setAttribute("data-theme", "dark");
+      } else if (theme === "dark") {
+        theme = "light";
+        document.body.setAttribute("data-theme", "light");
+      } else {
+        theme = "system";
+        applySystemTheme();
+      }
+    });
+  });
+</script>
+
+<header>
+  <h1 class="title-name">
+    <a href="/"
+      ><span style="color: var(--primary)">Conor</span><span style="color: var(--text);"
+        >Kelley</span
+      ></a
+    >
+  </h1>
+
+  <div class="social-links">
+    <ul>
+      <li>
+        <button id="light-mode-toggle"><SystemThemeSVG /></button>
+      </li>
+      <li>
+        <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
+          ><GithubSVG /></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/conor-kelley2/"
+          target="_blank"
+          aria-label="Linkedin Profile"><LinkedinSVG /></a
+        >
+      </li>
+      <li class="cv">
+        <a href="/cv.pdf" target="_blank" aria-label="Curriculum Vitae / Resume"><ResumeSVG /></a>
+      </li>
+      <li>
+        <a href="mailto:cfk102@gmail.com" target="_blank" aria-label="Email"><EmailSVG /></a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- <nav>
+        <ul>
+          <li class:list={["", { active: indexIsActive }]}>
+            <a href="/" data-astro-prefetch>About</a>
+          </li>
+          <li class:list={["", { active: portfolioIsActive }]}>
+            <a href="/portfolio" data-astro-prefetch>Portfolio</a>
+          </li>
+          <li class:list={["", { active: musingsIsActive }]}>
+            <a href="/musings" data-astro-prefetch>Musings</a>
+          </li>
+        </ul>
+      </nav> -->
+
+<style>
+  /* .header-wrapper {
+    position: absolute;
+    top: 0;
+  } */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    position: fixed;
+    max-width: 1200px;
+    width: 100%;
+    top: 0rem;
+    z-index: 5;
+    background-color: var(--bg-color);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 9vw, 3rem);
+    /* font-size: 3.5rem; */
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  div.social-links ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin-block: 0;
+    height: 100%;
+    line-height: 1;
+
+    li {
+      list-style-type: none;
+      padding: 0em 0.6em;
+      border-radius: 5px;
+      padding-inline: 0;
+      a {
+        text-decoration: none;
+        color: var(--social-links-color);
+        transition: color 200ms;
+      }
+
+      a:hover {
+        color: var(--primary-link);
+      }
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* @ rules */
+  @media (max-width: 1100px) {
+    header {
+      position: relative;
+      margin-inline: auto;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+</style>
