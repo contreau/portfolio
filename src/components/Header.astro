@@ -3,54 +3,66 @@ import GithubSVG from "@svg/GithubSVG.astro";
 import LinkedinSVG from "@svg/LinkedinSVG.astro";
 import EmailSVG from "@svg/EmailSVG.astro";
 import ResumeSVG from "@svg/ResumeSVG.astro";
-import darkthemeSVG from "@svg/DarkTheme.svg";
-import lightthemeSVG from "@svg/LightTheme.svg";
 import systemthemeSVG from "@svg/SystemTheme.svg";
-// import DarkThemeSVG from "../svg/DarkThemeSVG.astro";
-// import LightThemeSVG from "../svg/LightThemeSVG.astro";
-// import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
+
+interface Props {
+  fixed: boolean;
+}
+const { fixed } = Astro.props;
 ---
 
 <script>
-  let theme = "system";
-  const lightmodeToggle = document.querySelector("#light-mode-toggle");
+  import darkthemeSVG from "../svg/DarkTheme.svg";
+  import lightthemeSVG from "../svg/LightTheme.svg";
+  import systemthemeSVG from "../svg/SystemTheme.svg";
+
+  const themeToggle = document.querySelector("#theme-toggle");
 
   // Configure light/dark mode
-  // TODO: swap out SVGs on click (can't use the Astro component aliases)
+
+  // TODO: look into astro cookies to set theme? might be the way to cleanly prevent icon flickering between pages if server can serve the right icon based on cookie instead of current client-side change
+
   document.addEventListener("DOMContentLoaded", () => {
+    function setThemeInSessionStorage(targetTheme: string) {
+      sessionStorage.setItem("theme", targetTheme);
+    }
+
     function applySystemTheme() {
       const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (prefersDarkScheme) {
-        document.body.setAttribute("data-theme", "dark");
-      } else {
-        document.body.setAttribute("data-theme", "light");
-      }
+      document.documentElement.setAttribute("data-theme", prefersDarkScheme ? "dark" : "light");
+      setThemeInSessionStorage("system");
     }
 
-    if (theme === "system") {
-      applySystemTheme();
+    // Initialize button state based on current theme
+    const currentTheme = sessionStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      themeToggle.innerHTML = `<img src="${darkthemeSVG.src}" alt="Dark Theme" title="Dark Theme" />`;
+    } else if (currentTheme === "light") {
+      themeToggle.innerHTML = `<img src="${lightthemeSVG.src}" alt="Light Theme" title="Light Theme" />`;
+    } else {
+      themeToggle.innerHTML = `<img src="${systemthemeSVG.src}" alt="System Theme" title="System Theme" />`;
     }
 
-    lightmodeToggle.addEventListener("click", () => {
-      console.log(theme);
-      if (theme === "system") {
-        theme = "dark";
-        document.body.setAttribute("data-theme", "dark");
-        // change icon to dark theme
-      } else if (theme === "dark") {
-        theme = "light";
-        document.body.setAttribute("data-theme", "light");
-        // change icon to light theme
+    themeToggle.addEventListener("click", () => {
+      let currentTheme = sessionStorage.getItem("theme");
+      if (currentTheme === "system") {
+        setThemeInSessionStorage("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeToggle.innerHTML = `<img src="${darkthemeSVG.src}" alt="Dark Theme" title="Dark Theme" />`;
+      } else if (currentTheme === "dark") {
+        setThemeInSessionStorage("light");
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggle.innerHTML = `<img src="${lightthemeSVG.src}" alt="Light Theme" title="Light Theme" />`;
       } else {
-        theme = "system";
+        setThemeInSessionStorage("system");
         applySystemTheme();
-        // change icon to system theme
+        themeToggle.innerHTML = `<img src="${systemthemeSVG.src}" alt="System Theme" title="System Theme" />`;
       }
     });
   });
 </script>
 
-<header>
+<header class:list={["", { fixed: fixed }]}>
   <h1 class="title-name">
     <a href="/"
       ><span style="color: var(--primary)">Conor</span><span style="color: var(--text);"
@@ -62,9 +74,7 @@ import systemthemeSVG from "@svg/SystemTheme.svg";
   <div class="social-links">
     <ul>
       <li>
-        <button id="light-mode-toggle">
-          <img src={systemthemeSVG.src} alt="System Theme" />
-        </button>
+        <button id="theme-toggle" aria-label="Light/Dark Theme Toggle"></button>
       </li>
       <li>
         <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
@@ -114,12 +124,21 @@ import systemthemeSVG from "@svg/SystemTheme.svg";
     align-items: stretch;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
-    position: fixed;
+    /* position: fixed;
     max-width: 1200px;
     width: 100%;
     top: 0rem;
     z-index: 5;
+    background-color: var(--bg-color); */
+  }
+
+  header.fixed {
+    position: fixed;
+    top: 0 rem;
+    z-index: 5;
     background-color: var(--bg-color);
+    max-width: 1200px;
+    width: 100%;
   }
 
   h1 {

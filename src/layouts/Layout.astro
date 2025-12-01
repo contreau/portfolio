@@ -1,10 +1,19 @@
 ---
-const { description, title, ogURL, pathName, indexIsActive, portfolioIsActive, musingsIsActive } =
-  Astro.props;
+const {
+  description,
+  title,
+  ogURL,
+  hasFixedHeader,
+  pathName,
+  indexIsActive,
+  portfolioIsActive,
+  musingsIsActive,
+} = Astro.props;
 interface Props {
   description: string;
   title: string;
   ogURL: string;
+  hasFixedHeader?: boolean;
   pathName: string;
   indexIsActive?: string;
   portfolioIsActive?: string;
@@ -34,7 +43,19 @@ import Footer from "@components/Footer.astro";
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={ogURL} />
-    <script>
+    <script is:inline>
+      (function () {
+        const theme = sessionStorage.getItem("theme");
+        if (theme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+        }
+      })();
+
       // Animated header
       const header = document.querySelector("header");
       const stored_classes = sessionStorage.getItem("animatedHeader");
@@ -46,7 +67,7 @@ import Footer from "@components/Footer.astro";
     </script>
   </head>
   <body>
-    <Header />
+    <Header fixed={hasFixedHeader} />
     <slot />
     <Footer />
   </body>
@@ -95,9 +116,9 @@ import Footer from "@components/Footer.astro";
     font-family: system-ui;
     font-weight: 400;
     line-height: 1.75;
-    background-color: var(--dark-background);
+    /* background-color: var(--dark-background);
     color: #090909;
-
+    --text: #090909; */
     max-width: 1200px;
     margin-inline: auto;
     display: flex;
@@ -105,9 +126,10 @@ import Footer from "@components/Footer.astro";
     min-height: 100dvh;
   }
 
-  body[data-theme="light"] {
+  html[data-theme="light"] body {
     color: #000000;
     background-color: #ffffff;
+    --text: #090909;
     --bg-color: #ffffff;
     --primary: #2059cb;
     --primary-link: #2059cb;
@@ -115,7 +137,7 @@ import Footer from "@components/Footer.astro";
     --headshot-shadow: #74757b40;
   }
 
-  body[data-theme="dark"] {
+  html[data-theme="dark"] body {
     color: #ffffff;
     background-color: #111827;
     --bg-color: #111827;
@@ -157,7 +179,6 @@ import Footer from "@components/Footer.astro";
     font-weight: 550;
     color: var(--primary);
     margin-block: 0;
-    margin-bottom: 3rem;
   }
 
   h2 span {

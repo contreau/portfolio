@@ -10,17 +10,21 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
     </h2>
     <p>
       Based in NYC, I've worked in the intersection of healthcare and higher education for over 3
-      years. I currently work for <a href="/gwmedicine">GW Medicine</a>, where I thrive in UI and
-      tooling development.
+      years. I'm a frontend-leaning web developer with a photojournalism and editorial background.
     </p>
     <p>
-      I regularly build and update pages, forms, and applications that serve thousands of patients,
-      faculty, administrators, and students in the GW academic medical system.
+      I currently work for <a href="/gwmedicine">GW Medicine</a>, where I thrive in UI and tooling
+      development. I create and maintain sites and applications that serve thousands in the GW
+      academic medical system.
     </p>
     <p>
       Reach out to talk freelance work, web dev, volleyball, or ambient music recommendations :)
     </p>
   </div>
+
+  <!-- todo: use a <pre> tag to render the ASCII art of headshot from a JS string (model off juxtopposed)
+   https://github.com/juxtopposed/ascii-rickroll-js/blob/main/index.html
+  -->
 
   <Image src={headshot} layout="constrained" priority alt="Headshot of Conor Kelley" />
 </main>
@@ -51,6 +55,10 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
     a {
       color: var(--primary-link);
     }
+  }
+
+  h2 {
+    margin-bottom: 3rem;
   }
 
   img {
