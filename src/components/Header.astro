@@ -3,7 +3,6 @@ import GithubSVG from "@svg/GithubSVG.astro";
 import LinkedinSVG from "@svg/LinkedinSVG.astro";
 import EmailSVG from "@svg/EmailSVG.astro";
 import ResumeSVG from "@svg/ResumeSVG.astro";
-import systemthemeSVG from "@svg/SystemTheme.svg";
 
 interface Props {
   fixed: boolean;
@@ -12,17 +11,19 @@ const { fixed } = Astro.props;
 ---
 
 <script>
-  import darkthemeSVG from "../svg/DarkTheme.svg";
-  import lightthemeSVG from "../svg/LightTheme.svg";
-  import systemthemeSVG from "../svg/SystemTheme.svg";
-
-  const themeToggle = document.querySelector("#theme-toggle");
-
   // Configure light/dark mode
 
-  // TODO: look into astro cookies to set theme? might be the way to cleanly prevent icon flickering between pages if server can serve the right icon based on cookie instead of current client-side change
+  // TODO: make theme icon responsive / put a pipe or separator between theme toggle and icons?
 
   document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle")!;
+
+    const icons = {
+      dark: "/svg/DarkTheme.svg",
+      light: "/svg/LightTheme.svg",
+      system: "/svg/SystemTheme.svg",
+    };
+
     function setThemeInSessionStorage(targetTheme: string) {
       sessionStorage.setItem("theme", targetTheme);
     }
@@ -33,14 +34,16 @@ const { fixed } = Astro.props;
       setThemeInSessionStorage("system");
     }
 
-    // Initialize button state based on current theme
     const currentTheme = sessionStorage.getItem("theme");
-    if (currentTheme === "dark") {
-      themeToggle.innerHTML = `<img src="${darkthemeSVG.src}" alt="Dark Theme" title="Dark Theme" />`;
+    if (currentTheme === null || currentTheme === "system") {
+      applySystemTheme();
+      themeToggle.innerHTML = `<img src="${icons.system}" alt="System Theme" title="System Theme" />`;
+    } else if (currentTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      themeToggle.innerHTML = `<img src="${icons.dark}" alt="Dark Theme" title="Dark Theme" />`;
     } else if (currentTheme === "light") {
-      themeToggle.innerHTML = `<img src="${lightthemeSVG.src}" alt="Light Theme" title="Light Theme" />`;
-    } else {
-      themeToggle.innerHTML = `<img src="${systemthemeSVG.src}" alt="System Theme" title="System Theme" />`;
+      document.documentElement.setAttribute("data-theme", "light");
+      themeToggle.innerHTML = `<img src="${icons.light}" alt="Light Theme" title="Light Theme" />`;
     }
 
     themeToggle.addEventListener("click", () => {
@@ -48,15 +51,15 @@ const { fixed } = Astro.props;
       if (currentTheme === "system") {
         setThemeInSessionStorage("dark");
         document.documentElement.setAttribute("data-theme", "dark");
-        themeToggle.innerHTML = `<img src="${darkthemeSVG.src}" alt="Dark Theme" title="Dark Theme" />`;
+        themeToggle.innerHTML = `<img src="${icons.dark}" alt="Dark Theme" title="Dark Theme" />`;
       } else if (currentTheme === "dark") {
         setThemeInSessionStorage("light");
         document.documentElement.setAttribute("data-theme", "light");
-        themeToggle.innerHTML = `<img src="${lightthemeSVG.src}" alt="Light Theme" title="Light Theme" />`;
+        themeToggle.innerHTML = `<img src="${icons.light}" alt="Light Theme" title="Light Theme" />`;
       } else {
         setThemeInSessionStorage("system");
         applySystemTheme();
-        themeToggle.innerHTML = `<img src="${systemthemeSVG.src}" alt="System Theme" title="System Theme" />`;
+        themeToggle.innerHTML = `<img src="${icons.system}" alt="System Theme" title="System Theme" />`;
       }
     });
   });
@@ -113,23 +116,12 @@ const { fixed } = Astro.props;
       </nav> -->
 
 <style>
-  /* .header-wrapper {
-    position: absolute;
-    top: 0;
-  } */
-
   header {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
-    /* position: fixed;
-    max-width: 1200px;
-    width: 100%;
-    top: 0rem;
-    z-index: 5;
-    background-color: var(--bg-color); */
   }
 
   header.fixed {
@@ -184,6 +176,8 @@ const { fixed } = Astro.props;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
   }
 
   /* @ rules */
