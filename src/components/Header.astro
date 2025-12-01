@@ -1,11 +1,14 @@
 ---
-import GithubSVG from "../svg/GithubSVG.astro";
-import LinkedinSVG from "../svg/LinkedinSVG.astro";
-import EmailSVG from "../svg/EmailSVG.astro";
-import ResumeSVG from "../svg/ResumeSVG.astro";
-import DarkThemeSVG from "../svg/DarkThemeSVG.astro";
-import LightThemeSVG from "../svg/LightThemeSVG.astro";
-import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
+import GithubSVG from "@svg/GithubSVG.astro";
+import LinkedinSVG from "@svg/LinkedinSVG.astro";
+import EmailSVG from "@svg/EmailSVG.astro";
+import ResumeSVG from "@svg/ResumeSVG.astro";
+import darkthemeSVG from "@svg/DarkTheme.svg";
+import lightthemeSVG from "@svg/LightTheme.svg";
+import systemthemeSVG from "@svg/SystemTheme.svg";
+// import DarkThemeSVG from "../svg/DarkThemeSVG.astro";
+// import LightThemeSVG from "../svg/LightThemeSVG.astro";
+// import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
 ---
 
 <script>
@@ -33,12 +36,15 @@ import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
       if (theme === "system") {
         theme = "dark";
         document.body.setAttribute("data-theme", "dark");
+        // change icon to dark theme
       } else if (theme === "dark") {
         theme = "light";
         document.body.setAttribute("data-theme", "light");
+        // change icon to light theme
       } else {
         theme = "system";
         applySystemTheme();
+        // change icon to system theme
       }
     });
   });
@@ -56,7 +62,9 @@ import SystemThemeSVG from "../svg/SystemThemeSVG.astro";
   <div class="social-links">
     <ul>
       <li>
-        <button id="light-mode-toggle"><SystemThemeSVG /></button>
+        <button id="light-mode-toggle">
+          <img src={systemthemeSVG.src} alt="System Theme" />
+        </button>
       </li>
       <li>
         <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
