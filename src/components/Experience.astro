@@ -1,0 +1,185 @@
+---
+import Chip from "./chips/Chip.astro";
+---
+
+<section class="portfolio">
+  <h2>Professional <span>&&</span> Solo Experience</h2>
+  <div class="grid-30-70">
+    <!-- Filter Selection -->
+    <ul class="jobs-list">
+      <li><button id="gw" class="btn-active">GW Medicine</button></li>
+      <li><button id="bu">BU School of Medicine</button></li>
+      <li><button id="solo">Solo Projects</button></li>
+    </ul>
+
+    <!-- Selected View -->
+    <div class="job-details">
+      <!-- Views: Each NEED an aria-hidden, default to 'true' if not visible -->
+      <div aria-hidden="false" id="gw-details" class="job-view">
+        <h3>Web Associate</h3>
+        <p>October 2022 - Present</p>
+        <Chip abbr="drupal" />
+        <Chip abbr="css" />
+        <Chip abbr="ts" />
+        <Chip abbr="js" />
+        <Chip abbr="vue" />
+        <Chip abbr="php" />
+
+        <h4>Featured Projects</h4>
+        <ul class="job-details">
+          <li>
+            Designed and developed new patient-oriented UI components for gwdocs.com, including card
+            styles for medical providers / locations and a filterable "Find a Specialty" function.
+            (CSS)
+          </li>
+          <li>
+            Developed an internal GUI tool for the web team to easily make updates to faculty
+            profiles. (Vue.js, TypeScript, PHP)
+          </li>
+          <li>
+            Built two command-line interface tools to transform HTML for 1,400+ faculty member
+            profiles to match updated database information and refresh styling.
+            (JavaScript/TypeScript, Node.js)
+          </li>
+        </ul>
+        <h4>General Duties</h4>
+        <ul class="job-details">
+          <li>
+            Build websites, webforms, and make content updates for MFA patients and Academic Medical
+            Enterprise stakeholders (i.e. medical providers, university faculty, administrators, and
+            researchers)
+          </li>
+          <li>
+            Create new component styles for the web team to use across our sites. (CSS, JavaScript)
+          </li>
+          <li>
+            Test sites in development environments to diagnose bugs and ensure all intended
+            functionality.
+          </li>
+          <li>
+            Optimize site media and audit sites for accessibility and performance issues.
+            (Siteimprove, Custom Scripting)
+          </li>
+        </ul>
+      </div>
+      <div aria-hidden="true" id="bu-details" class="job-view">
+        <h3>Web Designer</h3>
+        <p>January - August 2022</p>
+        <Chip abbr="wp" />
+        <Chip abbr="css" />
+        <ul class="job-details">
+          <li>
+            Redesigned websites for the Department of Pharmacology and the Office of Financial &
+            Grants Administration at BU School of Medicine.
+          </li>
+          <li>
+            Developed new page components and leveraged extensive custom CSS styling within the
+            existing WordPress framework.
+          </li>
+          <li>
+            Collaborated with department faculty to determine widespread changes to content
+            presentation and to gather improved site imagery.
+          </li>
+          <li>Took new headshots for certain staff members.</li>
+        </ul>
+      </div>
+
+      <div aria-hidden="true" id="solo-details" class="job-view">
+        <h3>Personal Projects & Development</h3>
+        <p>2021 - Present</p>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggleButtons = document.querySelectorAll(".jobs-list button");
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", (e: Event) => {
+      // if the active button is clicked, don't apply the following effects
+      // otherwise run the effects
+      if (!button.classList.contains("btn-active")) {
+        toggleButtons.forEach((btn) => btn.classList.remove("btn-active"));
+        button.classList.add("btn-active");
+        // Sets aria-hidden='false' for the view associated with the clicked button, hides the previously active view
+        const clickedButton = e.target as HTMLButtonElement;
+        const associatedView = document.querySelector(`div#${clickedButton.id}-details`);
+        if (associatedView.ariaHidden) {
+          const currentView = document.querySelector(`.job-view[aria-hidden="false"]`);
+          currentView.ariaHidden = "true";
+          associatedView.ariaHidden = "false";
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .grid-30-70 {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+
+  [aria-hidden="true"] {
+    display: none;
+  }
+
+  ul.jobs-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .jobs-list li + li {
+    margin-top: 1.5rem;
+  }
+
+  .btn-active,
+  button:hover {
+    background-color: #202d49;
+    border-color: #202d49;
+  }
+
+  button {
+    cursor: pointer;
+    color: var(--text);
+    background-color: var(--bg-color);
+    border: solid 1.5px var(--primary);
+    border-radius: 8px;
+    padding: 1em 1.5em;
+    font-size: inherit;
+    font-weight: 600;
+    min-width: 250px;
+    transition: 0.2s all;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  h3 + p {
+    margin-top: 0;
+    color: #d2d2d2;
+    font-weight: 200;
+  }
+
+  h4 {
+    color: var(--primary);
+    font-weight: 500;
+    font-size: clamp(1rem, 6vw, 1.2rem);
+  }
+
+  .job-details li + li {
+    margin-top: 1rem;
+  }
+
+  .job-details li::marker {
+    color: var(--primary);
+  }
+</style>

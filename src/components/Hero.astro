@@ -6,7 +6,7 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
 <main>
   <div>
     <h2>
-      <span class="gt">&gt;_</span>Web Developer <span>&&</span> Photographer
+      <span class="gt">&gt;<span class="blink-cursor">_</span></span>Web Developer <span>&&</span> Photographer
     </h2>
     <p>
       Based in NYC, I've worked in the intersection of healthcare and higher education for over 3
@@ -59,6 +59,28 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
 
   h2 {
     margin-bottom: 3rem;
+  }
+
+  h2 span.blink-cursor {
+    animation: cursor 1s infinite;
+  }
+
+  @keyframes cursor {
+    0% {
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 
   img {

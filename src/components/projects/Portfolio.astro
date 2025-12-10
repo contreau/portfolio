@@ -1,5 +1,5 @@
 ---
-const heading = "Portfolio";
+const heading = "Professional Experience";
 const description = "Professional and personal development work.";
 import WorkSVG from "@svg/WorkSVG.astro";
 import ToolsSVG from "@svg/ToolsSVG.astro";
@@ -37,16 +37,33 @@ import Designation from "@components/chips/Designation.astro";
   </div>
 </section>
 
+<script>
+  const section = document.querySelector("section.portfolio");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].intersectionRatio === 1 && !section.classList.contains("fadeIntoView")) {
+        section.classList.add("fadeIntoView");
+      }
+    },
+    {
+      threshold: 1,
+    }
+  );
+  observer.observe(section);
+</script>
+
 <style>
   .portfolio {
-    opacity: 0;
-    animation:
-      fadeIn 500ms ease-in forwards,
-      shiftDown 500ms ease-in forwards;
-
+    /* opacity: 0; */
     display: grid;
     grid-template-columns: 35% 63%;
     gap: 2%;
+  }
+
+  .fadeIntoView {
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
   }
 
   .grid-item + .grid-item {

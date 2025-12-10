@@ -135,6 +135,8 @@ import Footer from "@components/Footer.astro";
     --primary-link: #2059cb;
     --social-links-color: #74757b;
     --headshot-shadow: #74757b40;
+    --table-head-color: #ececec;
+    --table-bg: #fafafa;
   }
 
   html[data-theme="dark"] body {
@@ -146,6 +148,8 @@ import Footer from "@components/Footer.astro";
     --primary-link: #88a6fa;
     --text: #ffffff;
     --headshot-shadow: #475681;
+    --table-head-color: #1d2641;
+    --table-bg: #323e61;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -190,7 +194,7 @@ import Footer from "@components/Footer.astro";
   }
 
   h3 {
-    font-size: clamp(1rem, 6vw, 1.3rem);
+    font-size: clamp(1rem, 6vw, 1.4rem);
     color: var(--text);
     font-weight: 450;
   }
@@ -249,7 +253,7 @@ import Footer from "@components/Footer.astro";
   }
 
   section {
-    margin-block: 2.5rem;
+    /* margin-block: 2.5rem; */
     min-height: 340px;
   }
 

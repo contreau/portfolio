@@ -1,0 +1,88 @@
+---
+import ProjectRow from "@components/projects/ProjectRow.astro";
+import Project from "@components/projects/Project.astro";
+import Wave from "@components/visuals/Wave.astro";
+import Chip from "@components/chips/Chip.astro";
+import CiteClinic from "@components/visuals/CiteClinic.astro";
+import Koi from "@components/visuals/Koi.astro";
+import Snek from "@components/visuals/Snek.astro";
+---
+
+<section id="projects">
+  <h2><span class="gt">&gt;_</span>Projects</h2>
+  <p class="description">Personal web applications and musings.</p>
+  <ProjectRow>
+    <Project
+      slot="column-1"
+      projectName="Kompendium"
+      projectDescription="An extensive digital archive of my late friend Konrad Rauscher's 800+ playlists."
+      projectURL="https://komp3nd1um.app"
+    >
+      <Wave slot="project-visual" />
+      <Chip slot="chip" abbr="sveltekit" />
+      <Chip slot="chip" abbr="ts" />
+    </Project>
+    <Project
+      slot="column-2"
+      projectName="CiteClinic"
+      projectDescription="Generate styled medical journal citations from any valid DOI."
+      projectURL="https://cite-clinic.vercel.app/"
+    >
+      <CiteClinic slot="project-visual" />
+      <Chip slot="chip" abbr="sveltekit" />
+      <Chip slot="chip" abbr="ts" />
+    </Project>
+  </ProjectRow>
+  <ProjectRow>
+    <Project
+      slot="column-1"
+      projectName="CSS Koi Pond"
+      projectDescription="A charming koi pond powered by CSS."
+      projectURL="https://contreau.github.io/koi-pond/"
+    >
+      <Koi slot="project-visual" />
+      <Chip slot="chip" abbr="css" />
+    </Project>
+    <Project
+      slot="column-2"
+      projectName="Snek"
+      projectDescription="My take on the classic snake game with three game modes."
+      projectURL="https://snekgame.app"
+    >
+      <Snek slot="project-visual" />
+      <Chip slot="chip" abbr="svelte" />
+      <Chip slot="chip" abbr="ts" />
+    </Project>
+  </ProjectRow>
+</section>
+
+<script>
+  const section = document.querySelector("section#projects");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].intersectionRatio === 1 && !section.classList.contains("fadeIntoView")) {
+        section.classList.add("fadeIntoView");
+      }
+    },
+    {
+      threshold: 1,
+    }
+  );
+  observer.observe(section);
+</script>
+
+<style>
+  h2 {
+    margin-bottom: 3rem;
+  }
+
+  section#projects {
+    opacity: 0;
+  }
+
+  .fadeIntoView {
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
+  }
+</style>
