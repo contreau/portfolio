@@ -1,47 +1,41 @@
 ---
-import Chip from "./chips/Chip.astro";
+import Chip from "@components/chips/Chip.astro";
+import Project from "@components/projects/Project.astro";
+import Wave from "@components/visuals/Wave.astro";
+import CiteClinic from "@components/visuals/CiteClinic.astro";
+import Snek from "@components/visuals/Snek.astro";
+import Koi from "@components/visuals/Koi.astro";
+import WorkSVG from "@svg/WorkSVG.astro";
 ---
 
 <section class="portfolio">
-  <h2>Professional <span>&&</span> Solo Experience</h2>
+  <h2>Work Experience <span>&&</span> Solo Projects</h2>
   <div class="grid-30-70">
-    <!-- Filter Selection -->
-    <ul class="jobs-list">
-      <li><button id="gw" class="btn-active">GW Medicine</button></li>
-      <li><button id="bu">BU School of Medicine</button></li>
-      <li><button id="solo">Solo Projects</button></li>
-    </ul>
-
     <!-- Selected View -->
     <div class="job-details">
       <!-- Views: Each NEED an aria-hidden, default to 'true' if not visible -->
       <div aria-hidden="false" id="gw-details" class="job-view">
-        <h3>Web Associate</h3>
-        <p>October 2022 - Present</p>
-        <Chip abbr="drupal" />
-        <Chip abbr="css" />
-        <Chip abbr="ts" />
-        <Chip abbr="js" />
-        <Chip abbr="vue" />
-        <Chip abbr="php" />
+        <h3>Web Associate • GW Medicine</h3>
+        <p class="job-range">October 2022 - Present</p>
 
-        <h4>Featured Projects</h4>
+        <h4>Development Highlights</h4>
         <ul class="job-details">
           <li>
-            Designed and developed new patient-oriented UI components for gwdocs.com, including card
+            New <a href="/gwmedicine">patient-oriented UI components</a> for gwdocs.com, including card
             styles for medical providers / locations and a filterable "Find a Specialty" function.
-            (CSS)
           </li>
           <li>
-            Developed an internal GUI tool for the web team to easily make updates to faculty
-            profiles. (Vue.js, TypeScript, PHP)
+            <a href="/gwmedicine/faculty-listing-builder">An internal frontend tool</a> for the web team
+            to easily make updates to medical school faculty profiles.
           </li>
           <li>
-            Built two command-line interface tools to transform HTML for 1,400+ faculty member
-            profiles to match updated database information and refresh styling.
-            (JavaScript/TypeScript, Node.js)
+            Command-line interface tools to transform HTML for 1,400+ faculty member profiles to
+            match updated database information and refresh styling.
           </li>
         </ul>
+
+        <p class="view-work"><a href="/gwmedicine"><WorkSVG /> View Featured Projects</a></p>
+
         <h4>General Duties</h4>
         <ul class="job-details">
           <li>
@@ -49,28 +43,29 @@ import Chip from "./chips/Chip.astro";
             Enterprise stakeholders (i.e. medical providers, university faculty, administrators, and
             researchers)
           </li>
-          <li>
-            Create new component styles for the web team to use across our sites. (CSS, JavaScript)
-          </li>
+          <li>Create new component styles for the web team to use across our sites.</li>
           <li>
             Test sites in development environments to diagnose bugs and ensure all intended
             functionality.
           </li>
           <li>
-            Optimize site media and audit sites for accessibility and performance issues.
-            (Siteimprove, Custom Scripting)
+            Optimize site media and audit sites for accessibility and performance issues using
+            Siteimprove or custom scripting.
           </li>
         </ul>
       </div>
       <div aria-hidden="true" id="bu-details" class="job-view">
         <h3>Web Designer</h3>
-        <p>January - August 2022</p>
+        <p class="job-range">January - August 2022</p>
         <Chip abbr="wp" />
         <Chip abbr="css" />
         <ul class="job-details">
           <li>
-            Redesigned websites for the Department of Pharmacology and the Office of Financial &
-            Grants Administration at BU School of Medicine.
+            Redesigned websites for the <a href="https://www.bumc.bu.edu/ppb/" target="_blank"
+              >Department of Pharmacology</a
+            > and the <a href="https://www.bumc.bu.edu/ofga/" target="_blank">
+              Office of Financial & Grants Administration</a
+            > at Boston University School of Medicine.
           </li>
           <li>
             Developed new page components and leveraged extensive custom CSS styling within the
@@ -86,12 +81,63 @@ import Chip from "./chips/Chip.astro";
 
       <div aria-hidden="true" id="solo-details" class="job-view">
         <h3>Personal Projects & Development</h3>
-        <p>2021 - Present</p>
-        <ul>
-          <li></li>
-        </ul>
+        <p class="job-range">2021 - Present</p>
+        <div class="project-list">
+          <Project
+            slot="column-1"
+            projectName="Kompendium"
+            projectDescription="An extensive digital archive of my late friend Konrad Rauscher's 800+ playlists."
+            projectURL="https://komp3nd1um.app"
+          >
+            <Wave slot="project-visual" />
+            <Chip slot="chip" abbr="sveltekit" />
+            <Chip slot="chip" abbr="ts" />
+            <Chip slot="chip" abbr="py" />
+            <Chip slot="chip" abbr="node" />
+          </Project>
+          <Project
+            slot="column-2"
+            projectName="CiteClinic"
+            projectDescription="Generate styled medical journal citations from any valid DOI."
+            projectURL="https://cite-clinic.vercel.app/"
+          >
+            <CiteClinic slot="project-visual" />
+            <Chip slot="chip" abbr="sveltekit" />
+            <Chip slot="chip" abbr="ts" />
+            <Chip slot="chip" abbr="node" />
+          </Project>
+        </div>
+
+        <h4>Musings</h4>
+        <div class="project-list">
+          <Project
+            slot="column-2"
+            projectName="Snek"
+            projectDescription="My take on the classic snake game with three game modes."
+            projectURL="https://snekgame.app"
+          >
+            <Snek slot="project-visual" />
+            <Chip slot="chip" abbr="svelte" />
+            <Chip slot="chip" abbr="ts" />
+          </Project>
+          <Project
+            slot="column-1"
+            projectName="CSS Koi Pond"
+            projectDescription="A charming koi pond powered by CSS."
+            projectURL="https://contreau.github.io/koi-pond/"
+          >
+            <Koi slot="project-visual" />
+            <Chip slot="chip" abbr="css" />
+          </Project>
+        </div>
       </div>
     </div>
+    <!-- Filter Selection -->
+    <ul class="jobs-list">
+      <li><button id="gw" class="btn-active">GW Medicine</button></li>
+      <li><button id="bu">BU School of Medicine</button></li>
+      <li><button id="solo">Solo Projects</button></li>
+    </ul>
   </div>
 </section>
 
@@ -118,9 +164,53 @@ import Chip from "./chips/Chip.astro";
 </script>
 
 <style>
+  section {
+    min-height: 870px;
+  }
+
+  /* Set theme variables */
+  html[data-theme="dark"] section {
+    --button-border-color: var(--primary);
+    --button-bg: var(--bg-color);
+    --button-hover-color: #202d49;
+    --button-border-hover-color: #202d49;
+    --job-range-color: #d2d2d2;
+  }
+
+  html[data-theme="light"] section {
+    --button-border-color: #c9c9c9;
+    --button-bg: #ececec;
+    --button-hover-color: #c9c9c9;
+    --button-border-hover-color: #c9c9c9;
+    --job-range-color: #555555;
+  }
+
+  .view-work {
+    margin-block: 2rem;
+  }
+
+  .view-work a {
+    border: solid 1px var(--button-border-color);
+    padding: 0.5em 0.75em;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: var(--button-bg);
+    color: var(--text);
+    transition: 0.2s all;
+    &:hover {
+      background-color: var(--button-hover-color);
+      border-color: var(--button-border-hover-color);
+    }
+  }
+
+  a,
+  a:visited {
+    color: var(--primary);
+  }
+
   .grid-30-70 {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 70% 30%;
   }
 
   [aria-hidden="true"] {
@@ -130,6 +220,8 @@ import Chip from "./chips/Chip.astro";
   ul.jobs-list {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 0;
+    justify-self: end;
   }
 
   .jobs-list li + li {
@@ -138,15 +230,15 @@ import Chip from "./chips/Chip.astro";
 
   .btn-active,
   button:hover {
-    background-color: #202d49;
-    border-color: #202d49;
+    background-color: var(--button-hover-color);
+    border-color: var(--button-border-hover-color);
   }
 
   button {
     cursor: pointer;
     color: var(--text);
-    background-color: var(--bg-color);
-    border: solid 1.5px var(--primary);
+    background-color: var(--button-bg);
+    border: solid 1.5px var(--button-border-color);
     border-radius: 8px;
     padding: 1em 1.5em;
     font-size: inherit;
@@ -156,17 +248,18 @@ import Chip from "./chips/Chip.astro";
   }
 
   h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   h3 {
+    margin-top: 0;
     margin-bottom: 0.25rem;
   }
 
-  h3 + p {
+  .job-range {
     margin-top: 0;
-    color: #d2d2d2;
-    font-weight: 200;
+    color: var(--job-range-color);
+    font-weight: 300;
   }
 
   h4 {
@@ -181,5 +274,12 @@ import Chip from "./chips/Chip.astro";
 
   .job-details li::marker {
     color: var(--primary);
+  }
+
+  .project-list {
+    margin-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
   }
 </style>

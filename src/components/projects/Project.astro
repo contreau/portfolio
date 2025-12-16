@@ -40,7 +40,8 @@ if (urlTarget) target = urlTarget;
 
   .project-item:has(span.fallback) .project-description {
     /* sets max-width on description text for items without visuals */
-    max-width: 95%;
+    /* max-width: 95%; */
+    text-wrap: balance;
   }
 
   .item-visual:has(span.fallback) {
@@ -60,7 +61,8 @@ if (urlTarget) target = urlTarget;
   .project-description {
     font-size: clamp(0.85rem, 4vw, 0.9rem);
     font-style: italic;
-    max-width: 95%;
+    text-wrap: balance;
+    /* max-width: 95%; */
   }
 
   @media (max-width: 1100px) {

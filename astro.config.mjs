@@ -12,4 +12,8 @@ export default defineConfig({
     },
   }),
   prefetch: true,
+  redirects: {
+    "/gwmedicine": "/work",
+    "/work/gwmedicine": "/work",
+  },
 });

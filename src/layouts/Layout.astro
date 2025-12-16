@@ -1,31 +1,18 @@
 ---
-const {
-  description,
-  title,
-  ogURL,
-  hasFixedHeader,
-  pathName,
-  indexIsActive,
-  portfolioIsActive,
-  musingsIsActive,
-} = Astro.props;
+const { description, title, ogURL, activePage } = Astro.props;
 interface Props {
   description: string;
   title: string;
   ogURL: string;
-  hasFixedHeader?: boolean;
-  pathName: string;
-  indexIsActive?: string;
-  portfolioIsActive?: string;
-  musingsIsActive?: string;
+  activePage: string;
 }
 
-import Path from "@components/chips/Path.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Nav from "@components/Nav.astro";
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,37 +30,35 @@ import Footer from "@components/Footer.astro";
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={ogURL} />
-    <script is:inline>
-      (function () {
-        const theme = sessionStorage.getItem("theme");
-        if (theme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-        } else if (theme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
-          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-          document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
-        }
-      })();
-
-      // Animated header
-      const header = document.querySelector("header");
-      const stored_classes = sessionStorage.getItem("animatedHeader");
-      if (stored_classes === null) {
-        sessionStorage.setItem("animatedHeader", "true");
-      } else if (stored_classes === "true") {
-        header.classList.remove("animated-header");
-      }
-    </script>
   </head>
   <body>
-    <Header fixed={hasFixedHeader} />
-    <slot />
+    <Header />
+    <main>
+      <Nav activePage={activePage} />
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
 
 <style is:global>
+  main {
+    display: grid;
+    grid-template-columns: 10% 85%;
+    gap: 5%;
+    align-items: start;
+    flex-grow: 1;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  @media (max-width: 1200px) {
+    main {
+      display: block;
+      margin-top: 0;
+    }
+  }
+
   :root {
     --text: #000000;
     --white: #ffffff;
@@ -104,6 +89,7 @@ import Footer from "@components/Footer.astro";
   body {
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   img {
@@ -113,24 +99,23 @@ import Footer from "@components/Footer.astro";
   }
 
   body {
+    position: relative;
     font-family: system-ui;
     font-weight: 400;
     line-height: 1.75;
-    /* background-color: var(--dark-background);
-    color: #090909;
-    --text: #090909; */
     max-width: 1200px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     min-height: 100dvh;
   }
 
   html[data-theme="light"] body {
     color: #000000;
-    background-color: #ffffff;
+    background-color: #ececec;
     --text: #090909;
-    --bg-color: #ffffff;
+    --bg-color: #ececec;
     --primary: #2059cb;
     --primary-link: #2059cb;
     --social-links-color: #74757b;
@@ -143,10 +128,10 @@ import Footer from "@components/Footer.astro";
     color: #ffffff;
     background-color: #111827;
     --bg-color: #111827;
-    --social-links-color: #ffffff;
+    --social-links-color: #d4d4d4;
     --primary: #728bd2;
     --primary-link: #88a6fa;
-    --text: #ffffff;
+    --text: #d4d4d4;
     --headshot-shadow: #475681;
     --table-head-color: #1d2641;
     --table-bg: #323e61;
@@ -167,8 +152,9 @@ import Footer from "@components/Footer.astro";
 
   /* Font Configurations for headings / paragraphs */
 
-  p {
-    font-size: clamp(0.85rem, 4vw, 1.05rem);
+  p,
+  li {
+    font-size: clamp(0.85rem, 4vw, 0.9rem);
   }
 
   h1,
@@ -181,7 +167,7 @@ import Footer from "@components/Footer.astro";
   h2 {
     font-size: clamp(1.2rem, 6vw, 1.75rem);
     font-weight: 550;
-    color: var(--primary);
+    color: var(--text);
     margin-block: 0;
   }
 
@@ -199,72 +185,55 @@ import Footer from "@components/Footer.astro";
     font-weight: 450;
   }
 
-  /* Nav / Footer */
-
-  nav {
-    padding-left: 0.2em;
-  }
-
-  nav.mobile-nav {
-    display: none;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 3rem;
-    padding-left: 0;
-
-    li {
-      list-style-type: none;
-      position: relative;
-      font-size: clamp(1rem, 6vw, 1.25rem);
-    }
-
-    li.active {
-      color: var(--primary);
-    }
-
-    li.active::after {
-      content: "";
-      position: absolute;
-      width: 6.5px;
-      height: 6.5px;
-      background-color: var(--primary);
-      border-radius: 50%;
-      bottom: -28%;
-      transform: translate(-50%, -50%);
-      left: 50%;
-    }
-
-    li.active a {
-      color: var(--primary-link);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 550;
-      transition: color 200ms;
-    }
-
-    a:hover {
-      color: var(--primary-link);
-    }
-  }
-
   section {
     /* margin-block: 2.5rem; */
     min-height: 340px;
   }
 
   /* Other global rules */
+  p,
+  li {
+    color: var(--text);
+  }
+
   p.description {
     margin-block: 1.5rem;
     font-weight: 350;
   }
 
-  p.subpage-description a {
+  p.subpage-description a,
+  p > a {
     color: var(--primary);
+  }
+
+  li::marker {
+    color: var(--primary);
+  }
+
+  div.social-links ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin-block: 0;
+    height: 100%;
+    line-height: 1;
+
+    li {
+      list-style-type: none;
+      padding: 0em 0.6em;
+      border-radius: 5px;
+      padding-inline: 0;
+      a {
+        text-decoration: none;
+        color: var(--social-links-color);
+        transition: color 200ms;
+      }
+
+      a:hover {
+        color: var(--primary-link);
+      }
+    }
   }
 
   /* @ rules */
@@ -294,29 +263,6 @@ import Footer from "@components/Footer.astro";
   }
 
   @media (max-width: 1100px) {
-    nav {
-      display: none;
-    }
-    nav.mobile-nav {
-      display: block;
-    }
-
-    nav.mobile-nav ul {
-      justify-content: center;
-      li {
-        font-size: clamp(0.85rem, 4vw, 1rem);
-      }
-
-      li.active::after {
-        width: 5px;
-        height: 5px;
-      }
-    }
-
-    nav ul {
-      gap: 1.5rem;
-    }
-
     section {
       margin-block: 1rem;
     }
@@ -328,6 +274,7 @@ import Footer from "@components/Footer.astro";
 
     p.subpage-description {
       text-align: center;
+      text-wrap: balance;
     }
   }
 

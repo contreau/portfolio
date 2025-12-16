@@ -47,8 +47,7 @@ import newLocationCard from "@img/new-location-card-572x600.jpg";
 <Layout
   title="Location Card Redesign"
   description="A card style I developed for all location listings on the GW MFA website."
-  portfolioIsActive="true"
-  pathName="gwmedicine/cards"
+  activePage="work"
   ogURL="https://conorkelley.me/gwmedicine/cards"
 >
   <section>
@@ -171,6 +170,10 @@ import newLocationCard from "@img/new-location-card-572x600.jpg";
     display: none;
   }
 
+  div.revealed-content img {
+    border-radius: 8px;
+  }
+
   button.active,
   button.active:hover,
   button.active.focus-visible {
@@ -205,6 +208,10 @@ import newLocationCard from "@img/new-location-card-572x600.jpg";
     }
     h3 {
       text-align: center;
+    }
+
+    .grid-container {
+      column-gap: 0.25rem;
     }
   }
 </style>

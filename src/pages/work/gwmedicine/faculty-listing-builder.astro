@@ -9,9 +9,8 @@ const description =
 <Layout
   title="Faculty Listing Builder"
   description={description}
-  pathName="gwmedicine/faculty-listing-builder"
   ogURL="https://conorkelley.me/gwmedicine/faculty-listing-builder"
-  portfolioIsActive="true"
+  activePage="work"
 >
   <link
     slot="image-preload"
@@ -32,6 +31,9 @@ const description =
         href="https://biochemistry.smhs.gwu.edu/faculty"
         target="_blank">faculty pages</a
       > across the School of Medicine & Health Sciences websites.
+    </p>
+    <p slot="subpage-description" class="subpage-description">
+      I wrote user authentication in PHP and deployed the application on a private Apache server.
     </p>
     <div slot="content" class="content-grid">
       <div class="grid-item">
@@ -74,14 +76,6 @@ const description =
     text-wrap: balance;
     padding-left: 0;
     list-style-position: inside;
-  }
-
-  .features-list li {
-    font-size: clamp(0.9rem, 3.5vw, 1rem);
-  }
-
-  .features-list li::marker {
-    color: var(--primary);
   }
 
   .features-list li + li {

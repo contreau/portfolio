@@ -4,24 +4,24 @@ import LocationSVG from "@svg/LocationSVG.astro";
 ---
 
 <script>
-  const cards = document.querySelectorAll(".card");
-  const locationCard = document.querySelector(".location-card");
-  locationCard.addEventListener("animationend", () => {
-    cards.forEach((card) => card.classList.remove("animate"));
-    setTimeout(() => {
-      cards.forEach((card) => card.classList.add("animate"));
-    }, 500);
-  });
+  // const cards = document.querySelectorAll(".card");
+  // const locationCard = document.querySelector(".location-card");
+  // locationCard.addEventListener("animationend", () => {
+  //   cards.forEach((card) => card.classList.remove("animate"));
+  //   setTimeout(() => {
+  //     cards.forEach((card) => card.classList.add("animate"));
+  //   }, 500);
+  // });
 </script>
 
 <div class="container">
-  <div class="card profile-card animate">
+  <div class="card profile-card">
     <div class="card-body">
       <AvatarSVG />
     </div>
     <span>• • •</span>
   </div>
-  <div class="card location-card animate">
+  <div class="card location-card">
     <div class="card-body">
       <LocationSVG />
     </div>

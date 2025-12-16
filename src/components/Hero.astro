@@ -1,51 +1,52 @@
 ---
-import { Image } from "astro:assets";
-import headshot from "@img/ck-headshot-400x400-min.jpg";
+import ASCII from "./visuals/ASCII.astro";
 ---
 
-<main>
-  <div>
-    <h2>
-      <span class="gt">&gt;<span class="blink-cursor">_</span></span>Web Developer <span>&&</span> Photographer
-    </h2>
+<div class="container">
+  <div class="text">
     <p>
-      Based in NYC, I've worked in the intersection of healthcare and higher education for over 3
-      years. I'm a frontend-leaning web developer with a photojournalism and editorial background.
+      I'm a frontend-leaning developer living in NYC. I've worked in university medical systems for
+      over 3 years, namely the <a href="https://gwdocs.com" target="_blank">GW MFA</a> and <a
+        href="https://www.bumc.bu.edu/camed/"
+        target="_blank"
+      >
+        Boston University School of Medicine</a
+      >.
     </p>
     <p>
-      I currently work for <a href="/gwmedicine">GW Medicine</a>, where I thrive in UI and tooling
-      development. I create and maintain sites and applications that serve thousands in the GW
-      academic medical system.
+      I ship UI components, custom tooling, websites, and applications that serve patients, doctors,
+      and school administrators. Check out my <a href="/work">current work highlights</a>.
     </p>
+
     <p>
-      Reach out to talk freelance work, web dev, volleyball, or ambient music recommendations :)
+      I have some <a href="/projects">nifty projects of my own</a> - a mix of full-stack and pure frontend.
+    </p>
+
+    <p>
+      You'll otherwise find me playing volleyball around the city, throwing out painfully mid jump
+      serves.
     </p>
   </div>
 
-  <!-- todo: use a <pre> tag to render the ASCII art of headshot from a JS string (model off juxtopposed)
-   https://github.com/juxtopposed/ascii-rickroll-js/blob/main/index.html
-  -->
-
-  <Image src={headshot} layout="constrained" priority alt="Headshot of Conor Kelley" />
-</main>
+  <ASCII />
+</div>
 
 <style>
+  .text p:first-of-type {
+    margin-top: 0;
+  }
+
   /* 'About' section */
-  main {
-    /* outline: solid 1px white; */
+  .container {
     position: relative;
-    height: 100vh; /* fallback for non-supporting browsers of svh */
-    height: 100svh;
     opacity: 0;
     transform: translateY(-10px);
     display: grid;
     grid-template-columns: 70% 25%;
     place-items: end;
-    align-items: center;
+    align-items: start;
     gap: 5%;
-    animation:
-      fadeIn 500ms ease-in forwards,
-      shiftDown 500ms ease-in forwards;
+    animation: fadeIn 500ms ease-in forwards;
 
     p {
       font-weight: 350;
@@ -65,6 +66,8 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
     animation: cursor 1s infinite;
   }
 
+  /* @ rules */
+
   @keyframes cursor {
     0% {
       opacity: 0;
@@ -83,55 +86,30 @@ import headshot from "@img/ck-headshot-400x400-min.jpg";
     }
   }
 
-  img {
-    border-radius: 10px;
-    animation: popOutShadow 300ms 500ms forwards;
-    max-width: 275px;
-  }
-
-  /* @ rules */
-
   @media (max-width: 800px) {
-    main p {
+    .container p {
       text-align: center;
     }
   }
 
   @media (max-width: 600px) {
-    img {
-      animation: none;
-      box-shadow: -6px 6px 0px 0px var(--headshot-shadow);
-    }
-
-    main p {
+    .container p {
       text-wrap: balance;
     }
   }
 
-  @media (max-width: 499px) {
-    img {
-      max-width: 200px;
-    }
-  }
-
   @media (max-width: 1100px) {
-    main {
+    .container {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-
-    img {
-      order: -1;
-      margin-inline: auto;
-    }
   }
 
-  @keyframes popOutShadow {
-    0% {
-      box-shadow: 0px 0px 0px 0px var(--headshot-shadow);
-    }
-    100% {
-      box-shadow: -10px 10px 0px 0px var(--headshot-shadow);
+  @media (min-width: 1200px) {
+    .container {
+      animation:
+        fadeIn 500ms ease-in forwards,
+        shiftDown 500ms ease-in forwards;
     }
   }
 </style>

@@ -1,119 +1,18 @@
----
-import GithubSVG from "@svg/GithubSVG.astro";
-import LinkedinSVG from "@svg/LinkedinSVG.astro";
-import EmailSVG from "@svg/EmailSVG.astro";
-import ResumeSVG from "@svg/ResumeSVG.astro";
-
-interface Props {
-  fixed: boolean;
-}
-const { fixed } = Astro.props;
----
-
-<script>
-  // Configure light/dark mode
-
-  // TODO: make theme icon responsive / put a pipe or separator between theme toggle and icons?
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const themeToggle = document.getElementById("theme-toggle")!;
-
-    const icons = {
-      dark: "/svg/DarkTheme.svg",
-      light: "/svg/LightTheme.svg",
-      system: "/svg/SystemTheme.svg",
-    };
-
-    function setThemeInSessionStorage(targetTheme: string) {
-      sessionStorage.setItem("theme", targetTheme);
-    }
-
-    function applySystemTheme() {
-      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.setAttribute("data-theme", prefersDarkScheme ? "dark" : "light");
-      setThemeInSessionStorage("system");
-    }
-
-    const currentTheme = sessionStorage.getItem("theme");
-    if (currentTheme === null || currentTheme === "system") {
-      applySystemTheme();
-      themeToggle.innerHTML = `<img src="${icons.system}" alt="System Theme" title="System Theme" />`;
-    } else if (currentTheme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-      themeToggle.innerHTML = `<img src="${icons.dark}" alt="Dark Theme" title="Dark Theme" />`;
-    } else if (currentTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-      themeToggle.innerHTML = `<img src="${icons.light}" alt="Light Theme" title="Light Theme" />`;
-    }
-
-    themeToggle.addEventListener("click", () => {
-      let currentTheme = sessionStorage.getItem("theme");
-      if (currentTheme === "system") {
-        setThemeInSessionStorage("dark");
-        document.documentElement.setAttribute("data-theme", "dark");
-        themeToggle.innerHTML = `<img src="${icons.dark}" alt="Dark Theme" title="Dark Theme" />`;
-      } else if (currentTheme === "dark") {
-        setThemeInSessionStorage("light");
-        document.documentElement.setAttribute("data-theme", "light");
-        themeToggle.innerHTML = `<img src="${icons.light}" alt="Light Theme" title="Light Theme" />`;
-      } else {
-        setThemeInSessionStorage("system");
-        applySystemTheme();
-        themeToggle.innerHTML = `<img src="${icons.system}" alt="System Theme" title="System Theme" />`;
-      }
-    });
-  });
-</script>
-
-<header class:list={["", { fixed: fixed }]}>
-  <h1 class="title-name">
-    <a href="/"
-      ><span style="color: var(--primary)">Conor</span><span style="color: var(--text);"
-        >Kelley</span
-      ></a
-    >
-  </h1>
-
-  <div class="social-links">
-    <ul>
-      <li>
-        <button id="theme-toggle" aria-label="Light/Dark Theme Toggle"></button>
-      </li>
-      <li>
-        <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
-          ><GithubSVG /></a
-        >
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/conor-kelley2/"
-          target="_blank"
-          aria-label="Linkedin Profile"><LinkedinSVG /></a
-        >
-      </li>
-      <li class="cv">
-        <a href="/cv.pdf" target="_blank" aria-label="Curriculum Vitae / Resume"><ResumeSVG /></a>
-      </li>
-      <li>
-        <a href="mailto:cfk102@gmail.com" target="_blank" aria-label="Email"><EmailSVG /></a>
-      </li>
-    </ul>
+<header>
+  <div class="site-title">
+    <h1 class="title-name">
+      <a href="/"
+        ><span style="color: var(--primary)">Conor</span><span style="color: var(--text);"
+          >Kelley</span
+        ></a
+      >
+    </h1>
+    <p>
+      <span class="gt">&gt;<span class="blink-cursor">_</span></span>
+      Web Developer
+    </p>
   </div>
 </header>
-
-<!-- <nav>
-        <ul>
-          <li class:list={["", { active: indexIsActive }]}>
-            <a href="/" data-astro-prefetch>About</a>
-          </li>
-          <li class:list={["", { active: portfolioIsActive }]}>
-            <a href="/portfolio" data-astro-prefetch>Portfolio</a>
-          </li>
-          <li class:list={["", { active: musingsIsActive }]}>
-            <a href="/musings" data-astro-prefetch>Musings</a>
-          </li>
-        </ul>
-      </nav> -->
 
 <style>
   header {
@@ -124,13 +23,20 @@ const { fixed } = Astro.props;
     padding-bottom: 1.5em;
   }
 
-  header.fixed {
-    position: fixed;
-    top: 0 rem;
-    z-index: 5;
-    background-color: var(--bg-color);
-    max-width: 1200px;
-    width: 100%;
+  .site-title p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: clamp(0.8rem, 6vw, 1.2rem);
+    color: var(--primary);
+
+    & span {
+      color: var(--text);
+    }
+  }
+
+  span.blink-cursor {
+    animation: cursor 1s infinite;
   }
 
   h1 {
@@ -146,40 +52,6 @@ const { fixed } = Astro.props;
     }
   }
 
-  div.social-links ul {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding-left: 0;
-    margin-block: 0;
-    height: 100%;
-    line-height: 1;
-
-    li {
-      list-style-type: none;
-      padding: 0em 0.6em;
-      border-radius: 5px;
-      padding-inline: 0;
-      a {
-        text-decoration: none;
-        color: var(--social-links-color);
-        transition: color 200ms;
-      }
-
-      a:hover {
-        color: var(--primary-link);
-      }
-    }
-  }
-
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-
   /* @ rules */
   @media (max-width: 1100px) {
     header {
@@ -189,6 +61,35 @@ const { fixed } = Astro.props;
       flex-direction: column;
       align-items: center;
       gap: 0.75rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    header.fixed {
+      /* position: fixed; */
+      top: 0 rem;
+      z-index: 5;
+      background-color: var(--bg-color);
+      max-width: 1200px;
+      width: 100%;
+    }
+  }
+
+  @keyframes cursor {
+    0% {
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
     }
   }
 </style>

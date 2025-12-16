@@ -11,7 +11,9 @@ const abbreviationMap = {
   wp: "WordPress",
   vue: "Vue.js",
   php: "PHP",
+  py: "Python",
   drupal: "Drupal",
+  node: "Node.js",
 };
 ---
 
@@ -26,9 +28,11 @@ const abbreviationMap = {
     --lang-svelte: #d43200;
     --lang-vue: #008560;
     --lang-php: #4d507d;
+    --lang-py: #2a5477;
     --cli: #353535;
     --wp: #5b5b5b;
     --drupal: #004c8e;
+    --node: #77af63;
     color: #ffffff;
     font-weight: 550;
     font-size: 0.85rem;
@@ -68,9 +72,16 @@ const abbreviationMap = {
     &.php {
       background-color: var(--lang-php);
     }
+    &.py {
+      background-color: var(--lang-py);
+    }
     &.drupal {
       background-color: var(--drupal);
       color: #ffffff;
+    }
+    &.node {
+      background-color: var(--node);
+      color: #000000;
     }
   }
   span + span {

@@ -1,32 +1,15 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Portfolio from "@components/projects/Portfolio.astro";
 import Hero from "@components/Hero.astro";
-import Stack from "@components/Stack.astro";
-import Projects from "@components/Projects.astro";
-import Experience from "@components/Experience.astro";
 ---
 
 <Layout
-  hasFixedHeader={true}
-  indexIsActive="true"
-  pathName="about"
+  activePage="about"
   title="About"
   description="Brooklyn-based web developer working in the intersection of healthcare and higher education."
   ogURL="https://conorkelley.me"
 >
-  <!-- <link
-    slot="headshot-preload"
-    rel="preload"
-    as="image"
-    type="image/webp"
-    href="/_image?href=%2F_astro%2Fck-headshot-400x400-min.CkCcm2Nq.jpg&w=400&h=400&f=webp&fit=cover&position=center"
-  /> -->
-
   <Hero />
-  <Experience />
-  <Projects />
-  <Stack />
 </Layout>
 
 <style></style>

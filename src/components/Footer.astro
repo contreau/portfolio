@@ -1,16 +1,44 @@
 ---
+import GithubSVG from "@svg/GithubSVG.astro";
+import LinkedinSVG from "@svg/LinkedinSVG.astro";
+import EmailSVG from "@svg/EmailSVG.astro";
+import ResumeSVG from "@svg/ResumeSVG.astro";
 const date = new Date().getFullYear();
 ---
 
 <footer>
   <p>&copy; {date} <span style="color: var(--primary)">•</span> Conor Kelley</p>
+  <div class="social-links">
+    <ul>
+      <li>
+        <a href="https://github.com/contreau" target="_blank" aria-label="Github Profile"
+          ><GithubSVG /></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/conor-kelley2/"
+          target="_blank"
+          aria-label="Linkedin Profile"><LinkedinSVG /></a
+        >
+      </li>
+      <li class="cv">
+        <a href="/cv.pdf" target="_blank" aria-label="Curriculum Vitae / Resume"><ResumeSVG /></a>
+      </li>
+      <li>
+        <a href="mailto:cfk102@gmail.com" target="_blank" aria-label="Email"><EmailSVG /></a>
+      </li>
+    </ul>
+  </div>
 </footer>
 
 <style>
   footer {
     display: flex;
     justify-content: space-between;
-
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 1.5rem;
     p {
       margin-block: 1rem;
       color: var(--text);
@@ -22,10 +50,7 @@ const date = new Date().getFullYear();
     footer {
       align-items: center;
       justify-content: center;
-
-      p {
-        min-height: 44px;
-      }
+      flex-direction: column;
     }
   }
 </style>

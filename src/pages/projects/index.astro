@@ -1,0 +1,93 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Project from "@components/projects/Project.astro";
+import Chip from "@components/chips/Chip.astro";
+import Wave from "@components/visuals/Wave.astro";
+import CiteClinic from "@components/visuals/CiteClinic.astro";
+import Snek from "@components/visuals/Snek.astro";
+import Koi from "@components/visuals/Koi.astro";
+
+const heading = "Projects";
+const description = "Personal web application projects and musings.";
+---
+
+<Layout
+  activePage="projects"
+  title={heading}
+  description={description}
+  ogURL="https://conorkelley.me/web-apps"
+>
+  <section class="portfolio">
+    <h2>{heading}</h2>
+    <p class="description">{description}</p>
+
+    <div class="projects">
+      <Project
+        projectName="Kompendium"
+        projectDescription="In memory of my friend Konrad Rauscher, Kompendium is a digital archive of his 826 Spotify playlists created over 11 years."
+        projectURL="/projects/kompendium"
+        urlTarget="_self"
+      >
+        <Wave slot="project-visual" />
+        <Chip slot="chip" abbr="sveltekit" />
+        <Chip slot="chip" abbr="ts" />
+        <Chip slot="chip" abbr="css" />
+        <Chip slot="chip" abbr="py" />
+      </Project>
+      <Project
+        projectName="CiteClinic"
+        projectDescription="Generate styled medical journal citations from any valid DOI."
+        projectURL="https://cite-clinic.vercel.app/"
+      >
+        <CiteClinic slot="project-visual" />
+        <Chip slot="chip" abbr="sveltekit" />
+        <Chip slot="chip" abbr="ts" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+      <Project
+        projectName="Snek"
+        projectDescription="My take on the classic snake game with three game modes."
+        projectURL="https://snekgame.app"
+      >
+        <Snek slot="project-visual" />
+        <Chip slot="chip" abbr="svelte" />
+        <Chip slot="chip" abbr="ts" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+      <Project
+        projectName="CSS Koi Pond"
+        projectDescription="A charming koi pond powered by CSS."
+        projectURL="https://contreau.github.io/koi-pond/"
+      >
+        <Koi slot="project-visual" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
+    </div>
+  </section>
+
+  <style>
+    .portfolio {
+      opacity: 0;
+      animation:
+        fadeIn 500ms ease-in forwards,
+        shiftDown 500ms ease-in forwards;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    @media (max-width: 1100px) {
+      h2 {
+        text-wrap: balance;
+      }
+
+      p.description {
+        text-align: center;
+        text-wrap: balance;
+      }
+    }
+  </style>
+</Layout>

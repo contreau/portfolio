@@ -1,0 +1,166 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PortfolioSection from "@components/projects/PortfolioSection.astro";
+import Project from "@components/projects/Project.astro";
+import CTSI from "@components/visuals/CTSI.astro";
+import Cards from "@components/visuals/Cards.astro";
+import Chip from "@components/chips/Chip.astro";
+import FacultyBuilder from "@components/visuals/FacultyBuilder.astro";
+import CLI from "@components/visuals/CLI.astro";
+---
+
+<Layout
+  activePage="work"
+  title="Work"
+  ogURL="https://conorkelley.me/work"
+  description="Professional web development experience."
+>
+  <div class="portfolio">
+    <PortfolioSection
+      heading="Web Associate • GW Medicine"
+      timeline="October 2022 - Present"
+      companyAbbr="gw"
+    >
+      <div slot="description">
+        <p class="description">
+          Below are projects that highlight my development work on the job. Overall, my
+          responsibilities include:
+        </p>
+        <ul>
+          <li>
+            Building and maintaining websites, forms, and applications for MFA patients and Academic
+            Medical Enterprise stakeholders (i.e. medical providers, university faculty,
+            administrators, and researchers).
+          </li>
+          <li>Creating new frontend components for the web team to use across our sites.</li>
+          <li>
+            Testing sites in development environments to diagnose bugs and ensure all intended
+            functionality.
+          </li>
+          <li>
+            Optimizing site media and auditing sites for accessibility and performance issues.
+          </li>
+        </ul>
+      </div>
+      <h3>UI Development</h3>
+
+      <div class="projects">
+        <Project
+          projectName="Cards: Medical Providers and Locations"
+          projectDescription="Refreshed card styles for patient-facing lists of GW MFA providers and locations."
+          projectURL="/work/gwmedicine/cards"
+          urlTarget="_self"
+        >
+          <Cards slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+          <Chip slot="chip" abbr="drupal" />
+        </Project>
+        <Project
+          projectName="CTSI-CN Virtual Organizer"
+          projectDescription="An interactive navigational graphic developed for the Clinical and Translational Science Institute (CTSI) at Children's National Hospital."
+          projectURL="https://ctsicn.org/virtual-organizer"
+        >
+          <CTSI slot="project-visual" />
+          <Chip slot="chip" abbr="scss" />
+          <Chip slot="chip" abbr="js" />
+          <Chip slot="chip" abbr="drupal" />
+        </Project>
+      </div>
+
+      <h3>Automation Tools</h3>
+
+      <div class="projects">
+        <Project
+          projectName="Faculty Listing Builder"
+          projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
+          projectURL="/work/gwmedicine/faculty-listing-builder"
+          urlTarget="_self"
+        >
+          <FacultyBuilder slot="project-visual" />
+          <Chip slot="chip" abbr="vue" />
+          <Chip slot="chip" abbr="ts" />
+          <Chip slot="chip" abbr="php" />
+        </Project>
+        <Project
+          projectName="Faculty Profile Migration Toolkit"
+          projectDescription="Two command-line tools which scraped several thousand lines of faculty profile HTML and mass-updated the markup with new structure, classes and URLs to be in sync with a relaunched faculty database."
+          projectURL="/work/gwmedicine/cli-tooling"
+          urlTarget="_self"
+        >
+          <CLI slot="project-visual" />
+          <Chip slot="chip" abbr="ts" />
+          <Chip slot="chip" abbr="js" />
+          <Chip slot="chip" abbr="node" />
+        </Project>
+      </div>
+    </PortfolioSection>
+
+    <PortfolioSection
+      heading="Web Designer • Boston University School of Medicine"
+      timeline="January - August 2022"
+      companyAbbr="bu"
+    >
+      <p slot="description" class="description">
+        I rebuilt the frontends of two websites for the Boston University School of Medicine. This
+        involved implementing modern WordPress layout features in place of outdated ones, building
+        custom UI components, and either curating or creating new visual assets.
+      </p>
+
+      <div class="projects">
+        <Project
+          projectName="Department of Pharmacology Website"
+          projectDescription="Collaborated with faculty for feature and design needs, wrote extensive new CSS styles, procured and optimized site assets."
+          projectURL="https://www.bumc.bu.edu/ppb/"
+        >
+          <Chip slot="chip" abbr="css" />
+          <Chip slot="chip" abbr="wp" />
+        </Project>
+        <Project
+          projectName="Office of Financial and Grants Administration Website"
+          projectDescription="Built custom styled UI components, procured assets, photographed staff headshots and other site imagery."
+          projectURL="https://www.bumc.bu.edu/ofga/"
+        >
+          <Chip slot="chip" abbr="css" />
+          <Chip slot="chip" abbr="wp" />
+        </Project>
+      </div>
+    </PortfolioSection>
+  </div>
+</Layout>
+
+<style>
+  h3 {
+    margin-block: 3rem;
+  }
+
+  .portfolio {
+    opacity: 0;
+    animation:
+      fadeIn 500ms ease-in forwards,
+      shiftDown 500ms ease-in forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .description,
+  li {
+    text-wrap: balance;
+  }
+
+  li + li {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 1100px) {
+    h3 {
+      text-align: center;
+    }
+  }
+</style>

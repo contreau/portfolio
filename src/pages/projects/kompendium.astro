@@ -1,0 +1,72 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SubpageContent from "@components/projects/SubpageContent.astro";
+import Chip from "@components/chips/Chip.astro";
+import { Image } from "astro:assets";
+import kompendiumImage from "@img/kompendium-750W.jpg";
+---
+
+<Layout
+  title="Kompendium"
+  description="In memory of my friend Konrad Rauscher, Kompendium is a digital archive of his over 800 Spotify playlists created over 11 years."
+  activePage="projects"
+  ogURL="https://conorkelley.me/projects/kompendium"
+>
+  <SubpageContent title="Kompendium">
+    <Chip slot="languages" abbr="sveltekit" />
+    <Chip slot="languages" abbr="ts" />
+    <Chip slot="languages" abbr="css" />
+    <p slot="subpage-description" class="description">
+      <a href="https://komp3nd1um.app" target="_blank">Kompendium</a> is a digital preservation of my
+      friend Konrad Rauscher's immense musical curation that he shared with countless friends, family
+      and strangers over 11 years. Between 2013 and 2024, he crafted 826 original public Spotify playlists
+      totaling 59,903 songs. Konrad tragically passed away in October 2024.
+    </p>
+    <p slot="subpage-description" class="description">
+      Using Spotify's API, I collected, cleaned, and sorted all playlist data from Konrad's profile
+      to prepare it for the web. You can <a
+        href="https://github.com/contreau/konrad-playlist-archive"
+        target="_blank">view the Jupyter Notebook and related code</a
+      > from that process if you're interested.
+    </p>
+    <p slot="subpage-description" class="description">
+      I built the web app itself using SvelteKit as the full-stack framework with all custom
+      components and CSS. To optimize performance due to the large amount of existing song data
+      (over 16 MB), I built an API that sends the JSON payload for a given playlist only when the
+      user has hovered over it with their cursor on desktop or when it enters their mobile device's
+      viewport.
+    </p>
+
+    <p slot="subpage-description" class="description">
+      <a href="https://komp3nd1um.app" target="_blank">Visit Kompendium</a> | <a
+        href="https://github.com/contreau/Kompendium"
+        target="_blank">Project Code</a
+      >
+    </p>
+
+    <Image
+      slot="content"
+      src={kompendiumImage}
+      alt="Kompendium | For Konrad Rauscher"
+      width="750"
+      loading="eager"
+    />
+  </SubpageContent>
+</Layout>
+
+<style>
+  p > a {
+    color: var(--primary);
+  }
+
+  img {
+    border-radius: 8px;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 1100px) {
+    img {
+      margin-inline: auto;
+    }
+  }
+</style>

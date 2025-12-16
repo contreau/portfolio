@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SubpageContent from "@components/projects/SubpageContent.astro";
+import Chip from "@components/chips/Chip.astro";
+import { Image } from "astro:assets";
+import cliImage from "@img/cli-result.jpg";
+---
+
+<Layout
+  activePage="work"
+  title="Command-Line Tools"
+  ogURL="https://conorkelley.me/work/gwmedicine/cli-tooling"
+  description="Command-line tools I built to automate frontend updates."
+>
+  <SubpageContent title="Faculty Profile Migration Toolkit">
+    <Chip slot="languages" abbr="ts" />
+    <Chip slot="languages" abbr="js" />
+    <Chip slot="languages" abbr="node" />
+
+    <p slot="subpage-description" class="subpage-description">
+      I developed two command-line tools to synchronize over 1,400 faculty profiles across 30+
+      department websites, automating what would have been several weeks of manual labor into less
+      than a day's work.
+    </p>
+
+    <p slot="subpage-description" class="subpage-description">
+      <a href="https://github.com/contreau/smhs-faculty-generator" target="_blank">The first tool</a
+      > scraped existing faculty profiles and regenerated them with a redesigned HTML structure and updated
+      styles, producing production-ready markup that could be directly pasted into the Drupal CMS page
+      editor.
+    </p>
+
+    <p slot="subpage-description" class="subpage-description">
+      <a href="https://github.com/contreau/smhs-profile-patch" target="_blank">The second tool</a> automated
+      the mass-updating of faculty directory URLs across all profiles. By cross-referencing the complete
+      dataset of new profile URLs, it systematically replaced outdated directory links with current ones,
+      enabling same-day deployment across all department websites.
+    </p>
+
+    <Image src={cliImage} alt="Console log reading: Processing Faculty Rows..." slot="content" />
+  </SubpageContent>
+</Layout>
+
+<style>
+  img {
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 1100px) {
+    img {
+      margin-inline: auto;
+    }
+  }
+</style>
