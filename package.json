@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^8.2.7",
+    "@astrojs/vercel": "^9.0.2",
     "@fontsource-variable/source-code-pro": "^5.2.6",
     "@vercel/analytics": "^1.5.0",
     "astro": "^5.13.6"

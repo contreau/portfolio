@@ -1,0 +1,226 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Chip from "@components/chips/Chip.astro";
+import SubpageContent from "@components/projects/SubpageContent.astro";
+---
+
+<script>
+  class ClosureCalendar extends HTMLElement {
+    constructor() {
+      super();
+    }
+    connectedCallback() {
+      const e = new Date().getFullYear();
+      const t = ((e) => {
+        let t = new Date().getMonth();
+        return {
+          index: t,
+          totalDays: new Date(e, t + 1, 0).getDate(),
+          firstDayIndex: new Date(e, t, 1).getDay(),
+          name: new Date(2025, t).toLocaleString("en-US", { month: "long" }),
+        };
+      })(e);
+      const n = this.getAttribute("dates").split(",");
+      for (let e = 0; e < n.length; e++) {
+        const t = Number(n[e].trim());
+        if (Number.isNaN(t)) throw new Error('Missing or invalid values provided for "dates".');
+        n[e] = t;
+      }
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = `<style>
+    .closure-calendar {
+      --item-max-size: 40px;
+      --item-min-size: 22.5px;
+      --list-padding: 0.5em;
+      font-family: "Noto Sans", sans-serif;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calendar-body {
+      border-radius: 20px;
+      background-color: #d7e3f0;
+      max-width: fit-content;
+      padding-bottom: 0em;
+    }
+
+    ul {
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(var(--item-min-size), var(--item-max-size)));
+      gap: 0.5rem;
+      list-style-type: none;
+    }
+
+    ul#day-labels-mobile,
+    ul#day-labels {
+      font-weight: 600;
+      margin-block: 0;
+      background-color: #033c5a;
+      color: #ffffff;
+      padding-inline: var(--list-padding);
+    }
+
+    /* Disabled by default, enabled in @media query below */
+    ul#day-labels-mobile {
+      display: none;
+    }
+
+    ul#day-labels {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    ul#closure-date-list {
+      padding-inline: var(--list-padding);
+      margin-block: 0.25rem;
+    }
+
+    ul#closure-date-list li {
+      color: #5f656c;
+      font-weight: 600;
+    }
+
+    ul#closure-date-list li.closure {
+      background-color: #fe6666;
+      border-radius: 8px;
+      color: #000000;
+    }
+
+    li {
+      text-align: center;
+      height: var(--item-max-size);
+      align-content: center;
+    }
+
+    @media (max-width: 600px) {
+      h3,
+      p {
+        text-align: center;
+      }
+
+      ul {
+        gap: 1rem;
+      }
+
+      li {
+        padding: 4px;
+        width: var(--item-min-size);
+        height: 28px;
+      }
+
+      /* Reveal / hide abbreviations for mobile vs. wide screens */
+      ul#day-labels-mobile {
+        display: grid;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      ul#day-labels {
+        display: none;
+      }
+
+      .calendar-body {
+        border-radius: 15px;
+      }
+    }
+  </style>
+  <div class="closure-calendar">
+    <div class="calendar-body">
+      <ul id="day-labels">
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>
+      </ul>
+      <ul id="day-labels-mobile">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+      </ul>
+      <ul id="closure-date-list"></ul>
+    </div>
+    </div>`;
+      const a = this.shadowRoot.getElementById("closure-date-list");
+
+      if (t.firstDayIndex >= 1)
+        for (let e = 0; e < t.firstDayIndex; e++) {
+          const e = document.createElement("li");
+          ((e.textContent = "-"), a.appendChild(e));
+        }
+      for (let o = 0; o < t.totalDays; o++) {
+        const l = document.createElement("li");
+        if (((l.textContent = `${o + 1}`), (l.id = o + 1), n.includes(o + 1))) {
+          const n = new Date(e, t.index, o + 1).toLocaleString("en-US", { weekday: "long" });
+          l.classList.add("closure");
+          const a = `Closed on ${n}, ${t.name} ${o + 1}.`;
+          ((l.title = a), (l.ariaLabel = a));
+        }
+        a.appendChild(l);
+      }
+    }
+  }
+  customElements.define("closure-calendar", ClosureCalendar);
+</script>
+
+<Layout
+  title="Location Closure Calendar"
+  description="A calendar visual for use on the GW MFA location pages indicating which day(s) that location is closed for the current month."
+  ogURL="https://conorkelley.me/work/gwmedicine/calendar"
+  activePage="work"
+>
+  <SubpageContent title="Location Closure Calendar">
+    <Chip slot="languages" abbr="js" />
+    <Chip slot="languages" abbr="css" />
+    <Chip slot="languages" abbr="drupal" />
+    <div slot="subpage-description" class="content-grid">
+      <div>
+        <p class="description">
+          A calendar visual for use on the GW MFA location pages indicating which day(s) that
+          location is closed for the current month. I implemented this as a <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
+            target="_blank">browser-native Web Component</a
+          > that site editors can drop in to a page as a custom element and compose the visual output
+          via HTML attributes.
+        </p>
+        <p class="description">
+          The component contains logic to prevent rendering if the attributes are of the wrong data
+          type (i.e. non-numbers for the month and dates), outdated or out of valid range.
+        </p>
+      </div>
+      <closure-calendar slot="content" dates="10, 16, 17, 18, 24"></closure-calendar>
+    </div>
+  </SubpageContent>
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    column-gap: 5%;
+    margin-block: 1.5rem;
+  }
+
+  .content-grid p {
+    margin-top: 0;
+  }
+
+  closure-calendar {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1100px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+    }
+  }
+</style>

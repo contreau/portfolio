@@ -1,0 +1,100 @@
+<script>
+  const lastDay = document.querySelector("#anim-init");
+  const days = document.querySelectorAll("ul#days li");
+
+  function animateElements() {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < days.length) {
+        days[i].classList.add("closed");
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 150);
+  }
+  animateElements();
+
+  lastDay.addEventListener("animationend", () => {
+    for (let day of days) {
+      day.classList.remove("closed");
+    }
+    animateElements();
+  });
+</script>
+
+<div class="visual-container">
+  <div class="calendar-body">
+    <div id="top"></div>
+    <ul id="days">
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+      <li id="anim-init">-</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .visual-container {
+    min-width: 150px;
+    min-height: 150px;
+    align-content: center;
+  }
+
+  .calendar-body {
+    border-radius: 10px;
+    background-color: #d7e3f0;
+  }
+
+  #top {
+    min-height: 25px;
+    width: 100%;
+    background-color: #033c5a;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  #days {
+    margin-block: 0;
+    padding-block: 0.5rem;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    row-gap: 1rem;
+  }
+
+  li {
+    color: transparent;
+    background-color: #99a2ad;
+    list-style-type: none;
+    padding: 10px;
+    max-height: 15px;
+    width: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  li.closed {
+    animation: highlightRed 600ms ease-in-out;
+  }
+
+  @keyframes highlightRed {
+    0% {
+      background-color: #99a2ad;
+    }
+
+    50% {
+      background-color: #fe6666;
+    }
+    100% {
+      background-color: #99a2ad;
+    }
+  }
+</style>

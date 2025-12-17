@@ -1,9 +1,10 @@
 ---
-const { heading, timeline, companyAbbr } = Astro.props;
+const { heading, timeline, companyAbbr, marginTop } = Astro.props;
 interface Props {
   heading: string;
   companyAbbr?: string;
   timeline?: string;
+  marginTop?: string;
 }
 
 let timelineClasses = ["timeline"];
@@ -12,7 +13,7 @@ if (companyAbbr) {
 }
 ---
 
-<section>
+<section class:list={[{ "margin-top": marginTop === "true" }]}>
   <div class="heading-timeline">
     <h2>{heading}</h2>
     <span class:list={timelineClasses}>{timeline}</span>
@@ -22,6 +23,10 @@ if (companyAbbr) {
 </section>
 
 <style>
+  section.margin-top {
+    margin-top: 3rem;
+  }
+
   .heading-timeline {
     display: flex;
     gap: 1.5rem;

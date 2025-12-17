@@ -7,6 +7,7 @@ import Cards from "@components/visuals/Cards.astro";
 import Chip from "@components/chips/Chip.astro";
 import FacultyBuilder from "@components/visuals/FacultyBuilder.astro";
 import CLI from "@components/visuals/CLI.astro";
+import Calendar from "@components/visuals/Calendar.astro";
 ---
 
 <Layout
@@ -17,14 +18,13 @@ import CLI from "@components/visuals/CLI.astro";
 >
   <div class="portfolio">
     <PortfolioSection
-      heading="Web Associate • GW Medicine"
+      heading="Web Associate, GW Medicine"
       timeline="October 2022 - Present"
       companyAbbr="gw"
     >
       <div slot="description">
         <p class="description">
-          Below are projects that highlight my development work on the job. Overall, my current work
-          consists of:
+          Below are featured development projects from on the job. Overall, my role consists of:
         </p>
         <ul>
           <li>
@@ -42,7 +42,7 @@ import CLI from "@components/visuals/CLI.astro";
           </li>
         </ul>
       </div>
-      <h3>UI Development</h3>
+      <h3>Featured UI Development</h3>
 
       <div class="projects">
         <Project
@@ -52,6 +52,17 @@ import CLI from "@components/visuals/CLI.astro";
           urlTarget="_self"
         >
           <Cards slot="project-visual" />
+          <Chip slot="chip" abbr="css" />
+          <Chip slot="chip" abbr="drupal" />
+        </Project>
+        <Project
+          projectName="Location Closure Calendar"
+          projectDescription="A configurable calendar displaying closure dates for a given location, implemented as a native web component."
+          projectURL="/work/gwmedicine/calendar"
+          urlTarget="_self"
+        >
+          <Calendar slot="project-visual" />
+          <Chip slot="chip" abbr="js" />
           <Chip slot="chip" abbr="css" />
           <Chip slot="chip" abbr="drupal" />
         </Project>
@@ -79,6 +90,7 @@ import CLI from "@components/visuals/CLI.astro";
           <FacultyBuilder slot="project-visual" />
           <Chip slot="chip" abbr="vue" />
           <Chip slot="chip" abbr="ts" />
+          <Chip slot="chip" abbr="css" />
           <Chip slot="chip" abbr="php" />
         </Project>
         <Project
@@ -96,9 +108,10 @@ import CLI from "@components/visuals/CLI.astro";
     </PortfolioSection>
 
     <PortfolioSection
-      heading="Web Designer • Boston University School of Medicine"
+      heading="Web Designer, Boston University School of Medicine"
       timeline="January - August 2022"
       companyAbbr="bu"
+      marginTop="true"
     >
       <p slot="description" class="description">
         I rebuilt the frontends of two websites for the Boston University School of Medicine. This
