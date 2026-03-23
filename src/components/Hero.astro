@@ -6,24 +6,21 @@ import ASCII from "./visuals/ASCII.astro";
   <div class="text">
     <p>
       I'm a frontend-leaning web developer living in NYC. I've worked in the intersection of
-      healthcare and higher education for 4 years, namely at the <a
+      healthcare and higher education for over 4 years and currently support the <a
         href="https://gwdocs.com"
         target="_blank">GW MFA</a
-      > and <a href="https://www.bumc.bu.edu/camed/" target="_blank"> BU School of Medicine</a>.
+      > as a web associate.
     </p>
     <p>
       I build UI components, custom tooling, websites, and applications that serve patients,
-      doctors, and school administrators. Check out my <a href="/work">current work highlights</a>.
+      doctors, and school administrators. Check out my web <a href="/work">work history</a>.
     </p>
 
     <p>
-      I have some <a href="/projects">nifty projects of my own</a> - a mix of full-stack and pure frontend.
+      I also have a few <a href="/projects">projects of my own</a>, both meaningful and playful.
     </p>
 
-    <p>
-      You'll otherwise find me playing volleyball around the city, throwing out painfully mid jump
-      serves.
-    </p>
+    <p>Otherwise I'm playing volleyball around the city, throwing out (mid) jump serves.</p>
   </div>
 
   <ASCII />
@@ -36,6 +33,7 @@ import ASCII from "./visuals/ASCII.astro";
 
   /* 'About' section */
   .container {
+    text-wrap: balance;
     position: relative;
     opacity: 0;
     transform: translateY(-10px);
@@ -47,7 +45,6 @@ import ASCII from "./visuals/ASCII.astro";
     animation: fadeIn 500ms ease-in forwards;
 
     p {
-      font-weight: 350;
       margin-block: 1rem;
     }
 

@@ -3,12 +3,11 @@ import Layout from "@layouts/Layout.astro";
 import Project from "@components/projects/Project.astro";
 import Chip from "@components/chips/Chip.astro";
 import Wave from "@components/visuals/Wave.astro";
-import CiteClinic from "@components/visuals/CiteClinic.astro";
 import Snek from "@components/visuals/Snek.astro";
 import Koi from "@components/visuals/Koi.astro";
 
 const heading = "Projects";
-const description = "Personal web application projects and musings.";
+const description = "Personal web app projects and musings.";
 ---
 
 <Layout
@@ -33,16 +32,6 @@ const description = "Personal web application projects and musings.";
         <Chip slot="chip" abbr="ts" />
         <Chip slot="chip" abbr="css" />
         <Chip slot="chip" abbr="py" />
-      </Project>
-      <Project
-        projectName="CiteClinic"
-        projectDescription="Generate styled medical journal citations from any valid DOI."
-        projectURL="https://cite-clinic.vercel.app/"
-      >
-        <CiteClinic slot="project-visual" />
-        <Chip slot="chip" abbr="sveltekit" />
-        <Chip slot="chip" abbr="ts" />
-        <Chip slot="chip" abbr="css" />
       </Project>
       <Project
         projectName="Snek"
