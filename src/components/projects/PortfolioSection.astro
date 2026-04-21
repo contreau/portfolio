@@ -1,22 +1,16 @@
 ---
-const { heading, timeline, companyAbbr, marginTop } = Astro.props;
+const { heading, timeline, marginTop } = Astro.props;
 interface Props {
   heading: string;
-  companyAbbr?: string;
   timeline?: string;
   marginTop?: string;
-}
-
-let timelineClasses = ["timeline"];
-if (companyAbbr) {
-  timelineClasses.push(companyAbbr);
 }
 ---
 
 <section class:list={[{ "margin-top": marginTop === "true" }]}>
   <div class="heading-timeline">
     <h2>{heading}</h2>
-    <span class:list={timelineClasses}>{timeline}</span>
+    <span class="timeline">{timeline}</span>
   </div>
   <slot name="description" />
   <slot />
@@ -33,26 +27,20 @@ if (companyAbbr) {
     align-items: center;
   }
   .timeline {
+    background-color: var(--bg-color);
+    border: solid 1.5px #728bd24f;
     margin-top: 0.5rem;
     display: inline-block;
     align-self: flex-start;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 550;
     padding: 0.1em 1em;
-    padding-bottom: 0.25em;
     color: #ffffff;
     border-radius: 30px;
   }
 
   .timeline:empty {
     display: none;
-  }
-
-  .timeline.bu {
-    background-color: #ce0808;
-  }
-  .timeline.gw {
-    background-color: #033c5a;
   }
 
   p.description {

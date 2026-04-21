@@ -2,12 +2,10 @@
 import Layout from "@layouts/Layout.astro";
 import PortfolioSection from "@components/projects/PortfolioSection.astro";
 import Project from "@components/projects/Project.astro";
-import CTSI from "@components/visuals/CTSI.astro";
 import Cards from "@components/visuals/Cards.astro";
 import Chip from "@components/chips/Chip.astro";
 import FacultyBuilder from "@components/visuals/FacultyBuilder.astro";
 import CLI from "@components/visuals/CLI.astro";
-import Calendar from "@components/visuals/Calendar.astro";
 ---
 
 <Layout
@@ -17,68 +15,51 @@ import Calendar from "@components/visuals/Calendar.astro";
   description="Professional web development experience."
 >
   <div class="portfolio">
-    <PortfolioSection
-      heading="GW Medicine • Web Associate"
-      timeline="October 2022 - Present"
-      companyAbbr="gw"
-    >
+    <PortfolioSection heading="GW Medicine • Web Associate" timeline="October 2022 - Present">
       <div slot="description">
         <p class="description">
-          Below are featured development projects from on the job. Overall, my role consists of:
+          🏆 <a href="/pillar-award.pdf" target="_blank"
+            >Recipient of the GW Medicine Pillars of Excellence Award</a
+          > • February 2026
         </p>
-        <ul>
-          <li>
-            Building and maintaining websites, forms, and applications for MFA patients and Academic
-            Medical Enterprise stakeholders (i.e. medical providers, university faculty,
-            administrators, and researchers).
-          </li>
-          <li>Creating new frontend components for the web team to use across our sites.</li>
-          <li>
-            Testing sites in development environments to diagnose bugs and ensure all intended
-            functionality.
-          </li>
-          <li>
-            Optimizing site media and auditing sites for accessibility and performance issues.
-          </li>
-        </ul>
+        <p class="description">
+          I take on frontend development and provide operational support for the web ecosystem of GW
+          Medicine, the academic medical enterprise of The George Washington University.
+        </p>
       </div>
-      <h3>UI and Components</h3>
-
-      <div class="projects">
-        <Project
-          projectName="Cards: Medical Providers and Locations"
-          projectDescription="Refreshed card styles for patient-facing lists of GW MFA providers and locations."
-          projectURL="/work/gwmedicine/cards"
-          urlTarget="_self"
-        >
-          <Cards slot="project-visual" />
-          <Chip slot="chip" abbr="css" />
-          <Chip slot="chip" abbr="drupal" />
-        </Project>
-        <Project
-          projectName="Location Closure Calendar"
-          projectDescription="A configurable calendar displaying closure dates for a given location, implemented as a native web component."
-          projectURL="/work/gwmedicine/calendar"
-          urlTarget="_self"
-        >
-          <Calendar slot="project-visual" />
-          <Chip slot="chip" abbr="js" />
-          <Chip slot="chip" abbr="css" />
-          <Chip slot="chip" abbr="drupal" />
-        </Project>
-        <Project
-          projectName="CTSI-CN Virtual Organizer"
-          projectDescription="An interactive navigational graphic developed for the Clinical and Translational Science Institute (CTSI) at Children's National Hospital."
-          projectURL="https://ctsicn.org/virtual-organizer"
-        >
-          <CTSI slot="project-visual" />
-          <Chip slot="chip" abbr="scss" />
-          <Chip slot="chip" abbr="js" />
-          <Chip slot="chip" abbr="drupal" />
-        </Project>
+      <h3 class="no-margin-bottom">Patient-facing UI/UX Enhancement and Development</h3>
+      <div class="languages">
+        <Chip abbr="css" /><Chip abbr="scss" /><Chip abbr="js" /><Chip abbr="drupal" />
       </div>
 
-      <h3>Custom Tooling</h3>
+      <p class="description">
+        I have designed and developed enhanced styles for frequently used UI elements and have
+        created new components to modernize and improve the online experience for GW MFA patients.
+        Notable ones include:
+      </p>
+
+      <ul>
+        <li><a href="/work/gwmedicine/cards">Provider profile and practice location cards</a></li>
+        <li>
+          <a href="https://gwdocs.com/specialties" target="_blank"
+            >Filterable "Find a Specialty" list</a
+          >
+        </li>
+        <li><a href="/work/gwmedicine/calendar">Visual calendar for location closures</a></li>
+        <li>Call-to-action buttons</li>
+      </ul>
+
+      <h3>Custom Automation Tooling</h3>
+      <div class="languages">
+        <Chip abbr="vue" /><Chip abbr="ts" /><Chip abbr="php" /><Chip abbr="node" /><Chip
+          abbr="css"
+        />
+      </div>
+
+      <p class="description">
+        I developed a few internal tools for myself and my team that have majorly expedited content
+        updates, website audits, and migration projects.
+      </p>
 
       <div class="projects">
         <Project
@@ -88,10 +69,6 @@ import Calendar from "@components/visuals/Calendar.astro";
           urlTarget="_self"
         >
           <FacultyBuilder slot="project-visual" />
-          <Chip slot="chip" abbr="vue" />
-          <Chip slot="chip" abbr="ts" />
-          <Chip slot="chip" abbr="css" />
-          <Chip slot="chip" abbr="php" />
         </Project>
         <Project
           projectName="Faculty Profile Migration Toolkit"
@@ -100,41 +77,39 @@ import Calendar from "@components/visuals/Calendar.astro";
           urlTarget="_self"
         >
           <CLI slot="project-visual" />
-          <Chip slot="chip" abbr="ts" />
-          <Chip slot="chip" abbr="js" />
-          <Chip slot="chip" abbr="node" />
         </Project>
+        <Project
+          projectName="MyChart Scheduling Link Scanner"
+          projectDescription="A command-line tool that flags any broken MyChart provider scheduling links on the MFA website in less than a minute."
+        />
       </div>
     </PortfolioSection>
 
     <PortfolioSection
       heading="Boston University School of Medicine • Web Designer"
       timeline="January - August 2022"
-      companyAbbr="bu"
       marginTop="true"
     >
+      <div class="languages">
+        <Chip slot="chip" abbr="wp" />
+        <Chip slot="chip" abbr="css" />
+      </div>
       <p slot="description" class="description">
-        I rebuilt the frontends of two websites for the Boston University School of Medicine using
-        modern WordPress. I developed custom UI components and created new visual assets.
+        I redesigned and rebuilt two Boston University School of Medicine websites using modern
+        WordPress.
       </p>
 
       <div class="projects">
         <Project
-          projectName="Department of Pharmacology Website"
+          projectName="BUSM Department of Pharmacology, Physiology & Biophysics"
           projectDescription="Collaborated with faculty for feature and design needs, wrote extensive new CSS styles, procured and optimized site assets."
           projectURL="https://www.bumc.bu.edu/ppb/"
-        >
-          <Chip slot="chip" abbr="css" />
-          <Chip slot="chip" abbr="wp" />
-        </Project>
+        />
         <Project
-          projectName="Office of Financial and Grants Administration Website"
+          projectName="BUSM Office of Financial and Grants Administration"
           projectDescription="Built custom styled UI components, procured assets, photographed staff headshots and other site imagery."
           projectURL="https://www.bumc.bu.edu/ofga/"
-        >
-          <Chip slot="chip" abbr="css" />
-          <Chip slot="chip" abbr="wp" />
-        </Project>
+        />
       </div>
     </PortfolioSection>
   </div>
@@ -142,7 +117,8 @@ import Calendar from "@components/visuals/Calendar.astro";
 
 <style>
   h3 {
-    margin-block: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
   }
 
   .portfolio {
