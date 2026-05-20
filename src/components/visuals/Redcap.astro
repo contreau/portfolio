@@ -1,0 +1,159 @@
+<script>
+  let validFile = false;
+  const scanline = document.querySelector(".scanline");
+  const fileSVG = document.querySelector("svg#file");
+
+  // Event listeners for when animations end
+  fileSVG?.addEventListener("animationend", () => {
+    const classes = [...fileSVG.classList];
+    for (const className of classes) {
+      fileSVG?.classList.remove(className);
+    }
+    validFile = !validFile;
+    scanline?.classList.add("animate");
+  });
+
+  scanline?.addEventListener("animationend", () => {
+    if (validFile) {
+      fileSVG?.classList.add("accept");
+    } else {
+      fileSVG?.classList.add("reject");
+    }
+    scanline.classList.remove("animate");
+  });
+</script>
+
+<div class="container">
+  <svg id="file" xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 24 24">
+    <g
+      fill="currentColor"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <path
+        fill-opacity=".3"
+        d="M13.5 3l5.5 5.5v11.5c0 0.55 -0.45 1 -1 1h-12c-0.55 0 -1 -0.45 -1 -1v-16c0 -0.55 0.45 -1 1 -1Z"
+      ></path>
+      <path d="M14 3.5l0 4.5l4.5 0Z"></path>
+    </g>
+  </svg>
+  <div class="scanline animate"></div>
+</div>
+
+<style>
+  svg {
+    --svg-color: currentColor;
+    display: block;
+    margin-inline: auto;
+  }
+
+  svg g {
+    fill: var(--svg-color);
+    stroke: var(--svg-color);
+  }
+
+  .container {
+    position: relative;
+    min-width: 150px;
+    height: 150px;
+    background-color: #1b1b1b;
+    border-radius: 10px;
+    border: solid 2px #5f5f5f;
+    align-content: center;
+    overflow: hidden;
+  }
+
+  .scanline {
+    position: absolute;
+    content: "";
+    width: 1.5px;
+    background-color: #b0b0b0;
+    opacity: 0;
+    height: 160px;
+    top: 0;
+  }
+
+  .animate {
+    animation: sweep 650ms linear 500ms;
+  }
+
+  .reject {
+    animation: reject 500ms linear;
+  }
+
+  .accept {
+    animation: accept 700ms linear;
+  }
+
+  @keyframes sweep {
+    10%,
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+  }
+
+  @keyframes reject {
+    15% {
+      transform: translateX(5px);
+      --svg-color: #ff6550;
+    }
+
+    30% {
+      transform: translateX(-5px);
+    }
+
+    45% {
+      transform: translateX(5px);
+    }
+
+    60% {
+      transform: translateX(-5px);
+    }
+
+    75% {
+      transform: translateX(0px);
+    }
+
+    90% {
+      --svg-color: #ff6550;
+    }
+  }
+
+  @keyframes accept {
+    0% {
+      opacity: 1;
+    }
+
+    15% {
+      transform: scale(1.25);
+      --svg-color: #25ff7a;
+    }
+
+    60% {
+      transform: scale(1.1);
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+
+    80% {
+      transform: translateY(0px);
+      transform: scale(1);
+      opacity: 0;
+    }
+
+    95% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Chip from "@components/chips/Chip.astro";
+import SubpageContent from "@components/projects/SubpageContent.astro";
+
+const title = "REDCap Module - File Type Enforcement";
+---
+
+<Layout
+  {title}
+  description="An official external module I developed for REDCap, a web application for building and managing online surveys and databases."
+  activePage="projects"
+  ogURL="https://conorkelley.me/projects/redcap"
+>
+  <SubpageContent {title}>
+    <Chip slot="languages" abbr="php" />
+    <Chip slot="languages" abbr="js" />
+
+    <p slot="subpage-description" class="description">
+      <a href="https://github.com/contreau/redcap-filetype-enforcement-module" target="_blank"
+        >An external module I developed</a
+      > for REDCap, a web application for building and managing online surveys and databases that is used
+      by over 8,300 active institutions in 160+ countries.
+    </p>
+
+    <p slot="subpage-description" class="description">
+      Having built several REDCap webforms for use at the GW School of Medicine & Health Sciences, I
+      observed that there is no native way to strictly enforce types for uploaded files. To remedy
+      this, I developed an opt-in module that allows form builders to easily restrict file uploads
+      so that end-users can only submit permitted file types.
+    </p>
+
+    <p slot="subpage-description" class="description">
+      The module was accepted by the Vanderbilt REDCap team in May 2026 and is <a
+        href="https://redcap.vumc.org/consortium/modules/index.php"
+        target="_blank">available for use</a
+      >.
+    </p>
+  </SubpageContent>
+</Layout>

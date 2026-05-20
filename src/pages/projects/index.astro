@@ -5,9 +5,10 @@ import Chip from "@components/chips/Chip.astro";
 import Wave from "@components/visuals/Wave.astro";
 import Snek from "@components/visuals/Snek.astro";
 import Koi from "@components/visuals/Koi.astro";
+import Redcap from "@components/visuals/Redcap.astro";
 
 const heading = "Projects";
-const description = "Personal web app projects and musings.";
+const description = "Independent development projects and some personal musings.";
 ---
 
 <Layout
@@ -21,6 +22,16 @@ const description = "Personal web app projects and musings.";
     <p class="description">{description}</p>
 
     <div class="projects">
+      <Project
+        projectName="REDCap Module - File Type Enforcement"
+        projectDescription="An official external module I developed for REDCap, a web application for building and managing online surveys and databases."
+        projectURL="/projects/redcap"
+        urlTarget="_self"
+      >
+        <Redcap slot="project-visual" />
+        <Chip slot="chip" abbr="php" />
+        <Chip slot="chip" abbr="js" />
+      </Project>
       <Project
         projectName="Kompendium"
         projectDescription="In memory of my friend Konrad Rauscher, Kompendium is a digital archive of his 826 Spotify playlists created over 11 years."
