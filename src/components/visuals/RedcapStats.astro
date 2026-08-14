@@ -1,0 +1,135 @@
+<script>
+  (async () => {
+    async function getModuleStats() {
+      const res = await fetch(
+        "https://redcap.vumc.org/consortium/modules/stats-single.php?module_name=filetype_enforcement",
+      );
+      if (res.status !== 200) {
+        const responseMessage = document.querySelector("p#response-status")!;
+        responseMessage.textContent = "Network Error in fetching stats. Try again.";
+        return;
+      }
+      const html = await res.text();
+      return html;
+    }
+
+    function isProjectStat(element: HTMLElement) {
+      return element.previousElementSibling?.parentElement?.previousElementSibling?.textContent
+        .trim()
+        .toLowerCase()
+        .includes("project");
+    }
+
+    function applyLoadingStateUI() {}
+
+    const statsHTML = await getModuleStats();
+    if (statsHTML) {
+      const statsDOM = new DOMParser().parseFromString(statsHTML, "text/html");
+      const formattingPromise = new Promise((resolve) => {
+        const statNums = {
+          installs: 0,
+          institutions: 0,
+          totalProjects: 0,
+        };
+        const statsList = document.querySelector("#stats-list");
+
+        statsDOM
+          .querySelectorAll<HTMLElement>("tr:has(th.main-header) + tr td")
+          .forEach((td, i) => {
+            const listItems = Array.from(statsList!.children).filter((el) => el.nodeName === "LI")!;
+
+            if (i === 0) {
+              statNums.installs = parseInt(td.textContent);
+              listItems[i].children[0].textContent = statNums.installs;
+            } else if (i === 1) {
+              statNums.institutions = parseInt(td.textContent);
+              listItems[i].children[0].textContent = statNums.institutions;
+            }
+
+            if (isProjectStat(td)) {
+              statNums.totalProjects += parseInt(td.textContent);
+            }
+
+            // listItems[i].children[0].textContent = statNums.;
+          });
+
+        Array.from(statsList!.children).at(-1).children[0].textContent = statNums.totalProjects;
+        resolve(true);
+      });
+      await formattingPromise;
+      const loadingCover = document.querySelector("div#loading-cover");
+      loadingCover?.classList.remove("visible");
+      loadingCover?.classList.add("hidden");
+    }
+  })();
+</script>
+
+<aside>
+  <h3>Module Usage Statistics</h3>
+  <div id="stats-container">
+    <!-- <p id="response-status" class="visible">Retrieving...</p> -->
+    <ul id="stats-list">
+      <div id="loading-cover" class="visible">Retrieving...</div>
+      <li id="installs"><span class="stat-value"></span> installs</li>
+      <li id="institutions"><span class="stat-value"></span> institutions utilizing</li>
+      <li id="total_projects"><span class="stat-value"></span> total projects utilizing</li>
+    </ul>
+  </div>
+</aside>
+
+<style>
+  aside {
+    margin-inline: auto;
+    margin-top: 3rem;
+    border: solid 1px var(--text);
+    border-radius: 10px;
+    max-width: fit-content;
+    padding-inline: 1.5em;
+    padding-block: 1em;
+    min-height: 185px;
+    background-color: #24304a;
+
+    h3 {
+      margin-block: 0;
+      text-align: center;
+    }
+  }
+
+  div#stats-container {
+    min-width: 290px;
+  }
+
+  ul#stats-list {
+    position: relative;
+    padding-left: 1em;
+    margin-bottom: 0;
+  }
+
+  #loading-cover {
+    position: absolute;
+    content: "";
+    z-index: 5;
+    inset: 0;
+    border-radius: 15px;
+    background-color: #24304a;
+    color: #baccff;
+    text-align: center;
+    align-content: center;
+    transition: opacity 0.35s;
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+
+  span.stat-value {
+    color: #baccff;
+    font-weight: 450;
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .visible {
+    opacity: 1;
+  }
+</style>

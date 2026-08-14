@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Chip from "@components/chips/Chip.astro";
 import SubpageContent from "@components/projects/SubpageContent.astro";
+import RCstats from "@components/visuals/RedcapStats.astro";
 
 const title = "REDCap Module - File Type Enforcement";
 ---
@@ -36,5 +37,7 @@ const title = "REDCap Module - File Type Enforcement";
         target="_blank">available for use</a
       >.
     </p>
+
+    <RCstats slot="content" />
   </SubpageContent>
 </Layout>
