@@ -1,4 +1,15 @@
+---
+import StatsSVG from "@svg/StatsSVG.astro";
+import LoadingSVG from "@svg/LoadingSVG.astro";
+---
+
 <script>
+  interface ModuleStats {
+    installs: number;
+    institutions: number;
+    totalProjects: number;
+  }
+
   (async () => {
     async function getModuleStats() {
       const res = await fetch(
@@ -13,47 +24,41 @@
       return html;
     }
 
-    function isProjectStat(element: HTMLElement) {
-      return element.previousElementSibling?.parentElement?.previousElementSibling?.textContent
-        .trim()
-        .toLowerCase()
-        .includes("project");
-    }
-
-    function applyLoadingStateUI() {}
-
     const statsHTML = await getModuleStats();
     if (statsHTML) {
       const statsDOM = new DOMParser().parseFromString(statsHTML, "text/html");
       const formattingPromise = new Promise((resolve) => {
-        const statNums = {
+        const moduleStats: ModuleStats = {
           installs: 0,
           institutions: 0,
           totalProjects: 0,
         };
-        const statsList = document.querySelector("#stats-list");
 
         statsDOM
-          .querySelectorAll<HTMLElement>("tr:has(th.main-header) + tr td")
+          .querySelectorAll<HTMLElement>("tr.indent-1:not(tr.version-header) td")
           .forEach((td, i) => {
-            const listItems = Array.from(statsList!.children).filter((el) => el.nodeName === "LI")!;
-
-            if (i === 0) {
-              statNums.installs = parseInt(td.textContent);
-              listItems[i].children[0].textContent = statNums.installs;
-            } else if (i === 1) {
-              statNums.institutions = parseInt(td.textContent);
-              listItems[i].children[0].textContent = statNums.institutions;
+            switch (i) {
+              // acceptable indices: 0, 2, 3, 4 (if 3 or 4, add value to totalProjects)
+              case 0:
+                moduleStats.installs = parseInt(td.textContent);
+                break;
+              case 2:
+                moduleStats.institutions = parseInt(td.textContent);
+                break;
+              case 3:
+                moduleStats.totalProjects += parseInt(td.textContent);
+                break;
+              case 4:
+                moduleStats.totalProjects += parseInt(td.textContent);
+                break;
             }
-
-            if (isProjectStat(td)) {
-              statNums.totalProjects += parseInt(td.textContent);
-            }
-
-            // listItems[i].children[0].textContent = statNums.;
           });
 
-        Array.from(statsList!.children).at(-1).children[0].textContent = statNums.totalProjects;
+        // update textContent in span.stat-value nodes with moduleStats values
+        Array.from(document.querySelectorAll("#stats-list li span.stat-value")!).map((span, i) => {
+          const key = Object.keys(moduleStats)[i] as keyof ModuleStats;
+          span.textContent = moduleStats[key].toString();
+        });
         resolve(true);
       });
       await formattingPromise;
@@ -65,11 +70,15 @@
 </script>
 
 <aside>
-  <h3>Module Usage Statistics</h3>
+  <h3><StatsSVG /> Usage Stats</h3>
+  <p id="source">
+    Source: <a href="https://redcap.vumc.org/consortium/modules/index.php" target="_blank"
+      >REDCap Repo</a
+    >
+  </p>
   <div id="stats-container">
-    <!-- <p id="response-status" class="visible">Retrieving...</p> -->
     <ul id="stats-list">
-      <div id="loading-cover" class="visible">Retrieving...</div>
+      <div id="loading-cover" class="visible"><LoadingSVG /></div>
       <li id="installs"><span class="stat-value"></span> installs</li>
       <li id="institutions"><span class="stat-value"></span> institutions utilizing</li>
       <li id="total_projects"><span class="stat-value"></span> total projects utilizing</li>
@@ -80,29 +89,34 @@
 <style>
   aside {
     margin-inline: auto;
-    margin-top: 3rem;
-    border: solid 1px var(--text);
-    border-radius: 10px;
-    max-width: fit-content;
+    margin-top: 1.5rem;
+    border-radius: 15px;
+    max-width: 350px;
     padding-inline: 1.5em;
-    padding-block: 1em;
-    min-height: 185px;
-    background-color: #24304a;
-
     h3 {
       margin-block: 0;
       text-align: center;
+      font-weight: 200;
     }
   }
 
-  div#stats-container {
-    min-width: 290px;
+  p#source {
+    margin-block: 0.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  ul#stats-list,
+  #loading-cover {
+    border-radius: 15px;
+    background-color: #1b2439;
+    padding-block: 0.5em;
   }
 
   ul#stats-list {
     position: relative;
-    padding-left: 1em;
-    margin-bottom: 0;
+    padding-left: 2em;
+    margin-top: 0.5rem;
   }
 
   #loading-cover {
@@ -110,8 +124,6 @@
     content: "";
     z-index: 5;
     inset: 0;
-    border-radius: 15px;
-    background-color: #24304a;
     color: #baccff;
     text-align: center;
     align-content: center;

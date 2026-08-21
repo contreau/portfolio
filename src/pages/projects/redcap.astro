@@ -17,27 +17,49 @@ const title = "REDCap Module - File Type Enforcement";
     <Chip slot="languages" abbr="php" />
     <Chip slot="languages" abbr="js" />
 
-    <p slot="subpage-description" class="description">
-      <a href="https://github.com/contreau/redcap-filetype-enforcement-module" target="_blank"
-        >An external module I developed</a
-      > for REDCap, a web application for building and managing online surveys and databases that is used
-      by over 8,300 active institutions in 160+ countries.
-    </p>
+    <div slot="subpage-description" class="grid">
+      <div class="grid-col">
+        <p class="description">
+          <a href="https://github.com/contreau/redcap-filetype-enforcement-module" target="_blank"
+            >An external module I developed</a
+          > for REDCap, a web application for building and managing online surveys and databases that
+          is used by over 8,300 active institutions in 160+ countries.
+        </p>
+        <p class="description">
+          Having built several REDCap webforms for use at the GW School of Medicine & Health
+          Sciences, I observed that there is no native way to strictly enforce types for uploaded
+          files. To remedy this, I developed an opt-in module that allows form builders to easily
+          restrict file uploads so that end-users can only submit permitted file types.
+        </p>
+        <p class="description">
+          The module was accepted by the Vanderbilt REDCap team in May 2026.
+        </p>
+      </div>
 
-    <p slot="subpage-description" class="description">
-      Having built several REDCap webforms for use at the GW School of Medicine & Health Sciences, I
-      observed that there is no native way to strictly enforce types for uploaded files. To remedy
-      this, I developed an opt-in module that allows form builders to easily restrict file uploads
-      so that end-users can only submit permitted file types.
-    </p>
-
-    <p slot="subpage-description" class="description">
-      The module was accepted by the Vanderbilt REDCap team in May 2026 and is <a
-        href="https://redcap.vumc.org/consortium/modules/index.php"
-        target="_blank">available for use</a
-      >.
-    </p>
-
-    <RCstats slot="content" />
+      <div class="grid-col">
+        <RCstats />
+      </div>
+    </div>
   </SubpageContent>
 </Layout>
+
+<style scoped>
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid-col:nth-of-type(2) {
+    grid-row-start: 1;
+  }
+
+  @media (width >= 1100px) {
+    .grid {
+      grid-template-columns: 60% auto;
+    }
+
+    .grid-col:nth-of-type(2) {
+      grid-column-start: 2;
+    }
+  }
+</style>
