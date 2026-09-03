@@ -1,11 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import PortfolioSection from "@components/projects/PortfolioSection.astro";
-import Project from "@components/projects/Project.astro";
-import Cards from "@components/visuals/Cards.astro";
 import Chip from "@components/chips/Chip.astro";
-import FacultyBuilder from "@components/visuals/FacultyBuilder.astro";
-import CLI from "@components/visuals/CLI.astro";
+import Button from "@components/Button.astro";
 ---
 
 <Layout
@@ -14,130 +11,96 @@ import CLI from "@components/visuals/CLI.astro";
   ogURL="https://conorkelley.me/work"
   description="Professional web development experience."
 >
-  <div class="portfolio">
-    <PortfolioSection heading="GW Medicine • Web Associate" timeline="October 2022 - August 2026">
-      <div slot="description">
-        <p class="description">
-          🏆 <a href="/pillar-award.pdf" target="_blank"
-            >Recipient of the GW Medicine Pillars of Excellence Award</a
-          > • February 2026
-        </p>
-        <p class="description">
-          I spearheaded frontend development and provided operational support for the web ecosystem
-          of the George Washington University's academic medical enterprise - consisting of the GW
-          MFA (now <a href="https://capitalmedicalgroup.com" target="_blank"
-            >Capital Medical Group</a
-          >) and the School of Medicine & Health Sciences.
-        </p>
-      </div>
-      <h3 class="no-margin-bottom">Patient-facing UI/UX Enhancement and Development</h3>
-      <div class="languages">
-        <Chip abbr="css" /><Chip abbr="scss" /><Chip abbr="js" /><Chip abbr="drupal" />
-      </div>
-
+  <h2>Work History</h2>
+  <PortfolioSection
+    heading="GW Academic Medical Enterprise"
+    title="Web Associate"
+    timeline="October 2022 - August 2026"
+  >
+    <div class="content grid" slot="content">
       <p class="description">
-        I designed and developed enhanced styles for frequently used UI elements and have created
-        new components to modernize and improve the online experience for Capital Medical Group
-        patients. Notable ones include:
+        <em>
+          Spearheaded frontend development and provided operational support for the web ecosystem of
+          The George Washington University's academic medical enterprise - consisting of the GW MFA
+          (now <a href="https://capitalmedicalgroup.com" target="_blank">Capital Medical Group</a>)
+          and the <a href="https://smhs.gwu.edu/" target="_blank"
+            >GW School of Medicine & Health Sciences</a
+          >.
+        </em>
       </p>
 
+      <div><Button url="/work/gw">View Featured Projects</Button></div>
+
+      <h4 class="no-margin-top">Accolades</h4>
       <ul>
-        <li><a href="/work/gwmedicine/cards">Provider profile and practice location cards</a></li>
         <li>
-          <a href="https://capitalmedicalgroup.com/specialties" target="_blank"
-            >Filterable "Find a Specialty" list</a
-          >
+          <a href="/pillar-award.pdf" target="_blank">GW Medicine Pillars of Excellence Award</a> • February
+          2026
         </li>
-        <li><a href="/work/gwmedicine/calendar">Visual calendar for location closures</a></li>
-        <li>Call-to-action buttons</li>
       </ul>
 
-      <h3>Custom Automation Tooling</h3>
-      <div class="languages">
-        <Chip abbr="vue" /><Chip abbr="ts" /><Chip abbr="php" /><Chip abbr="node" /><Chip
-          abbr="css"
-        />
-      </div>
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Patient-facing UI/UX enhancement</li>
+        <li>Webform development and maintenance</li>
+        <li>Creation of automation tools</li>
+        <li>Accessibility audits per WCAG</li>
+      </ul>
+    </div>
+    <div class="languages">
+      <Chip abbr="drupal" /><Chip abbr="redcap" /><Chip abbr="vue" /><Chip abbr="css" /><Chip
+        abbr="js"
+      /><Chip abbr="ts" /><Chip abbr="php" /><Chip abbr="node" />
+    </div>
+  </PortfolioSection>
 
-      <p class="description">
-        I developed a few internal tools for myself and my team that have majorly expedited content
-        updates, website audits, and migration projects.
-      </p>
+  <PortfolioSection
+    heading="Boston University School of Medicine"
+    title="Web Designer"
+    timeline="January - August 2022"
+    marginTop="true"
+  >
+    <div class="languages">
+      <Chip slot="chip" abbr="wp" />
+      <Chip slot="chip" abbr="css" />
+    </div>
+    <p slot="content" class="description">
+      <em>
+        Redesigned and rebuilt two Boston University School of Medicine websites (a department site
+        and an administrative site) on WordPress. Collaborated with faculty on feature and design
+        needs, wrote extensive custom CSS and UI components, and created site assets, including
+        photographing staff headshots and other imagery.
+      </em>
+    </p>
 
-      <div class="projects">
-        <Project
-          projectName="Faculty Listing Builder"
-          projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
-          projectURL="/work/gwmedicine/faculty-listing-builder"
-          urlTarget="_self"
-        >
-          <FacultyBuilder slot="project-visual" />
-        </Project>
-        <Project
-          projectName="Faculty Profile Migration Toolkit"
-          projectDescription="Two command-line tools which scraped several thousand lines of faculty profile HTML and mass-updated the markup with new structure, classes and URLs to be in sync with a relaunched faculty database."
-          projectURL="/work/gwmedicine/cli-tooling"
-          urlTarget="_self"
-        >
-          <CLI slot="project-visual" />
-        </Project>
-        <Project
-          projectName="MyChart Scheduling Link Scanner"
-          projectDescription="A command-line tool that flags any broken MyChart provider scheduling links on the MFA website in less than a minute."
-        />
-      </div>
-    </PortfolioSection>
-
-    <PortfolioSection
-      heading="Boston University School of Medicine • Web Designer"
-      timeline="January - August 2022"
-      marginTop="true"
-    >
-      <div class="languages">
-        <Chip slot="chip" abbr="wp" />
-        <Chip slot="chip" abbr="css" />
-      </div>
-      <p slot="description" class="description">
-        I redesigned and rebuilt two Boston University School of Medicine websites using modern
-        WordPress.
-      </p>
-
-      <div class="projects">
-        <Project
-          projectName="BUSM Department of Pharmacology, Physiology & Biophysics"
-          projectDescription="Collaborated with faculty for feature and design needs, wrote extensive new CSS styles, procured and optimized site assets."
-          projectURL="https://www.bumc.bu.edu/ppb/"
-        />
-        <Project
-          projectName="BUSM Office of Financial and Grants Administration"
-          projectDescription="Built custom styled UI components, procured assets, photographed staff headshots and other site imagery."
-          projectURL="https://www.bumc.bu.edu/ofga/"
-        />
-      </div>
-    </PortfolioSection>
-  </div>
+    <div slot="content">
+      <h4>Websites Worked</h4>
+      <ul>
+        <li>BUSM Department of Pharmacology & Biophysics</li>
+        <li>BUSM Office of Financial & Grants Administration</li>
+      </ul>
+    </div>
+  </PortfolioSection>
 </Layout>
 
 <style>
-  h3 {
-    margin-top: 3rem;
-    margin-bottom: 0.5rem;
+  .grid {
+    display: grid;
   }
 
-  .portfolio {
-    opacity: 0;
-    animation:
-      fadeIn 500ms ease-in forwards,
-      shiftDown 500ms ease-in forwards;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+  h4 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .projects {
     display: flex;
     flex-direction: column;
     gap: 4rem;
+  }
+
+  .projects.no-visuals {
+    gap: 2.5rem;
   }
 
   .description,
@@ -150,8 +113,13 @@ import CLI from "@components/visuals/CLI.astro";
   }
 
   @media (max-width: 1100px) {
-    h3 {
+    h2,
+    h4 {
       text-align: center;
+    }
+
+    .content * {
+      margin-inline: auto;
     }
   }
 </style>

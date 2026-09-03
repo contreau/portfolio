@@ -18,7 +18,7 @@ import Snek from "@components/visuals/Snek.astro";
       projectDescription="An extensive digital archive of my late friend Konrad Rauscher's 800+ playlists."
       projectURL="https://komp3nd1um.app"
     >
-      <Wave slot="project-visual" />
+      <Wave slot="project-visual" minheight="150px" minwidth="150px" maxWaveHeight="100" />
       <Chip slot="chip" abbr="sveltekit" />
       <Chip slot="chip" abbr="ts" />
     </Project>
@@ -57,7 +57,7 @@ import Snek from "@components/visuals/Snek.astro";
 </section>
 
 <script>
-  const section = document.querySelector("section#projects");
+  const section = document.querySelector("section#projects")!;
   const observer = new IntersectionObserver(
     (entries) => {
       if (entries[0].intersectionRatio === 1 && !section.classList.contains("fadeIntoView")) {
@@ -66,7 +66,7 @@ import Snek from "@components/visuals/Snek.astro";
     },
     {
       threshold: 1,
-    }
+    },
   );
   observer.observe(section);
 </script>

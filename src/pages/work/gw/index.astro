@@ -1,0 +1,72 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Project from "@components/projects/Project.astro";
+import Chip from "@components/chips/Chip.astro";
+import FacultyBuilder from "@components/visuals/FacultyBuilder.astro";
+import CLI from "@components/visuals/CLI.astro";
+---
+
+<Layout
+  title="Projects: GW Academic Medical Enterprise"
+  activePage="work"
+  ogURL="https://conorkelley.me/work/gw"
+  description="Featured projects from my work in the GW Academic Medical Enterprise."
+>
+  <div class="portfolio">
+    <h2>Featured Projects: GW Academic Medical Enterprise</h2>
+    <h3 class="no-margin-bottom">Patient-facing UI/UX Enhancement and Development</h3>
+    <p class="description">
+      I designed and developed enhanced styles for frequently used UI elements and have created new
+      components to modernize and improve the online experience for Capital Medical Group patients.
+      Notable ones include:
+    </p>
+    <ul>
+      <li><a href="/work/gw/cards">Provider profile and practice location cards</a></li>
+      <li>
+        <a href="https://capitalmedicalgroup.com/specialties" target="_blank"
+          >Filterable "Find a Specialty" list</a
+        >
+      </li>
+      <li>Call-to-action buttons</li>
+    </ul>
+
+    <h3>Custom Automation Tooling</h3>
+
+    <p class="description">
+      I developed a few internal tools for myself and my team that have majorly expedited content
+      updates, website audits, and migration projects.
+    </p>
+
+    <div class="projects">
+      <Project
+        projectName="Faculty Listing Builder"
+        projectDescription="A GUI tool enabling quick generation of a faculty member's profile HTML to aid in updating any SMHS department faculty pages."
+        projectURL="/work/gw/faculty-listing-builder"
+        urlTarget="_self"
+      >
+        <FacultyBuilder slot="project-visual" />
+      </Project>
+      <Project
+        projectName="Faculty Profile Migration Toolkit"
+        projectDescription="Two command-line tools which scraped several thousand lines of faculty profile HTML and mass-updated the markup with new structure, classes and URLs to be in sync with a relaunched faculty database."
+        projectURL="/work/gw/cli-tooling"
+        urlTarget="_self"
+      >
+        <CLI slot="project-visual" />
+      </Project>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .portfolio {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1100px) {
+    h3 {
+      text-align: center;
+    }
+  }
+</style>

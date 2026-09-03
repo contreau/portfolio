@@ -1,0 +1,28 @@
+---
+const { url, target = "_self" } = Astro.props;
+
+interface Props {
+  url: string;
+  target?: string;
+}
+---
+
+<a href={url} target={target}><slot /></a>
+
+<style>
+  a {
+    display: block;
+    max-width: fit-content;
+    color: var(--text);
+    text-decoration: none;
+    border: solid 1.5px var(--primary);
+    border-radius: 5px;
+    padding: 0.25em 1em;
+    font-weight: 500;
+    transition: 0.3s all;
+  }
+
+  a:hover {
+    background-color: #728bd23b;
+  }
+</style>

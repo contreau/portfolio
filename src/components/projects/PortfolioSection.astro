@@ -1,7 +1,8 @@
 ---
-const { heading, timeline, marginTop } = Astro.props;
+const { heading, title, timeline, marginTop } = Astro.props;
 interface Props {
   heading: string;
+  title: string;
   timeline?: string;
   marginTop?: string;
 }
@@ -9,14 +10,21 @@ interface Props {
 
 <section class:list={[{ "margin-top": marginTop === "true" }]}>
   <div class="heading-timeline">
-    <h2>{heading}</h2>
+    <h3>{heading}</h3>
     <span class="timeline">{timeline}</span>
   </div>
-  <slot name="description" />
+  <span class="title">{title}</span>
+  <slot name="content" />
   <slot />
 </section>
 
 <style>
+  span.title {
+    font-weight: 150;
+    font-size: 1.25rem;
+    color: #f9de8d;
+  }
+
   section.margin-top {
     margin-top: 3rem;
   }
@@ -25,13 +33,20 @@ interface Props {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-top: 1.5rem;
   }
+
+  .heading-timeline h3 {
+    margin-block: 0;
+    text-wrap: balance;
+  }
+
   .timeline {
     background-color: var(--bg-color);
     border: solid 1.5px #728bd24f;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     display: inline-block;
-    align-self: flex-start;
+    /* align-self: flex-start; */
     font-size: 0.8rem;
     font-weight: 550;
     padding: 0.1em 1em;
@@ -58,6 +73,12 @@ interface Props {
 
     .timeline {
       align-self: center;
+    }
+
+    span.title {
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
     }
 
     h2 {

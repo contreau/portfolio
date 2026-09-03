@@ -18,7 +18,15 @@ if (urlTarget) target = urlTarget;
   </div>
   <div class="item-info">
     <p class="project-name">
-      <a href={projectURL} target={target} data-astro-prefetch="viewport">{projectName}</a>
+      {
+        projectURL ? (
+          <a href={projectURL} target={target} data-astro-prefetch="viewport">
+            {projectName}
+          </a>
+        ) : (
+          projectName
+        )
+      }
     </p>
     <p class="project-description">
       {projectDescription}
@@ -55,6 +63,10 @@ if (urlTarget) target = urlTarget;
     a {
       color: var(--primary);
     }
+  }
+
+  .project-name:not(:has(a)) {
+    font-weight: 250;
   }
 
   .project-description {
