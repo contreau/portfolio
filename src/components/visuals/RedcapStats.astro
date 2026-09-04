@@ -11,61 +11,102 @@ import LoadingSVG from "@svg/LoadingSVG.astro";
   }
 
   (async () => {
+    const errorMessageLI: HTMLLIElement = document.querySelector("li#error-message")!;
+    const loadingCover: HTMLDivElement = document.querySelector("div#loading-cover")!;
+    loadingCover.addEventListener("transitionend", () => {
+      if (loadingCover.classList.contains("visible")) {
+        loadingCover.classList.remove("decrease-z-index", "hidden");
+      } else {
+        loadingCover.classList.add("decrease-z-index", "hidden");
+      }
+    });
+
+    function toggleLoadingCover(cover: HTMLDivElement, errorLI: HTMLLIElement) {
+      if (cover.classList.contains("visible")) {
+        // remove loading cover
+        cover.classList.remove("visible");
+        cover.classList.add("hidden");
+      } else {
+        // reveal loading cover
+        cover.classList.remove("hidden", "decrease-z-index");
+        cover.classList.add("visible");
+
+        errorLI.classList.add("display-none");
+        errorLI.classList.remove("visible");
+      }
+    }
+
+    function revealErrorMessage(errorLI: HTMLLIElement) {
+      errorLI.classList.remove("display-none");
+      errorLI?.classList.add("visible");
+      toggleLoadingCover(loadingCover, errorLI);
+    }
+
     async function getModuleStats() {
       const res = await fetch(
         "https://redcap.vumc.org/consortium/modules/stats-single.php?module_name=filetype_enforcement",
       );
       if (res.status !== 200) {
-        const responseMessage = document.querySelector("p#response-status")!;
-        responseMessage.textContent = "Network Error in fetching stats. Try again.";
+        revealErrorMessage(errorMessageLI);
         return;
       }
       const html = await res.text();
       return html;
     }
 
-    const statsHTML = await getModuleStats();
-    if (statsHTML) {
-      const statsDOM = new DOMParser().parseFromString(statsHTML, "text/html");
-      const formattingPromise = new Promise((resolve) => {
-        const moduleStats: ModuleStats = {
-          installs: 0,
-          institutions: 0,
-          totalProjects: 0,
-        };
+    const refetchButton = document.querySelector("button#refetch");
+    refetchButton?.addEventListener("click", async () => {
+      toggleLoadingCover(loadingCover, errorMessageLI);
+      await fetchAndDisplay();
+    });
 
-        statsDOM
-          .querySelectorAll<HTMLElement>("tr.indent-1:not(tr.version-header) td")
-          .forEach((td, i) => {
-            switch (i) {
-              // acceptable indices: 0, 2, 3, 4 (if 3 or 4, add value to totalProjects)
-              case 0:
-                moduleStats.installs = parseInt(td.textContent);
-                break;
-              case 2:
-                moduleStats.institutions = parseInt(td.textContent);
-                break;
-              case 3:
-                moduleStats.totalProjects += parseInt(td.textContent);
-                break;
-              case 4:
-                moduleStats.totalProjects += parseInt(td.textContent);
-                break;
-            }
-          });
+    // * Main Function.
+    async function fetchAndDisplay() {
+      const statsHTML = await getModuleStats();
+      if (statsHTML) {
+        const statsDOM = new DOMParser().parseFromString(statsHTML, "text/html");
+        const formattingPromise = new Promise((resolve) => {
+          const moduleStats: ModuleStats = {
+            installs: 0,
+            institutions: 0,
+            totalProjects: 0,
+          };
 
-        // update textContent in span.stat-value nodes with moduleStats values
-        Array.from(document.querySelectorAll("#stats-list li span.stat-value")!).map((span, i) => {
-          const key = Object.keys(moduleStats)[i] as keyof ModuleStats;
-          span.textContent = moduleStats[key].toString();
+          statsDOM
+            .querySelectorAll<HTMLElement>("tr.indent-1:not(tr.version-header) td")
+            .forEach((td, i) => {
+              switch (i) {
+                // acceptable indices: 0, 2, 3, 4 (if 3 or 4, add value to totalProjects)
+                case 0:
+                  moduleStats.installs = parseInt(td.textContent);
+                  break;
+                case 2:
+                  moduleStats.institutions = parseInt(td.textContent);
+                  break;
+                case 3:
+                  moduleStats.totalProjects += parseInt(td.textContent);
+                  break;
+                case 4:
+                  moduleStats.totalProjects += parseInt(td.textContent);
+                  break;
+              }
+            });
+
+          // update textContent in span.stat-value nodes with moduleStats values
+          Array.from(document.querySelectorAll("#stats-list li span.stat-value")!).map(
+            (span, i) => {
+              const key = Object.keys(moduleStats)[i] as keyof ModuleStats;
+              span.textContent = moduleStats[key].toString();
+              span.parentElement?.classList.remove("display-none");
+            },
+          );
+          resolve(true);
         });
-        resolve(true);
-      });
-      await formattingPromise;
-      const loadingCover = document.querySelector("div#loading-cover");
-      loadingCover?.classList.remove("visible");
-      loadingCover?.classList.add("hidden");
+        await formattingPromise;
+        toggleLoadingCover(loadingCover, errorMessageLI);
+      }
     }
+    await fetchAndDisplay();
   })();
 </script>
 
@@ -79,9 +120,18 @@ import LoadingSVG from "@svg/LoadingSVG.astro";
   <div id="stats-container">
     <ul id="stats-list">
       <div id="loading-cover" class="visible"><LoadingSVG /></div>
-      <li id="installs"><span class="stat-value"></span> all-time installs</li>
-      <li id="institutions"><span class="stat-value"></span> active institutions</li>
-      <li id="total_projects"><span class="stat-value"></span> total projects</li>
+      <li id="installs" class="display-none stat-item">
+        <span class="stat-value"></span> all-time installs
+      </li>
+      <li id="institutions" class="display-none stat-item">
+        <span class="stat-value"></span> active institutions
+      </li>
+      <li id="total_projects" class="display-none stat-item">
+        <span class="stat-value"></span> total projects
+      </li>
+      <li id="error-message" class="display-none">
+        Network Error.<br /><button id="refetch">Try again.</button>
+      </li>
     </ul>
   </div>
 </aside>
@@ -117,6 +167,8 @@ import LoadingSVG from "@svg/LoadingSVG.astro";
     position: relative;
     padding-left: 2em;
     margin-top: 0.5rem;
+    align-content: center;
+    min-height: 112.5px;
   }
 
   #loading-cover {
@@ -132,6 +184,10 @@ import LoadingSVG from "@svg/LoadingSVG.astro";
     font-weight: 300;
   }
 
+  #loading-cover.decrease-z-index {
+    z-index: -1;
+  }
+
   span.stat-value {
     color: #baccff;
     font-weight: 450;
@@ -143,5 +199,20 @@ import LoadingSVG from "@svg/LoadingSVG.astro";
 
   .visible {
     opacity: 1;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  ul#stats-list:has(li#error-message.visible) {
+    padding-left: 0;
+    align-content: center;
+  }
+
+  li#error-message {
+    list-style-type: none;
+    align-self: center;
+    text-align: center;
   }
 </style>
