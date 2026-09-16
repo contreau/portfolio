@@ -4,6 +4,7 @@ import Project from "@components/projects/Project.astro";
 import Chip from "@components/chips/Chip.astro";
 import Wave from "@components/visuals/Wave.astro";
 import Koi from "@components/visuals/Koi.astro";
+import Snek from "@components/visuals/Snek.astro";
 import Redcap from "@components/visuals/Redcap.astro";
 
 const heading = "Projects";
@@ -43,16 +44,7 @@ const description = "Independent development projects and some personal musings.
         <Chip slot="chip" abbr="css" />
         <Chip slot="chip" abbr="py" />
       </Project>
-      <!-- <Project
-        projectName="Snek"
-        projectDescription="My take on the classic snake game with three game modes."
-        projectURL="https://snekgame.app"
-      >
-        <Snek slot="project-visual" />
-        <Chip slot="chip" abbr="svelte" />
-        <Chip slot="chip" abbr="ts" />
-        <Chip slot="chip" abbr="css" />
-      </Project> -->
+
       <Project
         projectName="CSS Koi Pond"
         projectDescription="A charming koi pond powered by CSS."
@@ -61,10 +53,26 @@ const description = "Independent development projects and some personal musings.
         <Koi slot="project-visual" />
         <Chip slot="chip" abbr="css" />
       </Project>
+
+      <Project
+        projectName="Snek"
+        projectDescription="My take on the classic snake game with three game modes."
+        projectURL="https://snekgame.app"
+      >
+        <Snek slot="project-visual" />
+        <Chip slot="chip" abbr="svelte" />
+        <Chip slot="chip" abbr="ts" />
+        <Chip slot="chip" abbr="css" />
+      </Project>
     </div>
   </section>
 
   <style>
+    p.description {
+      margin-top: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
     .projects {
       display: flex;
       flex-direction: column;

@@ -17,39 +17,35 @@ import cliImage from "@img/cli-result.jpg";
     <Chip slot="languages" abbr="js" />
     <Chip slot="languages" abbr="node" />
 
-    <p slot="subpage-description" class="subpage-description">
+    <p slot="col-1">
       I developed two command-line tools to synchronize over 1,400 faculty profiles across 30+
       department websites, automating what would have been several weeks of manual labor into less
       than a day's work.
     </p>
-
-    <p slot="subpage-description" class="subpage-description">
+    <p slot="col-1">
       <a href="https://github.com/contreau/smhs-faculty-generator" target="_blank">The first tool</a
       > scraped existing faculty profiles and regenerated them with a redesigned HTML structure and updated
       styles, producing production-ready markup that could be directly pasted into the Drupal CMS page
       editor.
     </p>
-
-    <p slot="subpage-description" class="subpage-description">
+    <p slot="col-1">
       <a href="https://github.com/contreau/smhs-profile-patch" target="_blank">The second tool</a> automated
       the mass-updating of faculty directory URLs across all profiles. By cross-referencing the complete
       dataset of new profile URLs, it systematically replaced outdated directory links with current ones,
       enabling same-day deployment across all department websites.
     </p>
 
-    <Image src={cliImage} alt="Console log reading: Processing Faculty Rows..." slot="content" />
+    <Image
+      slot="col-2"
+      class="place-self-center"
+      src={cliImage}
+      alt="Console log reading: Processing Faculty Rows..."
+    />
   </SubpageContent>
 </Layout>
 
 <style>
   img {
-    margin-top: 2rem;
     border-radius: 8px;
-  }
-
-  @media (max-width: 1100px) {
-    img {
-      margin-inline: auto;
-    }
   }
 </style>

@@ -9,16 +9,26 @@ interface Props {
 ---
 
 <section class:list={[{ "margin-top": marginTop === "true" }]}>
-  <div class="heading-timeline">
-    <h3>{heading}</h3>
-    <span class="timeline">{timeline}</span>
+  <!-- Title/Timeline/Location -->
+  <div class="what-when-where">
+    <div class="heading-timeline">
+      <h3>{heading}</h3>
+      <span class="timeline">{timeline}</span>
+    </div>
+    <span class="title">{title}</span>
   </div>
-  <span class="title">{title}</span>
-  <slot name="content" />
-  <slot />
+
+  <!-- Content -->
+  <div class="flex-col-gap">
+    <slot name="content" />
+  </div>
 </section>
 
 <style>
+  .what-when-where {
+    margin-bottom: 1.5rem;
+  }
+
   span.title {
     font-weight: 150;
     font-size: 1.25rem;
@@ -44,9 +54,7 @@ interface Props {
   .timeline {
     background-color: var(--bg-color);
     border: solid 1.5px #728bd24f;
-    /* margin-top: 0.5rem; */
     display: inline-block;
-    /* align-self: flex-start; */
     font-size: 0.8rem;
     font-weight: 550;
     padding: 0.1em 1em;
@@ -83,11 +91,6 @@ interface Props {
 
     h2 {
       text-wrap: balance;
-    }
-
-    p.description {
-      max-width: 100%;
-      text-align: center;
     }
   }
 </style>

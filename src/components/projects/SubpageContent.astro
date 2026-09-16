@@ -1,14 +1,25 @@
 ---
-const { title } = Astro.props;
+const { title, alternativeGridCols } = Astro.props;
 ---
 
-<section>
+<section class="subpage-section">
   <h2>{title}</h2>
   <div class="languages">
     <slot name="languages" />
   </div>
-  <slot name="subpage-description" />
-  <slot name="content" />
+
+  <div class="full-width-description">
+    <slot name="full-width-description" />
+  </div>
+
+  <div class="content grid" class:list={[{ altCols: alternativeGridCols === true }]}>
+    <div class="grid-col">
+      <slot name="col-1" />
+    </div>
+    <div class="grid-col">
+      <slot name="col-2" />
+    </div>
+  </div>
 </section>
 
 <style>
@@ -23,6 +34,71 @@ const { title } = Astro.props;
     margin-block: 0.75rem;
     display: flex;
     align-items: center;
+  }
+
+  .full-width-description {
+    margin-block: 0.75rem;
+  }
+
+  div.content * {
+    margin-block: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid.altCols {
+    grid-template-columns: 33% 65%;
+    column-gap: 2%;
+    place-items: center;
+  }
+
+  .grid-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .grid-col:nth-of-type(2) {
+    grid-row-start: 1;
+    justify-self: center;
+  }
+
+  .grid-col:has(.place-self-center),
+  .grid-col:nth-of-type(2):has(.grid-col.place-self-center) {
+    place-self: center;
+  }
+
+  @media (max-width: 1100px) {
+    .grid {
+      row-gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .grid.altCols {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+    }
+
+    .grid-col {
+      align-items: center;
+    }
+
+    div.content * {
+      margin-inline: auto;
+    }
+  }
+
+  @media (width >= 1100px) {
+    .grid {
+      grid-template-columns: 60% auto;
+    }
+
+    .grid-col:nth-of-type(2) {
+      grid-column-start: 2;
+    }
   }
 
   @media (max-width: 1100px) {

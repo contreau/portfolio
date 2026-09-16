@@ -20,44 +20,46 @@ const description =
     type="image/gif"
   />
 
-  <SubpageContent title="Faculty Listing Builder">
+  <SubpageContent title="Faculty Listing Builder" alternativeGridCols>
     <Chip slot="languages" abbr="vue" />
     <Chip slot="languages" abbr="ts" />
     <Chip slot="languages" abbr="css" />
     <Chip slot="languages" abbr="php" />
 
-    <p slot="subpage-description" class="subpage-description">
-      A GUI tool I built for our web team allowing for quick generation of a faculty member's
-      profile HTML. Used to assist in updating any of the 39 <a
-        href="https://biochemistry.smhs.gwu.edu/faculty"
-        target="_blank">faculty pages</a
-      > across the School of Medicine & Health Sciences websites.
-    </p>
-    <p slot="subpage-description" class="subpage-description">
-      I wrote user authentication in PHP and deployed the application on a private Apache server.
-    </p>
-    <div slot="content" class="content-grid">
-      <div class="grid-item">
-        <h3>Key features:</h3>
-        <ul class="features-list">
-          <li>Live preview as you type for both UI and HTML views.</li>
-          <li>
-            CSV processor that populates the tool's inputs with a given faculty member's information
-            upon selecting their name. Allows for filtering by department.
-          </li>
-          <li>Keyboard shortcuts for adding and deleting titles and bulleted information.</li>
-          <li>Single-click copying of the generated HTML.</li>
-        </ul>
-      </div>
-      <div class="grid-item demo">
-        <img
-          src="/faculty-builder-min.gif"
-          alt="Faculty Listing Builder Demo"
-          height="500"
-          width="1165"
-          loading="eager"
-        />
-      </div>
+    <div slot="full-width-description" class="description-fw">
+      <p>
+        A GUI tool I built for our web team allowing for quick generation of a faculty member's
+        profile HTML. Used to assist in updating any of the 39 <a
+          href="https://neurology.smhs.gwu.edu/faculty"
+          target="_blank">faculty pages</a
+        > across the School of Medicine & Health Sciences websites.
+      </p>
+      <p>
+        I wrote user authentication in PHP and deployed the application on a private Apache server.
+      </p>
+    </div>
+
+    <div slot="col-1" class="grid-item">
+      <h3>Key features:</h3>
+      <ul class="features-list">
+        <li>Live preview as you type for both UI and HTML views.</li>
+        <li>
+          CSV processor that populates the tool's inputs with a given faculty member's information
+          upon selecting their name. Allows for filtering by department.
+        </li>
+        <li>Keyboard shortcuts for adding and deleting titles and bulleted information.</li>
+        <li>Single-click copying of the generated HTML.</li>
+      </ul>
+    </div>
+
+    <div slot="col-2" class="demo">
+      <img
+        src="/faculty-builder-min.gif"
+        alt="Faculty Listing Builder Demo"
+        height="500"
+        width="1165"
+        loading="eager"
+      />
     </div>
   </SubpageContent>
 </Layout>
@@ -67,10 +69,8 @@ const description =
     margin-block: 0.5rem;
   }
 
-  .languages {
-    margin-block: 0.5rem;
-    display: flex;
-    align-items: center;
+  div.description-fw p + p {
+    margin-top: 2rem;
   }
 
   .features-list {
@@ -92,10 +92,6 @@ const description =
   }
 
   @media (max-width: 1100px) {
-    .content-grid {
-      grid-template-columns: 1fr;
-      row-gap: 1.5rem;
-    }
     .demo {
       order: -1;
     }

@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import SubpageContent from "@components/projects/SubpageContent.astro";
 import Chip from "@components/chips/Chip.astro";
+import ChipGroup from "@components/chips/ChipGroup.astro";
 import Wave from "@components/visuals/Wave.astro";
 import Button from "@components/Button.astro";
 ---
@@ -13,78 +14,31 @@ import Button from "@components/Button.astro";
   ogURL="https://conorkelley.me/projects/kompendium"
 >
   <SubpageContent title="Kompendium">
-    <Chip slot="languages" abbr="sveltekit" />
-    <Chip slot="languages" abbr="ts" />
-    <Chip slot="languages" abbr="css" />
-    <Chip slot="languages" abbr="py" />
+    <ChipGroup slot="languages">
+      <Chip abbr="sveltekit" />
+      <Chip abbr="ts" />
+      <Chip abbr="css" />
+      <Chip abbr="py" />
+    </ChipGroup>
 
-    <div slot="content" class="content grid">
-      <div class="grid-col">
-        <p class="description">
-          <a href="https://komp3nd1um.app" target="_blank">Kompendium</a> is a digital preservation of
-          my friend Konrad Rauscher's immense musical curation that he shared with countless friends,
-          family and strangers over 11 years. Between 2013 and 2024, he crafted 826 original public Spotify
-          playlists totaling 59,903 songs. Konrad tragically passed away in October 2024.
-        </p>
-        <p class="description">
-          I collected, cleaned, and sorted all playlist data from Konrad's Spotify profile to
-          prepare it for the web. <a
-            href="https://github.com/contreau/konrad-playlist-archive"
-            target="_blank">View the code</a
-          > from that process if you're interested.
-        </p>
-
-        <div>
-          <Button url="https://komp3nd1um.app" target="_blank">Visit Kompendium</Button>
-        </div>
-      </div>
-      <div class="grid-col">
-        <Wave minwidth="250px" minheight="250px" maxWaveHeight="200" speed="0.05" />
-      </div>
+    <!-- Column 1 -->
+    <p slot="col-1">
+      <a href="https://komp3nd1um.app" target="_blank">Kompendium</a> is a digital preservation of my
+      friend Konrad Rauscher's immense musical curation that he shared with countless friends, family
+      and strangers over 11 years. Between 2013 and 2024, he crafted 826 original public Spotify playlists
+      totaling 59,903 songs. Konrad tragically passed away in October 2024.
+    </p>
+    <p slot="col-1">
+      I collected, cleaned, and sorted all playlist data from Konrad's Spotify profile to prepare it
+      for the web. <a href="https://github.com/contreau/konrad-playlist-archive" target="_blank"
+        >View the code</a
+      > from that process if you're interested.
+    </p>
+    <div slot="col-1">
+      <Button url="https://komp3nd1um.app" target="_blank">Visit Kompendium</Button>
     </div>
+
+    <!-- Column 2 -->
+    <Wave slot="col-2" minwidth="250px" minheight="250px" maxWaveHeight="200" speed="0.05" />
   </SubpageContent>
 </Layout>
-
-<style>
-  div.content * {
-    margin-block: 0;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .grid-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .grid-col:nth-of-type(2) {
-    grid-row-start: 1;
-    align-self: center;
-    justify-self: center;
-  }
-
-  @media (max-width: 1100px) {
-    .grid {
-      row-gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    div.content * {
-      margin-inline: auto;
-    }
-  }
-
-  @media (width >= 1100px) {
-    .grid {
-      grid-template-columns: 60% auto;
-    }
-
-    .grid-col:nth-of-type(2) {
-      grid-column-start: 2;
-    }
-  }
-</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Chip from "@components/chips/Chip.astro";
+import ChipGroup from "@components/chips/ChipGroup.astro";
 import SubpageContent from "@components/projects/SubpageContent.astro";
 import RCstats from "@components/visuals/RedcapStats.astro";
 const title = "REDCap Module - File Type Enforcement";
@@ -13,52 +14,27 @@ const title = "REDCap Module - File Type Enforcement";
   ogURL="https://conorkelley.me/projects/redcap"
 >
   <SubpageContent {title}>
-    <Chip slot="languages" abbr="php" />
-    <Chip slot="languages" abbr="js" />
+    <ChipGroup slot="languages">
+      <Chip abbr="php" />
+      <Chip abbr="js" />
+    </ChipGroup>
 
-    <div slot="subpage-description" class="grid">
-      <div class="grid-col">
-        <p class="description">
-          <a href="https://github.com/contreau/redcap-filetype-enforcement-module" target="_blank"
-            >An external module I developed</a
-          > and maintain for REDCap, a web application for building and managing online surveys and databases
-          that is used by over 8,300 active institutions in 160+ countries.
-        </p>
-        <p class="description">
-          Having built several REDCap webforms for use at the GW School of Medicine & Health
-          Sciences, I observed that there is no native way to strictly enforce types for uploaded
-          files. To remedy this, I developed an opt-in module that allows form builders to easily
-          restrict file uploads so that end-users can only submit permitted file types.
-        </p>
-        <p class="description">
-          The module was accepted by the Vanderbilt REDCap team in May 2026.
-        </p>
-      </div>
+    <!-- Column 1 -->
+    <p slot="col-1">
+      <a href="https://github.com/contreau/redcap-filetype-enforcement-module" target="_blank"
+        >An external module I developed</a
+      > and maintain for REDCap, a web application for building and managing online surveys and databases
+      that is used by over 8,300 active institutions in 160+ countries.
+    </p>
+    <p slot="col-1">
+      Having built several REDCap webforms for use at the GW School of Medicine & Health Sciences, I
+      observed that there is no native way to strictly enforce types for uploaded files. To remedy
+      this, I developed an opt-in module that allows form builders to easily restrict file uploads
+      so that end-users can only submit permitted file types.
+    </p>
+    <p slot="col-1">The module was accepted by the Vanderbilt REDCap team in May 2026.</p>
 
-      <div class="grid-col">
-        <RCstats />
-      </div>
-    </div>
+    <!-- Column 2 -->
+    <RCstats slot="col-2" />
   </SubpageContent>
 </Layout>
-
-<style scoped>
-  .grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .grid-col:nth-of-type(2) {
-    grid-row-start: 1;
-  }
-
-  @media (width >= 1100px) {
-    .grid {
-      grid-template-columns: 60% auto;
-    }
-
-    .grid-col:nth-of-type(2) {
-      grid-column-start: 2;
-    }
-  }
-</style>

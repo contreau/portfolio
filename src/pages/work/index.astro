@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import PortfolioSection from "@components/projects/PortfolioSection.astro";
 import Chip from "@components/chips/Chip.astro";
+import ChipGroup from "@components/chips/ChipGroup.astro";
 import Button from "@components/Button.astro";
 ---
 
@@ -12,13 +13,13 @@ import Button from "@components/Button.astro";
   description="Professional web development experience."
 >
   <h2>Work History</h2>
-  <PortfolioSection
-    heading="GW Academic Medical Enterprise"
-    title="Web Associate"
-    timeline="October 2022 - August 2026"
-  >
-    <div class="content grid" slot="content">
-      <p class="description">
+  <div class="portfolio-section">
+    <PortfolioSection
+      heading="GW Academic Medical Enterprise"
+      title="Web Associate"
+      timeline="October 2022 - August 2026"
+    >
+      <p slot="content">
         <em>
           Spearheaded frontend development and provided operational support for the web ecosystem of
           The George Washington University's academic medical enterprise - consisting of the GW MFA
@@ -26,84 +27,100 @@ import Button from "@components/Button.astro";
           and the <a href="https://smhs.gwu.edu/" target="_blank"
             >GW School of Medicine & Health Sciences</a
           >.
+          <br /><br />
+          Awarded with the <a href="/pillar-award.pdf" target="_blank"
+            >GW Medicine Pillars of Excellence Award</a
+          > in February 2026.
         </em>
       </p>
+      <div class="cols-60-40" slot="content">
+        <div>
+          <h4>Key Responsibilities</h4>
+          <ul>
+            <li>Patient-facing UI/UX enhancement</li>
+            <li>Webform development and maintenance</li>
+            <li>Creation of automation tools</li>
+            <li>Accessibility audits per WCAG</li>
+          </ul>
+        </div>
+        <div class="flex-col-gap">
+          <Button url="/work/gw" marginInline="auto">View Featured Projects</Button>
+          <ChipGroup>
+            <Chip abbr="drupal" />
+            <Chip abbr="redcap" />
+            <Chip abbr="vue" />
+            <Chip abbr="css" />
+            <Chip abbr="js" />
+            <Chip abbr="ts" />
+            <Chip abbr="php" />
+            <Chip abbr="node" />
+          </ChipGroup>
+        </div>
+      </div>
+    </PortfolioSection>
+  </div>
 
-      <div><Button url="/work/gw">View Featured Projects</Button></div>
-
-      <h4 class="no-margin-top">Accolades</h4>
-      <ul>
-        <li>
-          <a href="/pillar-award.pdf" target="_blank">GW Medicine Pillars of Excellence Award</a> • February
-          2026
-        </li>
-      </ul>
-
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Patient-facing UI/UX enhancement</li>
-        <li>Webform development and maintenance</li>
-        <li>Creation of automation tools</li>
-        <li>Accessibility audits per WCAG</li>
-      </ul>
-    </div>
-    <div class="languages">
-      <Chip abbr="drupal" /><Chip abbr="redcap" /><Chip abbr="vue" /><Chip abbr="css" /><Chip
-        abbr="js"
-      /><Chip abbr="ts" /><Chip abbr="php" /><Chip abbr="node" />
-    </div>
-  </PortfolioSection>
-
-  <PortfolioSection
-    heading="Boston University School of Medicine"
-    title="Web Designer"
-    timeline="January - August 2022"
-    marginTop="true"
-  >
-    <div class="languages">
-      <Chip slot="chip" abbr="wp" />
-      <Chip slot="chip" abbr="css" />
-    </div>
-    <p slot="content" class="description">
-      <em>
-        Redesigned and rebuilt two Boston University School of Medicine websites (a department site
-        and an administrative site) on WordPress. Collaborated with faculty on feature and design
-        needs, wrote extensive custom CSS and UI components, and created site assets, including
-        photographing staff headshots and other imagery.
-      </em>
-    </p>
-
-    <div slot="content">
-      <h4>Websites Worked</h4>
-      <ul>
-        <li>BUSM Department of Pharmacology & Biophysics</li>
-        <li>BUSM Office of Financial & Grants Administration</li>
-      </ul>
-    </div>
-  </PortfolioSection>
+  <div class="portfolio-section">
+    <PortfolioSection
+      heading="Boston University School of Medicine"
+      title="Web Designer"
+      timeline="January - August 2022"
+    >
+      <p slot="content">
+        <em>
+          Redesigned and rebuilt two Boston University School of Medicine websites in WordPress.
+        </em>
+      </p>
+      <div class="cols-60-40" slot="content">
+        <div>
+          <h4>Key Responsibilities</h4>
+          <ul>
+            <li>Faculty collaboration for feature/design needs</li>
+            <li>Custom CSS and UI component creation</li>
+            <li>Site asset creation, including taking staff headshots and other imagery</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Websites Completed</h4>
+          <ul>
+            <li>BUSM Department of Pharmacology & Biophysics</li>
+            <li>BUSM Office of Financial & Grants Administration</li>
+          </ul>
+          <div class="languages">
+            <Chip slot="chip" abbr="wp" />
+            <Chip slot="chip" abbr="css" />
+          </div>
+        </div>
+      </div>
+    </PortfolioSection>
+  </div>
 </Layout>
 
 <style>
-  .grid {
+  .portfolio-section + .portfolio-section {
+    margin-top: 5rem;
+  }
+
+  .cols-60-40 {
     display: grid;
+    grid-template-columns: 45% auto;
+    gap: 10%;
+  }
+
+  p + p {
+    margin-top: 2rem;
   }
 
   h4 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-block: 0;
+    color: #f9de8d;
   }
 
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+  ul {
+    padding-left: 1.5em;
+    margin-bottom: 0;
   }
 
-  .projects.no-visuals {
-    gap: 2.5rem;
-  }
-
-  .description,
   li {
     text-wrap: balance;
   }
@@ -118,8 +135,13 @@ import Button from "@components/Button.astro";
       text-align: center;
     }
 
-    .content * {
-      margin-inline: auto;
+    li {
+      text-align: center;
+      list-style-type: none;
+    }
+
+    .cols-60-40 {
+      grid-template-columns: 1fr;
     }
   }
 </style>

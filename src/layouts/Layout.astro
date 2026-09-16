@@ -54,13 +54,6 @@ import Nav from "@components/Nav.astro";
     position: relative;
   }
 
-  @media (max-width: 1200px) {
-    main {
-      display: block;
-      margin-top: 0;
-    }
-  }
-
   :root {
     --text: #000000;
     --white: #ffffff;
@@ -105,7 +98,7 @@ import Nav from "@components/Nav.astro";
     font-family: system-ui;
     font-weight: 400;
     line-height: 1.75;
-    max-width: 1200px;
+    max-width: 1300px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
@@ -154,11 +147,6 @@ import Nav from "@components/Nav.astro";
 
   /* Font Configurations for headings / paragraphs */
 
-  p,
-  li {
-    font-size: clamp(0.85rem, 4vw, 0.9rem);
-  }
-
   h1,
   h2,
   h3,
@@ -199,11 +187,17 @@ import Nav from "@components/Nav.astro";
   }
 
   section {
-    /* margin-block: 2.5rem; */
     min-height: 340px;
   }
 
   /* Other global rules */
+
+  .flex-col-gap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
 
   .no-margin-top {
     margin-top: 0;
@@ -216,9 +210,12 @@ import Nav from "@components/Nav.astro";
     font-size: clamp(0.85rem, 4vw, 1rem);
   }
 
+  p {
+    margin-block: 0;
+  }
+
   p.description {
-    margin-block: 1.5rem;
-    font-weight: 200;
+    margin-block: 0;
   }
 
   p.subpage-description a,
@@ -262,7 +259,8 @@ import Nav from "@components/Nav.astro";
   }
 
   .languages {
-    margin-block: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -312,7 +310,7 @@ import Nav from "@components/Nav.astro";
 
     section h2,
     .portfolio h2,
-    section p.description {
+    section p {
       text-align: center;
     }
 
@@ -320,11 +318,20 @@ import Nav from "@components/Nav.astro";
       text-align: center;
       text-wrap: balance;
     }
+
+    .flex-col-gap {
+      align-items: center;
+    }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1300px) {
     body {
       padding-inline: 1em;
+    }
+
+    main {
+      display: block;
+      margin-top: 0;
     }
   }
 </style>
